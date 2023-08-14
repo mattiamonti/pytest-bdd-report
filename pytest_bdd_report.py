@@ -42,14 +42,16 @@ def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func
 
     if saveit_option:
 
-        StepDetails(feature=feature.name,
-                    scenario=scenario.name,
-                    status="failed",
-                    type=step.keyword,
-                    step=step.name,
-                    exception=str(exception),
-                    nodeid=step_func.__code__.co_filename + "::" + step_func.__name__
-                    ).append_to_json("bdd_results.json")
+        step_details = StepDetails(
+            feature=feature.name,
+            scenario=scenario.name,
+            status="failed",
+            type=step.keyword,
+            step=step.name,
+            exception=str(exception),
+            nodeid=step_func.__code__.co_filename + "::" + step_func.__name__
+        )
+        step_details.append_to_json("bdd_results.json")
 
 
 @pytest.hookimpl
