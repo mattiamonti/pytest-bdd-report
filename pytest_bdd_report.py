@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-
+#TODO scrivere test per questo plugin pytest
 import os
 import pytest
 from jsonutil import load_from_json, save_to_json
-
 from collector.scenario_result_merger import ScenarioAndResultMerger
 from collector.scenario_aggregator import ScenarioAggregator
 from collector.step_details import StepDetails
