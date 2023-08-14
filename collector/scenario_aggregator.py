@@ -1,4 +1,3 @@
-
 class ScenarioAggregator:
     """
     Aggregate BDD steps into their corresponding scenarios.
@@ -22,8 +21,8 @@ class ScenarioAggregator:
         """
         aggregated_results = {}
         for step in steps_information:
-            feature = step['feature']
-            scenario = step['scenario']
+            feature = step["feature"]
+            scenario = step["scenario"]
             scenario_key = f"{feature} - {scenario}"
 
             # Check if the scenario key is already present in aggregated_results
@@ -32,13 +31,11 @@ class ScenarioAggregator:
                 aggregated_results[scenario_key] = {
                     "feature": feature,
                     "scenario": scenario,
-                    "steps": [
-                        self._get_step_information(step)
-                    ]
+                    "steps": [self._get_step_information(step)],
                 }
             else:
                 # Append step information to the existing scenario entry
-                aggregated_results[scenario_key]['steps'].append(
+                aggregated_results[scenario_key]["steps"].append(
                     self._get_step_information(step)
                 )
         return aggregated_results
@@ -54,9 +51,9 @@ class ScenarioAggregator:
             dict: A dictionary containing relevant step details.
         """
         return {
-            "type": step['type'],
-            "step": step['step'],
-            "status": step['status'],
-            "nodeid": step['nodeid'],
-            "exception": step['exception']
+            "type": step["type"],
+            "step": step["step"],
+            "status": step["status"],
+            "nodeid": step["nodeid"],
+            "exception": step["exception"],
         }

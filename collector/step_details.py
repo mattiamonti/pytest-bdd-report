@@ -16,7 +16,9 @@ class StepDetails:
             - "nodeid": The unique identifier of the step.
     """
 
-    def __init__(self, feature, scenario, status, type, step, exception, nodeid) -> None:
+    def __init__(
+        self, feature, scenario, status, type, step, exception, nodeid
+    ) -> None:
         self.step_details: dict = {
             "feature": feature,
             "scenario": scenario,

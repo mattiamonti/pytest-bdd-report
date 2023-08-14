@@ -1,4 +1,3 @@
-
 class LengthMismatchError(Exception):
     """
     Custom exception for a length mismatch between aggregated scenarios and test results.
@@ -16,7 +15,9 @@ class ScenarioAndResultMerger:
     def __init__(self) -> None:
         pass
 
-    def merge_scenario_and_result(self, aggregated_scenarios: dict, tests_results: list) -> list:
+    def merge_scenario_and_result(
+        self, aggregated_scenarios: dict, tests_results: list
+    ) -> list:
         """
         Merge aggregated steps information with test results to create complete test cases.
 
@@ -28,12 +29,13 @@ class ScenarioAndResultMerger:
             list: A list of merged test case dictionaries.
 
         Raises:
-            LengthMismatchError: If the lengths of aggregated scenarios and test results 
+            LengthMismatchError: If the lengths of aggregated scenarios and test results
             do not match.
         """
         if len(aggregated_scenarios) != len(tests_results):
             raise LengthMismatchError(
-                "Lengths of aggregated scenarios and test results do not match.")
+                "Lengths of aggregated scenarios and test results do not match."
+            )
 
         merged_results = []
 
@@ -56,11 +58,11 @@ class ScenarioAndResultMerger:
         """
 
         return {
-            "nodeid": test_results['nodeid'],
-            "feature": step_details['feature'],
-            "scenario": step_details['scenario'],
-            "duration": test_results['duration'],
-            "outcome": test_results['outcome'],
-            "longrepr": test_results['longrepr'],
-            "steps": step_details['steps'],
+            "nodeid": test_results["nodeid"],
+            "feature": step_details["feature"],
+            "scenario": step_details["scenario"],
+            "duration": test_results["duration"],
+            "outcome": test_results["outcome"],
+            "longrepr": test_results["longrepr"],
+            "steps": step_details["steps"],
         }
