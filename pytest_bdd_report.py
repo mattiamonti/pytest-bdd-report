@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#TODO scrivere test per questo plugin pytest
+# TODO scrivere test per questo plugin pytest
 import os
 import pytest
 from jsonutil import load_from_json, save_to_json
