@@ -4,10 +4,7 @@ Utilities for loading data from and saving data to JSON files.
 This module provides functions to facilitate the loading of data from JSON files into variables
 and the saving of Python objects as JSON data into files.
 """
-
 import json
-
-
 def load_from_json(path: str):
     """
     Load data from a JSON file.
