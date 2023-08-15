@@ -7,14 +7,6 @@ and the saving of Python objects as JSON data into files.
 import json
 
 
-
-
-
-
-
-
-
-
 def load_from_json(path: str):
     """
     Load data from a JSON file.
