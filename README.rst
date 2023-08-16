@@ -14,7 +14,12 @@ pytest-bdd-report
     :target: https://ci.appveyor.com/project/mattiamonti/pytest-bdd-report/branch/master
     :alt: See Build Status on AppVeyor
 
-.. image:: https://github.com/mattiamonti/pytest-bdd-report/actions/workflows/black.yml/badge.svg
+.. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/black.yml
+    :alt: GitHub Workflow Status (with event)
+
+.. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml
+    :alt: GitHub Workflow Status (with event)
+
 
 A pytest-bdd plugin for generating useful and informative BDD test reports
 
