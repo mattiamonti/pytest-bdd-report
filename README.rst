@@ -21,7 +21,7 @@ pytest-bdd-report
     :alt: GitHub Workflow Status (with event)
 
 .. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=pytest&label=Testing
-:   alt: GitHub Workflow Status (with event)
+    :alt: GitHub Workflow Status (with event)
 
 
 
