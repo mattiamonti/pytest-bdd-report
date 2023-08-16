@@ -12,15 +12,13 @@ class Summary:
     as well as save the summary information to a JSON file.
     """
 
-    summary = {
-        "total_tests": 0,
-        "passed_tests": 0,
-        "failed_tests": 0,
-        "skipped_tests": 0,
-    }
-
     def __init__(self) -> None:
-        pass
+        self.summary = {
+            "total_tests": 0,
+            "passed_tests": 0,
+            "failed_tests": 0,
+            "skipped_tests": 0,
+        }
 
     def add_passed_test(self) -> None:
         """

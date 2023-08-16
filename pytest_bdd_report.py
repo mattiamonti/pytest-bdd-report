@@ -15,19 +15,18 @@ def pytest_addoption(parser):
         "--saveit", action="store_true", default=False, help="print something."
     )
 
-    # parser.addini('HELLO', 'Dummy pytest.ini setting')
-
 
 # initializa the summary of the tests
-summary = Summary()
+# summary = None
 
 
 def pytest_sessionstart(session):
+    session.summary = Summary()
     session.results = dict()
     # remove, if exists, the old json containing the steps information
     if os.path.exists("bdd_results.json"):
         os.remove("bdd_results.json")
-    # TODO aggiungere un titolo del report, magari scelto tramite linea di comando e fornirne uno di defaulkt (es. report-16/08/2023-15:40)
+    # TODO aggiungere un titolo del report nel summary, magari scelto tramite linea di comando e fornirne uno di defaulkt (es. report-16/08/2023-15:40)
 
 
 @pytest.hookimpl
@@ -91,11 +90,11 @@ def pytest_runtest_makereport(item, call):
         item.session.results[item] = test_result
         # update the tests summary
         if test_result.passed:
-            summary.add_passed_test()
+            item.session.summary.add_passed_test()
         elif test_result.failed:
-            summary.add_failed_test()
+            item.session.summary.add_failed_test()
         elif test_result.skipped:
-            summary.add_skipped_test()
+            item.session.summary.add_skipped_test()
 
 
 def _load_aggregated_steps():
@@ -146,7 +145,7 @@ def pytest_sessionfinish(session):
         _merge_and_save_results(aggregated_steps, tests_results)
 
         # save the summary of the tests
-        summary.save_to_json("bdd_summary_try.json")
+        session.summary.save_to_json("bdd_summary.json")
 
 
 def _get_tests_results(tests: list) -> list:
