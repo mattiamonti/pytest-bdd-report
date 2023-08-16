@@ -6,6 +6,7 @@ from utils.json_util import load_from_json, save_to_json
 from collector.scenario_result_merger import ScenarioAndResultMerger
 from collector.scenario_aggregator import ScenarioAggregator
 from collector.step_details import StepDetails
+from summary.summary import Summary
 
 
 def pytest_addoption(parser):
@@ -17,11 +18,16 @@ def pytest_addoption(parser):
     # parser.addini('HELLO', 'Dummy pytest.ini setting')
 
 
+# initializa the summary of the tests
+summary = Summary()
+
+
 def pytest_sessionstart(session):
     session.results = dict()
     # remove, if exists, the old json containing the steps information
     if os.path.exists("bdd_results.json"):
         os.remove("bdd_results.json")
+    # TODO aggiungere un titolo del report, magari scelto tramite linea di comando e fornirne uno di defaulkt (es. report-16/08/2023-15:40)
 
 
 @pytest.hookimpl
@@ -81,7 +87,15 @@ def pytest_runtest_makereport(item, call):
     outcome = yield
     test_result = outcome.get_result()
     if test_result.when == "call":
+        # save the test results
         item.session.results[item] = test_result
+        # update the tests summary
+        if test_result.passed:
+            summary.add_passed_test()
+        elif test_result.failed:
+            summary.add_failed_test()
+        elif test_result.skipped:
+            summary.add_skipped_test()
 
 
 def _load_aggregated_steps():
@@ -130,6 +144,9 @@ def pytest_sessionfinish(session):
         aggregated_steps = _load_aggregated_steps()
         tests_results = _load_tests_results(session)
         _merge_and_save_results(aggregated_steps, tests_results)
+
+        # save the summary of the tests
+        summary.save_to_json("bdd_summary_try.json")
 
 
 def _get_tests_results(tests: list) -> list:

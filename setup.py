@@ -27,6 +27,8 @@ setup(
         "collector.scenario_result_merger",
         "collector.scenario_aggregator",
         "collector.step_details",
+        "utils.json_util",
+        "summary.summary",
     ],
     python_requires=">=3.5",
     install_requires=["pytest>=3.5.0", "pytest-bdd"],
