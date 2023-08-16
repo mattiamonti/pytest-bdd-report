@@ -20,6 +20,10 @@ pytest-bdd-report
 .. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml
     :alt: GitHub Workflow Status (with event)
 
+.. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/:workflow?logo=pytest&label=Testing
+    :alt: GitHub Workflow Status (with event)
+
+
 
 A pytest-bdd plugin for generating useful and informative BDD test reports
 
