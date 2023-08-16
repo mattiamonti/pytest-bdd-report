@@ -20,7 +20,7 @@ pytest-bdd-report
 .. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml
     :alt: GitHub Workflow Status (with event)
 
-.. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=pytest&label=Testing
+.. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=pytest&label=Automated%20Tests
     :alt: GitHub Workflow Status (with event)
 
 
