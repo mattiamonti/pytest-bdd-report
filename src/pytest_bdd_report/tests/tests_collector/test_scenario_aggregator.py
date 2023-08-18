@@ -1,5 +1,5 @@
 import pytest
-from collector.scenario_aggregator import ScenarioAggregator
+from pytest_bdd_report.collector.scenario_aggregator import ScenarioAggregator
 
 
 @pytest.fixture

@@ -1,5 +1,5 @@
 import pytest
-from collector.scenario_result_merger import (
+from pytest_bdd_report.collector.scenario_result_merger import (
     ScenarioAndResultMerger,
     LengthMismatchError,
 )
