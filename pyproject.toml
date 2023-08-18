@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytest_bdd_report"
+version = "0.1.1"
+authors = [
+  { name="Mattia Monti", email="mattiamonti2001@gmail.com" },
+]
+description = "A pytest-bdd plugin for generating useful and informative BDD test reports"
+readme = "README.rst"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/mattiamonti/pytest-bdd-report"
+"Bug Tracker" = "https://github.com/mattiamonti/pytest-bdd-report/issues"
