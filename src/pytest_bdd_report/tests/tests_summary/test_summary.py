@@ -1,13 +1,13 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from summary.summary import Summary
+from pytest_bdd_report.summary.summary import Summary
 
 
 # Mock the save_to_json function
 @pytest.fixture
 def mock_save_to_json(monkeypatch):
     mock_function = MagicMock()
-    monkeypatch.setattr("summary.summary.save_to_json", mock_function)
+    monkeypatch.setattr("pytest_bdd_report.summary.summary.save_to_json", mock_function)
     return mock_function
 
 
@@ -43,7 +43,7 @@ def test_add_skipped_test():
     assert summary.summary["skipped_tests"] == 1
 
 
-@patch("summary.summary.save_to_json")
+@patch("pytest_bdd_report.summary.summary.save_to_json")
 def test_save_to_json(mock_save_function):
     summary = Summary()
     summary.save_to_json("test_summary.json")

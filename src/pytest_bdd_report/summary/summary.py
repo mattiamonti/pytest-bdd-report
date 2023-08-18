@@ -1,7 +1,7 @@
 """
 This module contains the Summary class, which is used to manage and track test summary information.
 """
-from utils.json_util import save_to_json
+from pytest_bdd_report.utils.json_util import save_to_json
 
 
 class Summary:
