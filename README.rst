@@ -56,7 +56,10 @@ Installation
 Usage
 -----
 
-Once the plugin is installed, you can generate BDD reports after test execution using the command::
+Once the plugin is installed, you can generate BDD reports after test execution using the command
+
+::
+
     $ pytest --bdd-report
 
 Contributing
