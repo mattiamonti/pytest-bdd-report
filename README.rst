@@ -10,10 +10,6 @@ pytest-bdd-report
     :target: https://pypi.org/project/pytest-bdd-report
     :alt: Python versions
 
-.. image:: https://ci.appveyor.com/api/projects/status/github/mattiamonti/pytest-bdd-report?branch=master
-    :target: https://ci.appveyor.com/project/mattiamonti/pytest-bdd-report/branch/master
-    :alt: See Build Status on AppVeyor
-
 .. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=GitHub%20actions&label=Black%20formatting
     :alt: GitHub Workflow Status (with event)
 
@@ -22,8 +18,9 @@ pytest-bdd-report
 
 
 
-
-A pytest-bdd plugin for generating useful and informative BDD test reports
+The `pytest-bdd-report` plugin is a useful extension for the `pytest-bdd`_ library that allows you to generate 
+useful and informative reports for BDD (Behavior-Driven Development) tests developed using the pytest-bdd framework.
+This plugin facilitates the generation of clear and effective HTML reports, providing a comprehensible view of BDD test executions within the project.
 
 ----
 
@@ -33,7 +30,9 @@ This `pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`
 Features
 --------
 
-* TODO
+* **Detailed BDD Reports**: The pytest-bdd-report plugin enables the generation of detailed reports for BDD tests executed using pytest-bdd. These reports clearly show the executed steps, tested scenarios, and obtained results.
+* **HTML Format**: The generated reports are presented in an intuitive and interactive HTML format. This allows developers, testers, and other team members to easily view the status of BDD tests.
+* **Easy Installation**: Installing the plugin is simple and fast. You can install it using the command `pip install pytest-bdd-report`.
 
 
 Requirements
@@ -45,7 +44,11 @@ Requirements
 Installation
 ------------
 
-You can install "pytest-bdd-report" via `pip`_ from `PyPI`_::
+1. Ensure that you have `pytest`_ and `pytest-bdd`_ installed in your development environment.
+2. Open a terminal window.
+3. Execute the following command to install the `pytest-bdd-report` plugin via `pip`_ from `PyPI`_
+
+::
 
     $ pip install pytest-bdd-report
 
@@ -53,7 +56,8 @@ You can install "pytest-bdd-report" via `pip`_ from `PyPI`_::
 Usage
 -----
 
-* TODO
+Once the plugin is installed, you can generate BDD reports after test execution using the command::
+    $ pytest --bdd-report
 
 Contributing
 ------------
@@ -83,3 +87,4 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`tox`: https://tox.readthedocs.io/en/latest/
 .. _`pip`: https://pypi.org/project/pip/
 .. _`PyPI`: https://pypi.org/project
+.. _`pytest-bdd`: https://github.com/pytest-dev/pytest-bdd
