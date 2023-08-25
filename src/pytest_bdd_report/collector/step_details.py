@@ -1,4 +1,4 @@
-from utils.json_util import save_to_json, load_from_json
+from pytest_bdd_report.utils.json_util import save_to_json, load_from_json
 
 
 class StepDetails:

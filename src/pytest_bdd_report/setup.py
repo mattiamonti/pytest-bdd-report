@@ -13,7 +13,7 @@ def read(fname):
 
 setup(
     name="pytest-bdd-report",
-    version="0.1.0",
+    version="0.2.0",
     author="Mattia Monti",
     author_email="mattiamonti2001@gmail.com",
     maintainer="Mattia Monti",
@@ -24,11 +24,6 @@ setup(
     long_description=read("README.rst"),
     py_modules=[
         "pytest_bdd_report",
-        "collector.scenario_result_merger",
-        "collector.scenario_aggregator",
-        "collector.step_details",
-        "utils.json_util",
-        "summary.summary",
     ],
     python_requires=">=3.5",
     install_requires=["pytest>=3.5.0", "pytest-bdd"],

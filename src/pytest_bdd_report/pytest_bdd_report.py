@@ -2,11 +2,11 @@
 # TODO scrivere test per questo plugin pytest
 import os
 import pytest
-from utils.json_util import load_from_json, save_to_json
-from collector.scenario_result_merger import ScenarioAndResultMerger
-from collector.scenario_aggregator import ScenarioAggregator
-from collector.step_details import StepDetails
-from summary.summary import Summary
+from pytest_bdd_report.utils.json_util import load_from_json, save_to_json
+from pytest_bdd_report.collector.scenario_result_merger import ScenarioAndResultMerger
+from pytest_bdd_report.collector.scenario_aggregator import ScenarioAggregator
+from pytest_bdd_report.collector.step_details import StepDetails
+from pytest_bdd_report.summary.summary import Summary
 
 
 def pytest_addoption(parser):
