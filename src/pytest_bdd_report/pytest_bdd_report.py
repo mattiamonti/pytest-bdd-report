@@ -7,12 +7,24 @@ from pytest_bdd_report.collector.scenario_result_merger import ScenarioAndResult
 from pytest_bdd_report.collector.scenario_aggregator import ScenarioAggregator
 from pytest_bdd_report.collector.step_details import StepDetails
 from pytest_bdd_report.summary.summary import Summary
+from datetime import datetime
 
+BDD_JSON_FLAG = "--bdd-json"
+BDD_REPORT_FLAG = "--report"
 
 def pytest_addoption(parser):
     group = parser.getgroup("bdd-report")
     group.addoption(
-        "--saveit", action="store_true", default=False, help="print something."
+        BDD_JSON_FLAG,
+        action="store_true",
+        default=False,
+        help="Save the BDD tests result in json format."
+    )
+    group.addoption(
+        BDD_REPORT_FLAG,
+        action='store',
+        default=f"{datetime.now()}-test report.html",
+        help="Create the BDD tests report at the specified path."
     )
 
 
@@ -37,11 +49,7 @@ def pytest_bdd_step_error(
     save the failed step information in a json file, appending it if the file is already created
     """
     # Ottieni le opzioni dalla linea di comando
-    saveit_option = (
-        request.config.getoption("--saveit")
-        if hasattr(request.config, "getoption")
-        else None
-    )
+    saveit_option = _get_cli_flag_option(request, BDD_JSON_FLAG)
 
     if saveit_option:
         step_details = StepDetails(
@@ -55,6 +63,13 @@ def pytest_bdd_step_error(
         )
         step_details.append_to_json("bdd_results.json")
 
+def _get_cli_flag_option(request, flag: str):
+    return (
+        request.config.getoption(flag)
+        if hasattr(request.config, "getoption")
+        else None
+    )
+
 
 @pytest.hookimpl
 def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func_args):
@@ -62,11 +77,7 @@ def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func
     save the step information in a json file, appending it if the file is already created
     """
     # Ottieni le opzioni dalla linea di comando
-    saveit_option = (
-        request.config.getoption("--saveit")
-        if hasattr(request.config, "getoption")
-        else None
-    )
+    saveit_option = _get_cli_flag_option(request, BDD_JSON_FLAG)
 
     if saveit_option:
         step_details = StepDetails(
@@ -133,11 +144,7 @@ def pytest_sessionfinish(session):
     """
     Hook for pytest to perform tasks at the end of the session.
     """
-    saveit_option = (
-        session.config.getoption("--saveit")
-        if hasattr(session.config, "getoption")
-        else None
-    )
+    saveit_option = _get_cli_flag_option(session, BDD_JSON_FLAG)
 
     if saveit_option:
         aggregated_steps = _load_aggregated_steps()
