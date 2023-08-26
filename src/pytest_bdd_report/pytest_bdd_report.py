@@ -13,6 +13,7 @@ BDD_JSON_FLAG = "--bdd-json"
 BDD_REPORT_FLAG = "--report"
 
 
+# Command-line option setup
 def pytest_addoption(parser):
     group = parser.getgroup("bdd-report")
     group.addoption(
@@ -29,6 +30,7 @@ def pytest_addoption(parser):
     )
 
 
+# Command-line option getter
 def _get_cli_bool_flag_option(request, flag: str):
     return (
         request.config.getoption(flag) if hasattr(request.config, "getoption") else None
@@ -108,6 +110,7 @@ def pytest_runtest_makereport(item, call):
             item.session.summary.add_skipped_test()
 
 
+# Helper function for the pytest_sessionfinish hook
 def _load_aggregated_steps():
     """
     Load aggregated steps information from a JSON file.
@@ -140,6 +143,26 @@ def _merge_and_save_results(aggregated_steps, tests_results):
     save_to_json(final_results, "session_finish_results.json")
 
 
+def _get_tests_results(tests: list) -> list:
+    """
+    Get test results as a list of dictionaries.
+    """
+    results = []
+    for test in tests:
+        result_dict = {
+            "nodeid": test.nodeid,
+            "outcome": test.outcome,
+            "keywords": test.keywords,
+            "duration": test.duration,
+            "sections": test.sections,
+            "longrepr": test.longreprtext,
+            "test_case": "",
+            "when": test.when,
+        }
+        results.append(result_dict)
+    return results
+
+
 def pytest_sessionfinish(session):
     """
     Hook for pytest to perform tasks at the end of the session.
@@ -164,23 +187,3 @@ def pytest_sessionfinish(session):
     if bdd_report_flag:
         # TODO create report generation logic ecc... (maybe in another package)
         print(f"\n\n📈 Report created at: {bdd_report_flag.replace('.html', '')}.html")
-
-
-def _get_tests_results(tests: list) -> list:
-    """
-    Get test results as a list of dictionaries.
-    """
-    results = []
-    for test in tests:
-        result_dict = {
-            "nodeid": test.nodeid,
-            "outcome": test.outcome,
-            "keywords": test.keywords,
-            "duration": test.duration,
-            "sections": test.sections,
-            "longrepr": test.longreprtext,
-            "test_case": "",
-            "when": test.when,
-        }
-        results.append(result_dict)
-    return results
