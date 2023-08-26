@@ -12,24 +12,31 @@ from datetime import datetime
 BDD_JSON_FLAG = "--bdd-json"
 BDD_REPORT_FLAG = "--report"
 
+
 def pytest_addoption(parser):
     group = parser.getgroup("bdd-report")
     group.addoption(
         BDD_JSON_FLAG,
         action="store_true",
         default=False,
-        help="Save the BDD tests result in json format."
+        help="Save the BDD tests result in json format.",
     )
     group.addoption(
         BDD_REPORT_FLAG,
-        action='store',
-        default=f"{datetime.now()}-test report.html",
-        help="Create the BDD tests report at the specified path."
+        action="store",
+        default="",
+        help="Create the BDD tests report at the given path.",
     )
 
 
-# initializa the summary of the tests
-# summary = None
+def _get_cli_bool_flag_option(request, flag: str):
+    return (
+        request.config.getoption(flag) if hasattr(request.config, "getoption") else None
+    )
+
+
+def _get_cli_flag_option(request, flag: str):
+    return request.config.getoption(flag)
 
 
 def pytest_sessionstart(session):
@@ -49,9 +56,9 @@ def pytest_bdd_step_error(
     save the failed step information in a json file, appending it if the file is already created
     """
     # Ottieni le opzioni dalla linea di comando
-    saveit_option = _get_cli_flag_option(request, BDD_JSON_FLAG)
+    bdd_json_flag = _get_cli_bool_flag_option(request, BDD_JSON_FLAG)
 
-    if saveit_option:
+    if bdd_json_flag:
         step_details = StepDetails(
             feature=feature.name,
             scenario=scenario.name,
@@ -63,13 +70,6 @@ def pytest_bdd_step_error(
         )
         step_details.append_to_json("bdd_results.json")
 
-def _get_cli_flag_option(request, flag: str):
-    return (
-        request.config.getoption(flag)
-        if hasattr(request.config, "getoption")
-        else None
-    )
-
 
 @pytest.hookimpl
 def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func_args):
@@ -77,9 +77,9 @@ def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func
     save the step information in a json file, appending it if the file is already created
     """
     # Ottieni le opzioni dalla linea di comando
-    saveit_option = _get_cli_flag_option(request, BDD_JSON_FLAG)
+    bdd_json_flag = _get_cli_bool_flag_option(request, BDD_JSON_FLAG)
 
-    if saveit_option:
+    if bdd_json_flag:
         step_details = StepDetails(
             feature=feature.name,
             scenario=scenario.name,
@@ -144,15 +144,26 @@ def pytest_sessionfinish(session):
     """
     Hook for pytest to perform tasks at the end of the session.
     """
-    saveit_option = _get_cli_flag_option(session, BDD_JSON_FLAG)
+    bdd_json_flag = _get_cli_bool_flag_option(session, BDD_JSON_FLAG)
+    bdd_report_flag: str = _get_cli_flag_option(session, BDD_REPORT_FLAG)
 
-    if saveit_option:
+    if bdd_json_flag:
         aggregated_steps = _load_aggregated_steps()
         tests_results = _load_tests_results(session)
         _merge_and_save_results(aggregated_steps, tests_results)
 
         # save the summary of the tests
         session.summary.save_to_json("bdd_summary.json")
+
+        # remove bdd_results.json
+        if os.path.exists("bdd_results.json"):
+            os.remove("bdd_results.json")
+
+        print("\n\n📄 JSON with the tests result created successfully!")
+
+    if bdd_report_flag:
+        # TODO create report generation logic ecc... (maybe in another package)
+        print(f"\n\n📈 Report created at: {bdd_report_flag.replace('.html', '')}.html")
 
 
 def _get_tests_results(tests: list) -> list:
