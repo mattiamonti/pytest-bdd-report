@@ -108,6 +108,8 @@ def pytest_runtest_makereport(item, call):
             item.session.summary.add_failed_test()
         elif test_result.skipped:
             item.session.summary.add_skipped_test()
+    if test_result.when == "setup" and test_result.skipped:
+        item.session.summary.add_skipped_test()
 
 
 # Helper function for the pytest_sessionfinish hook
@@ -175,7 +177,8 @@ def pytest_sessionfinish(session):
         tests_results = _load_tests_results(session)
         _merge_and_save_results(aggregated_steps, tests_results)
 
-        # save the summary of the tests
+        # create the summary of the features and save the summary to bdd_summary.json
+        session.summary.create_feature_statistics("session_finish_results.json")
         session.summary.save_to_json("bdd_summary.json")
 
         # remove bdd_results.json
