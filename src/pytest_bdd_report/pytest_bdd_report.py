@@ -85,7 +85,7 @@ def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func
         step_details = {
             "feature": feature.name,
             "scenario": scenario.name,
-            "status": "failed",
+            "status": "passed",
             "type": step.keyword,
             "step": step.name,
             "exception": "",
