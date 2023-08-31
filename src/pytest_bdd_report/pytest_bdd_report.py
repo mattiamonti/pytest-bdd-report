@@ -5,9 +5,7 @@ import pytest
 from pytest_bdd_report.utils.json_util import load_from_json, save_to_json
 from pytest_bdd_report.collector.scenario_result_merger import ScenarioAndResultMerger
 from pytest_bdd_report.collector.scenario_aggregator import ScenarioAggregator
-from pytest_bdd_report.collector.step_details import StepDetails
 from pytest_bdd_report.summary.summary import Summary
-from datetime import datetime
 
 BDD_JSON_FLAG = "--bdd-json"
 BDD_REPORT_FLAG = "--report"
@@ -44,7 +42,7 @@ def _get_cli_flag_option(request, flag: str):
 def pytest_sessionstart(session):
     session.summary = Summary()
     session.results = dict()
-    session.bdd_results = [] # per evitare di usare il json bdd_results uso una variabile di sessione
+    session.bdd_results = []  # session variable for steps information
     # remove, if exists, the old json containing the steps information
     if os.path.exists("bdd_results.json"):
         os.remove("bdd_results.json")
@@ -62,18 +60,17 @@ def pytest_bdd_step_error(
     bdd_json_flag = _get_cli_bool_flag_option(request, BDD_JSON_FLAG)
 
     if bdd_json_flag:
-        step_details = StepDetails(
-            feature=feature.name,
-            scenario=scenario.name,
-            status="failed",
-            type=step.keyword,
-            step=step.name,
-            exception=str(exception),
-            nodeid=step_func.__code__.co_filename + "::" + step_func.__name__,
-        )
-        #step_details.append_to_json("bdd_results.json")
-        request.session.bdd_results.append(step_details.step_details)
-
+        step_details = {
+            "feature": feature.name,
+            "scenario": scenario.name,
+            "status": "failed",
+            "type": step.keyword,
+            "step": step.name,
+            "exception": str(exception),
+            "nodeid": step_func.__code__.co_filename + "::" + step_func.__name__,
+        }
+        # append the step details to the session variable
+        request.session.bdd_results.append(step_details)
 
 
 @pytest.hookimpl
@@ -85,17 +82,17 @@ def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func
     bdd_json_flag = _get_cli_bool_flag_option(request, BDD_JSON_FLAG)
 
     if bdd_json_flag:
-        step_details = StepDetails(
-            feature=feature.name,
-            scenario=scenario.name,
-            status="passed",
-            type=step.keyword,
-            step=step.name,
-            exception="",
-            nodeid=f"{step_func.__code__.co_filename}::{step_func.__name__}",
-        )
-        #step_details.append_to_json("bdd_results.json")
-        request.session.bdd_results.append(step_details.step_details)
+        step_details = {
+            "feature": feature.name,
+            "scenario": scenario.name,
+            "status": "failed",
+            "type": step.keyword,
+            "step": step.name,
+            "exception": "",
+            "nodeid": step_func.__code__.co_filename + "::" + step_func.__name__,
+        }
+        # append the step details to the session variable
+        request.session.bdd_results.append(step_details)
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -177,7 +174,9 @@ def pytest_sessionfinish(session):
     bdd_report_flag: str = _get_cli_flag_option(session, BDD_REPORT_FLAG)
 
     if bdd_json_flag:
-        save_to_json(session.bdd_results, "bdd_results.json") # mette la variabile di sessione nel json
+        save_to_json(
+            session.bdd_results, "bdd_results.json"
+        )  # dump the session variable into the json
         aggregated_steps = _load_aggregated_steps()
         tests_results = _load_tests_results(session)
         _merge_and_save_results(aggregated_steps, tests_results)
@@ -195,6 +194,3 @@ def pytest_sessionfinish(session):
     if bdd_report_flag:
         # TODO create report generation logic ecc... (maybe in another package)
         print(f"\n\n📈 Report created at: {bdd_report_flag.replace('.html', '')}.html")
-
-
-        
