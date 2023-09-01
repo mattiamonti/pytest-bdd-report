@@ -103,11 +103,12 @@ def test_json_steps_keyword(sample_test):
     with open(str(sample_test.tmpdir / "session_finish_results.json")) as f:
         data = json.load(f)
 
-    steps = data[0]['steps']
-    assert steps[0]['type'] == "Given"
-    assert steps[1]['type'] == "When"
-    assert steps[2]['type'] == "And"
-    assert steps[3]['type'] == "Then"
+    steps = data[0]["steps"]
+    assert steps[0]["type"] == "Given"
+    assert steps[1]["type"] == "When"
+    assert steps[2]["type"] == "And"
+    assert steps[3]["type"] == "Then"
+
 
 def test_json_steps_argument(sample_test):
     sample_test.runpytest("--bdd-json")
@@ -115,11 +116,12 @@ def test_json_steps_argument(sample_test):
     with open(str(sample_test.tmpdir / "session_finish_results.json")) as f:
         data = json.load(f)
 
-    steps = data[0]['steps']
-    assert steps[0]['step'] == "I have a scenario"
-    assert steps[1]['step'] == "I start the test"
-    assert steps[2]['step'] == "I know it will fails"
-    assert steps[3]['step'] == "It fails"
+    steps = data[0]["steps"]
+    assert steps[0]["step"] == "I have a scenario"
+    assert steps[1]["step"] == "I start the test"
+    assert steps[2]["step"] == "I know it will fails"
+    assert steps[3]["step"] == "It fails"
+
 
 def test_json_steps_status(sample_test):
     sample_test.runpytest("--bdd-json")
@@ -127,11 +129,12 @@ def test_json_steps_status(sample_test):
     with open(str(sample_test.tmpdir / "session_finish_results.json")) as f:
         data = json.load(f)
 
-    steps = data[0]['steps']
-    assert steps[0]['status'] == "passed"
-    assert steps[1]['status'] == "passed"
-    assert steps[2]['status'] == "passed"
-    assert steps[3]['status'] == "failed"
+    steps = data[0]["steps"]
+    assert steps[0]["status"] == "passed"
+    assert steps[1]["status"] == "passed"
+    assert steps[2]["status"] == "passed"
+    assert steps[3]["status"] == "failed"
+
 
 def test_json_steps_nodeid(sample_test):
     sample_test.runpytest("--bdd-json")
@@ -139,11 +142,12 @@ def test_json_steps_nodeid(sample_test):
     with open(str(sample_test.tmpdir / "session_finish_results.json")) as f:
         data = json.load(f)
 
-    steps = data[0]['steps']
-    assert steps[0]['nodeid'] != "" 
-    assert steps[1]['nodeid'] != "" 
-    assert steps[2]['nodeid'] != "" 
-    assert steps[3]['nodeid'] != ""
+    steps = data[0]["steps"]
+    assert steps[0]["nodeid"] != ""
+    assert steps[1]["nodeid"] != ""
+    assert steps[2]["nodeid"] != ""
+    assert steps[3]["nodeid"] != ""
+
 
 def test_json_steps_exception(sample_test):
     sample_test.runpytest("--bdd-json")
@@ -151,8 +155,8 @@ def test_json_steps_exception(sample_test):
     with open(str(sample_test.tmpdir / "session_finish_results.json")) as f:
         data = json.load(f)
 
-    steps = data[0]['steps']
-    assert steps[0]['exception'] == ""
-    assert steps[1]['exception'] == ""
-    assert steps[2]['exception'] == ""
-    assert steps[3]['exception'] == "assert False"
+    steps = data[0]["steps"]
+    assert steps[0]["exception"] == ""
+    assert steps[1]["exception"] == ""
+    assert steps[2]["exception"] == ""
+    assert steps[3]["exception"] == "assert False"
