@@ -27,22 +27,20 @@ def pytest_addoption(parser):
 
 
 # Command-line option getter
-def _get_cli_bool_flag_option(request, flag: str):
+def _get_cli_bool_flag_option(request, flag: str) -> bool:
     return (
         request.config.getoption(flag) if hasattr(request.config, "getoption") else None
     )
 
 
-def _get_cli_flag_option(request, flag: str):
+def _get_cli_flag_option(request, flag: str) -> str:
     return request.config.getoption(flag)
 
 
 def pytest_sessionstart(session):
     session.summary = Summary()
-    session.results = dict()
-    session.bdd_results = []  # session variable for steps information
-
-    
+    session.tests_result = dict()
+    session.steps_information = []
 
 
 @pytest.hookimpl
@@ -52,10 +50,10 @@ def pytest_bdd_step_error(
     """
     save the failed step information in a json file, appending it if the file is already created
     """
-    # Ottieni le opzioni dalla linea di comando
     bdd_json_flag = _get_cli_bool_flag_option(request, BDD_JSON_FLAG)
+    bdd_report_flag = _get_cli_flag_option(request, BDD_REPORT_FLAG)
 
-    if bdd_json_flag:
+    if bdd_json_flag or bdd_report_flag:
         step_details = {
             "feature": feature.name,
             "scenario": scenario.name,
@@ -65,8 +63,8 @@ def pytest_bdd_step_error(
             "exception": str(exception),
             "nodeid": step_func.__code__.co_filename + "::" + step_func.__name__,
         }
-        # append the step details to the session variable
-        request.session.bdd_results.append(step_details)
+        # Append the step details to the session variable
+        request.session.steps_information.append(step_details)
 
 
 @pytest.hookimpl
@@ -74,10 +72,10 @@ def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func
     """
     save the step information in a json file, appending it if the file is already created
     """
-    # Ottieni le opzioni dalla linea di comando
     bdd_json_flag = _get_cli_bool_flag_option(request, BDD_JSON_FLAG)
+    bdd_report_flag = _get_cli_flag_option(request, BDD_REPORT_FLAG)
 
-    if bdd_json_flag:
+    if bdd_json_flag or bdd_report_flag:
         step_details = {
             "feature": feature.name,
             "scenario": scenario.name,
@@ -87,22 +85,22 @@ def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func
             "exception": "",
             "nodeid": step_func.__code__.co_filename + "::" + step_func.__name__,
         }
-        # append the step details to the session variable
-        request.session.bdd_results.append(step_details)
+        # Append the step details to the session variable
+        request.session.steps_information.append(step_details)
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     bdd_json_flag = _get_cli_bool_flag_option(item.session, BDD_JSON_FLAG)
-    bdd_report_flag: str = _get_cli_flag_option(item.session, BDD_REPORT_FLAG)
+    bdd_report_flag = _get_cli_flag_option(item.session, BDD_REPORT_FLAG)
     outcome = yield
     if bdd_json_flag or bdd_report_flag:
         test_result = outcome.get_result()
         if test_result.when == "call":
-            # save the test results
-            item.session.results[item] = test_result
-            print(f"when: {item.session.results[item]}")
-            # update the test summary
+            # Save the test results
+            item.session.tests_result[item] = test_result
+            print(f"when: {item.session.tests_result[item]}")
+            # Update the test summary
             if test_result.passed:
                 item.session.summary.add_passed_test()
             elif test_result.failed:
@@ -118,7 +116,7 @@ def _load_tests_results(session):
     """
     Load test results from the pytest session.
     """
-    session_results = list(session.results.values())
+    session_results = list(session.tests_result.values())
     return _get_tests_results(session_results)
 
 
@@ -163,27 +161,19 @@ def pytest_sessionfinish(session):
     Hook for pytest to perform tasks at the end of the session.
     """
     bdd_json_flag = _get_cli_bool_flag_option(session, BDD_JSON_FLAG)
-    bdd_report_flag: str = _get_cli_flag_option(session, BDD_REPORT_FLAG)
+    bdd_report_flag = _get_cli_flag_option(session, BDD_REPORT_FLAG)
 
     if bdd_json_flag:
-        save_to_json(
-            session.bdd_results, "bdd_results.json"
-        )  # dump the session variable into the json
-        #aggregated_steps = load_from_json("bdd_results.json")
-        aggregated_steps = session.bdd_results
+        # Save the merged steps information and tests result to session_finish_results.json
+        aggregated_steps = session.steps_information
         tests_results = _load_tests_results(session)
         _merge_and_save_results(aggregated_steps, tests_results)
 
-        # create the summary of the features and save the summary to bdd_summary.json
+        # Create the summary of the features and save the summary to bdd_summary.json
         session.summary.create_feature_statistics("session_finish_results.json")
         session.summary.save_to_json("bdd_summary.json")
-
-        # remove bdd_results.json
-        if os.path.exists("bdd_results.json"):
-            os.remove("bdd_results.json")
-
         print("\n\n📄 JSON with the tests result created successfully!")
 
     if bdd_report_flag:
-        # TODO create report generation logic ecc... (maybe in another package)
+        # TODO implement report generation logic ecc... (maybe in another package)
         print(f"\n\n📈 Report created at: {bdd_report_flag.replace('.html', '')}.html")
