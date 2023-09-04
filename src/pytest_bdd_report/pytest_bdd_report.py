@@ -8,7 +8,7 @@ from pytest_bdd_report.collector.scenario_aggregator import ScenarioAggregator
 from pytest_bdd_report.summary.summary import Summary
 
 BDD_JSON_FLAG = "--bdd-json"
-BDD_REPORT_FLAG = "--report"
+BDD_REPORT_FLAG = "--bdd-report"
 
 
 # Command-line option setup
