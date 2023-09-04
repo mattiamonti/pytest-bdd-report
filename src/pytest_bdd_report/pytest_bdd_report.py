@@ -8,7 +8,7 @@ from pytest_bdd_report.collector.scenario_aggregator import ScenarioAggregator
 from pytest_bdd_report.summary.summary import Summary
 
 BDD_JSON_FLAG = "--bdd-json"
-BDD_REPORT_FLAG = "--report"
+BDD_REPORT_FLAG = "--bdd-report"
 
 
 # Command-line option setup
@@ -97,20 +97,24 @@ def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
+    bdd_json_flag = _get_cli_bool_flag_option(item.session, BDD_JSON_FLAG)
+    bdd_report_flag: str = _get_cli_flag_option(item.session, BDD_REPORT_FLAG)
     outcome = yield
-    test_result = outcome.get_result()
-    if test_result.when == "call":
-        # save the test results
-        item.session.results[item] = test_result
-        # update the tests summary
-        if test_result.passed:
-            item.session.summary.add_passed_test()
-        elif test_result.failed:
-            item.session.summary.add_failed_test()
-        elif test_result.skipped:
+    if bdd_json_flag or bdd_report_flag:
+        test_result = outcome.get_result()
+        if test_result.when == "call":
+            # save the test results
+            item.session.results[item] = test_result
+            print(f"when: {item.session.results[item]}")
+            # update the tests summary
+            if test_result.passed:
+                item.session.summary.add_passed_test()
+            elif test_result.failed:
+                item.session.summary.add_failed_test()
+            elif test_result.skipped:
+                item.session.summary.add_skipped_test()
+        if test_result.when == "setup" and test_result.skipped:
             item.session.summary.add_skipped_test()
-    if test_result.when == "setup" and test_result.skipped:
-        item.session.summary.add_skipped_test()
 
 
 # Helper function for the pytest_sessionfinish hook

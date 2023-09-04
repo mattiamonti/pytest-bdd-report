@@ -8,7 +8,7 @@ def test_arguments_in_help(testdir):
     res.stdout.fnmatch_lines(
         [
             "*bdd-json*",
-            "*report*",
+            "*bdd-report*",
         ]
     )
 
@@ -24,7 +24,7 @@ def test_json_message_in_stdout(testdir):
 
 def test_report_message_in_stdout(testdir):
     arg = "test"
-    res = testdir.runpytest(f"--report={arg}")
+    res = testdir.runpytest(f"--bdd-report={arg}")
     res.stdout.fnmatch_lines(
         [
             f"*Report created at: {arg}*.html*",
@@ -34,7 +34,7 @@ def test_report_message_in_stdout(testdir):
 
 def test_report_message_in_stdout_with_html(testdir):
     arg = "test.html"
-    res = testdir.runpytest(f"--report={arg}")
+    res = testdir.runpytest(f"--bdd-report={arg}")
     res.stdout.fnmatch_lines(
         [
             f"*Report created at: {arg}*",
