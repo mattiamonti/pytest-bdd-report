@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-# TODO scrivere test per questo plugin pytest
 import os
 import pytest
 from pytest_bdd_report.utils.json_util import load_from_json, save_to_json
@@ -43,10 +41,8 @@ def pytest_sessionstart(session):
     session.summary = Summary()
     session.results = dict()
     session.bdd_results = []  # session variable for steps information
-    # remove, if exists, the old json containing the steps information
-    if os.path.exists("bdd_results.json"):
-        os.remove("bdd_results.json")
-    # TODO aggiungere un titolo del report nel summary, magari scelto tramite linea di comando e fornirne uno di defaulkt (es. report-16/08/2023-15:40)
+
+    
 
 
 @pytest.hookimpl
@@ -106,7 +102,7 @@ def pytest_runtest_makereport(item, call):
             # save the test results
             item.session.results[item] = test_result
             print(f"when: {item.session.results[item]}")
-            # update the tests summary
+            # update the test summary
             if test_result.passed:
                 item.session.summary.add_passed_test()
             elif test_result.failed:
@@ -118,13 +114,6 @@ def pytest_runtest_makereport(item, call):
 
 
 # Helper function for the pytest_sessionfinish hook
-def _load_aggregated_steps():
-    """
-    Load aggregated steps information from a JSON file.
-    """
-    return load_from_json("bdd_results.json")
-
-
 def _load_tests_results(session):
     """
     Load test results from the pytest session.
@@ -163,7 +152,6 @@ def _get_tests_results(tests: list) -> list:
             "duration": test.duration,
             "sections": test.sections,
             "longrepr": test.longreprtext,
-            "test_case": "",
             "when": test.when,
         }
         results.append(result_dict)
@@ -181,7 +169,8 @@ def pytest_sessionfinish(session):
         save_to_json(
             session.bdd_results, "bdd_results.json"
         )  # dump the session variable into the json
-        aggregated_steps = _load_aggregated_steps()
+        #aggregated_steps = load_from_json("bdd_results.json")
+        aggregated_steps = session.bdd_results
         tests_results = _load_tests_results(session)
         _merge_and_save_results(aggregated_steps, tests_results)
 
