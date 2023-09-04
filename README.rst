@@ -56,15 +56,21 @@ Installation
 Usage
 -----
 
-Once the plugin is installed, you can generate BDD reports after test execution using the command
+Once the plugin is installed, you can generate BDD reports in an HTML file using the command
 
 ::
 
-    $ pytest --bdd-report
+    $ pytest --bdd-report="report.html"
+
+In alternative you can save only the raw tests informations in a JSON file using the command
+
+::
+
+    $ pytest --bdd-json
 
 Contributing
 ------------
-Contributions are very welcome. Tests can be run with `tox`_, please ensure
+Contributions are very welcome. Tests can be run with `pytest`_, please ensure
 the coverage at least stays the same before you submit a pull request.
 
 License
