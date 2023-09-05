@@ -48,7 +48,7 @@ def pytest_bdd_step_error(
     request, feature, scenario, step, step_func, step_func_args, exception
 ):
     """
-    save the failed step information in a json file, appending it if the file is already created
+    Save and append the failed step information in a session variable.
     """
     bdd_json_flag = _get_cli_bool_flag_option(request, BDD_JSON_FLAG)
     bdd_report_flag = _get_cli_flag_option(request, BDD_REPORT_FLAG)
@@ -70,7 +70,7 @@ def pytest_bdd_step_error(
 @pytest.hookimpl
 def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func_args):
     """
-    save the step information in a json file, appending it if the file is already created
+    Save and append the passed step information in a session variable.
     """
     bdd_json_flag = _get_cli_bool_flag_option(request, BDD_JSON_FLAG)
     bdd_report_flag = _get_cli_flag_option(request, BDD_REPORT_FLAG)
@@ -99,7 +99,6 @@ def pytest_runtest_makereport(item, call):
         if test_result.when == "call":
             # Save the test results
             item.session.tests_result[item] = test_result
-            print(f"when: {item.session.tests_result[item]}")
             # Update the test summary
             if test_result.passed:
                 item.session.summary.add_passed_test()
