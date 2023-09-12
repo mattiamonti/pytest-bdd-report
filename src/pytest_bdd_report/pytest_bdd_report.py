@@ -36,11 +36,15 @@ def _get_cli_bool_flag_option(request, flag: str) -> bool:
 def _get_cli_flag_option(request, flag: str) -> str:
     return request.config.getoption(flag)
 
+def pytest_configure(config):
+    # Configurare per usare il json creato direttamente da pytest-bdd
+    config.option.cucumber_json_path = "prova_report_automtiasjhfsdkjbfjsd.json" #duration in nanosecond
 
 def pytest_sessionstart(session):
     session.summary = Summary()
     session.tests_result = dict()
     session.steps_information = []
+    session.features = {}
 
 
 @pytest.hookimpl
@@ -110,6 +114,7 @@ def pytest_runtest_makereport(item, call):
             item.session.summary.add_skipped_test()
 
 
+
 # Helper function for the pytest_sessionfinish hook
 def _load_tests_results(session):
     """
@@ -163,6 +168,7 @@ def pytest_sessionfinish(session):
     bdd_report_flag = _get_cli_flag_option(session, BDD_REPORT_FLAG)
 
     if bdd_json_flag:
+        
         # Save the merged steps information and tests result to session_finish_results.json
         aggregated_steps = session.steps_information
         tests_results = _load_tests_results(session)
