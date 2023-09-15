@@ -23,7 +23,7 @@ class ReportGenerator:
                 if self._check_for_failed(scenarios):
                     status = "failed"
                 else:
-                    status ="passed"
+                    status = "passed"
                 feature = Feature(
                     id=item["id"],
                     name=item["name"],
@@ -32,11 +32,10 @@ class ReportGenerator:
                     description=item["description"],
                     tags=item["tags"],
                     scenarios=scenarios,
-                    status=status
+                    status=status,
                 )
                 list_feature.append(feature)
         return list_feature
-                
 
     def extract_scenarios(self, scenarios: list[dict]) -> list[Scenario]:
         list_scenario = []
@@ -45,7 +44,7 @@ class ReportGenerator:
             if self._check_for_failed(steps):
                 status = "failed"
             else:
-                status ="passed"
+                status = "passed"
 
             list_scenario.append(
                 Scenario(
@@ -55,7 +54,7 @@ class ReportGenerator:
                     description=scenario["description"],
                     tags=scenario["tags"],
                     steps=steps,
-                    status=status
+                    status=status,
                 )
             )
         return list_scenario
@@ -73,7 +72,7 @@ class ReportGenerator:
                 )
             )
         return list_step
-    
+
     def _check_for_failed(self, steps: list[Step] | list[Scenario]) -> bool:
         for step in steps:
             if step.status == "failed":

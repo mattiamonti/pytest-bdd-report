@@ -126,10 +126,9 @@ def test_report_creation():
                     description="",
                     tags=[],
                     steps=[Step("Given", "I have a calculator", 3, "passed", 23040)],
-                    duration=0.00002304
+                    duration=0.00002304,
                 )
             ],
-            duration=0.00002304
+            duration=0.00002304,
         ),
     ]
-
