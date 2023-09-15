@@ -1,6 +1,7 @@
 from pytest_bdd_report.components.step import Step
 from dataclasses import dataclass
 
+
 @dataclass
 class Scenario:
     id: str
@@ -15,7 +16,7 @@ class Scenario:
         duration = 0
         for step in self.steps:
             duration += step.duration
-        self.duration = duration/1_000_000_000 #from nanosecond to second
+        self.duration = duration / 1_000_000_000  # from nanosecond to second
 
     def add_step(self, step: Step) -> None:
         self.steps.append(step)

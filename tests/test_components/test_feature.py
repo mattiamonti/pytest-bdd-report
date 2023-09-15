@@ -12,8 +12,12 @@ def test_add_scenario():
         uri="",
         scenarios=[],
     )
-    feature.add_scenario(Scenario(id="", name="", line=0, description="", tags=[], steps=[]))
-    assert feature.scenarios == [Scenario(id="", name="", line=0, description="", tags=[], steps=[])]
+    feature.add_scenario(
+        Scenario(id="", name="", line=0, description="", tags=[], steps=[])
+    )
+    assert feature.scenarios == [
+        Scenario(id="", name="", line=0, description="", tags=[], steps=[])
+    ]
 
 
 def test_add_multiple_scenarios():
@@ -26,6 +30,30 @@ def test_add_multiple_scenarios():
         uri="",
         scenarios=[],
     )
-    feature.add_scenario(Scenario(id="", name="", line=0, description="", tags=[], steps=[]))
-    feature.add_scenario(Scenario(id="", name="", line=0, description="", tags=[], steps=[]))
+    feature.add_scenario(
+        Scenario(id="", name="", line=0, description="", tags=[], steps=[])
+    )
+    feature.add_scenario(
+        Scenario(id="", name="", line=0, description="", tags=[], steps=[])
+    )
     assert len(feature.scenarios) == 2
+
+
+def test_calculate_duration():
+    feature = Feature(
+        id="",
+        name="",
+        line=0,
+        description="",
+        tags=[],
+        uri="",
+        scenarios=[],
+    )
+    feature.add_scenario(
+        Scenario(id="", name="", line=0, description="", tags=[], steps=[], duration=1)
+    )
+    feature.add_scenario(
+        Scenario(id="", name="", line=0, description="", tags=[], steps=[], duration=2)
+    )
+    feature.calculate_duration()
+    assert feature.duration == 3

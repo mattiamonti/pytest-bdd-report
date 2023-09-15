@@ -1,5 +1,7 @@
 from pytest_bdd_report.components.scenario import Scenario
 from dataclasses import dataclass
+
+
 @dataclass
 class Feature:
     id: str
@@ -19,4 +21,3 @@ class Feature:
 
     def add_scenario(self, scenario: Scenario) -> None:
         self.scenarios.append(scenario)
-

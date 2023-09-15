@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from pytest_bdd_report.components.feature import Feature
 
+
 @dataclass
 class Report:
     title: str
