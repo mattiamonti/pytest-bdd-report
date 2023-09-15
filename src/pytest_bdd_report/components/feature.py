@@ -12,6 +12,7 @@ class Feature:
     uri: str
     scenarios: list[Scenario]
     duration: float = 0.0
+    status: str = "passed"
 
     def calculate_duration(self) -> None:
         duration = 0

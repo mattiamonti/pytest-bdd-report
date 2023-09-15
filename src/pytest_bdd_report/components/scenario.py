@@ -11,6 +11,7 @@ class Scenario:
     tags: []
     steps: list[Step]
     duration: float = 0.0
+    status: str = "passed"
 
     def calculate_duration(self) -> None:
         duration = 0

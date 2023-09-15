@@ -19,6 +19,11 @@ class ReportGenerator:
         list_feature = []
         for item in self.data:
             if item["keyword"] == "Feature":
+                scenarios = self.extract_scenarios(item["elements"])
+                if self._check_for_failed(scenarios):
+                    status = "failed"
+                else:
+                    status ="passed"
                 feature = Feature(
                     id=item["id"],
                     name=item["name"],
@@ -26,7 +31,8 @@ class ReportGenerator:
                     line=item["line"],
                     description=item["description"],
                     tags=item["tags"],
-                    scenarios=self.extract_scenarios(item["elements"]),
+                    scenarios=scenarios,
+                    status=status
                 )
                 list_feature.append(feature)
         return list_feature
@@ -35,6 +41,12 @@ class ReportGenerator:
     def extract_scenarios(self, scenarios: list[dict]) -> list[Scenario]:
         list_scenario = []
         for scenario in scenarios:
+            steps = self.extract_steps(scenario["steps"])
+            if self._check_for_failed(steps):
+                status = "failed"
+            else:
+                status ="passed"
+
             list_scenario.append(
                 Scenario(
                     id=scenario["id"],
@@ -42,7 +54,8 @@ class ReportGenerator:
                     line=scenario["line"],
                     description=scenario["description"],
                     tags=scenario["tags"],
-                    steps=self.extract_steps(scenario["steps"]),
+                    steps=steps,
+                    status=status
                 )
             )
         return list_scenario
@@ -60,6 +73,12 @@ class ReportGenerator:
                 )
             )
         return list_step
+    
+    def _check_for_failed(self, steps: list[Step] | list[Scenario]) -> bool:
+        for step in steps:
+            if step.status == "failed":
+                return True
+        return False
 
     def calculate_durations(self) -> None:
         for feature in self.report.features:
