@@ -10,11 +10,13 @@ class ReportGenerator:
         self.report = report
 
     def create_report(self) -> Report:
-        self.extract_features()
+        features = self.extract_features()
+        self.report.features = features
         self.calculate_durations()
         return self.report
 
-    def extract_features(self) -> None:
+    def extract_features(self) -> list[Feature]:
+        list_feature = []
         for item in self.data:
             if item["keyword"] == "Feature":
                 feature = Feature(
@@ -26,7 +28,9 @@ class ReportGenerator:
                     tags=item["tags"],
                     scenarios=self.extract_scenarios(item["elements"]),
                 )
-                self.report.add_feature(feature)
+                list_feature.append(feature)
+        return list_feature
+                
 
     def extract_scenarios(self, scenarios: list[dict]) -> list[Scenario]:
         list_scenario = []

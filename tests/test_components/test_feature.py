@@ -53,7 +53,9 @@ def test_calculate_duration():
         Scenario(id="", name="", line=0, description="", tags=[], steps=[], duration=1)
     )
     feature.add_scenario(
-        Scenario(id="", name="", line=0, description="", tags=[], steps=[], duration=2.5)
+        Scenario(
+            id="", name="", line=0, description="", tags=[], steps=[], duration=2.5
+        )
     )
     feature.calculate_duration()
     assert feature.duration == 3.5
