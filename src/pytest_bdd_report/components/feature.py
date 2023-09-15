@@ -11,7 +11,7 @@ class Feature:
     tags: list
     uri: str
     scenarios: list[Scenario]
-    duration: int = 0
+    duration: float = 0.0
 
     def calculate_duration(self) -> None:
         duration = 0
