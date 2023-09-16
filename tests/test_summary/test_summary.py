@@ -2,7 +2,7 @@ from pytest_bdd_report.components.scenario import Scenario
 from pytest_bdd_report.components.step import Step
 from pytest_bdd_report.report import Report
 from pytest_bdd_report.components.feature import Feature
-from pytest_bdd_report.summary.summary_generator import SummaryGenerator, Summary
+from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 
 mock_report_passed = Report(
     "",

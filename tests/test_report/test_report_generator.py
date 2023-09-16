@@ -1,73 +1,80 @@
 from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.components.scenario import Scenario
 from pytest_bdd_report.report import Report
-from pytest_bdd_report.report_generator import ReportGenerator
+from pytest_bdd_report.report_generator import (
+    ReportGenerator,
+    StepExtractor,
+    ScenarioExtractor,
+    FeatureExtractor,
+)
 from pytest_bdd_report.components.step import Step
+import pytest
 
 
-mock_data = [
-    {
-        "keyword": "Feature",
-        "uri": "tests/../features/calculator.feature",
-        "name": "Calcolatrice",
-        "id": "tests/../features/calculator.feature",
-        "line": 1,
+@pytest.fixture
+def mock_data():
+    return [
+        {
+            "keyword": "Feature",
+            "uri": "tests/../features/calculator.feature",
+            "name": "Calcolatrice",
+            "id": "tests/../features/calculator.feature",
+            "line": 1,
+            "description": "",
+            "tags": [],
+            "elements": [
+                {
+                    "keyword": "Scenario",
+                    "id": "test_sum",
+                    "name": "Somma di un numero",
+                    "line": 2,
+                    "description": "",
+                    "tags": [],
+                    "type": "scenario",
+                    "steps": [
+                        {
+                            "keyword": "Given",
+                            "name": "I have a calculator",
+                            "line": 3,
+                            "match": {"location": ""},
+                            "result": {"status": "passed", "duration": 23040},
+                        },
+                    ],
+                },
+            ],
+        }
+    ]
+
+
+@pytest.fixture
+def mock_scenario():
+    return {
+        "keyword": "Scenario",
+        "id": "test_sum",
+        "name": "Somma di un numero",
+        "line": 2,
         "description": "",
         "tags": [],
-        "elements": [
+        "type": "scenario",
+        "steps": [
             {
-                "keyword": "Scenario",
-                "id": "test_sum",
-                "name": "Somma di un numero",
-                "line": 2,
-                "description": "",
-                "tags": [],
-                "type": "scenario",
-                "steps": [
-                    {
-                        "keyword": "Given",
-                        "name": "I have a calculator",
-                        "line": 3,
-                        "match": {"location": ""},
-                        "result": {"status": "passed", "duration": 23040},
-                    },
-                ],
+                "keyword": "Given",
+                "name": "I have a calculator",
+                "line": 3,
+                "match": {"location": ""},
+                "result": {"status": "passed", "duration": 23040},
             },
         ],
     }
-]
-
-mock_scenario = {
-    "keyword": "Scenario",
-    "id": "test_sum",
-    "name": "Somma di un numero",
-    "line": 2,
-    "description": "",
-    "tags": [],
-    "type": "scenario",
-    "steps": [
-        {
-            "keyword": "Given",
-            "name": "I have a calculator",
-            "line": 3,
-            "match": {"location": ""},
-            "result": {"status": "passed", "duration": 23040},
-        },
-    ],
-}
 
 
-def test_steps_extraction():
-    report = Report("", [])
-    report_generator = ReportGenerator(mock_data, report)
-    steps = report_generator.extract_steps(mock_scenario["steps"])
+def test_steps_extraction(mock_scenario):
+    steps = StepExtractor().extract_from(mock_scenario["steps"])
     assert steps == [Step("Given", "I have a calculator", 3, "passed", 23040)]
 
 
-def test_scenario_extraction():
-    report = Report("", [])
-    report_generator = ReportGenerator(mock_data, report)
-    scenarios = report_generator.extract_scenarios(mock_data[0]["elements"])
+def test_scenario_extraction(mock_data):
+    scenarios = ScenarioExtractor().extract_from(mock_data[0]["elements"])
     assert scenarios == [
         Scenario(
             "test_sum",
@@ -80,10 +87,8 @@ def test_scenario_extraction():
     ]
 
 
-def test_feature_extraction():
-    report = Report("", [])
-    report_generator = ReportGenerator(mock_data, report)
-    features = report_generator.extract_features()
+def test_feature_extraction(mock_data):
+    features = FeatureExtractor().extract_from(mock_data)
     assert features == [
         Feature(
             "tests/../features/calculator.feature",
@@ -106,7 +111,7 @@ def test_feature_extraction():
     ]
 
 
-def test_report_creation():
+def test_report_creation(mock_data):
     report = Report("", [])
     report_generator = ReportGenerator(mock_data, report)
     report_generator.create_report()

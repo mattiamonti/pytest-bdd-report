@@ -7,12 +7,13 @@ class SummaryGenerator:
         self.summary = Summary()
 
     def populate_summary(self, report: Report) -> Summary:
+        self._set_report_title(report)
         self._get_test_statistics(report)
         self._get_total_duration(report)
         return self.summary
 
-    def _set_report_title(self) -> None:
-        self.summary.report_title = ""
+    def _set_report_title(self, report: Report) -> None:
+        self.summary.report_title = report.title
 
     def _get_test_statistics(self, report: Report) -> None:
         for feature in report.features:
