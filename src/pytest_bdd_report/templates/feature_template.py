@@ -1,0 +1,2 @@
+class FeatureTemplate:
+    ...  # TODO implementare
