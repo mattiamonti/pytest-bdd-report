@@ -3,11 +3,11 @@ from pytest_bdd_report.templates.template import BaseTemplate
 
 
 class StepTemplate(BaseTemplate):
-    def __init__(self, step: Step) -> None:
+    def __init__(self) -> None:
         self.path = "step.html"
-        self.step = step
+        super().__init__(self.path)
 
-    def render_template(self) -> str:
+    def render_template(self, data: Step) -> str:
         self.template.render()
-        self.step
+        data
         ...
