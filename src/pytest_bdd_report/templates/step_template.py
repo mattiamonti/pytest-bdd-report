@@ -8,6 +8,9 @@ class StepTemplate(BaseTemplate):
         super().__init__(self.path)
 
     def render_template(self, data: Step) -> str:
-        self.template.render()
-        data
-        ...
+        return self.template.render(
+            keyword=data.keyword,
+            name=data.name,
+            status=data.status,
+            duration=data.duration,
+        )

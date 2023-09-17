@@ -8,7 +8,10 @@ class FeatureTemplate(BaseTemplate):
         super().__init__(self.path)
 
     def render_template(self, data: Feature, rendered_scenarios: str) -> str:
-        self.template.render(
+        return self.template.render(
             id=data.id,
+            name=data.name,
+            status=data.status,
+            duration=data.duration,
+            scenarios=rendered_scenarios,
         )
-        return ""  # TODO implementare

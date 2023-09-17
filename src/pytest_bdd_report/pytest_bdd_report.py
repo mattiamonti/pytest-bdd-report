@@ -2,6 +2,7 @@ import os
 import pytest
 from pytest_bdd_report.json_loader import JsonLoader
 from pytest_bdd_report.report_generator import ReportGenerator, Report
+from pytest_bdd_report.report_renderer import ReportFileGenerator
 
 BDD_REPORT_FLAG = "--bdd-report"
 
@@ -45,5 +46,5 @@ def pytest_sessionfinish(session):
         report = Report("prova", [])
         report_generator = ReportGenerator(json_data, report)
         report = report_generator.create_report()
-        print(report.features)
-        print(f"DURATION: {report.features[0].duration}, {report.features[1].duration}")
+        renderer = ReportFileGenerator()
+        renderer.create_report_file(report, "prova_report.html")
