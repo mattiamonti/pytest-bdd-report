@@ -6,5 +6,5 @@ class SummaryTemplate(BaseTemplate):
         self.path = "summary.html"
         super().__init__(self.path)
 
-    def render_template(self, data: str) -> str:
+    def render_template(self, data: str, **kwargs) -> str:
         return self.template.render(features=data)

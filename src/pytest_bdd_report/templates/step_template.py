@@ -7,7 +7,7 @@ class StepTemplate(BaseTemplate):
         self.path = "step.html"
         super().__init__(self.path)
 
-    def render_template(self, data: Step) -> str:
+    def render_template(self, data: Step, **kwargs) -> str:
         return self.template.render(
             keyword=data.keyword,
             name=data.name,

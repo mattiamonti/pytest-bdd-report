@@ -2,7 +2,7 @@ import os
 import pytest
 from pytest_bdd_report.json_loader import JsonLoader
 from pytest_bdd_report.report_generator import ReportGenerator, Report
-from pytest_bdd_report.report_renderer import ReportFileGenerator
+from pytest_bdd_report.report_file_generator import ReportFileGenerator
 
 BDD_REPORT_FLAG = "--bdd-report"
 

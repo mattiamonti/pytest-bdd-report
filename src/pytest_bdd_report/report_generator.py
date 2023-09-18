@@ -2,6 +2,7 @@ from pytest_bdd_report.report import Report
 from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.components.scenario import Scenario
 from pytest_bdd_report.components.step import Step
+from abc import ABC, abstractmethod
 
 
 class ReportGenerator:
@@ -22,14 +23,16 @@ class ReportGenerator:
             feature.calculate_duration()
 
 
-class Extractor:
+class Extractor(ABC):
     def extract_from(self, data: list[dict]) -> list:
         return [self.create_item(item_data) for item_data in data]
 
+    @abstractmethod
     def create_item(self, data):
         ...
 
-    def _check_for_failed(self, items: list[Step] | list[Scenario]) -> bool:
+    @staticmethod
+    def _check_for_failed(items: list[Step] | list[Scenario]) -> bool:
         for item in items:
             if item.status == "failed":
                 return True

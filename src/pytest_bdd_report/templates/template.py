@@ -1,9 +1,9 @@
 from pathlib import Path
-
+from abc import ABC, abstractmethod
 from jinja2 import Environment, FileSystemLoader, PackageLoader
 
 
-class BaseTemplate:
+class BaseTemplate(ABC):
     def __init__(self, path: str) -> None:
         self.path = path
         self.template = self._load_template()
@@ -14,5 +14,6 @@ class BaseTemplate:
         # environment = Environment(loader=PackageLoader("templates", "html_templates"))
         return environment.get_template(self.path)
 
-    def render_template(self, data) -> str:
+    @abstractmethod
+    def render_template(self, data, already_rendered_data: str = "") -> str:
         ...
