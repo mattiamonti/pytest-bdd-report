@@ -40,11 +40,12 @@ def pytest_sessionfinish(session):
 
     if bdd_report_flag:
         # TODO implement report generation logic ecc... (maybe in another package)
-        print(f"\n\n📈 Report created at: {bdd_report_flag.replace('.html', '')}.html")
+        report_name = bdd_report_flag.replace(".html", "")
+        print(f"\n\n📈 Report created at: {report_name}.html")
 
         json_data = JsonLoader.load_json("prova_report_cucumber_automatico.json")
         report = Report("prova", [])
         report_generator = ReportGenerator(json_data, report)
         report = report_generator.create_report()
         renderer = ReportFileGenerator()
-        renderer.create_report_file(report, "prova_report.html")
+        renderer.create_report_file(report, f"{report_name}.html")
