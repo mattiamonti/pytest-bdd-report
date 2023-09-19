@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-
 from pytest_bdd_report.report import Report
 from pytest_bdd_report.templates.feature_template import FeatureTemplate
 from pytest_bdd_report.templates.scenario_template import ScenarioTemplate

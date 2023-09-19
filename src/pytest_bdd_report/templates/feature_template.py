@@ -14,4 +14,8 @@ class FeatureTemplate(BaseTemplate):
             status=data.status,
             duration=data.duration,
             scenarios=rendered_scenarios,
+            total=data.total_tests,
+            passed=data.passed_tests,
+            failed=data.failed_tests,
+            skipped=data.skipped_tests,
         )

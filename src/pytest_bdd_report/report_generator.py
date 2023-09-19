@@ -68,8 +68,9 @@ class ScenarioExtractor(Extractor):
 class FeatureExtractor(Extractor):
     def create_item(self, data) -> Feature:
         scenarios = ScenarioExtractor().extract_from(data["elements"])
-        status = "failed" if self._check_for_failed(scenarios) else "passed"
-        return Feature(
+        failed, passed, total = self._count_failed_passed_total_tests(scenarios)
+        status = "passed" if failed == 0 else "failed"
+        feature = Feature(
             id=data["id"],
             name=data["name"],
             uri=data["uri"],
@@ -79,3 +80,22 @@ class FeatureExtractor(Extractor):
             scenarios=scenarios,
             status=status,
         )
+        feature.set_total_tests(total)
+        feature.set_failed_tests(failed)
+        feature.set_passed_tests(passed)
+        skipped = total - failed - passed
+        feature.set_skipped_test(skipped)
+        return feature
+
+    @staticmethod
+    def _count_failed_passed_total_tests(tests: list) -> tuple[int, int, int]:
+        failed = 0
+        passed = 0
+        total = 0
+        for test in tests:
+            if test.status == "failed":
+                failed += 1
+            if test.status == "passed":
+                passed += 1
+            total += 1
+        return failed, passed, total

@@ -17,15 +17,10 @@ class SummaryGenerator:
 
     def _get_test_statistics(self, report: Report) -> None:
         for feature in report.features:
-            for scenario in feature.scenarios:
-                if scenario.status == "failed":
-                    self.summary.test_failed += 1
-                elif scenario.status == "passed":
-                    self.summary.test_passed += 1
-                else:
-                    self.summary.test_skipped += 1
-
-                self.summary.total_test += 1
+            self.summary.total_test += feature.total_tests
+            self.summary.test_passed += feature.passed_tests
+            self.summary.test_failed += feature.failed_tests
+            self.summary.test_skipped += feature.skipped_tests
 
     def _get_start_time(self) -> None:
         ...
