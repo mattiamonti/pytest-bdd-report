@@ -13,3 +13,11 @@ class ILoader(Protocol):
 
     def load(self) -> list[dict]:
         ...
+
+
+class IReportBuilder(Protocol):
+    def set_features(self, features: list):
+        ...
+
+    def build(self) -> IReport:
+        ...
