@@ -2,7 +2,7 @@ import os
 import pytest
 from pytest_bdd_report.loader import JsonLoader
 from pytest_bdd_report.report_composer import ReportComposer
-from pytest_bdd_report.report import Report
+from pytest_bdd_report.report import Report, ReportBuilder
 from pytest_bdd_report.report_file_generator import ReportFileGenerator
 
 BDD_REPORT_FLAG = "--bdd-report"
@@ -44,9 +44,9 @@ def pytest_sessionfinish(session):
         report_name = bdd_report_flag.replace(".html", "")
         print(f"\n\n📈 Report created at: {report_name}.html")
 
-        report = Report(report_name, [])
         report_generator = ReportComposer(
-            loader=JsonLoader("prova_report_cucumber_automatico.json"), report=report
+            loader=JsonLoader("prova_report_cucumber_automatico.json"),
+            report_builder=ReportBuilder(report_name),
         )
         report = report_generator.create_report()
         renderer = ReportFileGenerator()

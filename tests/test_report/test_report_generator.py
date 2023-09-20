@@ -1,7 +1,7 @@
 from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.components.scenario import Scenario
 from pytest_bdd_report.interfaces import ILoader
-from pytest_bdd_report.report import Report
+from pytest_bdd_report.report import Report, ReportBuilder
 from pytest_bdd_report.report_composer import ReportComposer
 from pytest_bdd_report.extractor import (
     StepExtractor,
@@ -151,9 +151,8 @@ class MockLoader(ILoader):
 
 
 def test_report_creation(mock_data):
-    report = Report("", [])
-    report_generator = ReportComposer(MockLoader(""), report)
-    report_generator.create_report()
+    report_generator = ReportComposer(MockLoader(""), ReportBuilder(""))
+    report = report_generator.create_report()
     assert report.features == [
         Feature(
             id="tests/../features/calculator.feature",

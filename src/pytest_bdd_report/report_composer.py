@@ -1,15 +1,27 @@
+from typing import Protocol
+
 from pytest_bdd_report.extractor import FeatureExtractor
 from pytest_bdd_report.interfaces import IReport, ILoader
 
 
-class ReportComposer:
-    def __init__(self, loader: ILoader, report: IReport) -> None:
-        self.data: list[dict] = loader.load()
-        self.report = report
+class IReportBuilder(Protocol):
+    def set_features(self, features: list):
+        ...
 
-    def create_report(self):
+    def build(self) -> IReport:
+        ...
+
+
+class ReportComposer:
+    def __init__(self, loader: ILoader, report_builder: IReportBuilder) -> None:
+        self.data: list[dict] = loader.load()
+        self.report_builder = report_builder
+        self.report = None
+
+    def create_report(self) -> IReport:
         features = FeatureExtractor().extract_from(self.data)
-        self.report.features = features
+        self.report_builder.set_features(features)
+        self.report = self.report_builder.build()
         self._calculate_durations()
         return self.report
 
