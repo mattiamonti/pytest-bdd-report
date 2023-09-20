@@ -1,6 +1,6 @@
 import os
 import pytest
-from pytest_bdd_report.loader import JsonLoader
+from pytest_bdd_report.json_loader import JsonLoader
 from pytest_bdd_report.report_composer import ReportComposer
 from pytest_bdd_report.report import Report, ReportBuilder
 from pytest_bdd_report.report_file_generator import ReportFileGenerator
