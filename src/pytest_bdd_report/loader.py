@@ -1,14 +1,5 @@
 import json
 import os
-from typing import Protocol
-
-
-class ILoader(Protocol):
-    def __init__(self, path: str):
-        self.path = path
-
-    def load(self) -> list[dict]:
-        ...
 
 
 class JsonLoader:

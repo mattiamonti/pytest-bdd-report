@@ -1,11 +1,5 @@
-from typing import Protocol
-from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.extractor import FeatureExtractor
-from pytest_bdd_report.loader import ILoader
-
-
-class IReport(Protocol):
-    features: list[Feature]
+from pytest_bdd_report.interfaces import IReport, ILoader
 
 
 class ReportComposer:

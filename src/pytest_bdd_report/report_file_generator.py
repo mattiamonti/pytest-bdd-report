@@ -1,4 +1,4 @@
-from pytest_bdd_report.report_composer import IReport
+from pytest_bdd_report.interfaces import IReport
 from pytest_bdd_report.templates.feature_template import FeatureTemplate
 from pytest_bdd_report.templates.summary_template import SummaryTemplate
 from pytest_bdd_report.renderer import FeatureRenderer
