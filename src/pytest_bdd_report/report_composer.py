@@ -1,16 +1,22 @@
+from pytest_bdd_report.loader import ILoader
 from pytest_bdd_report.report import Report
 from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.components.scenario import Scenario
 from pytest_bdd_report.components.step import Step
 from abc import ABC, abstractmethod
+from typing import Protocol
 
 
-class ReportGenerator:
-    def __init__(self, data: list[dict], report: Report) -> None:
-        self.data = data
+class IReport(Protocol):
+    features: list[Feature]
+
+
+class ReportComposer:
+    def __init__(self, loader: ILoader, report: IReport) -> None:
+        self.data: list[dict] = loader.load()
         self.report = report
 
-    def create_report(self) -> Report:
+    def create_report(self):
         features = FeatureExtractor().extract_from(self.data)
         self.report.features = features
         self._calculate_durations()
