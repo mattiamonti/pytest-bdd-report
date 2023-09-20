@@ -2,8 +2,8 @@ from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.components.scenario import Scenario
 from pytest_bdd_report.loader import ILoader
 from pytest_bdd_report.report import Report
-from pytest_bdd_report.report_composer import (
-    ReportComposer,
+from pytest_bdd_report.report_composer import ReportComposer
+from pytest_bdd_report.extractor import (
     StepExtractor,
     ScenarioExtractor,
     FeatureExtractor,
