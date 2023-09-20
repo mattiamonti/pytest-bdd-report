@@ -7,7 +7,7 @@ class ScenarioTemplate(BaseTemplate):
         self.path = "scenario.html"
         super().__init__(self.path)
 
-    def render_template(self, data: Scenario, rendered_steps: str) -> str:
+    def render_template(self, data: Scenario, rendered_steps: str = "") -> str:
         return self.template.render(
             id=data.id,
             name=data.name,

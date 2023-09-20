@@ -7,7 +7,7 @@ class FeatureTemplate(BaseTemplate):
         self.path = "feature.html"
         super().__init__(self.path)
 
-    def render_template(self, data: Feature, rendered_scenarios: str) -> str:
+    def render_template(self, data: Feature, rendered_scenarios: str = "") -> str:
         return self.template.render(
             id=data.id,
             name=data.name,
