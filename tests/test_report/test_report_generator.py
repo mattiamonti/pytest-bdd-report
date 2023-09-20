@@ -1,8 +1,9 @@
 from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.components.scenario import Scenario
+from pytest_bdd_report.loader import ILoader
 from pytest_bdd_report.report import Report
-from pytest_bdd_report.report_generator import (
-    ReportGenerator,
+from pytest_bdd_report.report_composer import (
+    ReportComposer,
     StepExtractor,
     ScenarioExtractor,
     FeatureExtractor,
@@ -111,9 +112,47 @@ def test_feature_extraction(mock_data):
     ]
 
 
+class MockLoader(ILoader):
+    def __init__(self, path: str):
+        super().__init__(path)
+
+    def load(self) -> list[dict]:
+        return [
+            {
+                "keyword": "Feature",
+                "uri": "tests/../features/calculator.feature",
+                "name": "Calcolatrice",
+                "id": "tests/../features/calculator.feature",
+                "line": 1,
+                "description": "",
+                "tags": [],
+                "elements": [
+                    {
+                        "keyword": "Scenario",
+                        "id": "test_sum",
+                        "name": "Somma di un numero",
+                        "line": 2,
+                        "description": "",
+                        "tags": [],
+                        "type": "scenario",
+                        "steps": [
+                            {
+                                "keyword": "Given",
+                                "name": "I have a calculator",
+                                "line": 3,
+                                "match": {"location": ""},
+                                "result": {"status": "passed", "duration": 23040},
+                            },
+                        ],
+                    },
+                ],
+            }
+        ]
+
+
 def test_report_creation(mock_data):
     report = Report("", [])
-    report_generator = ReportGenerator(mock_data, report)
+    report_generator = ReportComposer(MockLoader(""), report)
     report_generator.create_report()
     assert report.features == [
         Feature(

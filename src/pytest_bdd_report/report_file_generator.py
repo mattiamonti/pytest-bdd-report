@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
-from pytest_bdd_report.report import Report
+
+from pytest_bdd_report.loader import ILoader
+from pytest_bdd_report.report_composer import IReport
 from pytest_bdd_report.templates.feature_template import FeatureTemplate
 from pytest_bdd_report.templates.scenario_template import ScenarioTemplate
 from pytest_bdd_report.templates.step_template import StepTemplate
@@ -15,7 +17,7 @@ class ReportFileGenerator:
         self.report_content = ""
         pass
 
-    def create_report_file(self, report: Report, path: str) -> None:
+    def create_report_file(self, report: IReport, path: str) -> None:
         """
         Create the report in the provided file path.
         """
@@ -36,13 +38,13 @@ class ReportFileGenerator:
             f.write(self.report_content)
 
 
-class Renderer(ABC):
+class BaseRenderer(ABC):
     @abstractmethod
     def render(self, items: list, template: BaseTemplate) -> str:
         ...
 
 
-class StepRenderer(Renderer):
+class StepRenderer(BaseRenderer):
     def render(self, items: list[Step], template: StepTemplate) -> str:
         rendered = ""
         for item in items:
@@ -50,7 +52,7 @@ class StepRenderer(Renderer):
         return rendered
 
 
-class ScenarioRenderer(Renderer):
+class ScenarioRenderer(BaseRenderer):
     def render(self, items: list[Scenario], template: ScenarioTemplate) -> str:
         step_renderer = StepRenderer()
         step_template = StepTemplate()
@@ -61,7 +63,7 @@ class ScenarioRenderer(Renderer):
         return rendered
 
 
-class FeatureRenderer(Renderer):
+class FeatureRenderer(BaseRenderer):
     def render(self, items: list[Feature], template: FeatureTemplate) -> str:
         scenario_renderer = ScenarioRenderer()
         scenario_template = ScenarioTemplate()
