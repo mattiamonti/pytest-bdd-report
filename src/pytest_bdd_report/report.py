@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from pytest_bdd_report.components.feature import Feature
+from pytest_bdd_report.interfaces import IReportBuilder
 
 
 @dataclass
@@ -11,7 +12,7 @@ class Report:
         self.features.append(feature)
 
 
-class ReportBuilder:
+class ReportBuilder(IReportBuilder):
     def __init__(self, title: str):
         self.report = Report(title, [])
 
