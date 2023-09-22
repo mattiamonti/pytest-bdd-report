@@ -50,3 +50,22 @@ class Feature:
 
     def set_skipped_test(self, quantity: int):
         self.skipped_tests = quantity
+
+    def __eq__(self, other):
+        if isinstance(other, Feature):
+            return (
+                self.id == other.id
+                and self.name == other.name
+                and self.description == other.description
+                and self.tags == other.tags
+                and self.line == other.line
+                and self.uri == other.uri
+                and self.duration == other.duration
+                and self.status == other.status
+                and self.total_tests == other.total_tests
+                and self.passed_tests == other.passed_tests
+                and self.failed_tests == other.failed_tests
+                and self.skipped_tests == other.skipped_tests
+                and self.scenarios == other.scenarios
+            )
+        return False
