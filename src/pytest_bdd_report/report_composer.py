@@ -9,11 +9,14 @@ class ReportComposer:
         self.report = None
 
     def create_report(self) -> IReport:
-        features = FeatureExtractor().extract_from(self.data)
+        features = self._extract_features()
         self.report_builder.set_features(features)
         self.report = self.report_builder.build()
         self._calculate_durations()
         return self.report
+
+    def _extract_features(self) -> list:
+        return FeatureExtractor().extract_from(self.data)
 
     def _calculate_durations(self) -> None:
         for feature in self.report.features:
