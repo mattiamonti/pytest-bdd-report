@@ -4,6 +4,7 @@ from pytest_bdd_report.json_loader import JsonLoader
 from pytest_bdd_report.report_composer import ReportComposer
 from pytest_bdd_report.report import Report, ReportBuilder
 from pytest_bdd_report.report_file_generator import ReportFileGenerator
+from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 
 BDD_REPORT_FLAG = "--bdd-report"
 
@@ -49,5 +50,6 @@ def pytest_sessionfinish(session):
             report_builder=ReportBuilder(report_name),
         )
         report = report_generator.create_report()
+        summary = SummaryGenerator().populate_summary(report)
         renderer = ReportFileGenerator()
-        renderer.create_report_file(report, f"{report_name}.html")
+        renderer.create_report_file(report, summary, f"{report_name}.html")

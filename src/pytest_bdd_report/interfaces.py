@@ -8,6 +8,13 @@ class IReport(Protocol):
     features: list[Feature]
 
 
+class ISummary(Protocol):
+    total_test: int
+    test_passed: int
+    test_failed: int
+    test_skipped: int
+
+
 class ILoader(Protocol):
     def __init__(self, path: str):
         self.path = path
