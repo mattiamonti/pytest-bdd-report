@@ -10,6 +10,7 @@ class SummaryGenerator:
     def populate_summary(self, report: IReport) -> Summary:
         self._set_report_title(report)
         self._get_test_statistics(report)
+        self._calculate_percentage_test_passed()
         self._get_total_duration(report)
         return self.summary
 
@@ -31,3 +32,8 @@ class SummaryGenerator:
         for feature in report.features:
             duration += feature.duration
         self.summary.total_duration = duration
+
+    def _calculate_percentage_test_passed(self) -> None:
+        self.summary.percentage_test_passed = round(
+            self.summary.test_passed / self.summary.total_test * 100, 2
+        )
