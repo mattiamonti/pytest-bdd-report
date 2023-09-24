@@ -13,8 +13,18 @@ class ReportTemplate(BaseTemplate):
             title=data, summary=self.rendered_summary, features=self.rendered_features
         )
 
-    def add_rendered_summary(self, rendered_summary: str):
+    def add_rendered_summary(self, rendered_summary: str) -> None:
+        """
+        Add rendered summary to inject into the template.
+        @param rendered_summary:
+        @return:
+        """
         self.rendered_summary = rendered_summary
 
-    def add_rendered_features(self, rendered_features: str):
+    def add_rendered_features(self, rendered_features: str) -> None:
+        """
+        Add rendered features to inject into the template.
+        @param rendered_features:
+        @return:
+        """
         self.rendered_features = rendered_features

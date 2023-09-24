@@ -15,10 +15,7 @@ class ReportFileGenerator:
         Create the report in the provided file path.
         """
         rendered_features = self._render_features(report)
-
-        # summary = SummaryGenerator().populate_summary(report)
         rendered_summary = self._render_summary(summary)
-
         self.report_content = self._render_report(
             report.title, rendered_summary, rendered_features
         )

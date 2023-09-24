@@ -8,6 +8,11 @@ class SummaryGenerator:
         self.summary = Summary()
 
     def populate_summary(self, report: IReport) -> Summary:
+        """
+        Populate the summary based on the report provided.
+        @param report: from which create the summary
+        @return: summary object
+        """
         self._set_report_title(report)
         self._get_test_statistics(report)
         self._calculate_percentage_test_passed()
@@ -15,9 +20,19 @@ class SummaryGenerator:
         return self.summary
 
     def _set_report_title(self, report: IReport) -> None:
+        """
+        Set the summary title as the report title.
+        @param report:
+        @return:
+        """
         self.summary.report_title = report.title
 
     def _get_test_statistics(self, report: IReport) -> None:
+        """
+        Calculate the test session statistics based on the report provided.
+        @param report:
+        @return:
+        """
         for feature in report.features:
             self.summary.total_test += feature.total_tests
             self.summary.test_passed += feature.passed_tests
@@ -28,12 +43,21 @@ class SummaryGenerator:
         ...
 
     def _get_total_duration(self, report: IReport) -> None:
+        """
+        Calculate the total duration of the test session based on the report provided.
+        @param report:
+        @return:
+        """
         duration = 0.0
         for feature in report.features:
             duration += feature.duration
         self.summary.total_duration = duration
 
     def _calculate_percentage_test_passed(self) -> None:
+        """
+        Calculate the percentage of the test passed based on the total number of tests.
+        @return:
+        """
         self.summary.percentage_test_passed = round(
             self.summary.test_passed / self.summary.total_test * 100, 2
         )

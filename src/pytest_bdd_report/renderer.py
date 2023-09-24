@@ -12,6 +12,12 @@ from pytest_bdd_report.templates.template import BaseTemplate
 class BaseRenderer(ABC):
     @abstractmethod
     def render(self, items: list, template: BaseTemplate) -> str:
+        """
+        Render the items into the template.
+        @param items: to render
+        @param template: in which render the items
+        @return: rendered object
+        """
         ...
 
 

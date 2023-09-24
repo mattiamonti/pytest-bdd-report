@@ -20,6 +20,10 @@ class ILoader(Protocol):
         self.path = path
 
     def load(self) -> list[dict]:
+        """
+        Load the data from the path passed in the constructor.
+        @return: data as a list of dictionary
+        """
         ...
 
 
@@ -28,4 +32,8 @@ class IReportBuilder(Protocol):
         ...
 
     def build(self) -> IReport:
+        """
+        Build the report, this should be used at the end of the building function chain.
+        @return: report object
+        """
         ...

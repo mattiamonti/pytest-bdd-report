@@ -6,18 +6,21 @@ from pytest_bdd_report.components.step import Step
 
 class BaseExtractor(ABC):
     def extract_from(self, data: list[dict]) -> list:
+        """
+        Extract the objects from the raw data passed.
+        @param data: raw data
+        @return: objects extracted
+        """
         return [self.create_item(item_data) for item_data in data]
 
     @abstractmethod
     def create_item(self, data):
+        """
+        Create one item from the data passed.
+        @param data: raw data for one object
+        @return: object
+        """
         ...
-
-    @staticmethod
-    def _check_for_failed(items: list[Step] | list[Scenario]) -> bool:
-        for item in items:
-            if item.status == "failed":
-                return True
-        return False
 
 
 class StepExtractor(BaseExtractor):
@@ -44,6 +47,13 @@ class ScenarioExtractor(BaseExtractor):
             steps=steps,
             status=status,
         )
+
+    @staticmethod
+    def _check_for_failed(items: list[Step] | list[Scenario]) -> bool:
+        for item in items:
+            if item.status == "failed":
+                return True
+        return False
 
 
 class FeatureExtractor(BaseExtractor):
