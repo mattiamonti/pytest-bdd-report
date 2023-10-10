@@ -49,7 +49,7 @@ class ScenarioExtractor(BaseExtractor):
         )
 
     @staticmethod
-    def _check_for_failed(items: list[Step] | list[Scenario]) -> bool:
+    def _check_for_failed(items: list[Step]) -> bool:
         for item in items:
             if item.status == "failed":
                 return True

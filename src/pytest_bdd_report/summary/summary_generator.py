@@ -40,6 +40,7 @@ class SummaryGenerator:
             self.summary.test_skipped += feature.skipped_tests
 
     def _get_start_time(self) -> None:
+        # TODO implement
         ...
 
     def _get_total_duration(self, report: IReport) -> None:

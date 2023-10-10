@@ -41,7 +41,6 @@ def pytest_sessionfinish(session):
     bdd_report_flag = _get_cli_flag_option(session, BDD_REPORT_FLAG)
 
     if bdd_report_flag:
-        # TODO implement report generation logic ecc... (maybe in another package)
         report_name = bdd_report_flag.replace(".html", "")
         print(f"\n\n📈 Report created at: {report_name}.html")
 
@@ -51,5 +50,5 @@ def pytest_sessionfinish(session):
         )
         report = report_generator.create_report()
         summary = SummaryGenerator().populate_summary(report)
-        renderer = ReportFileGenerator()
-        renderer.create_report_file(report, summary, f"{report_name}.html")
+        file_generator = ReportFileGenerator()
+        file_generator.create_report_file(report, summary, f"{report_name}.html")

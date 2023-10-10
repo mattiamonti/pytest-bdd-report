@@ -12,3 +12,5 @@ class JsonLoader(ILoader):
         if os.path.exists(self.path):
             with open(self.path, "r") as f:
                 return json.load(f)
+        else:
+            return []
