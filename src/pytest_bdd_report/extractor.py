@@ -25,20 +25,25 @@ class BaseExtractor(ABC):
 
 class StepExtractor(BaseExtractor):
     def create_item(self, data) -> Step:
-        return Step(
+        step = Step(
             keyword=data["keyword"],
             name=data["name"],
             line=data["line"],
             status=data["result"]["status"],
             duration=data["result"]["duration"],
         )
+        try:
+            step.error_message = data["result"]["error_message"]
+            return step
+        finally:
+            return step
 
 
 class ScenarioExtractor(BaseExtractor):
     def create_item(self, data) -> Scenario:
         steps = StepExtractor().extract_from(data["steps"])
         status = "failed" if self._check_for_failed(steps) else "passed"
-        return Scenario(
+        scenario = Scenario(
             id=data["id"],
             name=data["name"],
             line=data["line"],
@@ -47,6 +52,8 @@ class ScenarioExtractor(BaseExtractor):
             steps=steps,
             status=status,
         )
+        scenario.check_and_add_error_message()
+        return scenario
 
     @staticmethod
     def _check_for_failed(items: list[Step]) -> bool:

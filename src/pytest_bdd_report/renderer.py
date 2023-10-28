@@ -3,6 +3,9 @@ from abc import ABC, abstractmethod
 from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.components.scenario import Scenario
 from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.templates.feature_statistics_template import (
+    FeatureStatisticsTemplate,
+)
 from pytest_bdd_report.templates.feature_template import FeatureTemplate
 from pytest_bdd_report.templates.scenario_template import ScenarioTemplate
 from pytest_bdd_report.templates.step_template import StepTemplate
@@ -52,4 +55,12 @@ class FeatureRenderer(BaseRenderer):
                 item.scenarios, ScenarioTemplate()
             )
             rendered += template.render_template(item, rendered_scenarios)
+        return rendered
+
+
+class FeatureStatisticsRenderer(BaseRenderer):
+    def render(self, items: list[Feature], template: FeatureStatisticsTemplate) -> str:
+        rendered = ""
+        for item in items:
+            rendered += template.render_template(item)
         return rendered

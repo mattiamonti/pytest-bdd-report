@@ -1,10 +1,152 @@
 <div>
-    <p>Total tests: {{total}}</p>
-    <p>Passed tests {{passed}}</p>
-    <p>Failed tests: {{failed}}</p>
-    <p>Skipped tests: {{skipped}}</p>
-    <br>
-    <p>Passed tests percentage: {{percentage}}</p>
-    <p>Total duration: {{duration}}s</p>
+
+    <div style="width: 100%; display: flex; gap: 5%;">
+        <div
+            style="width: 35%; padding: 1rem 2rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10); display: flex; justify-content: space-between; flex-direction: column;">
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="width: 60%;">
+                    <canvas id="piechart"><canvas>
+                </div>
+
+                <div style="text-align: right;">
+                    <p>
+                        <span style="font-size: 1.25rem;">{{total}}</span>
+                        <span style=" color: #555;"> Total tests executed</span>
+                    </p>
+                    <p>
+                        <span id="passed" style="font-size: 1.25rem;">{{passed}}</span>
+                        <span style="color: #555;"> Passed tests</span>
+                    </p>
+                    <p>
+                        <span id="failed" style="font-size: 1.25rem;">{{failed}}</span>
+                        <span style=" color: #555; margin-left: 0.25rem;"> Failed tests</span>
+                    </p>
+                    <p>
+                        <span id="skipped" style="font-size: 1.25rem;">{{skipped}}</span>
+                        <span style=" color: #555; margin-left: 0.25rem;"> Skipped tests</span>
+                    </p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <p>
+                    <span style="font-size: 1.25rem;">{{percentage}}%</span>
+                    <span style=" color: #555; margin-left: 0.25rem;"> Of tests passed</span>
+                </p>
+                <p>
+                    <span style="font-size: 1.25rem;">
+                        {% if duration > 0.5 %}
+                        {{duration|round(3)}}s
+                        {% else %}
+                        {{(duration*1000)|round(3)}}ms
+                        {%endif%}
+                    </span>
+                    <span style=" color: #555; margin-left: 0.25rem;"> Total duration</span>
+                </p>
+            </div>
+
+        </div>
+
+        <div
+            style="width: 55%; padding: 1rem 2rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
+            <canvas id="barchart"></canvas>
+            <div style="display: none;">
+                {% for f in top_feature_fail%}
+                <p class="top-feature-fail-name">{{f.name}}</p>
+                <p class="top-feature-fail-tests">{{f.failed_tests}}</p>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Pie chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
+    <script>
+        var piechart = document.getElementById('piechart').getContext('2d');
+        var barchart = document.getElementById('barchart').getContext('2d');
+        var passed = document.getElementById('passed').innerHTML
+        var failed = document.getElementById('failed').innerHTML
+        var skipped = document.getElementById('skipped').innerHTML
+
+        new Chart(piechart, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    "Passed",
+                    "Failed",
+                    "Skipped"
+                ],
+                datasets: [
+                    {
+                        "fill": true,
+                        "data": [
+                            passed,
+                            failed,
+                            skipped
+                        ],
+                        "borderWidth": "2",
+                        backgroundColor: [
+                            '#0D6832',
+                            '#AF233A',
+                            'rgb(255, 205, 86)'
+                        ],
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: false
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    y: {
+                        display: false,
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        var feature_fail_name = document.getElementsByClassName('top-feature-fail-name')
+        var feature_fail_tests = document.getElementsByClassName('top-feature-fail-tests')
+        var f_name = []
+        var f_tests = []
+        for (var i = 0; i < feature_fail_name.length; i++) {
+            f_name.push(feature_fail_name[i].innerHTML)
+            f_tests.push(feature_fail_tests[i].innerHTML)
+        }
+        new Chart(barchart, {
+            type: 'bar',
+            data: {
+                labels: f_name,
+                datasets: [
+                    {
+                        "fill": true,
+                        "data": f_tests,
+                        "borderWidth": "2",
+                        backgroundColor: [
+                            '#AF233A',
+                            '#AF233A',
+                        ],
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    </script>
+
+
 
 </div>

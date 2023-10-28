@@ -14,4 +14,6 @@ class ScenarioTemplate(BaseTemplate):
             status=data.status,
             duration=data.duration,
             steps=rendered_steps,
+            error_message=data.error_message,
+            description=data.description,
         )

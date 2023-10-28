@@ -12,3 +12,4 @@ class Summary:
     percentage_test_passed: float = 0.0
     start_time: datetime = None
     total_duration: float = 0
+    top_feature_fail: list = None

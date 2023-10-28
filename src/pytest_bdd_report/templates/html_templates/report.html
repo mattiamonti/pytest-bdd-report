@@ -1,16 +1,137 @@
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        function showhide(item, id) {
+            var div = document.getElementById(id);
+            //var div = $(el).nextElementSibling;
+            if (div.style.display !== "block") {
+                div.style.display = "block";
+                item.style.transform = 'rotate(180deg)';
+            }
+            else {
+                div.style.display = "none";
+                item.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function showTest(checked, type) {
+            var scenarios = document.getElementsByClassName(type + "-scenario");
+            if (checked) {
+                for (let i = 0; i < scenarios.length; i++) {
+                    scenarios[i].style.display = "flex";
+                }
+            } else {
+                for (let i = 0; i < scenarios.length; i++) {
+                    scenarios[i].style.display = "none";
+                }
+            }
+
+
+        }
+
+        var searchForm = document.getElementById("search-form");
+        searchForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+
+
+        function searchQuery() {
+            var scenarios = document.getElementsByClassName("searchable");
+            var query = document.getElementById('search');
+            for (var i = 0; i < scenarios.length; i++) {
+                if (scenarios[i].id.toLowerCase() == query.value.toLowerCase()) {
+                    document.getElementById(scenarios[i].id).scrollIntoView();
+                    query.value = '';
+                }
+            }
+        }
+    </script>
+
 </head>
-<body>
-<h3>Test report: {{title}}</h3>
-<h1>Summary</h1>
-{{summary | safe}}
-<hr>
-<hr>
-<h1>Features</h1>
-{{features | safe}}
+
+<body
+    style="font-family: 'Roboto', sans-serif; padding: 4rem;background: #F5F6F7; scroll-behavior: smooth; color: #1a1a1a;">
+    <a href="#feature-statistics"
+        style="position: fixed;z-index: 10; bottom: 1rem; right: 1rem; background-color: white;color: black; padding: 1rem 2rem; border-radius: 50px;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">Feature
+        statistics</a>
+    <h1 style="font-size: 2rem; font-weight: 400;">Test report: {{title}}</h1>
+    <p style="color: #555;">{{date_time}}</p>
+
+
+
+
+    {{summary | safe}}
+
+    <br>
+    <div id="feature-statistics"
+        style="background-color: white; padding: 2rem; border-radius: 0.625rem;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
+        <table border="0" cellpadding="2" style="width: 100%;border-collapse: collapse;">
+            <tbody>
+                <tr style="border-bottom: 1px solid #555; color: #555;">
+                    <td style="width: 50%;">Feature</td>
+
+                    <td style="width: fit-content; text-align:center;">Total</td>
+                    <td style="width: fit-content; text-align:center;">Passed</td>
+                    <td style="width: fit-content; text-align:center;">Failed</td>
+                    <td style="width: fit-content; text-align:center;">Skipped</td>
+                    <td style="width: fit-content; text-align:center;">Rate</td>
+                    <td style="width: fit-content; text-align:center;">Duration</td>
+
+                </tr>
+                <!--<tr>
+                    <td>Prova feature</td>
+                    <td style="text-align:center;">10</td>
+                    <td style="text-align:center;">6</td>
+                    <td style="text-align:center;">3</td>
+                    <td style="text-align:center;">1</td>
+                    <td style="text-align:center;">60%</td>
+                    <td style="text-align:center;">0.03</td>
+                </tr>-->
+                {{feature_statistics | safe}}
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <div style="display: flex; justify-content: space-between;">
+        <div
+            style="display: flex; gap: 1rem; background-color: white; padding: 1rem 2rem; border-radius: 50px;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
+            <div style="display: flex; align-items: center; gap: 0.25rem">
+                <input type="checkbox" id="show-passed" checked="true" onclick="showTest(this.checked, 'passed')">
+                <label for="show-passed">Show passed tests</label>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 0.25rem">
+                <input type="checkbox" id="show-failed" checked="true" onclick="showTest(this.checked, 'failed')">
+                <label for="show-failed">Show failed tests</label>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 0.25rem">
+                <input type="checkbox" id="show-skipped" checked="true" onclick="showTest(this.checked, 'skipped')">
+                <label for="show-skipped">Show skipped tests</label>
+            </div>
+        </div>
+
+        <div
+            style="background-color: white; padding: 1rem 2rem; border-radius: 50px;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
+            <input type="text" id="search" placeholder="Search...">
+            <button onclick="searchQuery()">Search</button>
+        </div>
+    </div>
+
+    <br>
+    <div style="display: flex; flex-direction: column; gap: 3.5rem;">
+        {{features | safe}}
+    </div>
+
 
 </body>
+
 </html>

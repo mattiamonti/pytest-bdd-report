@@ -2,21 +2,19 @@ from pytest_bdd_report.components.feature import Feature
 from pytest_bdd_report.templates.template import BaseTemplate
 
 
-class FeatureTemplate(BaseTemplate):
+class FeatureStatisticsTemplate(BaseTemplate):
     def __init__(self) -> None:
-        self.path = "feature.html"
+        self.path = "feature_statistics.html"
         super().__init__(self.path)
 
-    def render_template(self, data: Feature, rendered_scenarios: str = "") -> str:
+    def render_template(self, data: Feature, already_rendered_data: str = "") -> str:
+        passed_rate = int(round(data.passed_tests / data.total_tests * 100, 0))
         return self.template.render(
-            id=data.id,
             name=data.name,
-            status=data.status,
-            duration=data.duration,
-            scenarios=rendered_scenarios,
             total=data.total_tests,
             passed=data.passed_tests,
             failed=data.failed_tests,
             skipped=data.skipped_tests,
-            description=data.description,
+            duration=round(data.duration, 5),
+            rate=passed_rate,
         )

@@ -8,3 +8,4 @@ class Step:
     line: int
     status: str
     duration: int
+    error_message: str = ""

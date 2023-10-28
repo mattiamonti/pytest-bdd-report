@@ -15,6 +15,7 @@ class SummaryGenerator:
         """
         self._set_report_title(report)
         self._get_test_statistics(report)
+        self._get_top_feature_fail(report)
         self._calculate_percentage_test_passed()
         self._get_total_duration(report)
         return self.summary
@@ -39,6 +40,12 @@ class SummaryGenerator:
             self.summary.test_failed += feature.failed_tests
             self.summary.test_skipped += feature.skipped_tests
 
+    def _get_top_feature_fail(self, report: IReport) -> None:
+        sorted_features = sorted(
+            report.features, key=lambda x: x.failed_tests, reverse=True
+        )
+        self.summary.top_feature_fail = sorted_features[:5]
+
     def _get_start_time(self) -> None:
         # TODO implement
         ...
@@ -59,6 +66,6 @@ class SummaryGenerator:
         Calculate the percentage of the test passed based on the total number of tests.
         @return:
         """
-        self.summary.percentage_test_passed = round(
-            self.summary.test_passed / self.summary.total_test * 100, 2
+        self.summary.percentage_test_passed = int(
+            round(self.summary.test_passed / self.summary.total_test * 100, 0)
         )

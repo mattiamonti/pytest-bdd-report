@@ -15,4 +15,5 @@ class SummaryTemplate(BaseTemplate):
             skipped=data.test_skipped,
             percentage=data.percentage_test_passed,
             duration=round(data.total_duration, 5),
+            top_feature_fail=data.top_feature_fail,
         )

@@ -1,12 +1,43 @@
-<div>
-    <br>
-    <h2>{{name}}</h2>
-    <p>id: {{id}}</p>
-    <p>status: {{status}}</p>
-    <p>duration: {{duration}}</p>
-    <p>total tests: {{total}}</p>
+<div id="{{name}}" class="searchable"
+    style="display: flex; width: 72rem; flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%;">
+    <div style="display: flex; width: 100%; justify-content: space-between; align-items:first baseline;">
+        <div>
+            <div style="display: flex; align-items: center;">
+                {% if failed != 0 %}
+                <p
+                    style="margin: 0 0.5rem 0 0; color: white; background-color: #AF233A; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem;">
+                    {{failed}}</p>
+                {% endif %}
+                <h2 style="margin: 0; display: inline-block; font-weight: 400; font-size: 1.5 rem;">
+                    <span>Feature</span>: {{name}}
+                </h2>
+            </div>
+            <p style="margin: 0; color: #555;">{{id}}</p>
+            {% if description != "" %}
+            <p style="margin: 0.5rem 0 0 0; color: #555;">Description: {{description}}</p>
+            {%endif%}
+        </div>
+
+        <p style="color: #555;
+        font-family: Roboto;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;">
+            {% if duration > 1 %}
+            Executed in {{duration|round(3)}}s
+            {% else %}
+            Executed in {{(duration*1000)|round(3)}}ms
+            {%endif%}
+        </p>
+    </div>
+    <!--<p>status: {{status}}</p>-->
+    <!--<p>total tests: {{total}}</p>
     <p>passed tests: {{passed}}</p>
     <p>failed tests: {{failed}}</p>
-    <p>skipped tests: {{skipped}}</p>
-    {{scenarios|safe}}
+    <p>skipped tests: {{skipped}}</p> -->
+
+    <div style="width: 100%; display: flex; gap: 1rem; flex-direction: column;">
+        {{scenarios|safe}}
+    </div>
 </div>

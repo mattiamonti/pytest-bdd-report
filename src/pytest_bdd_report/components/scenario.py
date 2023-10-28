@@ -12,6 +12,7 @@ class Scenario:
     steps: list[Step]
     duration: float = 0.0
     status: str = "passed"
+    error_message: str = ""
 
     def calculate_duration(self) -> None:
         duration = 0
@@ -21,3 +22,8 @@ class Scenario:
 
     def add_step(self, step: Step) -> None:
         self.steps.append(step)
+
+    def check_and_add_error_message(self):
+        for step in self.steps:
+            if step.error_message != "":
+                self.error_message = step.error_message
