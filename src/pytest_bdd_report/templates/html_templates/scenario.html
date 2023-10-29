@@ -13,19 +13,23 @@ align-self: stretch;" class="{{status}}-scenario searchable" id="{{name}}">
 
             <div style="display: flex; justify-content: space-between; width: 100%;">
                 <div>
-                    <h3 style="display: inline;margin: 0;font-family: Roboto;font-style: normal;font-weight: 500;">
-                        Scenario: {{name}}</h3>
+                    <h3 style="margin: 0;font-family: Roboto;font-style: normal;font-weight: 500;">
+                        Scenario: {{name}}
+                        {% if parameters != "" %}
+                        <span style="font-weight: 400; margin: 0; margin-left: 1rem;">[ {{parameters}} ]</span>
+                        {% endif %}
+                    </h3>
                     {% if description != "" %}
-                    <p style="margin-top: 0.5rem; color: #555;">Description: {{description}}</p>
+                    <p style="margin-top: 0.5rem;">Description: {{description}}</p>
+                    {%endif%}
+                    {% if tags != "" %}
+                    <p style="margin: 0">Tags: {{tags}}</p>
                     {%endif%}
                 </div>
-                {% if status == "passed" %}
                 <p
-                    style="color: #0D6832;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
-                    {% elif status == "failed" %}
-                <p style="color:#AF233A;" display: inline; margin: 0; font-family: Roboto; font-size: 1rem; font-style:
-                    normal; font-weight: 400; line-height: normal;">
-                    {%endif%}
+                    style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
+
+
                     {% if duration > 1 %}
                     Executed in {{duration|round(3)}}s
                     {% else %}
@@ -36,6 +40,7 @@ align-self: stretch;" class="{{status}}-scenario searchable" id="{{name}}">
             <div style="flex-direction: column; display: flex; width: 100%; align-items: flex-start; gap: 0.5rem;">
                 {{steps|safe}}
             </div>
+            {% if status == "failed" %}
             <button onclick="showhide(this, this.nextElementSibling.id)"
                 style="display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent;border: none; cursor: pointer;">
                 {% if status == "passed"%}
@@ -52,6 +57,7 @@ align-self: stretch;" class="{{status}}-scenario searchable" id="{{name}}">
             <div id="message-{{name}}" style="display: none; font-family: monospace;">
                 <p style="white-space: pre-wrap;">{{error_message}}</p>
             </div>
+            {%endif%}
 
 
 

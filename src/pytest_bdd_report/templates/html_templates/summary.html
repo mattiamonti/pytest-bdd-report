@@ -49,11 +49,14 @@
 
         <div
             style="width: 55%; padding: 1rem 2rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
-            <canvas id="barchart"></canvas>
+            <p style="color: #555;">Top failed Features in percentage</p>
+            <div style="max-height: 80%;">
+                <canvas id="barchart"></canvas>
+            </div>
             <div style="display: none;">
                 {% for f in top_feature_fail%}
                 <p class="top-feature-fail-name">{{f.name}}</p>
-                <p class="top-feature-fail-tests">{{f.failed_tests}}</p>
+                <p class="top-feature-fail-tests">{{f.failed_tests/f.total_tests*100}}</p>
                 {%endfor%}
             </div>
         </div>
@@ -128,9 +131,9 @@
                     {
                         "fill": true,
                         "data": f_tests,
-                        "borderWidth": "2",
+                        "borderWidth": "1",
+                        borderRadius: 10,
                         backgroundColor: [
-                            '#AF233A',
                             '#AF233A',
                         ],
                     }
@@ -139,8 +142,26 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        suggestedMax: 100,
+                        ticks: {
+                            // Include a dollar sign in the ticks
+                            callback: function (value, index, ticks) {
+                                return value + '%';
+                            }
+                        }
                     }
+                },
+                //plugins: {
+                //    title: {
+                //        display: true,
+                //        text: 'Custom Chart Title'
+                //    }
+                //}
+                plugins: {
+                    legend: {
+                        display: false
+                    },
                 }
             }
         });

@@ -19,4 +19,14 @@ class FeatureTemplate(BaseTemplate):
             failed=data.failed_tests,
             skipped=data.skipped_tests,
             description=data.description,
+            tags=self._format_tags(data.tags),
         )
+
+    @staticmethod
+    def _format_tags(tags: list[dict]):
+        if tags is None or tags == []:
+            return ""
+        result = ""
+        for tag in tags:
+            result += f"{tag['name']}, "
+        return result

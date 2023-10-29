@@ -14,7 +14,7 @@ class ReportTemplate(BaseTemplate):
     def render_template(self, data: str, **kwargs) -> str:
         return self.template.render(
             title=data,
-            date_time=datetime.datetime.now(),
+            date_time=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             summary=self.rendered_summary,
             features=self.rendered_features,
             feature_statistics=self.rendered_feature_statistics,

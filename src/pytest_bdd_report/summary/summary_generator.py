@@ -41,8 +41,9 @@ class SummaryGenerator:
             self.summary.test_skipped += feature.skipped_tests
 
     def _get_top_feature_fail(self, report: IReport) -> None:
+        failed_features = filter(lambda x: x.failed_tests > 0, report.features)
         sorted_features = sorted(
-            report.features, key=lambda x: x.failed_tests, reverse=True
+            failed_features, key=lambda x: x.failed_tests, reverse=True
         )
         self.summary.top_feature_fail = sorted_features[:5]
 

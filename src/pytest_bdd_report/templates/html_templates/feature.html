@@ -12,13 +12,17 @@
                     <span>Feature</span>: {{name}}
                 </h2>
             </div>
-            <p style="margin: 0; color: #555;">{{id}}</p>
+            <p style="margin: 0; color: #535353;">{{id}}</p>
             {% if description != "" %}
-            <p style="margin: 0.5rem 0 0 0; color: #555;">Description: {{description}}</p>
+            <p style="margin: 0.5rem 0 0 0; color: #535353;">Description: {{description}}</p>
             {%endif%}
+            {% if tags != "" %}
+            <p style="margin: 0.5rem 0 0 0; color: #535353;">Tags: {{tags}}</p>
+            {%endif%}
+
         </div>
 
-        <p style="color: #555;
+        <p style="color: #535353;
         font-family: Roboto;
         font-size: 1rem;
         font-style: normal;
