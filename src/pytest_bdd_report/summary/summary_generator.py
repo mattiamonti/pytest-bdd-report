@@ -67,6 +67,7 @@ class SummaryGenerator:
         Calculate the percentage of the test passed based on the total number of tests.
         @return:
         """
-        self.summary.percentage_test_passed = int(
-            round(self.summary.test_passed / self.summary.total_test * 100, 0)
-        )
+        if self.summary.total_test != 0:
+            self.summary.percentage_test_passed = int(
+                round(self.summary.test_passed / self.summary.total_test * 100, 0)
+            )

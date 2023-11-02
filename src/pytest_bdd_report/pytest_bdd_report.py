@@ -1,3 +1,4 @@
+import json
 import os
 import pytest
 from pytest_bdd_report.json_loader import JsonLoader
