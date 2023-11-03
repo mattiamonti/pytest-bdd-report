@@ -1,0 +1,17 @@
+<div id="filters"
+    style="display: flex; gap: 1rem; background-color: white; padding: 1rem 2rem; border-radius: 0.625rem;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
+    <div style="display: flex; align-items: center; gap: 0.25rem">
+        <input type="checkbox" id="show-passed" checked="true" onclick="showTest(this.checked, 'passed')">
+        <label for="show-passed">Show passed tests</label>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.25rem">
+        <input type="checkbox" id="show-failed" checked="true" onclick="showTest(this.checked, 'failed')">
+        <label for="show-failed">Show failed tests</label>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.25rem">
+        <input type="checkbox" id="show-skipped" checked="true" onclick="showTest(this.checked, 'skipped')">
+        <label for="show-skipped">Show skipped tests</label>
+    </div>
+</div>

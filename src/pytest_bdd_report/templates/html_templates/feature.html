@@ -3,23 +3,28 @@
     <div style="display: flex; width: 100%; justify-content: space-between; align-items:first baseline;">
         <div>
             <div style="display: flex; align-items: center;">
+                {% import './components/badge.html' as badge %}
                 {% if failed != 0 %}
-                <p
-                    style="margin: 0 0.5rem 0 0; color: white; background-color: #AF233A; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem;">
-                    {{failed}}</p>
+                {{ badge.failed(failed) }}
                 {% endif %}
+                {% if skipped != 0 %}
+                {{ badge.skipped(skipped) }}
+                {% endif %}
+
                 <h2 style="margin: 0; display: inline-block; font-weight: 400; font-size: 1.5 rem;">
                     <span>Feature</span>: {{name}}
                 </h2>
             </div>
+
             <p style="margin: 0; color: #535353;">{{id}}</p>
+
             {% if description != "" %}
             <p style="margin: 0.5rem 0 0 0; color: #535353;">Description: {{description}}</p>
             {%endif%}
+
             {% if tags != "" %}
             <p style="margin: 0.5rem 0 0 0; color: #535353;">Tags: {{tags}}</p>
             {%endif%}
-
         </div>
 
         <p style="color: #535353;
@@ -35,11 +40,6 @@
             {%endif%}
         </p>
     </div>
-    <!--<p>status: {{status}}</p>-->
-    <!--<p>total tests: {{total}}</p>
-    <p>passed tests: {{passed}}</p>
-    <p>failed tests: {{failed}}</p>
-    <p>skipped tests: {{skipped}}</p> -->
 
     <div style="width: 100%; display: flex; gap: 1rem; flex-direction: column;">
         {{scenarios|safe}}
