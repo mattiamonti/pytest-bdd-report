@@ -1,12 +1,12 @@
 {% macro failed(quantity) -%}
 <p
-    style="margin: 0 0.5rem 0 0; color: white; background-color: #AF233A; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem;">
+    style="margin: 0 0.5rem 0 0; color: white; background-color: #AF233A; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 500;">
     {{quantity}}
 </p>
 {%- endmacro %}
 
 {%- macro skipped(quantity) -%}
 <p
-    style="margin: 0 0.5rem 0 0; color: white; background-color: #EDB527; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem;">
+    style="margin: 0 0.5rem 0 0; color: black; background-color: #EDB527; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 500;">
     {{quantity}}</p>
 {%- endmacro %}
