@@ -1,5 +1,7 @@
 include LICENSE
 include README.rst
+graft src/pytest_bdd_report/templates/html_templates
+graft src/pytest_bdd_report/templates/html_templates/components
 
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]

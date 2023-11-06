@@ -15,7 +15,8 @@ class BaseTemplate(ABC):
         """
         resources_path = Path(__file__).parent.joinpath("html_templates")
         environment = Environment(loader=FileSystemLoader([resources_path]))
-        # environment = Environment(loader=PackageLoader("templates", "html_templates"))
+        #environment = Environment(loader=FileSystemLoader("/templates/html_templates"))
+        #environment = Environment(loader=PackageLoader("pytest_bdd_report.templates", "html_templates"))
         return environment.get_template(self.path)
 
     @abstractmethod
