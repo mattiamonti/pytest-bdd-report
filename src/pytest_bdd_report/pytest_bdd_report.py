@@ -8,10 +8,13 @@ from pytest_bdd_report.report_file_generator import ReportFileGenerator
 from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 
 BDD_REPORT_FLAG = "--bdd-report"
-
+CUCUMBER_JSON_PATH = ".cucumber-data.json"
 
 # Command-line option setup
 def pytest_addoption(parser):
+    """
+    Add the command line option to generate the HTML report
+    """
     group = parser.getgroup("bdd-report")
     group.addoption(
         BDD_REPORT_FLAG,
@@ -27,10 +30,12 @@ def _get_cli_flag_option(request, flag: str) -> str:
 
 
 def pytest_configure(config):
-    # Configurare per usare il json creato direttamente da pytest-bdd
+    """
+    Configure the generation of the cucumber-json file
+    """
     if config.getoption(BDD_REPORT_FLAG):
         config.option.cucumber_json_path = (
-            "prova_report_cucumber_automatico.json"  # duration in nanosecond
+            CUCUMBER_JSON_PATH
         )
 
 
@@ -43,13 +48,13 @@ def pytest_sessionfinish(session):
 
     if bdd_report_flag:
         report_name = bdd_report_flag.replace(".html", "")
-        print(f"\n\n📈 Report created at: {report_name}.html")
 
         report_generator = ReportComposer(
-            loader=JsonLoader("prova_report_cucumber_automatico.json"),
+            loader=JsonLoader(CUCUMBER_JSON_PATH),
             report_builder=ReportBuilder(report_name),
         )
         report = report_generator.create_report()
         summary = SummaryGenerator().populate_summary(report)
         file_generator = ReportFileGenerator()
         file_generator.create_report_file(report, summary, f"{report_name}.html")
+        print(f"\n\n📈 Report created at: {report_name}.html")

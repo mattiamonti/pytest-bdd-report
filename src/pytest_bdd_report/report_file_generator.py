@@ -1,3 +1,5 @@
+import os.path
+
 from pytest_bdd_report.interfaces import IReport, ISummary
 from pytest_bdd_report.renderer import FeatureRenderer, FeatureStatisticsRenderer
 from pytest_bdd_report.summary.summary import Summary
@@ -66,7 +68,9 @@ class ReportFileGenerator:
 
     def _save_report_to_file(self, path: str) -> None:
         """
-        Save the report content to a file.
+        Save the report content to the provided file path.
+        If the path not exists it will be created.
         """
+        os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w") as f:
             f.write(self.report_content)
