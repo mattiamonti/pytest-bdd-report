@@ -71,6 +71,8 @@ class ReportFileGenerator:
         Save the report content to the provided file path.
         If the path not exists it will be created.
         """
-        os.makedirs(os.path.dirname(path), exist_ok=True)
+        if "/" in path:
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+
         with open(path, "w") as f:
             f.write(self.report_content)

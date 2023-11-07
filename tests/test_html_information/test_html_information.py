@@ -67,6 +67,21 @@ def test_create_html_report_file(sample_test):
     assert (sample_test.tmpdir / "report.html").exists()
 
 
+def test_create_html_report_file_with_directory(sample_test):
+    sample_test.runpytest("--bdd-report=./reports/report.html")
+    assert (sample_test.tmpdir / "./reports/report.html").exists()
+
+
+def test_create_html_report_file_with_directory_name(sample_test):
+    sample_test.runpytest("--bdd-report=results/report.html")
+    assert (sample_test.tmpdir / "results/report.html").exists()
+
+
+def test_create_html_report_file_with_directory_and_subdirectory(sample_test):
+    sample_test.runpytest("--bdd-report=./reports/year/report.html")
+    assert (sample_test.tmpdir / "./reports/year/report.html").exists()
+
+
 def test_content_in_report(sample_test):
     sample_test.runpytest("--bdd-report=report.html")
     content = ""
