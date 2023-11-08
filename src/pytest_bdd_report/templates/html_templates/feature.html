@@ -6,12 +6,13 @@
                 <div>
                     {% import './components/badge.html' as badge %}
                     {{badge.passed(passed)}}
-                    {% if failed != 0 %}
-                    {{ badge.failed(failed) }}
-                    {% endif %}
                     {% if skipped != 0 %}
                     {{ badge.skipped(skipped) }}
                     {% endif %}
+                    {% if failed != 0 %}
+                    {{ badge.failed(failed) }}
+                    {% endif %}
+
                 </div>
 
                 <h2 style="margin: 0; display: inline-block; font-weight: 400; font-size: 1.5 rem;">

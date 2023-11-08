@@ -15,7 +15,9 @@ class ReportFileGenerator:
     def __init__(self) -> None:
         self.report_content = ""
 
-    def create_report_file(self, report: IReport, summary: ISummary, path: str) -> None:
+    def create_report_file(
+        self, report: IReport, summary: ISummary, test_file_uri: list[str], path: str
+    ) -> None:
         """
         Create the report in the provided file path.
         """
@@ -24,6 +26,8 @@ class ReportFileGenerator:
         rendered_feature_statistics = self._render_feature_statistics(report)
         self.report_content = self._render_report(
             report.title,
+            test_file_uri,
+            str(os.path.abspath(path)),
             rendered_summary,
             rendered_features,
             rendered_feature_statistics,
@@ -56,6 +60,8 @@ class ReportFileGenerator:
     @staticmethod
     def _render_report(
         title: str,
+        test_file_uri: list[str],
+        file_path: str,
         rendered_summary: str,
         rendered_features: str,
         rendered_feature_statistics: str,
@@ -64,6 +70,8 @@ class ReportFileGenerator:
         report_template.add_rendered_summary(rendered_summary)
         report_template.add_rendered_features(rendered_features)
         report_template.add_rendered_feature_statistics(rendered_feature_statistics)
+        report_template.add_test_file_uri(test_file_uri)
+        report_template.add_file_path(file_path)
         return report_template.render_template(title)
 
     def _save_report_to_file(self, path: str) -> None:

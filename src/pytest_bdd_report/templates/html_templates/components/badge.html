@@ -1,18 +1,18 @@
 {% macro failed(quantity) -%}
-<p
-    style="margin: 0 0rem 0 0; color: white; background-color: #AF233A; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 500;">
+<p style="margin: 0 0rem 0 0; color: white; background-color: #AF233A; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 500;"
+    title="Number of test failed">
     {{quantity}}
 </p>
 {%- endmacro %}
 
 {%- macro skipped(quantity) -%}
-<p
-    style="margin: 0 0rem 0 0; color: black; background-color: #EDB527; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 500;">
+<p style="margin: 0 0rem 0 0; color: black; background-color: #EDB527; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 500;"
+    title="Number of test skipped">
     {{quantity}}</p>
 {%- endmacro %}
 
 {%- macro passed(quantity) -%}
-<p
-    style="margin: 0 0rem 0 0; color: white; background-color: #0D6832; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 500;">
+<p style="margin: 0 0rem 0 0; color: white; background-color: #0D6832; display: inline-block; border-radius: 50px;padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 500;"
+    title="Number of test passed">
     {{quantity}}</p>
 {%- endmacro %}

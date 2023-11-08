@@ -8,13 +8,17 @@ class ReportTemplate(BaseTemplate):
         self.rendered_summary = ""
         self.rendered_features = ""
         self.rendered_feature_statistics = ""
+        self.test_file_uri = ""
         self.path = "report.html"
+        self.file_path = ""
         super().__init__(self.path)
 
     def render_template(self, data: str, **kwargs) -> str:
         return self.template.render(
             title=data,
             date_time=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            test_file_uri=self.test_file_uri,
+            file_path=self.file_path,
             summary=self.rendered_summary,
             features=self.rendered_features,
             feature_statistics=self.rendered_feature_statistics,
@@ -38,3 +42,9 @@ class ReportTemplate(BaseTemplate):
 
     def add_rendered_feature_statistics(self, rendered_feature_statistics: str) -> None:
         self.rendered_feature_statistics = rendered_feature_statistics
+
+    def add_test_file_uri(self, test_file_uri: list[str]) -> None:
+        self.test_file_uri = test_file_uri
+
+    def add_file_path(self, file_path: str) -> None:
+        self.file_path = file_path

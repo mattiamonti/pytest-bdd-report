@@ -52,7 +52,8 @@ align-self: stretch;" class="{{status}}-scenario searchable" id="{{name}}">
                     {{steps|safe}}
                 </div>
                 {% if status == "failed" %}
-                <button onclick="showhide(this, this.nextElementSibling.id)"
+                <button
+                    onclick="showhide(this, this.nextElementSibling.id, 'Close error message', 'Open error message')"
                     style="display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent;border: none; cursor: pointer; transform: rotate(-90deg);"
                     title="Open error message">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 15 8" fill="none">

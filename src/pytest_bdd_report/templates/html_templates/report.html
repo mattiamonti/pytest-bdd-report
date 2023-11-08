@@ -3,22 +3,22 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Report</title>
+    <title>{{title}}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <script>
-        function showhide(item, id) {
+        function showhide(item, id, tooltip_when_showed = "", tooltip_when_hided = "") {
             var div = document.getElementById(id);
             if (div.style.display !== "block") {
                 div.style.display = "block";
                 item.style.transform = 'rotate(0deg)';
-                item.title = "Close error message"
+                item.title = tooltip_when_showed;
             }
             else {
                 div.style.display = "none";
                 item.style.transform = 'rotate(-90deg)';
-                item.title = "Open error message"
+                item.title = tooltip_when_hided;
             }
         }
 
@@ -42,11 +42,18 @@
 <body
     style="font-family: 'Roboto', sans-serif; padding: 4rem;background: #F5F6F7; scroll-behavior: smooth; color: #1a1a1a;">
 
-    <h1 style="font-size: 2rem; font-weight: 400;">Test report: {{title}}</h1>
-    <p style="color: #535353;">{{date_time}}</p>
-
     {% include './components/feature_statistics_link.html' %}
+    <div style="margin-bottom: 1rem;">
+        <div style="display: flex; align-items: first baseline; justify-content: space-between;">
+            <div>
+                <h1 style="font-size: 2rem; font-weight: 400; margin-bottom: 0.25rem;">Test report: {{title}}</h1>
+                <p style="color: #535353; margin: 0 0 0.5rem 0;">{{file_path}}</p>
+            </div>
+            <p style="color: #535353;">{{date_time}}</p>
+        </div>
 
+        {% include './components/test_file_uri.html' %}
+    </div>
 
     {{summary | safe}}
 
