@@ -10,14 +10,15 @@
     <script>
         function showhide(item, id) {
             var div = document.getElementById(id);
-            //var div = $(el).nextElementSibling;
             if (div.style.display !== "block") {
                 div.style.display = "block";
-                item.style.transform = 'rotate(180deg)';
+                item.style.transform = 'rotate(0deg)';
+                item.title = "Close error message"
             }
             else {
                 div.style.display = "none";
-                item.style.transform = 'rotate(0deg)';
+                item.style.transform = 'rotate(-90deg)';
+                item.title = "Open error message"
             }
         }
 
@@ -32,26 +33,8 @@
                     scenarios[i].style.display = "none";
                 }
             }
-
-
         }
 
-        var searchForm = document.getElementById("search-form");
-        searchForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-        });
-
-
-        function searchQuery() {
-            var scenarios = document.getElementsByClassName("searchable");
-            var query = document.getElementById('search');
-            for (var i = 0; i < scenarios.length; i++) {
-                if (scenarios[i].id.toLowerCase() == query.value.toLowerCase()) {
-                    document.getElementById(scenarios[i].id).scrollIntoView();
-                    query.value = '';
-                }
-            }
-        }
     </script>
 
 </head>
@@ -92,8 +75,6 @@
 
     <div id="control-box" style="display: flex; justify-content: space-between;">
         {% include './components/filters.html' %}
-
-        {% include './components/search.html' %}
     </div>
 
     <br>

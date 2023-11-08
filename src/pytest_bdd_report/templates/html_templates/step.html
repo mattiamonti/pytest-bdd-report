@@ -1,10 +1,13 @@
 <div class="step-container"
     style="display: flex; justify-content: space-between; align-self: stretch; margin-left: 1.5rem;">
     <div style="display: flex; align-items: center; gap: 0.25rem; margin: 0; padding: 0; ">
+        {% import './components/icon.html' as icon %}
         {% if status == "passed" %}
-        {% include './components/icon_pass.html' %}
+        {{icon.pass()}}
+        {% elif status == "failed" %}
+        {{icon.fail()}}
         {% else %}
-        {% include './components/icon_fail.html' %}
+        {{icon.skip()}}
         {% endif %}
         <p style="display: inline; margin: 0;">
             <span class="keyword" style="font-weight: 500;">{{keyword}}</span>: {{name}}

@@ -2,14 +2,17 @@
     style="display: flex; width: 72rem; flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%;">
     <div style="display: flex; width: 100%; justify-content: space-between; align-items:first baseline;">
         <div>
-            <div style="display: flex; align-items: center;">
-                {% import './components/badge.html' as badge %}
-                {% if failed != 0 %}
-                {{ badge.failed(failed) }}
-                {% endif %}
-                {% if skipped != 0 %}
-                {{ badge.skipped(skipped) }}
-                {% endif %}
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <div>
+                    {% import './components/badge.html' as badge %}
+                    {{badge.passed(passed)}}
+                    {% if failed != 0 %}
+                    {{ badge.failed(failed) }}
+                    {% endif %}
+                    {% if skipped != 0 %}
+                    {{ badge.skipped(skipped) }}
+                    {% endif %}
+                </div>
 
                 <h2 style="margin: 0; display: inline-block; font-weight: 400; font-size: 1.5 rem;">
                     <span>Feature</span>: {{name}}

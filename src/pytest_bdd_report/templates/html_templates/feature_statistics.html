@@ -1,17 +1,18 @@
 <tr>
+    {% import './components/icon.html' as icon %}
     {% if failed != 0 %}
     <td><a style="color: inherit; display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
-            {% include './components/icon_fail.html' %}
+            {{icon.fail()}}
             {{name}}
         </a></td>
     {% elif skipped != 0 %}
     <td><a style="color: inherit; display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
-            {% include './components/icon_skip.html' %}
+            {{icon.skip()}}
             {{name}}
         </a></td>
     {% else %}
     <td><a style="color: inherit;display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
-            {% include './components/icon_pass.html' %}
+            {{icon.pass()}}
             {{name}}
         </a></td>
     {%endif%}
