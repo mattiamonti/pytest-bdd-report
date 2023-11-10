@@ -5,7 +5,9 @@
             <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div>
                     {% import './components/badge.html' as badge %}
+                    {% if passed != 0 %}
                     {{badge.passed(passed)}}
+                    {% endif %}
                     {% if skipped != 0 %}
                     {{ badge.skipped(skipped) }}
                     {% endif %}

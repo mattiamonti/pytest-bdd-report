@@ -23,7 +23,7 @@ class ScenarioTemplate(BaseTemplate):
         )
 
     @staticmethod
-    def _format_tags(tags: list[dict]):
+    def _format_tags(tags: list[dict]) -> str:
         if tags is None or tags == []:
             return ""
         result = ""
@@ -32,7 +32,7 @@ class ScenarioTemplate(BaseTemplate):
         return result
 
     @staticmethod
-    def _check_for_parameters(id: str):
+    def _check_for_parameters(id: str) -> str:
         match = re.search(r"\[(.*?)]", id)
         if match:
             res = match.group(1)

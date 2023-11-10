@@ -15,7 +15,7 @@ class BaseExtractor(ABC):
         return [self.create_item(item_data) for item_data in data]
 
     @abstractmethod
-    def create_item(self, data):
+    def create_item(self, data: dict):
         """
         Create one item from the data passed.
         @param data: raw data for one object
@@ -100,7 +100,7 @@ class FeatureExtractor(BaseExtractor):
         return failed, passed, total
 
     @staticmethod
-    def _check_for_skipped_scenarios(feature: Feature):
+    def _check_for_skipped_scenarios(feature: Feature) -> int:
         try:
             with open(os.path.abspath(feature.uri), "r") as f:
                 lines = f.readlines()
