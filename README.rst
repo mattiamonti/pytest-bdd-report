@@ -38,7 +38,9 @@ Features
 Requirements
 ------------
 
-* TODO
+* Jinja2
+* pytest
+* pytest-bdd
 
 
 Installation
@@ -62,11 +64,6 @@ Once the plugin is installed, you can generate BDD reports in an HTML file using
 
     $ pytest --bdd-report="report.html"
 
-In alternative you can save only the raw tests informations in a JSON file using the command
-
-::
-
-    $ pytest --bdd-json
 
 Contributing
 ------------
