@@ -16,14 +16,9 @@ class ISummary(Protocol):
 
 
 class ILoader(Protocol):
-    def __init__(self, path: str):
-        self.path = path
+    path: str  # For type checking, indicating implementing classes should have this attribute
 
     def load(self) -> list[dict]:
-        """
-        Load the data from the path passed in the constructor.
-        @return: data as a list of dictionary
-        """
         ...
 
 
