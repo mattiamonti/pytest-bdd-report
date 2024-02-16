@@ -71,16 +71,21 @@ Run tests
 1. create a virtual environment and install the required packages with 
 
 ::
+
     $ pip install -r requirements.txt
+
 
 2. install the plugin locally with
 
 ::
+
     $ pip install -e .
+
 
 3. run the test with
 
 ::
+
     $ python -m pytest
 
 
