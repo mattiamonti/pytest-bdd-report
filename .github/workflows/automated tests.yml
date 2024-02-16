@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content
-    
+
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -23,5 +23,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r requirements.txt
+          pip install -e .
       - name: Test with pytest
-        run: pytest
+        run: python -m pytest
