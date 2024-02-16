@@ -58,7 +58,7 @@ Installation
 Usage
 -----
 
-Once the plugin is installed, you can generate BDD reports in an HTML file using the command
+Once installed, you can generate BDD reports in an HTML file using the following command:
 
 ::
 
@@ -68,21 +68,24 @@ Once the plugin is installed, you can generate BDD reports in an HTML file using
 Run tests
 ---------
 
-1. create a virtual environment and install the required packages with 
+To run tests:
+
+1. Create a virtual environment
+2. Install the required packages:
 
 ::
 
     $ pip install -r requirements.txt
 
 
-2. install the plugin locally with
+3. Install the plugin locally:
 
 ::
 
     $ pip install -e .
 
 
-3. run the test with
+4. Run the tests:
 
 ::
 
@@ -91,8 +94,7 @@ Run tests
 
 Contributing
 ------------
-Contributions are very welcome. Tests can be run with `pytest`_, please ensure
-the coverage at least stays the same before you submit a pull request.
+Contributions are very welcome. Tests can be run with `pytest`_ as shown.
 
 License
 -------
