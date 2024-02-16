@@ -1,14 +1,14 @@
 import os.path
 
-from pytest_bdd_report.interfaces import IReport, ISummary
-from pytest_bdd_report.renderer import FeatureRenderer, FeatureStatisticsRenderer
-from pytest_bdd_report.summary.summary import Summary
-from pytest_bdd_report.templates.feature_statistics_template import (
+from src.pytest_bdd_report.interfaces import IReport, ISummary
+from src.pytest_bdd_report.renderer import FeatureRenderer, FeatureStatisticsRenderer
+from src.pytest_bdd_report.summary.summary import Summary
+from src.pytest_bdd_report.templates.feature_statistics_template import (
     FeatureStatisticsTemplate,
 )
-from pytest_bdd_report.templates.feature_template import FeatureTemplate
-from pytest_bdd_report.templates.report_template import ReportTemplate
-from pytest_bdd_report.templates.summary_template import SummaryTemplate
+from src.pytest_bdd_report.templates.feature_template import FeatureTemplate
+from src.pytest_bdd_report.templates.report_template import ReportTemplate
+from src.pytest_bdd_report.templates.summary_template import SummaryTemplate
 
 
 class ReportFileGenerator:

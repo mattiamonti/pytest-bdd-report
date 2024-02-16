@@ -1,8 +1,8 @@
 import os
 from abc import ABC, abstractmethod
-from pytest_bdd_report.components.feature import Feature
-from pytest_bdd_report.components.scenario import Scenario
-from pytest_bdd_report.components.step import Step
+from src.pytest_bdd_report.components.feature import Feature
+from src.pytest_bdd_report.components.scenario import Scenario
+from src.pytest_bdd_report.components.step import Step
 
 
 class BaseExtractor(ABC):

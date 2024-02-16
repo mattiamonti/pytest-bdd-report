@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Protocol
-from pytest_bdd_report.components.feature import Feature
+from src.pytest_bdd_report.components.feature import Feature
 
 
 class IReport(Protocol):

@@ -1,6 +1,6 @@
 import datetime
 
-from pytest_bdd_report.templates.template import BaseTemplate
+from src.pytest_bdd_report.templates.template import BaseTemplate
 
 
 class ReportTemplate(BaseTemplate):

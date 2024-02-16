@@ -1,5 +1,5 @@
-from pytest_bdd_report.extractor import FeatureExtractor
-from pytest_bdd_report.interfaces import IReport, ILoader, IReportBuilder
+from src.pytest_bdd_report.extractor import FeatureExtractor
+from src.pytest_bdd_report.interfaces import IReport, ILoader, IReportBuilder
 
 
 class ReportComposer:

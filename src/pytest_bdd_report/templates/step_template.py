@@ -1,5 +1,5 @@
-from pytest_bdd_report.components.step import Step
-from pytest_bdd_report.templates.template import BaseTemplate
+from src.pytest_bdd_report.components.step import Step
+from src.pytest_bdd_report.templates.template import BaseTemplate
 
 
 class StepTemplate(BaseTemplate):

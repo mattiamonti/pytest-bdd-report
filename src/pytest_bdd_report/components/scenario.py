@@ -1,4 +1,4 @@
-from pytest_bdd_report.components.step import Step
+from src.pytest_bdd_report.components.step import Step
 from dataclasses import dataclass
 
 

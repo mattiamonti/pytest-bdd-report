@@ -65,6 +65,25 @@ Once the plugin is installed, you can generate BDD reports in an HTML file using
     $ pytest --bdd-report="report.html"
 
 
+Run tests
+---------
+
+1. create a virtual environment and install the required packages with 
+
+::
+    $ pip install -r requirements.txt
+
+2. install the plugin locally with
+
+::
+    $ pip install -e .
+
+3. run the test with
+
+::
+    $ python -m pytest
+
+
 Contributing
 ------------
 Contributions are very welcome. Tests can be run with `pytest`_, please ensure

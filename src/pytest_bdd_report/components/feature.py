@@ -1,4 +1,4 @@
-from pytest_bdd_report.components.scenario import Scenario
+from src.pytest_bdd_report.components.scenario import Scenario
 from dataclasses import dataclass
 
 

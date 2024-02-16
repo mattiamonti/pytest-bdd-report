@@ -1,7 +1,7 @@
 import json
 import os
 
-from pytest_bdd_report.interfaces import ILoader
+from src.pytest_bdd_report.interfaces import ILoader
 
 
 class JsonLoader(ILoader):

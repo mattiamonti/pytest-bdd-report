@@ -1,5 +1,5 @@
-from pytest_bdd_report.components.feature import Feature
-from pytest_bdd_report.templates.template import BaseTemplate
+from src.pytest_bdd_report.components.feature import Feature
+from src.pytest_bdd_report.templates.template import BaseTemplate
 
 
 class FeatureTemplate(BaseTemplate):

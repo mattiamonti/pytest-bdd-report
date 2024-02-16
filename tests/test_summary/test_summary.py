@@ -1,8 +1,8 @@
-from pytest_bdd_report.components.scenario import Scenario
-from pytest_bdd_report.components.step import Step
-from pytest_bdd_report.report import Report
-from pytest_bdd_report.components.feature import Feature
-from pytest_bdd_report.summary.summary_generator import SummaryGenerator
+from src.pytest_bdd_report.components.scenario import Scenario
+from src.pytest_bdd_report.components.step import Step
+from src.pytest_bdd_report.report import Report
+from src.pytest_bdd_report.components.feature import Feature
+from src.pytest_bdd_report.summary.summary_generator import SummaryGenerator
 import pytest
 
 
