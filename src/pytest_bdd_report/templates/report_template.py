@@ -1,7 +1,7 @@
 import datetime
 from typing import List
 
-from src.pytest_bdd_report.templates.template import BaseTemplate
+from pytest_bdd_report.templates.template import BaseTemplate
 
 
 class ReportTemplate(BaseTemplate):

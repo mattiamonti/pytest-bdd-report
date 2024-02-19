@@ -1,15 +1,15 @@
 from abc import ABC, abstractmethod
 
-from src.pytest_bdd_report.components.feature import Feature
-from src.pytest_bdd_report.components.scenario import Scenario
-from src.pytest_bdd_report.components.step import Step
-from src.pytest_bdd_report.templates.feature_statistics_template import (
+from pytest_bdd_report.components.feature import Feature
+from pytest_bdd_report.components.scenario import Scenario
+from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.templates.feature_statistics_template import (
     FeatureStatisticsTemplate,
 )
-from src.pytest_bdd_report.templates.feature_template import FeatureTemplate
-from src.pytest_bdd_report.templates.scenario_template import ScenarioTemplate
-from src.pytest_bdd_report.templates.step_template import StepTemplate
-from src.pytest_bdd_report.templates.template import BaseTemplate
+from pytest_bdd_report.templates.feature_template import FeatureTemplate
+from pytest_bdd_report.templates.scenario_template import ScenarioTemplate
+from pytest_bdd_report.templates.step_template import StepTemplate
+from pytest_bdd_report.templates.template import BaseTemplate
 
 
 class BaseRenderer(ABC):

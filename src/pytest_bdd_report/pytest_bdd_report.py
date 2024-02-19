@@ -1,9 +1,9 @@
 import pytest
-from src.pytest_bdd_report.json_loader import JsonLoader
-from src.pytest_bdd_report.report_composer import ReportComposer
-from src.pytest_bdd_report.report import Report, ReportBuilder
-from src.pytest_bdd_report.report_file_generator import ReportFileGenerator
-from src.pytest_bdd_report.summary.summary_generator import SummaryGenerator
+from pytest_bdd_report.json_loader import JsonLoader
+from pytest_bdd_report.report_composer import ReportComposer
+from pytest_bdd_report.report import Report, ReportBuilder
+from pytest_bdd_report.report_file_generator import ReportFileGenerator
+from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 import os
 
 BDD_REPORT_FLAG = "--bdd-report"

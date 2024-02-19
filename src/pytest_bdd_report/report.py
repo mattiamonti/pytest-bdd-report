@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from src.pytest_bdd_report.components.feature import Feature
-from src.pytest_bdd_report.interfaces import IReportBuilder
+from pytest_bdd_report.components.feature import Feature
+from pytest_bdd_report.interfaces import IReportBuilder
 
 
 @dataclass

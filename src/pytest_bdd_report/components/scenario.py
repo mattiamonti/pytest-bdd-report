@@ -1,6 +1,6 @@
 from typing import List
 from dataclasses import dataclass
-from src.pytest_bdd_report.components.step import Step
+from pytest_bdd_report.components.step import Step
 
 
 @dataclass

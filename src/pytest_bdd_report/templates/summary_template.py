@@ -1,5 +1,5 @@
-from src.pytest_bdd_report.summary.summary import Summary
-from src.pytest_bdd_report.templates.template import BaseTemplate
+from pytest_bdd_report.summary.summary import Summary
+from pytest_bdd_report.templates.template import BaseTemplate
 
 
 class SummaryTemplate(BaseTemplate):

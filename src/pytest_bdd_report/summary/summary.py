@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from src.pytest_bdd_report.interfaces import ISummary
+from pytest_bdd_report.interfaces import ISummary
 
 @dataclass
 class Summary(ISummary):

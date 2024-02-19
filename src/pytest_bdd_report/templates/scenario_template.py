@@ -1,6 +1,6 @@
 import re
-from src.pytest_bdd_report.components.scenario import Scenario
-from src.pytest_bdd_report.templates.template import BaseTemplate
+from pytest_bdd_report.components.scenario import Scenario
+from pytest_bdd_report.templates.template import BaseTemplate
 from typing import List, Dict
 
 
