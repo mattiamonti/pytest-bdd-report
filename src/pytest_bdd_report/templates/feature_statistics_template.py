@@ -8,7 +8,7 @@ class FeatureStatisticsTemplate(BaseTemplate):
         super().__init__(self.path)
 
     def render_template(self, data: Feature, already_rendered_data: str = "") -> str:
-        passed_rate = int(round(data.passed_tests / data.total_tests * 100, 0))
+        passed_rate = self._calculate_passed_rate(data)
         return self.template.render(
             name=data.name,
             total=data.total_tests,
@@ -18,3 +18,11 @@ class FeatureStatisticsTemplate(BaseTemplate):
             duration=round(data.duration, 5),
             rate=passed_rate,
         )
+
+    def _calculate_passed_rate(self, data: Feature) -> int:
+        """
+        Calculate the passed rate percentage.
+        """
+        if data.total_tests == 0:
+            return 0
+        return int(round(data.passed_tests / data.total_tests * 100))

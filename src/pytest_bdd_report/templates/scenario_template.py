@@ -1,15 +1,18 @@
 import re
-
 from src.pytest_bdd_report.components.scenario import Scenario
 from src.pytest_bdd_report.templates.template import BaseTemplate
+from typing import List, Dict
 
 
 class ScenarioTemplate(BaseTemplate):
     def __init__(self) -> None:
-        self.path = "scenario.html"
+        self.path: str = "scenario.html"
         super().__init__(self.path)
 
     def render_template(self, data: Scenario, rendered_steps: str = "") -> str:
+        """
+        Render the scenario template.
+        """
         return self.template.render(
             id=data.id,
             name=data.name,
@@ -23,19 +26,18 @@ class ScenarioTemplate(BaseTemplate):
         )
 
     @staticmethod
-    def _format_tags(tags: list[dict]) -> str:
-        if tags is None or tags == []:
-            return ""
-        result = ""
-        for tag in tags:
-            result += f"{tag['name']}, "
-        return result
+    def _format_tags(tags: List[Dict[str, str]]) -> str:
+        """
+        Format tags into a comma-separated string.
+        """
+        return ", ".join(tag["name"] for tag in tags)
 
     @staticmethod
     def _check_for_parameters(id: str) -> str:
+        """
+        Check for parameters in the scenario ID and format them.
+        """
         match = re.search(r"\[(.*?)]", id)
         if match:
-            res = match.group(1)
-            return res.replace("-", ", ")
-        else:
-            return ""
+            return match.group(1).replace("-", ", ")
+        return ""

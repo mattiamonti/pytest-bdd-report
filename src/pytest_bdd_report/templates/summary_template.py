@@ -9,11 +9,11 @@ class SummaryTemplate(BaseTemplate):
 
     def render_template(self, data: Summary, **kwargs) -> str:
         return self.template.render(
-            total=data.total_test,
-            passed=data.test_passed,
-            failed=data.test_failed,
-            skipped=data.test_skipped,
-            percentage=data.percentage_test_passed,
+            total=data.total_tests,
+            passed=data.tests_passed,
+            failed=data.tests_failed,
+            skipped=data.tests_skipped,
+            percentage=data.percentage_tests_passed,
             duration=round(data.total_duration, 5),
             top_feature_fail=data.top_feature_fail,
         )

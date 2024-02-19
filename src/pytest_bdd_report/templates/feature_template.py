@@ -1,5 +1,6 @@
 from src.pytest_bdd_report.components.feature import Feature
 from src.pytest_bdd_report.templates.template import BaseTemplate
+from typing import List, Dict
 
 
 class FeatureTemplate(BaseTemplate):
@@ -23,10 +24,10 @@ class FeatureTemplate(BaseTemplate):
         )
 
     @staticmethod
-    def _format_tags(tags: list[dict]):
-        if tags is None or tags == []:
+    def _format_tags(tags: List[Dict[str, str]]) -> str:
+        """
+        Format tags into a comma-separated string.
+        """
+        if not tags:
             return ""
-        result = ""
-        for tag in tags:
-            result += f"{tag['name']}, "
-        return result
+        return ", ".join(tag["name"] for tag in tags)

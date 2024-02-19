@@ -215,11 +215,11 @@ def mock_report_long():
 def test_summary_test_statistics(mock_report):
     summary_generator = SummaryGenerator()
     summary = summary_generator.populate_summary(mock_report)
-    assert summary.total_test == 2
-    assert summary.test_passed == 2
-    assert summary.test_failed == 0
-    assert summary.test_skipped == 0
-    assert summary.percentage_test_passed == 100.00
+    assert summary.total_tests == 2
+    assert summary.tests_passed == 2
+    assert summary.tests_failed == 0
+    assert summary.tests_skipped == 0
+    assert summary.percentage_tests_passed == 100.00
 
 
 def test_summary_total_duration(mock_report):
@@ -231,21 +231,21 @@ def test_summary_total_duration(mock_report):
 def test_summary_test_statistics_failed(mock_report_failed):
     summary_generator = SummaryGenerator()
     summary = summary_generator.populate_summary(mock_report_failed)
-    assert summary.total_test == 2
-    assert summary.test_passed == 1
-    assert summary.test_failed == 1
-    assert summary.test_skipped == 0
-    assert summary.percentage_test_passed == 50.00
+    assert summary.total_tests == 2
+    assert summary.tests_passed == 1
+    assert summary.tests_failed == 1
+    assert summary.tests_skipped == 0
+    assert summary.percentage_tests_passed == 50.00
 
 
 def test_summary_long_report_statistics(mock_report_long):
     summary_generator = SummaryGenerator()
     summary = summary_generator.populate_summary(mock_report_long)
-    assert summary.total_test == 3
-    assert summary.test_passed == 2
-    assert summary.test_failed == 1
-    assert summary.test_skipped == 0
-    assert summary.percentage_test_passed == 67
+    assert summary.total_tests == 3
+    assert summary.tests_passed == 2
+    assert summary.tests_failed == 1
+    assert summary.tests_skipped == 0
+    assert summary.percentage_tests_passed == 67
 
 
 def test_summary_long_report_duration(mock_report_long):

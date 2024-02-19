@@ -1,31 +1,30 @@
 import os
 from abc import ABC, abstractmethod
+from typing import List
+
 from src.pytest_bdd_report.components.feature import Feature
 from src.pytest_bdd_report.components.scenario import Scenario
 from src.pytest_bdd_report.components.step import Step
 
 
 class BaseExtractor(ABC):
-    def extract_from(self, data: list[dict]) -> list:
+    @abstractmethod
+    def extract_from(self, data: List[dict]) -> List:
         """
         Extract the objects from the raw data passed.
-        @param data: raw data
-        @return: objects extracted
         """
-        return [self.create_item(item_data) for item_data in data]
+        pass
 
     @abstractmethod
     def create_item(self, data: dict):
         """
         Create one item from the data passed.
-        @param data: raw data for one object
-        @return: object
         """
-        ...
+        pass
 
 
 class StepExtractor(BaseExtractor):
-    def create_item(self, data) -> Step:
+    def create_item(self, data: dict) -> Step:
         step = Step(
             keyword=data["keyword"],
             name=data["name"],
@@ -33,17 +32,17 @@ class StepExtractor(BaseExtractor):
             status=data["result"]["status"],
             duration=data["result"]["duration"],
         )
-        try:
-            step.error_message = data["result"]["error_message"]
-            return step
-        finally:
-            return step
+        step.error_message = data["result"].get("error_message", "")
+        return step
+
+    def extract_from(self, data: List[dict]) -> List[Step]:
+        return [self.create_item(item_data) for item_data in data]
 
 
 class ScenarioExtractor(BaseExtractor):
-    def create_item(self, data) -> Scenario:
-        steps = StepExtractor().extract_from(data["steps"])
-        status = "failed" if self._check_for_failed(steps) else "passed"
+    def create_item(self, data: dict) -> Scenario:
+        steps = StepExtractor().extract_from(data.get("steps", []))
+        status = "failed" if any(step.status == "failed" for step in steps) else "passed"
         scenario = Scenario(
             id=data["id"],
             name=data["name"],
@@ -56,17 +55,13 @@ class ScenarioExtractor(BaseExtractor):
         scenario.check_and_add_error_message()
         return scenario
 
-    @staticmethod
-    def _check_for_failed(items: list[Step]) -> bool:
-        for item in items:
-            if item.status == "failed":
-                return True
-        return False
+    def extract_from(self, data: List[dict]) -> List[Scenario]:
+        return [self.create_item(item_data) for item_data in data]
 
 
 class FeatureExtractor(BaseExtractor):
-    def create_item(self, data) -> Feature:
-        scenarios = ScenarioExtractor().extract_from(data["elements"])
+    def create_item(self, data: dict) -> Feature:
+        scenarios = ScenarioExtractor().extract_from(data.get("elements", []))
         failed, passed, total = self._count_failed_passed_total_tests(scenarios)
         status = "passed" if failed == 0 else "failed"
         feature = Feature(
@@ -86,17 +81,14 @@ class FeatureExtractor(BaseExtractor):
         feature.set_skipped_test(skipped)
         return feature
 
+    def extract_from(self, data: List[dict]) -> List[Feature]:
+        return [self.create_item(item_data) for item_data in data]
+
     @staticmethod
-    def _count_failed_passed_total_tests(tests: list) -> tuple[int, int, int]:
-        failed = 0
-        passed = 0
-        total = 0
-        for test in tests:
-            if test.status == "failed":
-                failed += 1
-            if test.status == "passed":
-                passed += 1
-            total += 1
+    def _count_failed_passed_total_tests(tests: List[Scenario]) -> tuple[int, int, int]:
+        failed = sum(1 for test in tests if test.status == "failed")
+        passed = sum(1 for test in tests if test.status == "passed")
+        total = len(tests)
         return failed, passed, total
 
     @staticmethod
@@ -108,18 +100,12 @@ class FeatureExtractor(BaseExtractor):
             if not lines:
                 return 0
 
-            scenario_file_names = []
-            for line in lines:
-                if line.strip().startswith("Scenario"):
-                    scenario_file_names.append(line.split(":")[1].strip())
-            scenario_names = []
-            for scenario in feature.scenarios:
-                scenario_names.append(scenario.name)
+            scenario_file_names = [line.split(":")[1].strip() for line in lines if line.strip().startswith("Scenario")]
+            scenario_names = [scenario.name for scenario in feature.scenarios]
 
-            skipped = 0
+            skipped = sum(1 for name in scenario_file_names if name not in scenario_names)
             for name in scenario_file_names:
                 if name not in scenario_names:
-                    skipped += 1
                     feature.add_scenario(
                         Scenario(
                             id="",

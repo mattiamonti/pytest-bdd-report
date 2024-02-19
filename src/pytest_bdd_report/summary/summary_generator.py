@@ -1,5 +1,6 @@
 from src.pytest_bdd_report.interfaces import IReport
 from src.pytest_bdd_report.summary.summary import Summary
+from typing import List
 
 
 class SummaryGenerator:
@@ -15,8 +16,8 @@ class SummaryGenerator:
         self._set_report_title(report)
         self._get_test_statistics(report)
         self._get_top_feature_fail(report)
-        self._calculate_percentage_test_passed()
         self._get_total_duration(report)
+        self._calculate_percentage_test_passed()
         return self.summary
 
     def _set_report_title(self, report: IReport) -> None:
@@ -34,21 +35,20 @@ class SummaryGenerator:
         @return:
         """
         for feature in report.features:
-            self.summary.total_test += feature.total_tests
-            self.summary.test_passed += feature.passed_tests
-            self.summary.test_failed += feature.failed_tests
-            self.summary.test_skipped += feature.skipped_tests
+            self.summary.total_tests += feature.total_tests
+            self.summary.tests_passed += feature.passed_tests
+            self.summary.tests_failed += feature.failed_tests
+            self.summary.tests_skipped += feature.skipped_tests
 
     def _get_top_feature_fail(self, report: IReport) -> None:
-        failed_features = filter(lambda x: x.failed_tests > 0, report.features)
-        sorted_features = sorted(
-            failed_features, key=lambda x: x.failed_tests, reverse=True
-        )
+        """
+        Get the top 5 features with the highest number of failed tests.
+        @param report:
+        @return:
+        """
+        failed_features = [feature for feature in report.features if feature.failed_tests > 0]
+        sorted_features = sorted(failed_features, key=lambda x: x.failed_tests, reverse=True)
         self.summary.top_feature_fail = sorted_features[:5]
-
-    def _get_start_time(self) -> None:
-        # TODO implement
-        ...
 
     def _get_total_duration(self, report: IReport) -> None:
         """
@@ -56,17 +56,14 @@ class SummaryGenerator:
         @param report:
         @return:
         """
-        duration = 0.0
-        for feature in report.features:
-            duration += feature.duration
-        self.summary.total_duration = duration
+        self.summary.total_duration = sum(feature.duration for feature in report.features)
 
     def _calculate_percentage_test_passed(self) -> None:
         """
         Calculate the percentage of the test passed based on the total number of tests.
         @return:
         """
-        if self.summary.total_test != 0:
-            self.summary.percentage_test_passed = int(
-                round(self.summary.test_passed / self.summary.total_test * 100, 0)
+        if self.summary.total_tests != 0:
+            self.summary.percentage_tests_passed = round(
+                self.summary.tests_passed / self.summary.total_tests * 100, 0
             )
