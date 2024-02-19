@@ -2,19 +2,30 @@
 pytest-bdd-report
 =================
 
-.. image:: https://img.shields.io/pypi/v/pytest-bdd-report.svg
+|python| |pypi| |formatting| |tests|
+
+|dstats| |mstats|
+
+
+.. |pypi| image:: https://img.shields.io/pypi/v/pytest-bdd-report.svg
     :target: https://pypi.org/project/pytest-bdd-report
     :alt: PyPI version
 
-.. image:: https://img.shields.io/pypi/pyversions/pytest-bdd-report.svg
+.. |python| image:: https://img.shields.io/pypi/pyversions/pytest-bdd-report.svg
     :target: https://pypi.org/project/pytest-bdd-report
     :alt: Python versions
 
-.. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=GitHub%20actions&label=Black%20formatting
+.. |formatting| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=GitHub%20actions&label=Formatting
     :alt: GitHub Workflow Status (with event)
 
-.. image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=pytest&label=Automated%20Tests
+.. |tests| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=pytest&label=Tests
     :alt: GitHub Workflow Status (with event)
+
+.. |mstats| image:: https://img.shields.io/pypi/dm/pytest-bdd-report
+   :alt: PyPI - Downloads
+
+.. |dstats| image:: https://img.shields.io/pypi/dd/pytest-bdd-report
+   :alt: PyPI - Downloads
 
 
 
