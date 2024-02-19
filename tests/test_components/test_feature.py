@@ -1,5 +1,5 @@
-from src.pytest_bdd_report.components.feature import Feature
-from src.pytest_bdd_report.components.scenario import Scenario
+from pytest_bdd_report.components.feature import Feature
+from pytest_bdd_report.components.scenario import Scenario
 import pytest
 
 def test_add_scenario():

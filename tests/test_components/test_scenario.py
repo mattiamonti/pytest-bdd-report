@@ -1,5 +1,5 @@
-from src.pytest_bdd_report.components.scenario import Scenario
-from src.pytest_bdd_report.components.step import Step
+from pytest_bdd_report.components.scenario import Scenario
+from pytest_bdd_report.components.step import Step
 
 
 def test_add_step():

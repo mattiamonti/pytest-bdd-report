@@ -1,11 +1,11 @@
 import pytest
 
-from src.pytest_bdd_report.components.feature import Feature
-from src.pytest_bdd_report.components.scenario import Scenario
-from src.pytest_bdd_report.components.step import Step
-from src.pytest_bdd_report.interfaces import ILoader
-from src.pytest_bdd_report.report import ReportBuilder
-from src.pytest_bdd_report.report_composer import ReportComposer
+from pytest_bdd_report.components.feature import Feature
+from pytest_bdd_report.components.scenario import Scenario
+from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.interfaces import ILoader
+from pytest_bdd_report.report import ReportBuilder
+from pytest_bdd_report.report_composer import ReportComposer
 
 
 @pytest.fixture
