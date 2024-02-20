@@ -36,6 +36,8 @@ The `pytest-bdd-report` plugin is a useful extension for the `pytest-bdd`_ libra
 useful and informative reports for BDD (Behavior-Driven Development) tests developed using the pytest-bdd framework.
 This plugin facilitates the generation of clear and effective HTML reports, providing a comprehensible view of BDD test executions within the project.
 
+For more, check out the `Documentation`_
+
 ----
 
 This `pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`_'s `cookiecutter-pytest-plugin`_ template.
@@ -134,3 +136,4 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`pip`: https://pypi.org/project/pip/
 .. _`PyPI`: https://pypi.org/project
 .. _`pytest-bdd`: https://github.com/pytest-dev/pytest-bdd
+.. _`Documentation`: https://mattia-monti.gitbook.io/pytest-bdd-report/
