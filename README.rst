@@ -4,8 +4,11 @@ pytest-bdd-report
 
 |python| |pypi| |formatting| |tests|
 
-|dstats| |mstats|
+|mstats| |total|
 
+.. |total| image:: https://static.pepy.tech/badge/pytest-bdd-report
+    :target: https://pepy.tech/project/pytest-bdd-report
+    :alt: PePy total downloads
 
 .. |pypi| image:: https://img.shields.io/pypi/v/pytest-bdd-report.svg
     :target: https://pypi.org/project/pytest-bdd-report
