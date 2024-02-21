@@ -25,7 +25,7 @@ class BaseRenderer(ABC):
 
 
 class StepRenderer(BaseRenderer):
-    def render(self, items: list[Step], template: StepTemplate) -> str:
+    def render(self, items: list[Step], template: BaseTemplate) -> str:
         rendered = ""
         for item in items:
             rendered += template.render_template(item)
@@ -36,7 +36,7 @@ class ScenarioRenderer(BaseRenderer):
     def __init__(self, step_renderer: StepRenderer = None):
         self.step_renderer = step_renderer or StepRenderer()
 
-    def render(self, items: list[Scenario], template: ScenarioTemplate) -> str:
+    def render(self, items: list[Scenario], template: BaseTemplate) -> str:
         rendered = ""
         for item in items:
             rendered_steps = self.step_renderer.render(item.steps, StepTemplate())
@@ -48,7 +48,7 @@ class FeatureRenderer(BaseRenderer):
     def __init__(self, scenario_renderer: ScenarioRenderer = None):
         self.scenario_renderer = scenario_renderer or ScenarioRenderer()
 
-    def render(self, items: list[Feature], template: FeatureTemplate) -> str:
+    def render(self, items: list[Feature], template: BaseTemplate) -> str:
         rendered = ""
         for item in items:
             rendered_scenarios = self.scenario_renderer.render(
@@ -59,7 +59,7 @@ class FeatureRenderer(BaseRenderer):
 
 
 class FeatureStatisticsRenderer(BaseRenderer):
-    def render(self, items: list[Feature], template: FeatureStatisticsTemplate) -> str:
+    def render(self, items: list[Feature], template: BaseTemplate) -> str:
         rendered = ""
         for item in items:
             rendered += template.render_template(item)
