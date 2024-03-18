@@ -1,0 +1,6 @@
+projectKey=pytest-bdd-report
+serverUrl=http://localhost:9000
+serverVersion=9.9.4.87374
+dashboardUrl=http://localhost:9000/dashboard?id=pytest-bdd-report
+ceTaskId=AY4yW-3WGHAHIddoanoT
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AY4yW-3WGHAHIddoanoT
