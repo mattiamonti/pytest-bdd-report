@@ -1,139 +1,402 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.11.8 on darwin)" generated="2024-03-18T21:41:45.204389" rpa="false" schemaversion="5">
-<suite id="s1" name="Test-Filters" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-filters.robot">
-<test id="s1-t1" name="Generate Report" line="9">
+<robot generator="Robot 7.0 (Python 3.11.8 on darwin)" generated="2024-03-18T22:07:45.953122" rpa="false" schemaversion="5">
+<suite id="s1" name="Test-Feature-Links &amp; Test-Filters &amp; Test-Generate-Report">
+<suite id="s1-s1" name="Test-Feature-Links" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-feature-links.robot">
+<test id="s1-s1-t1" name="Generate Report" line="9">
 <kw name="Generate HTML Report">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-03-18T21:41:45.259876" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-03-18T22:07:46.023810" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-03-18T21:41:45.258097" elapsed="0.205866"/>
+<status status="PASS" start="2024-03-18T22:07:46.022148" elapsed="0.207018"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-03-18T21:41:45.464527" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-03-18T22:07:46.229740" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-03-18T21:41:45.464238" elapsed="0.000320"/>
+<status status="PASS" start="2024-03-18T22:07:46.229457" elapsed="0.000312"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-03-18T21:41:45.464730" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-03-18T22:07:46.229954" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-03-18T21:41:45.464631" elapsed="0.000112"/>
+<status status="PASS" start="2024-03-18T22:07:46.229843" elapsed="0.000126"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-03-18T21:41:45.464873" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-03-18T22:07:46.230099" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-03-18T21:41:45.464804" elapsed="0.000087"/>
+<status status="PASS" start="2024-03-18T22:07:46.230030" elapsed="0.000086"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-03-18T21:41:45.464926" elapsed="0.000060"/>
+<status status="PASS" start="2024-03-18T22:07:46.230147" elapsed="0.000047"/>
 </return>
-<msg time="2024-03-18T21:41:45.465061" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-03-18T22:07:46.230275" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${path}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-03-18T21:41:45.257728" elapsed="0.207343"/>
+<status status="PASS" start="2024-03-18T22:07:46.021784" elapsed="0.208501"/>
 </kw>
 <variable name="${URL}" scope="SUITE">
 <var>${path}</var>
-<status status="PASS" start="2024-03-18T21:41:45.465150" elapsed="0.000087"/>
+<status status="PASS" start="2024-03-18T22:07:46.230403" elapsed="0.000080"/>
 </variable>
-<status status="PASS" start="2024-03-18T21:41:45.257502" elapsed="0.207817"/>
+<status status="PASS" start="2024-03-18T22:07:46.021553" elapsed="0.209018"/>
 </test>
-<test id="s1-t2" name="Filter Out The Passed Scenarios" line="13">
+<test id="s1-s1-t2" name="Link To A Feature" line="13">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-03-18T21:41:45.465770" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-03-18T22:07:46.231023" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-03-18T21:41:45.465633" elapsed="0.706737"/>
+<status status="PASS" start="2024-03-18T22:07:46.230885" elapsed="0.815211"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2024-03-18T21:41:46.674956" level="INFO">Slept 500 milliseconds.</msg>
+<msg time="2024-03-18T22:07:47.547559" level="INFO">Slept 500 milliseconds.</msg>
 <arg>0.5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-03-18T21:41:46.172854" elapsed="0.502563"/>
+<status status="PASS" start="2024-03-18T22:07:47.046495" elapsed="0.501499"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:47.550643" level="INFO">Clicking link 'xpath=//*[@id="feature-statistics"]/table/tbody/tr[4]/td[1]/a'.</msg>
+<arg>xpath=//*[@id="feature-statistics"]/table/tbody/tr[4]/td[1]/a</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-18T22:07:47.548915" elapsed="0.068774"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:Cucuber basket</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-18T22:07:47.617962" elapsed="0.007057"/>
+</kw>
+<status status="PASS" start="2024-03-18T22:07:46.230691" elapsed="1.394527"/>
+</test>
+<test id="s1-s1-t3" name="Link To Feature Statistics" line="19">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:47.625787" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-18T22:07:47.625631" elapsed="0.682236"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-18T22:07:48.811596" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-18T22:07:48.308853" elapsed="0.503167"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:48.813540" level="INFO">Clicking link 'id:feature-statistics-button'.</msg>
+<arg>id:feature-statistics-button</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-18T22:07:48.812731" elapsed="0.066655"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:feature-statistics</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-18T22:07:48.879606" elapsed="0.008681"/>
+</kw>
+<status status="PASS" start="2024-03-18T22:07:47.625382" elapsed="1.263101"/>
+</test>
+<test id="s1-s1-t4" name="File list" line="25">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:48.889072" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-18T22:07:48.888915" elapsed="0.709384"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-18T22:07:50.101663" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-18T22:07:49.598728" elapsed="0.503346"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-03-18T21:41:46.677906" level="INFO">Clicking button 'id:show-passed'.</msg>
+<msg time="2024-03-18T22:07:50.104016" level="INFO">Clicking button 'xpath:/html/body/div[1]/div[2]/div[1]/button'.</msg>
+<arg>xpath:/html/body/div[1]/div[2]/div[1]/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-18T22:07:50.102944" elapsed="0.068472"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:test-file-uri</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-18T22:07:50.171777" elapsed="0.007416"/>
+</kw>
+<status status="PASS" start="2024-03-18T22:07:48.888652" elapsed="1.290726"/>
+</test>
+<test id="s1-s1-t5" name="Open Failed Scenario Error Message" line="31">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:50.179936" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-18T22:07:50.179793" elapsed="0.717319"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-18T22:07:51.399618" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-18T22:07:50.897479" elapsed="0.502505"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:51.401862" level="INFO">Clicking button 'xpath://*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>xpath://*[@id="Sum of two numbers"]/div/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-18T22:07:51.400814" elapsed="0.073626"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:message-Sum of two numbers</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-18T22:07:51.474630" elapsed="0.006790"/>
+</kw>
+<status status="PASS" start="2024-03-18T22:07:50.179543" elapsed="1.302052"/>
+</test>
+<test id="s1-s1-t6" name="Close Failed Scenario Error Message" line="37">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:51.482161" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-18T22:07:51.482022" elapsed="0.721691"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-18T22:07:52.705473" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-18T22:07:52.204128" elapsed="0.501779"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:52.707594" level="INFO">Clicking button 'xpath://*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>xpath://*[@id="Sum of two numbers"]/div/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-18T22:07:52.706720" elapsed="0.071356"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:message-Sum of two numbers</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-18T22:07:52.778261" elapsed="0.006338"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:52.784870" level="INFO">Clicking button 'xpath://*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>xpath://*[@id="Sum of two numbers"]/div/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-18T22:07:52.784743" elapsed="0.022117"/>
+</kw>
+<kw name="Wait Until Page Does Not Contain" owner="SeleniumLibrary">
+<arg>id:message-Sum of two numbers</arg>
+<doc>Waits until ``text`` disappears from the current page.</doc>
+<status status="PASS" start="2024-03-18T22:07:52.807016" elapsed="0.005317"/>
+</kw>
+<status status="PASS" start="2024-03-18T22:07:51.481757" elapsed="1.330734"/>
+</test>
+<status status="PASS" start="2024-03-18T22:07:45.961773" elapsed="6.851002"/>
+</suite>
+<suite id="s1-s2" name="Test-Filters" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-filters.robot">
+<test id="s1-s2-t1" name="Generate Report" line="9">
+<kw name="Generate HTML Report">
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-03-18T22:07:52.816236" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-03-18T22:07:52.814612" elapsed="0.208482"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2024-03-18T22:07:53.023643" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<arg>./${title}.html</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2024-03-18T22:07:53.023354" elapsed="0.000316"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-18T22:07:53.024070" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${result}</var>
+<arg>file://${EXECDIR}/${title}.html</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-18T22:07:53.023785" elapsed="0.000297"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-18T22:07:53.024202" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-18T22:07:53.024139" elapsed="0.000079"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-03-18T22:07:53.024250" elapsed="0.000054"/>
+</return>
+<msg time="2024-03-18T22:07:53.024376" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${path}</var>
+<arg>RFTest</arg>
+<status status="PASS" start="2024-03-18T22:07:52.814497" elapsed="0.209888"/>
+</kw>
+<variable name="${URL}" scope="SUITE">
+<var>${path}</var>
+<status status="PASS" start="2024-03-18T22:07:53.024461" elapsed="0.000069"/>
+</variable>
+<status status="PASS" start="2024-03-18T22:07:52.814304" elapsed="0.210300"/>
+</test>
+<test id="s1-s2-t2" name="Filter Out The Passed Scenarios" line="13">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:53.025062" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-18T22:07:53.024923" elapsed="0.696353"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-18T22:07:54.223699" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-18T22:07:53.721710" elapsed="0.502339"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:54.225922" level="INFO">Clicking button 'id:show-passed'.</msg>
 <arg>id:show-passed</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-03-18T21:41:46.676324" elapsed="0.064623"/>
+<status status="PASS" start="2024-03-18T22:07:54.225033" elapsed="0.067575"/>
 </kw>
 <kw name="Wait Until Page Does Not Contain" owner="SeleniumLibrary">
 <arg>class:passed-scenario</arg>
 <doc>Waits until ``text`` disappears from the current page.</doc>
-<status status="PASS" start="2024-03-18T21:41:46.741209" elapsed="0.008455"/>
+<status status="PASS" start="2024-03-18T22:07:54.292823" elapsed="0.008426"/>
 </kw>
-<status status="PASS" start="2024-03-18T21:41:45.465441" elapsed="1.284402"/>
+<status status="PASS" start="2024-03-18T22:07:53.024735" elapsed="1.276711"/>
 </test>
-<test id="s1-t3" name="Filter Out The skipped Scenarios" line="19">
+<test id="s1-s2-t3" name="Filter Out The skipped Scenarios" line="19">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-03-18T21:41:46.750708" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-03-18T22:07:54.302023" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-03-18T21:41:46.750501" elapsed="0.765736"/>
+<status status="PASS" start="2024-03-18T22:07:54.301870" elapsed="0.703124"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2024-03-18T21:41:48.017641" level="INFO">Slept 500 milliseconds.</msg>
+<msg time="2024-03-18T22:07:55.505989" level="INFO">Slept 500 milliseconds.</msg>
 <arg>0.5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-03-18T21:41:47.516813" elapsed="0.501261"/>
+<status status="PASS" start="2024-03-18T22:07:55.005340" elapsed="0.501047"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-03-18T21:41:48.019827" level="INFO">Clicking button 'id:show-skipped'.</msg>
+<msg time="2024-03-18T22:07:55.508077" level="INFO">Clicking button 'id:show-skipped'.</msg>
 <arg>id:show-skipped</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-03-18T21:41:48.018887" elapsed="0.064309"/>
+<status status="PASS" start="2024-03-18T22:07:55.507187" elapsed="0.067937"/>
 </kw>
 <kw name="Wait Until Page Does Not Contain" owner="SeleniumLibrary">
 <arg>class:skipped-scenario</arg>
 <doc>Waits until ``text`` disappears from the current page.</doc>
-<status status="PASS" start="2024-03-18T21:41:48.083493" elapsed="0.008562"/>
+<status status="PASS" start="2024-03-18T22:07:55.575353" elapsed="0.008205"/>
 </kw>
-<status status="PASS" start="2024-03-18T21:41:46.750069" elapsed="1.342157"/>
+<status status="PASS" start="2024-03-18T22:07:54.301612" elapsed="1.282200"/>
 </test>
-<test id="s1-t4" name="Filter Out The Failed Scenarios" line="25">
+<test id="s1-s2-t4" name="Filter Out The Failed Scenarios" line="25">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-03-18T21:41:48.092774" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-03-18T22:07:55.584442" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-03-18T21:41:48.092626" elapsed="0.713664"/>
+<status status="PASS" start="2024-03-18T22:07:55.584280" elapsed="0.745217"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2024-03-18T21:41:49.307800" level="INFO">Slept 500 milliseconds.</msg>
+<msg time="2024-03-18T22:07:56.830720" level="INFO">Slept 500 milliseconds.</msg>
 <arg>0.5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-03-18T21:41:48.806658" elapsed="0.501552"/>
+<status status="PASS" start="2024-03-18T22:07:56.329837" elapsed="0.501293"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-03-18T21:41:49.309869" level="INFO">Clicking button 'id:show-failed'.</msg>
+<msg time="2024-03-18T22:07:56.833005" level="INFO">Clicking button 'id:show-failed'.</msg>
 <arg>id:show-failed</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-03-18T21:41:49.309022" elapsed="0.062810"/>
+<status status="PASS" start="2024-03-18T22:07:56.832094" elapsed="0.064652"/>
 </kw>
 <kw name="Wait Until Page Does Not Contain" owner="SeleniumLibrary">
 <arg>class:failed-scenario</arg>
 <doc>Waits until ``text`` disappears from the current page.</doc>
-<status status="PASS" start="2024-03-18T21:41:49.372073" elapsed="0.008178"/>
+<status status="PASS" start="2024-03-18T22:07:56.896946" elapsed="0.008556"/>
 </kw>
-<status status="PASS" start="2024-03-18T21:41:48.092376" elapsed="1.288056"/>
+<status status="PASS" start="2024-03-18T22:07:55.583973" elapsed="1.321714"/>
 </test>
-<status status="PASS" start="2024-03-18T21:41:45.205206" elapsed="4.175603"/>
+<status status="PASS" start="2024-03-18T22:07:52.813113" elapsed="4.092807"/>
+</suite>
+<suite id="s1-s3" name="Test-Generate-Report" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-generate-report.robot">
+<test id="s1-s3-t1" name="Generate Report" line="9">
+<kw name="Generate HTML Report">
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-03-18T22:07:56.910205" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-03-18T22:07:56.908261" elapsed="0.220930"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2024-03-18T22:07:57.129783" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<arg>./${title}.html</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2024-03-18T22:07:57.129498" elapsed="0.000311"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-18T22:07:57.129959" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${result}</var>
+<arg>file://${EXECDIR}/${title}.html</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-18T22:07:57.129867" elapsed="0.000103"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-18T22:07:57.130078" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-18T22:07:57.130024" elapsed="0.000070"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-03-18T22:07:57.130119" elapsed="0.000056"/>
+</return>
+<msg time="2024-03-18T22:07:57.130246" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${path}</var>
+<arg>RFTest</arg>
+<status status="PASS" start="2024-03-18T22:07:56.908089" elapsed="0.222167"/>
+</kw>
+<variable name="${URL}" scope="SUITE">
+<var>${path}</var>
+<status status="PASS" start="2024-03-18T22:07:57.130330" elapsed="0.000070"/>
+</variable>
+<status status="PASS" start="2024-03-18T22:07:56.907678" elapsed="0.222798"/>
+</test>
+<test id="s1-s3-t2" name="Report Title" line="13">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-18T22:07:57.130884" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-18T22:07:57.130769" elapsed="0.748420"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-18T22:07:58.382770" level="INFO">Slept 500 milliseconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-18T22:07:57.879814" elapsed="0.503051"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Test report: RFTest.html</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-18T22:07:58.383071" elapsed="0.010996"/>
+</kw>
+<status status="PASS" start="2024-03-18T22:07:57.130592" elapsed="1.263683"/>
+</test>
+<status status="PASS" start="2024-03-18T22:07:56.906260" elapsed="1.488342"/>
+</suite>
+<status status="PASS" start="2024-03-18T22:07:45.953638" elapsed="12.441709"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0" skip="0">All Tests</stat>
+<stat pass="12" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="4" fail="0" skip="0" id="s1" name="Test-Filters">Test-Filters</stat>
+<stat pass="12" fail="0" skip="0" id="s1" name="Test-Feature-Links &amp; Test-Filters &amp; Test-Generate-Report">Test-Feature-Links &amp; Test-Filters &amp; Test-Generate-Report</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s1" name="Test-Feature-Links">Test-Feature-Links &amp; Test-Filters &amp; Test-Generate-Report.Test-Feature-Links</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s2" name="Test-Filters">Test-Feature-Links &amp; Test-Filters &amp; Test-Generate-Report.Test-Filters</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s3" name="Test-Generate-Report">Test-Feature-Links &amp; Test-Filters &amp; Test-Generate-Report.Test-Generate-Report</stat>
 </suite>
 </statistics>
 <errors>
