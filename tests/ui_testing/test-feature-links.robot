@@ -22,25 +22,33 @@ Link To Feature Statistics
     Click Link    id:feature-statistics-button
     Wait Until Page Contains Element  id:feature-statistics
 
-File list
+Open File list
     Open Browser  ${URL}  ${BROWSER}
     Sleep   0.5s
     Click Button    xpath:/html/body/div[1]/div[2]/div[1]/button
-    Wait Until Page Contains Element  id:test-file-uri
+    Wait Until Element Is Visible  id:test-file-uri
+
+Close File list
+    Open Browser  ${URL}  ${BROWSER}
+    Sleep   0.5s
+    Click Button    xpath:/html/body/div[1]/div[2]/div[1]/button
+    Wait Until Element Is Visible  id:test-file-uri
+    Click Button    xpath:/html/body/div[1]/div[2]/div[1]/button
+    Wait Until Element Is Not Visible  id:test-file-uri
 
 Open Failed Scenario Error Message
     Open Browser  ${URL}  ${BROWSER}
     Sleep   0.5s
     Click Button    xpath://*[@id="Sum of two numbers"]/div/button
-    Wait Until Page Contains Element  id:message-Sum of two numbers
+    Wait Until Element Is Visible  id:message-Sum of two numbers
 
 Close Failed Scenario Error Message
     Open Browser  ${URL}  ${BROWSER}
     Sleep   0.5s
     Click Button    xpath://*[@id="Sum of two numbers"]/div/button
-    Wait Until Page Contains Element  id:message-Sum of two numbers
+    Wait Until Element Is Visible  id:message-Sum of two numbers
     Click Button    xpath://*[@id="Sum of two numbers"]/div/button
-    Wait Until Page Does Not Contain  id:message-Sum of two numbers
+    Wait Until Element Is Not Visible  id:message-Sum of two numbers
 
 *** Keywords ***
 Generate HTML Report
