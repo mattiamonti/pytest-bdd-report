@@ -2,7 +2,7 @@
 pytest-bdd-report
 =================
 
-|python| |pypi| |formatting| |tests|
+|python| |pypi| |formatting| |tests| |ui_tests|
 
 |mstats| |total|
 
@@ -22,6 +22,9 @@ pytest-bdd-report
     :alt: GitHub Workflow Status (with event)
 
 .. |tests| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=pytest&label=Tests
+    :alt: GitHub Workflow Status (with event)
+
+.. |ui_tests| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/ui%20automated%20tests.yml?logo=robotframework&label=UI%20Tests
     :alt: GitHub Workflow Status (with event)
 
 .. |mstats| image:: https://img.shields.io/pypi/dm/pytest-bdd-report
