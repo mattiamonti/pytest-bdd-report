@@ -32,7 +32,7 @@ pytest-bdd-report
 
 
 
-The `pytest-bdd-report` plugin is a useful extension for the `pytest-bdd`_ library that allows you to generate 
+The `pytest-bdd-report` plugin is a useful extension for the `pytest-bdd`_ library that allows you to generate
 useful and informative reports for BDD (Behavior-Driven Development) tests developed using the pytest-bdd framework.
 This plugin facilitates the generation of clear and effective HTML reports, providing a comprehensible view of BDD test executions within the project.
 
@@ -101,11 +101,18 @@ To run tests:
     $ pip install -e .
 
 
-4. Run the tests:
+4. Run the unit tests:
 
 ::
 
     $ python -m pytest
+
+5. Run the UI tests with Robot Framework:
+
+::
+
+    $ cd tests/ui_testing
+    $ ./execute_all_ui_tests.sh
 
 
 Contributing
