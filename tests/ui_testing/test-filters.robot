@@ -10,9 +10,14 @@ Generate Report
     ${path}=    Generate HTML Report    RFTest
     VAR  ${URL}    ${path}   scope=SUITE
 
+Filters Must Be Checked
+    Open Browser  ${URL}  ${BROWSER}
+    Checkbox Should Be Selected    id:show-passed
+    Checkbox Should Be Selected    id:show-skipped
+    Checkbox Should Be Selected    id:show-failed
+
 Filter Out The Passed Scenarios
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Button    id:show-passed
     Element Should Be Visible    class:skipped-scenario
     Element Should Be Visible    class:failed-scenario
@@ -20,7 +25,6 @@ Filter Out The Passed Scenarios
 
 Filter Out The Skipped Scenarios
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Button    id:show-skipped
     Element Should Be Visible    class:passed-scenario
     Element Should Be Visible    class:failed-scenario
@@ -28,7 +32,6 @@ Filter Out The Skipped Scenarios
 
 Filter Out The Failed Scenarios
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Button    id:show-failed
     Element Should Be Visible    class:passed-scenario
     Element Should Be Visible    class:skipped-scenario
