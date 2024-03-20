@@ -12,7 +12,6 @@ Generate Report
 
 Report Title
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Wait Until Page Contains     Test report: RFTest.html
 
 *** Keywords ***

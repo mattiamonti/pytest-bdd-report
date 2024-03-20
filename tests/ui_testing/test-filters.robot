@@ -16,7 +16,6 @@ Filters Must Be Checked
     Checkbox Should Be Selected    id:show-skipped
     Checkbox Should Be Selected    id:show-failed
 
-
 Filter Out The Passed Scenarios
     Open Browser  ${URL}  ${BROWSER}
     Click Button    id:show-passed

@@ -12,25 +12,21 @@ Generate Report
 
 Link To A Feature
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Link    xpath=//*[@id="feature-statistics"]/table/tbody/tr[4]/td[1]/a
     Wait Until Page Contains Element  id:Cucuber basket
 
 Link To Feature Statistics
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Link    id:feature-statistics-button
     Wait Until Page Contains Element  id:feature-statistics
 
 Open File list
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Button    xpath:/html/body/div[1]/div[2]/div[1]/button
     Wait Until Element Is Visible  id:test-file-uri
 
 Close File list
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Button    xpath:/html/body/div[1]/div[2]/div[1]/button
     Wait Until Element Is Visible  id:test-file-uri
     Click Button    xpath:/html/body/div[1]/div[2]/div[1]/button
@@ -38,13 +34,11 @@ Close File list
 
 Open Failed Scenario Error Message
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Button    xpath://*[@id="Sum of two numbers"]/div/button
     Wait Until Element Is Visible  id:message-Sum of two numbers
 
 Close Failed Scenario Error Message
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     Click Button    xpath://*[@id="Sum of two numbers"]/div/button
     Wait Until Element Is Visible  id:message-Sum of two numbers
     Click Button    xpath://*[@id="Sum of two numbers"]/div/button

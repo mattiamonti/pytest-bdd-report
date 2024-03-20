@@ -12,7 +12,6 @@ Generate Report
 
 Feature with failed scenarios
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     ${feature}=    Set Variable     xpath=//*[@id="Calculator"]/div[1]
     Element Should Contain  ${feature}   Feature: Calculator
     Element Should Contain  ${feature}   Description: As an user i want to use the calculator app
@@ -21,7 +20,6 @@ Feature with failed scenarios
 
 Feature with skipped scenarios
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     ${feature}=    Set Variable     xpath=//*[@id="Controls"]/div[1]
     Element Should Contain  ${feature}   Feature: Controls
     Element Should Not Contain  ${feature}   Description:
@@ -30,7 +28,6 @@ Feature with skipped scenarios
 
 Feature with passed scenarios
     Open Browser  ${URL}  ${BROWSER}
-    Sleep   0.5s
     ${feature}=    Set Variable     xpath=//*[@id="Cucuber basket"]/div[1]
     Element Should Contain  ${feature}   Feature: Cucuber basket
     Element Should Not Contain  ${feature}   Description:

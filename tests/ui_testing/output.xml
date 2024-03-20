@@ -1,188 +1,788 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.11.8 on darwin)" generated="2024-03-20T21:15:06.288063" rpa="false" schemaversion="5">
-<suite id="s1" name="Test-Filters" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-filters.robot">
-<test id="s1-t1" name="Generate Report" line="9">
+<robot generator="Robot 7.0 (Python 3.11.8 on darwin)" generated="2024-03-20T21:19:08.280954" rpa="false" schemaversion="5">
+<suite id="s1" name="Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios">
+<suite id="s1-s1" name="Test-Feature-Links" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-feature-links.robot">
+<test id="s1-s1-t1" name="Generate Report" line="9">
 <kw name="Generate HTML Report">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-03-20T21:15:06.344951" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-03-20T21:19:08.337655" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-03-20T21:15:06.343124" elapsed="0.206825"/>
+<status status="PASS" start="2024-03-20T21:19:08.335798" elapsed="0.206209"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-03-20T21:15:06.550537" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-03-20T21:19:08.542595" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-03-20T21:15:06.550231" elapsed="0.000336"/>
+<status status="PASS" start="2024-03-20T21:19:08.542295" elapsed="0.000332"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-03-20T21:15:06.550737" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-03-20T21:19:08.542805" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-03-20T21:15:06.550634" elapsed="0.000117"/>
+<status status="PASS" start="2024-03-20T21:19:08.542700" elapsed="0.000120"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-03-20T21:15:06.550881" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-03-20T21:19:08.542950" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-03-20T21:15:06.550812" elapsed="0.000088"/>
+<status status="PASS" start="2024-03-20T21:19:08.542886" elapsed="0.000082"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-03-20T21:15:06.550937" elapsed="0.000053"/>
+<status status="PASS" start="2024-03-20T21:19:08.543004" elapsed="0.000057"/>
 </return>
-<msg time="2024-03-20T21:15:06.551065" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-03-20T21:19:08.543144" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${path}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-03-20T21:15:06.342757" elapsed="0.208318"/>
+<status status="PASS" start="2024-03-20T21:19:08.335039" elapsed="0.208115"/>
 </kw>
 <variable name="${URL}" scope="SUITE">
 <var>${path}</var>
-<status status="PASS" start="2024-03-20T21:15:06.551169" elapsed="0.000083"/>
+<status status="PASS" start="2024-03-20T21:19:08.543241" elapsed="0.000081"/>
 </variable>
-<status status="PASS" start="2024-03-20T21:15:06.342550" elapsed="0.208779"/>
+<status status="PASS" start="2024-03-20T21:19:08.334802" elapsed="0.208602"/>
 </test>
-<test id="s1-t2" name="Filters Must Be Checked" line="13">
+<test id="s1-s1-t2" name="Link To A Feature" line="13">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:06.551779" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-03-20T21:19:08.543855" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-03-20T21:15:06.551640" elapsed="0.993831"/>
+<status status="PASS" start="2024-03-20T21:19:08.543721" elapsed="1.001563"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:09.546002" level="INFO">Clicking link 'xpath=//*[@id="feature-statistics"]/table/tbody/tr[4]/td[1]/a'.</msg>
+<arg>xpath=//*[@id="feature-statistics"]/table/tbody/tr[4]/td[1]/a</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:09.545698" elapsed="0.031529"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:Cucuber basket</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-20T21:19:09.577397" elapsed="0.006811"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:08.543523" elapsed="1.040838"/>
+</test>
+<test id="s1-s1-t3" name="Link To Feature Statistics" line="18">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:09.585626" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:09.585442" elapsed="0.939508"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:10.525684" level="INFO">Clicking link 'id:feature-statistics-button'.</msg>
+<arg>id:feature-statistics-button</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:10.525442" elapsed="0.033364"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:feature-statistics</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-20T21:19:10.558981" elapsed="0.005758"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:09.584490" elapsed="0.980417"/>
+</test>
+<test id="s1-s1-t4" name="Open File list" line="23">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:10.565436" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:10.565285" elapsed="0.799535"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:11.365431" level="INFO">Clicking button 'xpath:/html/body/div[1]/div[2]/div[1]/button'.</msg>
+<arg>xpath:/html/body/div[1]/div[2]/div[1]/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:11.365236" elapsed="0.029214"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id:test-file-uri</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-03-20T21:19:11.394626" elapsed="0.011226"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:10.565049" elapsed="0.840977"/>
+</test>
+<test id="s1-s1-t5" name="Close File list" line="28">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:11.406509" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:11.406383" elapsed="0.977308"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:12.385259" level="INFO">Clicking button 'xpath:/html/body/div[1]/div[2]/div[1]/button'.</msg>
+<arg>xpath:/html/body/div[1]/div[2]/div[1]/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:12.384431" elapsed="0.036666"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id:test-file-uri</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-03-20T21:19:12.421246" elapsed="0.010865"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:12.432367" level="INFO">Clicking button 'xpath:/html/body/div[1]/div[2]/div[1]/button'.</msg>
+<arg>xpath:/html/body/div[1]/div[2]/div[1]/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:12.432259" elapsed="0.020647"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>id:test-file-uri</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2024-03-20T21:19:12.453059" elapsed="0.007670"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:11.406163" elapsed="1.054748"/>
+</test>
+<test id="s1-s1-t6" name="Open Failed Scenario Error Message" line="35">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:12.461529" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:12.461398" elapsed="1.012855"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:13.474883" level="INFO">Clicking button 'xpath://*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>xpath://*[@id="Sum of two numbers"]/div/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:13.474667" elapsed="0.030507"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id:message-Sum of two numbers</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-03-20T21:19:13.505330" elapsed="0.010885"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:12.461132" elapsed="1.055250"/>
+</test>
+<test id="s1-s1-t7" name="Close Failed Scenario Error Message" line="40">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:13.517005" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:13.516867" elapsed="1.035261"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:14.552888" level="INFO">Clicking button 'xpath://*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>xpath://*[@id="Sum of two numbers"]/div/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.552619" elapsed="0.032152"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id:message-Sum of two numbers</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.584917" elapsed="0.011452"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:14.596624" level="INFO">Clicking button 'xpath://*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>xpath://*[@id="Sum of two numbers"]/div/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.596513" elapsed="0.022314"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>id:message-Sum of two numbers</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.618980" elapsed="0.009178"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:13.516545" elapsed="1.111804"/>
+</test>
+<status status="PASS" start="2024-03-20T21:19:08.288633" elapsed="6.340060"/>
+</suite>
+<suite id="s1-s2" name="Test-Features" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-features.robot">
+<test id="s1-s2-t1" name="Generate Report" line="9">
+<kw name="Generate HTML Report">
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-03-20T21:19:14.633085" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.630596" elapsed="0.244040"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2024-03-20T21:19:14.875257" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<arg>./${title}.html</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.874921" elapsed="0.000364"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:14.875443" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${result}</var>
+<arg>file://${EXECDIR}/${title}.html</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.875347" elapsed="0.000108"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-20T21:19:14.875569" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.875512" elapsed="0.000073"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-03-20T21:19:14.875618" elapsed="0.000057"/>
+</return>
+<msg time="2024-03-20T21:19:14.875767" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${path}</var>
+<arg>RFTest</arg>
+<status status="PASS" start="2024-03-20T21:19:14.630468" elapsed="0.245309"/>
+</kw>
+<variable name="${URL}" scope="SUITE">
+<var>${path}</var>
+<status status="PASS" start="2024-03-20T21:19:14.875874" elapsed="0.000154"/>
+</variable>
+<status status="PASS" start="2024-03-20T21:19:14.630273" elapsed="0.245857"/>
+</test>
+<test id="s1-s2-t2" name="Feature with failed scenarios" line="13">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:14.876658" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:14.876518" elapsed="1.029102"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:15.906216" level="INFO">${feature} = xpath=//*[@id="Calculator"]/div[1]</msg>
+<var>${feature}</var>
+<arg>xpath=//*[@id="Calculator"]/div[1]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:15.906010" elapsed="0.000222"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:15.924467" level="INFO">Element 'xpath=//*[@id="Calculator"]/div[1]' contains text 'Feature: Calculator'.</msg>
+<arg>${feature}</arg>
+<arg>Feature: Calculator</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:15.906328" elapsed="0.018204"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:15.932340" level="INFO">Element 'xpath=//*[@id="Calculator"]/div[1]' contains text 'Description: As an user i want to use the calculator app'.</msg>
+<arg>${feature}</arg>
+<arg>Description: As an user i want to use the calculator app</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:15.924674" elapsed="0.007725"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:15.942767" level="INFO">Element 'xpath=//*[@id="Calculator"]/div[1]' contains text 'sample_features/calculator.feature'.</msg>
+<arg>${feature}</arg>
+<arg>sample_features/calculator.feature</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:15.932550" elapsed="0.010278"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:15.950833" level="INFO">Element 'xpath=//*[@id="Calculator"]/div[1]/div/div/div/p[2]' contains text '1'.</msg>
+<arg>xpath=//*[@id="Calculator"]/div[1]/div/div/div/p[2]</arg>
+<arg>1</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:15.942963" elapsed="0.007988"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:14.876304" elapsed="1.074873"/>
+</test>
+<test id="s1-s2-t3" name="Feature with skipped scenarios" line="21">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:15.951761" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:15.951618" elapsed="1.043599"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:16.995815" level="INFO">${feature} = xpath=//*[@id="Controls"]/div[1]</msg>
+<var>${feature}</var>
+<arg>xpath=//*[@id="Controls"]/div[1]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:16.995614" elapsed="0.000217"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:17.014076" level="INFO">Element 'xpath=//*[@id="Controls"]/div[1]' contains text 'Feature: Controls'.</msg>
+<arg>${feature}</arg>
+<arg>Feature: Controls</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:16.995909" elapsed="0.018228"/>
+</kw>
+<kw name="Element Should Not Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:17.021151" level="INFO">Element 'xpath=//*[@id="Controls"]/div[1]' does not contain text 'Description:'.</msg>
+<arg>${feature}</arg>
+<arg>Description:</arg>
+<doc>Verifies that element ``locator`` does not contain text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:17.014321" elapsed="0.006893"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:17.027921" level="INFO">Element 'xpath=//*[@id="Controls"]/div[1]' contains text 'sample_features/controllo.feature'.</msg>
+<arg>${feature}</arg>
+<arg>sample_features/controllo.feature</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:17.021369" elapsed="0.006600"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:17.036826" level="INFO">Element 'xpath=//*[@id="Controls"]/div[1]/div/div/div/p[2]' contains text '2'.</msg>
+<arg>xpath=//*[@id="Controls"]/div[1]/div/div/div/p[2]</arg>
+<arg>2</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:17.028091" elapsed="0.008789"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:15.951337" elapsed="1.085694"/>
+</test>
+<test id="s1-s2-t4" name="Feature with passed scenarios" line="29">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:17.037604" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:17.037480" elapsed="1.030985"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:18.069197" level="INFO">${feature} = xpath=//*[@id="Cucuber basket"]/div[1]</msg>
+<var>${feature}</var>
+<arg>xpath=//*[@id="Cucuber basket"]/div[1]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.068954" elapsed="0.000260"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:18.091680" level="INFO">Element 'xpath=//*[@id="Cucuber basket"]/div[1]' contains text 'Feature: Cucuber basket'.</msg>
+<arg>${feature}</arg>
+<arg>Feature: Cucuber basket</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.069349" elapsed="0.022390"/>
+</kw>
+<kw name="Element Should Not Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:18.099997" level="INFO">Element 'xpath=//*[@id="Cucuber basket"]/div[1]' does not contain text 'Description:'.</msg>
+<arg>${feature}</arg>
+<arg>Description:</arg>
+<doc>Verifies that element ``locator`` does not contain text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.091878" elapsed="0.008181"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:18.107545" level="INFO">Element 'xpath=//*[@id="Cucuber basket"]/div[1]' contains text 'sample_features/scenario_outlines.feature'.</msg>
+<arg>${feature}</arg>
+<arg>sample_features/scenario_outlines.feature</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.100192" elapsed="0.007408"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:18.115252" level="INFO">Element 'xpath=//*[@id="Cucuber basket"]/div[1]/div/div/div/p' contains text '2'.</msg>
+<arg>xpath=//*[@id="Cucuber basket"]/div[1]/div/div/div/p</arg>
+<arg>2</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.107727" elapsed="0.007573"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:17.037173" elapsed="1.078260"/>
+</test>
+<status status="PASS" start="2024-03-20T21:19:14.629027" elapsed="3.486631"/>
+</suite>
+<suite id="s1-s3" name="Test-Filters" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-filters.robot">
+<test id="s1-s3-t1" name="Generate Report" line="9">
+<kw name="Generate HTML Report">
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-03-20T21:19:18.119421" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.117553" elapsed="0.236025"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2024-03-20T21:19:18.354139" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<arg>./${title}.html</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.353859" elapsed="0.000308"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:18.354312" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${result}</var>
+<arg>file://${EXECDIR}/${title}.html</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.354223" elapsed="0.000100"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-20T21:19:18.354430" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.354378" elapsed="0.000067"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-03-20T21:19:18.354472" elapsed="0.000057"/>
+</return>
+<msg time="2024-03-20T21:19:18.354611" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${path}</var>
+<arg>RFTest</arg>
+<status status="PASS" start="2024-03-20T21:19:18.117428" elapsed="0.237193"/>
+</kw>
+<variable name="${URL}" scope="SUITE">
+<var>${path}</var>
+<status status="PASS" start="2024-03-20T21:19:18.354748" elapsed="0.000081"/>
+</variable>
+<status status="PASS" start="2024-03-20T21:19:18.117246" elapsed="0.237662"/>
+</test>
+<test id="s1-s3-t2" name="Filters Must Be Checked" line="13">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:18.355490" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:18.355327" elapsed="1.722266"/>
 </kw>
 <kw name="Checkbox Should Be Selected" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:07.546142" level="INFO">Verifying checkbox 'id:show-passed' is selected.</msg>
+<msg time="2024-03-20T21:19:20.078502" level="INFO">Verifying checkbox 'id:show-passed' is selected.</msg>
 <arg>id:show-passed</arg>
 <doc>Verifies checkbox ``locator`` is selected/checked.</doc>
-<status status="PASS" start="2024-03-20T21:15:07.545850" elapsed="0.015809"/>
+<status status="PASS" start="2024-03-20T21:19:20.078188" elapsed="0.015318"/>
 </kw>
 <kw name="Checkbox Should Be Selected" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:07.561923" level="INFO">Verifying checkbox 'id:show-skipped' is selected.</msg>
+<msg time="2024-03-20T21:19:20.093807" level="INFO">Verifying checkbox 'id:show-skipped' is selected.</msg>
 <arg>id:show-skipped</arg>
 <doc>Verifies checkbox ``locator`` is selected/checked.</doc>
-<status status="PASS" start="2024-03-20T21:15:07.561803" elapsed="0.012308"/>
+<status status="PASS" start="2024-03-20T21:19:20.093682" elapsed="0.013278"/>
 </kw>
 <kw name="Checkbox Should Be Selected" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:07.574380" level="INFO">Verifying checkbox 'id:show-failed' is selected.</msg>
+<msg time="2024-03-20T21:19:20.107240" level="INFO">Verifying checkbox 'id:show-failed' is selected.</msg>
 <arg>id:show-failed</arg>
 <doc>Verifies checkbox ``locator`` is selected/checked.</doc>
-<status status="PASS" start="2024-03-20T21:15:07.574262" elapsed="0.011393"/>
+<status status="PASS" start="2024-03-20T21:19:20.107128" elapsed="0.022771"/>
 </kw>
-<status status="PASS" start="2024-03-20T21:15:06.551448" elapsed="1.034350"/>
+<status status="PASS" start="2024-03-20T21:19:18.355023" elapsed="1.775071"/>
 </test>
-<test id="s1-t3" name="Filter Out The Passed Scenarios" line="20">
+<test id="s1-s3-t3" name="Filter Out The Passed Scenarios" line="19">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:07.586283" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-03-20T21:19:20.130743" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-03-20T21:15:07.586126" elapsed="0.788815"/>
+<status status="PASS" start="2024-03-20T21:19:20.130602" elapsed="1.130305"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:08.375887" level="INFO">Clicking button 'id:show-passed'.</msg>
+<msg time="2024-03-20T21:19:21.261894" level="INFO">Clicking button 'id:show-passed'.</msg>
 <arg>id:show-passed</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-03-20T21:15:08.375587" elapsed="0.027539"/>
+<status status="PASS" start="2024-03-20T21:19:21.261678" elapsed="0.036567"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:08.414608" level="INFO">Element 'class:skipped-scenario' is displayed.</msg>
+<msg time="2024-03-20T21:19:21.321943" level="INFO">Element 'class:skipped-scenario' is displayed.</msg>
 <arg>class:skipped-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:08.403271" elapsed="0.011389"/>
+<status status="PASS" start="2024-03-20T21:19:21.298482" elapsed="0.023519"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:08.424404" level="INFO">Element 'class:failed-scenario' is displayed.</msg>
+<msg time="2024-03-20T21:19:21.333217" level="INFO">Element 'class:failed-scenario' is displayed.</msg>
 <arg>class:failed-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:08.414787" elapsed="0.009662"/>
+<status status="PASS" start="2024-03-20T21:19:21.322133" elapsed="0.011147"/>
 </kw>
 <kw name="Element Should Not Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:08.432970" level="INFO">Element 'class:passed-scenario' exists but is not displayed.</msg>
+<msg time="2024-03-20T21:19:21.341480" level="INFO">Element 'class:passed-scenario' exists but is not displayed.</msg>
 <arg>class:passed-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:08.424563" elapsed="0.008455"/>
+<status status="PASS" start="2024-03-20T21:19:21.333420" elapsed="0.008111"/>
 </kw>
-<status status="PASS" start="2024-03-20T21:15:07.585923" elapsed="0.847234"/>
+<status status="PASS" start="2024-03-20T21:19:20.130273" elapsed="1.211410"/>
 </test>
-<test id="s1-t4" name="Filter Out The Skipped Scenarios" line="27">
+<test id="s1-s3-t4" name="Filter Out The Skipped Scenarios" line="26">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:08.433626" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-03-20T21:19:21.342222" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-03-20T21:15:08.433508" elapsed="0.844427"/>
+<status status="PASS" start="2024-03-20T21:19:21.342086" elapsed="1.119379"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:09.278450" level="INFO">Clicking button 'id:show-skipped'.</msg>
+<msg time="2024-03-20T21:19:22.462460" level="INFO">Clicking button 'id:show-skipped'.</msg>
 <arg>id:show-skipped</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-03-20T21:15:09.278246" elapsed="0.035569"/>
+<status status="PASS" start="2024-03-20T21:19:22.462059" elapsed="0.038321"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:09.325489" level="INFO">Element 'class:passed-scenario' is displayed.</msg>
+<msg time="2024-03-20T21:19:22.515292" level="INFO">Element 'class:passed-scenario' is displayed.</msg>
 <arg>class:passed-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:09.313961" elapsed="0.011601"/>
+<status status="PASS" start="2024-03-20T21:19:22.500536" elapsed="0.014815"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:09.335426" level="INFO">Element 'class:failed-scenario' is displayed.</msg>
+<msg time="2024-03-20T21:19:22.525568" level="INFO">Element 'class:failed-scenario' is displayed.</msg>
 <arg>class:failed-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:09.325685" elapsed="0.009797"/>
+<status status="PASS" start="2024-03-20T21:19:22.515477" elapsed="0.010146"/>
 </kw>
 <kw name="Element Should Not Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:09.344285" level="INFO">Element 'class:skipped-scenario' exists but is not displayed.</msg>
+<msg time="2024-03-20T21:19:22.533545" level="INFO">Element 'class:skipped-scenario' exists but is not displayed.</msg>
 <arg>class:skipped-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:09.335604" elapsed="0.008732"/>
+<status status="PASS" start="2024-03-20T21:19:22.525754" elapsed="0.007843"/>
 </kw>
-<status status="PASS" start="2024-03-20T21:15:08.433295" elapsed="0.911257"/>
+<status status="PASS" start="2024-03-20T21:19:21.341805" elapsed="1.191942"/>
 </test>
-<test id="s1-t5" name="Filter Out The Failed Scenarios" line="34">
+<test id="s1-s3-t5" name="Filter Out The Failed Scenarios" line="33">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:09.345077" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-03-20T21:19:22.534261" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-03-20T21:15:09.344930" elapsed="1.046488"/>
+<status status="PASS" start="2024-03-20T21:19:22.534140" elapsed="1.182471"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:10.392141" level="INFO">Clicking button 'id:show-failed'.</msg>
+<msg time="2024-03-20T21:19:23.718126" level="INFO">Clicking button 'id:show-failed'.</msg>
 <arg>id:show-failed</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-03-20T21:15:10.391930" elapsed="0.028356"/>
+<status status="PASS" start="2024-03-20T21:19:23.717764" elapsed="0.042350"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:10.431533" level="INFO">Element 'class:passed-scenario' is displayed.</msg>
+<msg time="2024-03-20T21:19:23.775074" level="INFO">Element 'class:passed-scenario' is displayed.</msg>
 <arg>class:passed-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:10.420428" elapsed="0.011157"/>
+<status status="PASS" start="2024-03-20T21:19:23.760377" elapsed="0.014754"/>
 </kw>
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:10.442419" level="INFO">Element 'class:skipped-scenario' is displayed.</msg>
+<msg time="2024-03-20T21:19:23.786445" level="INFO">Element 'class:skipped-scenario' is displayed.</msg>
 <arg>class:skipped-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:10.431719" elapsed="0.010769"/>
+<status status="PASS" start="2024-03-20T21:19:23.775291" elapsed="0.011266"/>
 </kw>
 <kw name="Element Should Not Be Visible" owner="SeleniumLibrary">
-<msg time="2024-03-20T21:15:10.451552" level="INFO">Element 'class:failed-scenario' exists but is not displayed.</msg>
+<msg time="2024-03-20T21:19:23.796429" level="INFO">Element 'class:failed-scenario' exists but is not displayed.</msg>
 <arg>class:failed-scenario</arg>
 <doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
-<status status="PASS" start="2024-03-20T21:15:10.442701" elapsed="0.008903"/>
+<status status="PASS" start="2024-03-20T21:19:23.786698" elapsed="0.009791"/>
 </kw>
-<status status="PASS" start="2024-03-20T21:15:09.344689" elapsed="1.107119"/>
+<status status="PASS" start="2024-03-20T21:19:22.533864" elapsed="1.263091"/>
 </test>
-<status status="PASS" start="2024-03-20T21:15:06.288900" elapsed="4.163356"/>
+<status status="PASS" start="2024-03-20T21:19:18.115987" elapsed="5.681334"/>
+</suite>
+<suite id="s1-s4" name="Test-Generate-Report" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-generate-report.robot">
+<test id="s1-s4-t1" name="Generate Report" line="9">
+<kw name="Generate HTML Report">
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-03-20T21:19:23.801716" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-03-20T21:19:23.799623" elapsed="0.259587"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2024-03-20T21:19:24.060143" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<arg>./${title}.html</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2024-03-20T21:19:24.059511" elapsed="0.000671"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:24.060387" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${result}</var>
+<arg>file://${EXECDIR}/${title}.html</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:24.060270" elapsed="0.000133"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-20T21:19:24.060526" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-20T21:19:24.060464" elapsed="0.000080"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-03-20T21:19:24.060580" elapsed="0.000056"/>
+</return>
+<msg time="2024-03-20T21:19:24.060723" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${path}</var>
+<arg>RFTest</arg>
+<status status="PASS" start="2024-03-20T21:19:23.799488" elapsed="0.261246"/>
+</kw>
+<variable name="${URL}" scope="SUITE">
+<var>${path}</var>
+<status status="PASS" start="2024-03-20T21:19:24.060801" elapsed="0.000075"/>
+</variable>
+<status status="PASS" start="2024-03-20T21:19:23.799263" elapsed="0.261808"/>
+</test>
+<test id="s1-s4-t2" name="Report Title" line="13">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:24.061499" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:24.061370" elapsed="2.056566"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Test report: RFTest.html</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-03-20T21:19:26.118485" elapsed="0.012973"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:24.061187" elapsed="2.070433"/>
+</test>
+<status status="PASS" start="2024-03-20T21:19:23.797785" elapsed="2.334427"/>
+</suite>
+<suite id="s1-s5" name="Test-Scenarios" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-scenarios.robot">
+<test id="s1-s5-t1" name="Generate Report" line="9">
+<kw name="Generate HTML Report">
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-03-20T21:19:26.138899" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-03-20T21:19:26.136098" elapsed="0.291618"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2024-03-20T21:19:26.428348" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<arg>./${title}.html</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2024-03-20T21:19:26.428062" elapsed="0.000315"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:26.428527" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${result}</var>
+<arg>file://${EXECDIR}/${title}.html</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:26.428436" elapsed="0.000102"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-20T21:19:26.428739" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-20T21:19:26.428590" elapsed="0.000182"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-03-20T21:19:26.428810" elapsed="0.000057"/>
+</return>
+<msg time="2024-03-20T21:19:26.428970" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${path}</var>
+<arg>RFTest</arg>
+<status status="PASS" start="2024-03-20T21:19:26.135653" elapsed="0.293364"/>
+</kw>
+<variable name="${URL}" scope="SUITE">
+<var>${path}</var>
+<status status="PASS" start="2024-03-20T21:19:26.429086" elapsed="0.000125"/>
+</variable>
+<status status="PASS" start="2024-03-20T21:19:26.135347" elapsed="0.293951"/>
+</test>
+<test id="s1-s5-t2" name="Failed scenario color" line="13">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:26.429915" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:26.429602" elapsed="1.072044"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:27.502235" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<var>${feature}</var>
+<arg>xpath=//*[@id="Sum of two numbers"]/div</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:27.502051" elapsed="0.000200"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:27.521022" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<arg>${feature}</arg>
+<arg>Scenario: Sum of two numbers</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:27.502374" elapsed="0.018783"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:27.529201" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(175, 35, 58); background: rgb(24...</msg>
+<var>${style_result}</var>
+<arg>${feature}</arg>
+<arg>style</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:27.521462" elapsed="0.007765"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${style_result}</arg>
+<arg>rgb(249, 225, 229)</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-03-20T21:19:27.529368" elapsed="0.000207"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:26.429414" elapsed="1.100249"/>
+</test>
+<test id="s1-s5-t3" name="Skipped scenario color" line="20">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:27.530574" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:27.530350" elapsed="1.117781"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:28.649033" level="INFO">${feature} = xpath=//*[@id="Shutdown"]/div</msg>
+<var>${feature}</var>
+<arg>xpath=//*[@id="Shutdown"]/div</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:28.648616" elapsed="0.000440"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:28.664372" level="INFO">Element 'xpath=//*[@id="Shutdown"]/div' contains text 'Scenario: Shutdown'.</msg>
+<arg>${feature}</arg>
+<arg>Scenario: Shutdown</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:28.649288" elapsed="0.015149"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:28.673423" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(237, 181, 39); background: rgb(2...</msg>
+<var>${style_result}</var>
+<arg>${feature}</arg>
+<arg>style</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:28.664645" elapsed="0.008834"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${style_result}</arg>
+<arg>rgb(255, 248, 231)</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-03-20T21:19:28.673723" elapsed="0.000118"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:27.529989" elapsed="1.143955"/>
+</test>
+<test id="s1-s5-t4" name="Passed scenario color" line="27">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:28.674696" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-20T21:19:28.674456" elapsed="2.447584"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-20T21:19:31.122907" level="INFO">${feature} = xpath=//*[@id="Eating cucumbers"]/div</msg>
+<var>${feature}</var>
+<arg>xpath=//*[@id="Eating cucumbers"]/div</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-20T21:19:31.122592" elapsed="0.000362"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:31.139104" level="INFO">Element 'xpath=//*[@id="Eating cucumbers"]/div' contains text 'Scenario: Eating cucumbers'.</msg>
+<arg>${feature}</arg>
+<arg>Scenario: Eating cucumbers</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-03-20T21:19:31.123071" elapsed="0.016090"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-03-20T21:19:31.147656" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(13, 104, 50); background: rgb(21...</msg>
+<var>${style_result}</var>
+<arg>${feature}</arg>
+<arg>style</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-03-20T21:19:31.139382" elapsed="0.008298"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${style_result}</arg>
+<arg>rgb(214, 240, 224)</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-03-20T21:19:31.147811" elapsed="0.000113"/>
+</kw>
+<status status="PASS" start="2024-03-20T21:19:28.674168" elapsed="2.473865"/>
+</test>
+<status status="PASS" start="2024-03-20T21:19:26.133237" elapsed="5.015062"/>
+</suite>
+<status status="PASS" start="2024-03-20T21:19:08.281486" elapsed="22.867449"/>
 </suite>
 <statistics>
 <total>
-<stat pass="5" fail="0" skip="0">All Tests</stat>
+<stat pass="22" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="5" fail="0" skip="0" id="s1" name="Test-Filters">Test-Filters</stat>
+<stat pass="22" fail="0" skip="0" id="s1" name="Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios">Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios</stat>
+<stat pass="7" fail="0" skip="0" id="s1-s1" name="Test-Feature-Links">Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Feature-Links</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s2" name="Test-Features">Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Features</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s3" name="Test-Filters">Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Filters</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s4" name="Test-Generate-Report">Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Generate-Report</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s5" name="Test-Scenarios">Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Scenarios</stat>
 </suite>
 </statistics>
 <errors>
