@@ -1,3 +1,13 @@
+# ##############################################
+# New custom
+
+# Eventual local virtual environments
+.venv/
+venv/
+
+# ##############################################
+# Original .gitignore file
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
