@@ -94,7 +94,7 @@ class FeatureExtractor(BaseExtractor):
     @staticmethod
     def _check_for_skipped_scenarios(feature: Feature) -> int:
         try:
-            with open(os.path.abspath(feature.uri), "r") as f:
+            with open(os.path.abspath(feature.uri), "r", encoding="utf-8") as f:
                 lines = f.readlines()
 
             if not lines:
