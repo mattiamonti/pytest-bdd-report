@@ -10,7 +10,7 @@ class JsonLoader(ILoader):
 
     def load(self) -> list[dict]:
         if os.path.exists(self.path):
-            with open(self.path, "r") as f:
+            with open(self.path, "r", encoding="utf-8") as f:
                 return json.load(f)
         else:
             return []

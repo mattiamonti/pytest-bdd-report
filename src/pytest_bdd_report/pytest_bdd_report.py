@@ -57,7 +57,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     """
     bdd_report_flag = _get_flag_option(config, BDD_REPORT_FLAG)
     if bdd_report_flag != ".html":
-        print(f"\n\n📈 Report created at: {bdd_report_flag}")
+        print(f"\n\n Report created at: {bdd_report_flag}")
 
 
 @pytest.hookimpl(trylast=True)
