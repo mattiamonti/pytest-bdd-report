@@ -12,7 +12,7 @@ Generate Report
 
 Link To A Feature
     Open Browser  ${URL}  ${BROWSER}
-    Click Link    xpath=//*[@id="feature-statistics"]/table/tbody/tr[4]/td[1]/a
+    Click Link    xpath=//*[@id="feature-statistics"]/table/tbody/tr[3]/td[1]/a
     Wait Until Page Contains Element  id:Cucuber basket
 
 Link To Feature Statistics

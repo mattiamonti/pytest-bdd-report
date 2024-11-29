@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.0 (Python 3.11.8 on darwin)" name="Generator">
+<meta content="Robot Framework 7.1.1 (Python 3.12.3 on darwin)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -1068,58 +1068,48 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0) {
+        if (total == 0)
             return [0.0, 0.0, 0.0];
-        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1
+            pass = 0.1;
         if (fail > 0 && fail < 0.1)
-            fail = 0.1
+            fail = 0.1;
         if (skip > 0 && skip < 0.1)
-            skip = 0.1
+            skip = 0.1;
         if (pass > 99.95 && pass < 100)
-            pass = 99.9
+            pass = 99.9;
         if (fail > 99.95 && fail < 100)
-            fail = 99.9
+            fail = 99.9;
         if (skip > 99.95 && skip < 100)
-            skip = 99.9
-        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
+            skip = 99.9;
+        return [round1(pass), round1(skip), round1(fail)];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1
+            num1 = 1.0;
         if (num2 > 0 && num2 < 1)
-            num2 = 1
+            num2 = 1.0;
         if (num3 > 0 && num3 < 1)
-            num3 = 1
+            num3 = 1.0;
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 > num2 && num1 > num3)
-                num1 -= 0.1;
-            else if (num2 > num1 && num2 > num3)
-                num2 -= 0.1;
-            else if (num3 > num1 && num3 > num2)
-                num3 -= 0.1;
-            else if (num1 > num3 && num1 == num2) {
-                num1 -= 0.1;
-                num2 -= 0.1;
-            }
-            else if (num1 > num2 && num1 == num3) {
-                num1 -= 0.1;
-                num3 -= 0.1;
-            }
-            else if (num2 > num1 && num2 == num3) {
-                num2 -= 0.1;
-                num3 -= 0.1;
-            }
+            if (num1 >= num2 && num1 >= num3)
+                num1 = round1(num1 - 0.1);
+            else if (num2 >= num1 && num2 >= num3)
+                num2 = round1(num2 - 0.1);
+            else
+                num3 = round1(num3 - 0.1);
         }
-        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
+        return [num1, num2, num3];
+    }
+    function round1(num) {
+        return Math.round(num*10) / 10;
     }
     return {
         Statistics: Statistics
@@ -1897,7 +1887,7 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,0,0,0,[],[1,0,22867],[[2,3,4,0,[],[1,8,6340],[],[[5,0,0,[],[1,54,209],[]],[6,0,0,[],[1,263,1041],[]],[7,0,0,[],[1,1303,980],[]],[8,0,0,[],[1,2284,841],[]],[9,0,0,[],[1,3125,1055],[]],[10,0,0,[],[1,4180,1055],[]],[11,0,0,[],[1,5236,1112],[]]],[],[7,7,0,0]],[12,13,14,0,[],[1,6348,3487],[],[[5,0,0,[],[1,6349,246],[]],[15,0,0,[],[1,6595,1075],[]],[16,0,0,[],[1,7670,1086],[]],[17,0,0,[],[1,8756,1078],[]]],[],[4,4,0,0]],[18,19,20,0,[],[1,9835,5681],[],[[5,0,0,[],[1,9836,238],[]],[21,0,0,[],[1,10074,1775],[]],[22,0,0,[],[1,11849,1211],[]],[23,0,0,[],[1,13061,1192],[]],[24,0,0,[],[1,14253,1263],[]]],[],[5,5,0,0]],[25,26,27,0,[],[1,15517,2334],[],[[5,0,0,[],[1,15518,262],[]],[28,0,0,[],[1,15780,2070],[]]],[],[2,2,0,0]],[29,30,31,0,[],[1,17852,5015],[],[[5,0,0,[],[1,17854,294],[]],[32,0,0,[],[1,18148,1100],[]],[33,0,0,[],[1,19249,1144],[]],[34,0,0,[],[1,20393,2474],[]]],[],[4,4,0,0]]],[],[],[22,22,0,0]];
+window.output["suite"] = [1,0,0,0,[],[1,0,19926],[[2,3,4,0,[],[1,15,5715],[],[[5,0,0,[],[1,86,319],[]],[6,0,0,[],[1,405,1307],[]],[7,0,0,[],[1,1713,746],[]],[8,0,0,[],[1,2459,759],[]],[9,0,0,[],[1,3218,842],[]],[10,0,0,[],[1,4060,833],[]],[11,0,0,[],[1,4893,837],[]]],[],[7,7,0,0]],[12,13,14,0,[],[1,5730,2831],[],[[5,0,0,[],[1,5731,279],[]],[15,0,0,[],[1,6010,829],[]],[16,0,0,[],[1,6840,781],[]],[17,0,0,[],[1,7621,940],[]]],[],[4,4,0,0]],[18,19,20,0,[],[1,8562,3490],[],[[5,0,0,[],[1,8563,277],[]],[21,0,0,[],[1,8840,800],[]],[22,0,0,[],[1,9641,788],[]],[23,0,0,[],[1,10429,828],[]],[24,0,0,[],[1,11257,794],[]]],[],[5,5,0,0]],[25,26,27,0,[],[1,12052,5061],[],[[5,0,0,[],[1,12054,290],[]],[28,0,0,[],[1,12345,4768],[]]],[],[2,2,0,0]],[29,30,31,0,[],[1,17113,2812],[],[[5,0,0,[],[1,17116,295],[]],[32,0,0,[],[1,17411,752],[]],[33,0,0,[],[1,18162,822],[]],[34,0,0,[],[1,18984,941],[]]],[],[4,4,0,0]]],[],[],[22,22,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
@@ -1906,13 +1896,13 @@ window.output["strings"] = [];
 window.output["strings"] = window.output["strings"].concat(["*","*Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios","*Test-Feature-Links","*/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-feature-links.robot","*test-feature-links.robot","*Generate Report","*Link To A Feature","*Link To Feature Statistics","*Open File list","*Close File list","*Open Failed Scenario Error Message","*Close Failed Scenario Error Message","*Test-Features","*/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-features.robot","*test-features.robot","*Feature with failed scenarios","*Feature with skipped scenarios","*Feature with passed scenarios","*Test-Filters","*/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-filters.robot","*test-filters.robot","*Filters Must Be Checked","*Filter Out The Passed Scenarios","*Filter Out The Skipped Scenarios","*Filter Out The Failed Scenarios","*Test-Generate-Report","*/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-generate-report.robot","*test-generate-report.robot","*Report Title","*Test-Scenarios","*/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-scenarios.robot","*test-scenarios.robot","*Failed scenario color","*Skipped scenario color","*Passed scenario color"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:23","fail":0,"label":"All Tests","pass":22,"skip":0}],[],[{"elapsed":"00:00:23","fail":0,"id":"s1","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios","name":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios","pass":22,"skip":0},{"elapsed":"00:00:06","fail":0,"id":"s1-s1","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Feature-Links","name":"Test-Feature-Links","pass":7,"skip":0},{"elapsed":"00:00:03","fail":0,"id":"s1-s2","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Features","name":"Test-Features","pass":4,"skip":0},{"elapsed":"00:00:06","fail":0,"id":"s1-s3","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Filters","name":"Test-Filters","pass":5,"skip":0},{"elapsed":"00:00:02","fail":0,"id":"s1-s4","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Generate-Report","name":"Test-Generate-Report","pass":2,"skip":0},{"elapsed":"00:00:05","fail":0,"id":"s1-s5","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Scenarios","name":"Test-Scenarios","pass":4,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:20","fail":0,"label":"All Tests","pass":22,"skip":0}],[],[{"elapsed":"00:00:20","fail":0,"id":"s1","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios","name":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios","pass":22,"skip":0},{"elapsed":"00:00:06","fail":0,"id":"s1-s1","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Feature-Links","name":"Test-Feature-Links","pass":7,"skip":0},{"elapsed":"00:00:03","fail":0,"id":"s1-s2","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Features","name":"Test-Features","pass":4,"skip":0},{"elapsed":"00:00:03","fail":0,"id":"s1-s3","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Filters","name":"Test-Filters","pass":5,"skip":0},{"elapsed":"00:00:05","fail":0,"id":"s1-s4","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Generate-Report","name":"Test-Generate-Report","pass":2,"skip":0},{"elapsed":"00:00:03","fail":0,"id":"s1-s5","label":"Test-Feature-Links &amp; Test-Features &amp; Test-Filters &amp; Test-Generate-Report &amp; Test-Scenarios.Test-Scenarios","name":"Test-Scenarios","pass":4,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1710965948281;
+window.output["baseMillis"] = 1732903610236;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 22875;
+window.output["generated"] = 19932;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;

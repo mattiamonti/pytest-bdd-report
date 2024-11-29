@@ -1,61 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>RFTest.html</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <script>
-        function showhide(item, id, tooltip_when_showed = "", tooltip_when_hided = "") {
-            var div = document.getElementById(id);
-            if (div.style.display !== "block") {
-                div.style.display = "block";
-                item.style.transform = 'rotate(0deg)';
-                item.title = tooltip_when_showed;
-            }
-            else {
-                div.style.display = "none";
-                item.style.transform = 'rotate(-90deg)';
-                item.title = tooltip_when_hided;
-            }
-        }
-
-        function showTest(checked, type) {
-            var scenarios = document.getElementsByClassName(type + "-scenario");
-            if (checked) {
-                for (let i = 0; i < scenarios.length; i++) {
-                    scenarios[i].style.display = "flex";
-                }
-            } else {
-                for (let i = 0; i < scenarios.length; i++) {
-                    scenarios[i].style.display = "none";
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>RFTest.html</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+            rel="stylesheet"
+        />
+        <script>
+            function showhide(
+                item,
+                id,
+                tooltip_when_showed = "",
+                tooltip_when_hided = "",
+            ) {
+                var div = document.getElementById(id);
+                if (div.style.display !== "block") {
+                    div.style.display = "block";
+                    item.style.transform = "rotate(0deg)";
+                    item.title = tooltip_when_showed;
+                } else {
+                    div.style.display = "none";
+                    item.style.transform = "rotate(-90deg)";
+                    item.title = tooltip_when_hided;
                 }
             }
-        }
 
-    </script>
+            function showTest(checked, type) {
+                var scenarios = document.getElementsByClassName(
+                    type + "-scenario",
+                );
+                if (checked) {
+                    for (let i = 0; i < scenarios.length; i++) {
+                        scenarios[i].style.display = "flex";
+                    }
+                } else {
+                    for (let i = 0; i < scenarios.length; i++) {
+                        scenarios[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+    </head>
 
-</head>
-
-<body
-    style="font-family: 'Roboto', sans-serif; padding: 4rem;background: #F5F6F7; scroll-behavior: smooth; color: #1a1a1a;">
-
-    <a href="#feature-statistics" id="feature-statistics-button"
+    <body
+        style="
+            font-family: &quot;Roboto&quot;, sans-serif;
+            padding: 4rem;
+            background: #f5f6f7;
+            scroll-behavior: smooth;
+            color: #1a1a1a;
+        "
+    >
+        <a href="#feature-statistics" id="feature-statistics-button"
     style="position: fixed;z-index: 10; bottom: 1rem; right: 1rem; background-color: white;color: black; padding: 0.5rem 1rem; border-radius: 50px;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
     Return to top
 </a>
-    <div style="margin-bottom: 1rem;">
-        <div style="display: flex; align-items: first baseline; justify-content: space-between;">
-            <div>
-                <h1 style="font-size: 2rem; font-weight: 400; margin-bottom: 0.25rem;">Test report: RFTest.html</h1>
-                <p style="color: #535353; margin: 0 0 0.5rem 0;">/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</p>
+        <div style="margin-bottom: 1rem">
+            <div
+                style="
+                    display: flex;
+                    align-items: first baseline;
+                    justify-content: space-between;
+                "
+            >
+                <div>
+                    <h1
+                        style="
+                            font-size: 2rem;
+                            font-weight: 400;
+                            margin-bottom: 0.25rem;
+                        "
+                    >
+                        Test report: RFTest.html
+                    </h1>
+                    <p style="color: #535353; margin: 0 0 0.5rem 0">
+                        /Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html
+                    </p>
+                </div>
+                <div>
+                    <p style="color: #535353; margin: 0; text-align: right">
+                        2024-11-29 19:07:07
+                    </p>
+                    <div
+                        style="
+                            transform: scale(0.6);
+                            margin: 0 -3.5rem 0 0;
+                            padding: 0;
+                        "
+                    >
+                        <script
+                            type="text/javascript"
+                            src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+                            data-name="bmc-button"
+                            data-slug="mattiamonti"
+                            data-color="#D6F0E0"
+                            data-emoji=""
+                            data-font="Inter"
+                            data-text="Buy me a coffee"
+                            data-outline-color="#000000"
+                            data-font-color="#000000"
+                            data-coffee-color="#ffffff"
+                        ></script>
+                    </div>
+                </div>
             </div>
-            <p style="color: #535353;">2024-03-20 21:19:26</p>
-        </div>
 
-        <div>
+            <div>
     <div style="display: flex; gap: 0rem; align-items: center; margin-top: 0.5rem;">
         <button onclick="showhide(this, 'test-file-uri', 'Close test file list', 'Open test file list')"
             style="background-color: transparent;border: none; cursor: pointer; transform: rotate(-90deg);"
@@ -78,9 +131,9 @@
         </ul>
     </div>
 </div>
-    </div>
+        </div>
 
-    <div>
+        <div>
 
     <div style="width: 100%; display: flex; gap: 5%;">
         <div
@@ -118,7 +171,7 @@
                 <p>
                     <span style="font-size: 1.25rem;">
                         
-                        1.91ms
+                        1.81ms
                         
                     </span>
                     <span style=" color: #555; margin-left: 0.25rem;"> Total duration</span>
@@ -252,23 +305,82 @@
 
 </div>
 
-    <br>
-    <div id="feature-statistics"
-        style="background-color: white; padding: 2rem; border-radius: 0.625rem;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
-        <table border="0" cellpadding="2" style="width: 100%;border-collapse: collapse;">
-            <tbody>
-                <tr style="border-bottom: 1px solid #555; color: #555;">
-                    <td style="width: 50%;">Feature</td>
+        <br />
+        <div
+            id="feature-statistics"
+            style="
+                background-color: white;
+                padding: 2rem;
+                border-radius: 0.625rem;
+                box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+            "
+        >
+            <table
+                border="0"
+                cellpadding="2"
+                style="width: 100%; border-collapse: collapse"
+                class="sortable"
+            >
+                <tbody>
+                    <tr style="border-bottom: 1px solid #555; color: #555">
+                        <td style="width: 50%; cursor: pointer">Feature</td>
 
-                    <td style="width: fit-content; text-align:center;">Total</td>
-                    <td style="width: fit-content; text-align:center;">Passed</td>
-                    <td style="width: fit-content; text-align:center;">Failed</td>
-                    <td style="width: fit-content; text-align:center;">Skipped</td>
-                    <td style="width: fit-content; text-align:center;">Success Rate</td>
-                    <td style="width: fit-content; text-align:center;">Duration</td>
-
-                </tr>
-                <tr>
+                        <td
+                            style="
+                                width: fit-content;
+                                text-align: center;
+                                cursor: pointer;
+                            "
+                        >
+                            Total
+                        </td>
+                        <td
+                            style="
+                                width: fit-content;
+                                text-align: center;
+                                cursor: pointer;
+                            "
+                        >
+                            Passed
+                        </td>
+                        <td
+                            style="
+                                width: fit-content;
+                                text-align: center;
+                                cursor: pointer;
+                            "
+                        >
+                            Failed
+                        </td>
+                        <td
+                            style="
+                                width: fit-content;
+                                text-align: center;
+                                cursor: pointer;
+                            "
+                        >
+                            Skipped
+                        </td>
+                        <td
+                            style="
+                                width: fit-content;
+                                text-align: center;
+                                cursor: pointer;
+                            "
+                        >
+                            Success Rate
+                        </td>
+                        <td
+                            style="
+                                width: fit-content;
+                                text-align: center;
+                                cursor: pointer;
+                            "
+                        >
+                            Duration
+                        </td>
+                    </tr>
+                    <tr>
     
     
     <td><a style="color: inherit; display: flex; align-items: center; gap: 0.25rem;" href="#Calculator">
@@ -289,7 +401,7 @@
     <td style="text-align:center;">67%</td>
 
     
-    <td style="text-align:center;">0.43ms</td>
+    <td style="text-align:center;">0.34ms</td>
     
 </tr><tr>
     
@@ -312,7 +424,7 @@
     <td style="text-align:center;">33%</td>
 
     
-    <td style="text-align:center;">1.33ms</td>
+    <td style="text-align:center;">1.32ms</td>
     
 </tr><tr>
     
@@ -341,14 +453,17 @@
     <td style="text-align:center;">0.15ms</td>
     
 </tr>
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
 
-    <br>
+        <br />
 
-    <div id="control-box" style="display: flex; justify-content: space-between;">
-        <div id="filters"
+        <div
+            id="control-box"
+            style="display: flex; justify-content: space-between"
+        >
+            <div id="filters"
     style="display: flex; gap: 1rem; background-color: white; padding: 1rem 2rem; border-radius: 0.625rem;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
     <div style="display: flex; align-items: center; gap: 0.25rem">
         <input type="checkbox" id="show-passed" checked="true" onclick="showTest(this.checked, 'passed')">
@@ -365,11 +480,11 @@
         <label for="show-skipped">Show skipped tests</label>
     </div>
 </div>
-    </div>
+        </div>
 
-    <br>
-    <div style="display: flex; flex-direction: column; gap: 3.5rem;">
-        <div id="Calculator" class="searchable"
+        <br />
+        <div style="display: flex; flex-direction: column; gap: 3.5rem">
+            <div id="Calculator" class="searchable"
     style="display: flex; width: 72rem; flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%;">
     <div style="display: flex; width: 100%; justify-content: space-between; align-items:first baseline;">
         <div>
@@ -412,7 +527,7 @@
         font-weight: 400;
         line-height: normal;">
             
-            Executed in 0.429ms
+            Executed in 0.342ms
             
         </p>
     </div>
@@ -453,7 +568,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of a number">
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.137ms
+                        Executed in 0.093ms
                         
                     </p>
                 </div>
@@ -480,7 +595,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of a number">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.033ms
+        0.018ms
         
     </p>
 </div><div class="step-container"
@@ -504,7 +619,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of a number">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.055ms
+        0.041ms
         
     </p>
 </div><div class="step-container"
@@ -528,7 +643,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of a number">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.019ms
+        0.014ms
         
     </p>
 </div><div class="step-container"
@@ -552,7 +667,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of a number">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.029ms
+        0.02ms
         
     </p>
 </div>
@@ -594,7 +709,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.177ms
+                        Executed in 0.143ms
                         
                     </p>
                 </div>
@@ -621,7 +736,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.017ms
+        0.012ms
         
     </p>
 </div><div class="step-container"
@@ -645,7 +760,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.037ms
+        0.03ms
         
     </p>
 </div><div class="step-container"
@@ -669,7 +784,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.02ms
+        0.016ms
         
     </p>
 </div><div class="step-container"
@@ -693,7 +808,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.016ms
+        0.011ms
         
     </p>
 </div><div class="step-container"
@@ -714,7 +829,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.088ms
+        0.073ms
         
     </p>
 </div>
@@ -730,9 +845,9 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
                 </button>
                 <!--Collapsable error message and log-->
                 <div id="message-Sum of two numbers" style="display: none; font-family: monospace;">
-                    <p style="white-space: pre-wrap;">fixturefunc = <function result_should_be at 0x104831a80>
+                    <p style="white-space: pre-wrap;">fixturefunc = <function result_should_be at 0x106673ba0>
 request = <FixtureRequest for <Function test_sum_2>>
-kwargs = {'i_have_a_calculator': <sample_test_calculator.Calculator object at 0x10485f690>, 'result': '101'}
+kwargs = {'i_have_a_calculator': <sample_test_calculator.Calculator object at 0x1066a6390>, 'result': '101'}
 
     def call_fixture_func(
         fixturefunc: "_FixtureFunc[FixtureValue]", request: FixtureRequest, kwargs
@@ -752,17 +867,17 @@ kwargs = {'i_have_a_calculator': <sample_test_calculator.Calculator object at 0x
             fixturefunc = cast(Callable[..., FixtureValue], fixturefunc)
 >           fixture_result = fixturefunc(**kwargs)
 
-../../venv/lib/python3.11/site-packages/_pytest/fixtures.py:900: 
+../../venv/lib/python3.12/site-packages/_pytest/fixtures.py:900: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-i_have_a_calculator = <sample_test_calculator.Calculator object at 0x10485f690>
+i_have_a_calculator = <sample_test_calculator.Calculator object at 0x1066a6390>
 result = '101'
 
     @then(parsers.cfparse("The result should be {result} on the screen"))
     def result_should_be(i_have_a_calculator, result):
 >       assert i_have_a_calculator.result == int(result)
 E       AssertionError: assert 10 == 101
-E        +  where 10 = <sample_test_calculator.Calculator object at 0x10485f690>.result
+E        +  where 10 = <sample_test_calculator.Calculator object at 0x1066a6390>.result
 E        +  and   101 = int('101')
 
 sample_tests/sample_test_calculator.py:38: AssertionError</p>
@@ -807,7 +922,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.115ms
+                        Executed in 0.106ms
                         
                     </p>
                 </div>
@@ -834,7 +949,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.026ms
+        0.024ms
         
     </p>
 </div><div class="step-container"
@@ -858,7 +973,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.039ms
+        0.036ms
         
     </p>
 </div><div class="step-container"
@@ -882,7 +997,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.018ms
+        0.017ms
         
     </p>
 </div><div class="step-container"
@@ -906,7 +1021,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.014ms
+        0.011ms
         
     </p>
 </div><div class="step-container"
@@ -930,7 +1045,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.018ms
+        0.017ms
         
     </p>
 </div>
@@ -982,7 +1097,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
         font-weight: 400;
         line-height: normal;">
             
-            Executed in 1.329ms
+            Executed in 1.315ms
             
         </p>
     </div>
@@ -1023,7 +1138,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Startup">
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 1.329ms
+                        Executed in 1.315ms
                         
                     </p>
                 </div>
@@ -1050,7 +1165,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Startup">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.014ms
+        0.013ms
         
     </p>
 </div><div class="step-container"
@@ -1098,7 +1213,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Startup">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.021ms
+        0.018ms
         
     </p>
 </div>
@@ -1236,7 +1351,7 @@ align-self: stretch;" class="skipped-scenario searchable" id="Activation">
         font-weight: 400;
         line-height: normal;">
             
-            Executed in 0.153ms
+            Executed in 0.149ms
             
         </p>
     </div>
@@ -1279,7 +1394,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.081ms
+                        Executed in 0.083ms
                         
                     </p>
                 </div>
@@ -1306,7 +1421,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.041ms
+        0.045ms
         
     </p>
 </div><div class="step-container"
@@ -1354,7 +1469,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.02ms
+        0.017ms
         
     </p>
 </div>
@@ -1401,7 +1516,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.072ms
+                        Executed in 0.067ms
                         
                     </p>
                 </div>
@@ -1428,7 +1543,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.035ms
+        0.032ms
         
     </p>
 </div><div class="step-container"
@@ -1452,7 +1567,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.018ms
+        0.017ms
         
     </p>
 </div><div class="step-container"
@@ -1476,7 +1591,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.018ms
+        0.017ms
         
     </p>
 </div>
@@ -1489,9 +1604,8 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
         </div>
     </div>
 </div>
-    </div>
+        </div>
 
-
-</body>
-
+        <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    </body>
 </html>
