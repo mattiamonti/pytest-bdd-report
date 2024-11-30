@@ -7,6 +7,7 @@ ${BROWSER}    headlesschrome    #chrome
 
 *** Test Cases ***
 Generate Report
+    [Tags]  dev
     ${path}=    Generate HTML Report    RFTest
     VAR  ${URL}    ${path}   scope=SUITE
 
@@ -52,6 +53,17 @@ Close failed scenario details
     ${style_result}=     Get Element Attribute   ${button}     style
     Should Contain    ${style_result}    rotate(-90deg)
     Element Should Not Contain  ${feature}   AssertionError
+
+Check tooltip for opening scenario details
+    [Tags]  dev
+    Open Browser  ${URL}  ${BROWSER}
+    ${feature}=    Set Variable     xpath=//*[@id="Sum of two numbers"]/div
+    Element Should Contain  ${feature}   Scenario: Sum of two numbers
+    ${button}=    Set Variable      xpath=//*[@id="Sum of two numbers"]/div/button
+    Element Attribute Value Should Be  ${button}   title    Open error message
+    Click Button   ${button} 
+    Element Should Contain  ${feature}   AssertionError
+    Element Attribute Value Should Be  ${button}   title    Close error message
     
 *** Keywords ***
 Generate HTML Report
