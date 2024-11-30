@@ -31,6 +31,28 @@ Passed scenario color
     ${style_result}=     Get Element Attribute   ${feature}     style
     Should Contain    ${style_result}    rgb(214, 240, 224)
 
+Open failed scenario details
+    Open Browser  ${URL}  ${BROWSER}
+    ${feature}=    Set Variable     xpath=//*[@id="Sum of two numbers"]/div
+    Element Should Contain  ${feature}   Scenario: Sum of two numbers
+    ${button}=    Set Variable      xpath=//*[@id="Sum of two numbers"]/div/button
+    Click Button   ${button} 
+    Element Should Contain  ${feature}   AssertionError
+    ${style_result}=     Get Element Attribute   ${button}     style
+    Should Contain    ${style_result}    rotate(0deg)
+
+Close failed scenario details
+    Open Browser  ${URL}  ${BROWSER}
+    ${feature}=    Set Variable     xpath=//*[@id="Sum of two numbers"]/div
+    Element Should Contain  ${feature}   Scenario: Sum of two numbers
+    ${button}=    Set Variable      xpath=//*[@id="Sum of two numbers"]/div/button
+    Click Button     ${button} 
+    Element Should Contain  ${feature}   AssertionError
+    Click Button     ${button} 
+    ${style_result}=     Get Element Attribute   ${button}     style
+    Should Contain    ${style_result}    rotate(-90deg)
+    Element Should Not Contain  ${feature}   AssertionError
+    
 *** Keywords ***
 Generate HTML Report
     [Arguments]     ${title}
