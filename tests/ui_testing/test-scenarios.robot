@@ -7,7 +7,6 @@ ${BROWSER}    headlesschrome    #chrome
 
 *** Test Cases ***
 Generate Report
-    [Tags]  dev
     ${path}=    Generate HTML Report    RFTest
     VAR  ${URL}    ${path}   scope=SUITE
 
