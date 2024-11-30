@@ -1,362 +1,361 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.12.3 on darwin)" generated="2024-11-30T21:22:42.052200" rpa="false" schemaversion="5">
+<robot generator="Robot 7.1.1 (Python 3.12.3 on darwin)" generated="2024-11-30T21:54:38.470357" rpa="false" schemaversion="5">
 <suite id="s1" name="Test-Scenarios" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-scenarios.robot">
 <test id="s1-t1" name="Generate Report" line="9">
 <kw name="Generate HTML Report">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-11-30T21:22:42.117368" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-11-30T21:54:38.562230" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-11-30T21:22:42.115648" elapsed="0.257693"/>
+<status status="PASS" start="2024-11-30T21:54:38.560402" elapsed="0.319436"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-11-30T21:22:42.373893" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-11-30T21:54:38.880385" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-11-30T21:22:42.373619" elapsed="0.000304"/>
+<status status="PASS" start="2024-11-30T21:54:38.880111" elapsed="0.000304"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:22:42.374081" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-11-30T21:54:38.880576" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:22:42.373987" elapsed="0.000105"/>
+<status status="PASS" start="2024-11-30T21:54:38.880478" elapsed="0.000109"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-11-30T21:22:42.374204" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-11-30T21:54:38.880695" level="INFO">file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-11-30T21:22:42.374143" elapsed="0.000077"/>
+<status status="PASS" start="2024-11-30T21:54:38.880639" elapsed="0.000073"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-11-30T21:22:42.374253" elapsed="0.000047"/>
+<status status="PASS" start="2024-11-30T21:54:38.880748" elapsed="0.000053"/>
 </return>
-<msg time="2024-11-30T21:22:42.374461" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-11-30T21:54:38.880964" level="INFO">${path} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${path}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-11-30T21:22:42.115272" elapsed="0.259200"/>
+<status status="PASS" start="2024-11-30T21:54:38.560009" elapsed="0.320966"/>
 </kw>
 <variable name="${URL}" scope="SUITE">
-<msg time="2024-11-30T21:22:42.374627" level="INFO">${URL} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-11-30T21:54:38.881132" level="INFO">${URL} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${path}</var>
-<status status="PASS" start="2024-11-30T21:22:42.374560" elapsed="0.000078"/>
+<status status="PASS" start="2024-11-30T21:54:38.881064" elapsed="0.000078"/>
 </variable>
 <tag>dev</tag>
-<status status="PASS" start="2024-11-30T21:22:42.114942" elapsed="0.259779"/>
+<status status="PASS" start="2024-11-30T21:54:38.559671" elapsed="0.321548"/>
 </test>
 <test id="s1-t2" name="Failed scenario color" line="14">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:22:42.375164" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-11-30T21:54:38.881679" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-11-30T21:22:42.375027" elapsed="0.802420"/>
+<status status="PASS" start="2024-11-30T21:54:38.881542" elapsed="0.896390"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:22:43.178207" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-11-30T21:54:39.778608" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${feature}</var>
 <arg>xpath=//*[@id="Sum of two numbers"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:22:43.177923" elapsed="0.000303"/>
+<status status="PASS" start="2024-11-30T21:54:39.778418" elapsed="0.000207"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:22:43.197004" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<msg time="2024-11-30T21:54:39.796951" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${feature}</arg>
 <arg>Scenario: Sum of two numbers</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:22:43.178343" elapsed="0.018719"/>
+<status status="PASS" start="2024-11-30T21:54:39.778747" elapsed="0.018267"/>
 </kw>
 <kw name="Get Element Attribute" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:22:43.207131" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(175, 35, 58); background: rgb(24...</msg>
+<msg time="2024-11-30T21:54:39.807678" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(175, 35, 58); background: rgb(24...</msg>
 <var>${style_result}</var>
 <arg>${feature}</arg>
 <arg>style</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:22:43.197209" elapsed="0.009949"/>
+<status status="PASS" start="2024-11-30T21:54:39.797162" elapsed="0.010541"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${style_result}</arg>
 <arg>rgb(249, 225, 229)</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2024-11-30T21:22:43.207307" elapsed="0.000110"/>
+<status status="PASS" start="2024-11-30T21:54:39.807854" elapsed="0.000132"/>
 </kw>
-<status status="PASS" start="2024-11-30T21:22:42.374843" elapsed="0.832667"/>
+<status status="PASS" start="2024-11-30T21:54:38.881357" elapsed="0.926711"/>
 </test>
 <test id="s1-t3" name="Skipped scenario color" line="21">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:22:43.207963" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-11-30T21:54:39.808567" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-11-30T21:22:43.207850" elapsed="75.706658"/>
+<status status="PASS" start="2024-11-30T21:54:39.808424" elapsed="0.725559"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:23:58.915060" level="INFO">${feature} = xpath=//*[@id="Shutdown"]/div</msg>
+<msg time="2024-11-30T21:54:40.534463" level="INFO">${feature} = xpath=//*[@id="Shutdown"]/div</msg>
 <var>${feature}</var>
 <arg>xpath=//*[@id="Shutdown"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:23:58.914875" elapsed="0.000201"/>
+<status status="PASS" start="2024-11-30T21:54:40.534295" elapsed="0.000183"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:23:58.932309" level="INFO">Element 'xpath=//*[@id="Shutdown"]/div' contains text 'Scenario: Shutdown'.</msg>
+<msg time="2024-11-30T21:54:40.549691" level="INFO">Element 'xpath=//*[@id="Shutdown"]/div' contains text 'Scenario: Shutdown'.</msg>
 <arg>${feature}</arg>
 <arg>Scenario: Shutdown</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:23:58.915174" elapsed="0.017194"/>
+<status status="PASS" start="2024-11-30T21:54:40.534561" elapsed="0.015187"/>
 </kw>
 <kw name="Get Element Attribute" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:23:58.941191" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(237, 181, 39); background: rgb(2...</msg>
+<msg time="2024-11-30T21:54:40.559393" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(237, 181, 39); background: rgb(2...</msg>
 <var>${style_result}</var>
 <arg>${feature}</arg>
 <arg>style</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:23:58.932509" elapsed="0.008706"/>
+<status status="PASS" start="2024-11-30T21:54:40.549883" elapsed="0.009534"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${style_result}</arg>
 <arg>rgb(255, 248, 231)</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2024-11-30T21:23:58.941350" elapsed="0.000096"/>
+<status status="PASS" start="2024-11-30T21:54:40.559557" elapsed="0.000106"/>
 </kw>
-<status status="PASS" start="2024-11-30T21:22:43.207667" elapsed="75.733853"/>
+<status status="PASS" start="2024-11-30T21:54:39.808239" elapsed="0.751506"/>
 </test>
 <test id="s1-t4" name="Passed scenario color" line="28">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:23:58.941908" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-11-30T21:54:40.560160" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-11-30T21:23:58.941807" elapsed="1.189009"/>
+<status status="PASS" start="2024-11-30T21:54:40.560059" elapsed="0.686064"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:24:00.131730" level="INFO">${feature} = xpath=//*[@id="Eating cucumbers"]/div</msg>
+<msg time="2024-11-30T21:54:41.246624" level="INFO">${feature} = xpath=//*[@id="Eating cucumbers"]/div</msg>
 <var>${feature}</var>
 <arg>xpath=//*[@id="Eating cucumbers"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.131435" elapsed="0.000322"/>
+<status status="PASS" start="2024-11-30T21:54:41.246432" elapsed="0.000206"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:00.158789" level="INFO">Element 'xpath=//*[@id="Eating cucumbers"]/div' contains text 'Scenario: Eating cucumbers'.</msg>
+<msg time="2024-11-30T21:54:41.265707" level="INFO">Element 'xpath=//*[@id="Eating cucumbers"]/div' contains text 'Scenario: Eating cucumbers'.</msg>
 <arg>${feature}</arg>
 <arg>Scenario: Eating cucumbers</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.134193" elapsed="0.024676"/>
+<status status="PASS" start="2024-11-30T21:54:41.246805" elapsed="0.018959"/>
 </kw>
 <kw name="Get Element Attribute" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:00.167017" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(13, 104, 50); background: rgb(21...</msg>
+<msg time="2024-11-30T21:54:41.275332" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(13, 104, 50); background: rgb(21...</msg>
 <var>${style_result}</var>
 <arg>${feature}</arg>
 <arg>style</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.159066" elapsed="0.007978"/>
+<status status="PASS" start="2024-11-30T21:54:41.265907" elapsed="0.009449"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${style_result}</arg>
 <arg>rgb(214, 240, 224)</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.167174" elapsed="0.000114"/>
+<status status="PASS" start="2024-11-30T21:54:41.275494" elapsed="0.000102"/>
 </kw>
-<status status="PASS" start="2024-11-30T21:23:58.941633" elapsed="1.225749"/>
+<status status="PASS" start="2024-11-30T21:54:40.559872" elapsed="0.715801"/>
 </test>
 <test id="s1-t5" name="Open failed scenario details" line="35">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:00.167877" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-11-30T21:54:41.276082" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.167752" elapsed="0.668811"/>
+<status status="PASS" start="2024-11-30T21:54:41.275982" elapsed="0.715689"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:24:00.837480" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-11-30T21:54:41.992150" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${feature}</var>
 <arg>xpath=//*[@id="Sum of two numbers"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.837067" elapsed="0.000433"/>
+<status status="PASS" start="2024-11-30T21:54:41.991996" elapsed="0.000170"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:00.857193" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<msg time="2024-11-30T21:54:42.024953" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${feature}</arg>
 <arg>Scenario: Sum of two numbers</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.837812" elapsed="0.019449"/>
+<status status="PASS" start="2024-11-30T21:54:41.992250" elapsed="0.032773"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:24:00.857628" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<msg time="2024-11-30T21:54:42.025883" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
 <var>${button}</var>
 <arg>xpath=//*[@id="Sum of two numbers"]/div/button</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.857460" elapsed="0.000182"/>
+<status status="PASS" start="2024-11-30T21:54:42.025562" elapsed="0.000338"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:00.857865" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
+<msg time="2024-11-30T21:54:42.026164" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
 <arg>${button}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.857729" elapsed="0.050459"/>
+<status status="PASS" start="2024-11-30T21:54:42.026039" elapsed="0.055828"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:00.918581" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
+<msg time="2024-11-30T21:54:42.092078" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
 <arg>${feature}</arg>
 <arg>AssertionError</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.908335" elapsed="0.010303"/>
+<status status="PASS" start="2024-11-30T21:54:42.082004" elapsed="0.010133"/>
 </kw>
 <kw name="Get Element Attribute" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:00.927815" level="INFO">${style_result} = display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent; border: none; cursor: pointer; transform: rotate(0deg);</msg>
+<msg time="2024-11-30T21:54:42.100879" level="INFO">${style_result} = display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent; border: none; cursor: pointer; transform: rotate(0deg);</msg>
 <var>${style_result}</var>
 <arg>${button}</arg>
 <arg>style</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.918782" elapsed="0.009055"/>
+<status status="PASS" start="2024-11-30T21:54:42.092286" elapsed="0.008619"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${style_result}</arg>
 <arg>rotate(0deg)</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.927962" elapsed="0.000103"/>
+<status status="PASS" start="2024-11-30T21:54:42.101031" elapsed="0.000096"/>
 </kw>
-<status status="PASS" start="2024-11-30T21:24:00.167527" elapsed="0.760610"/>
+<status status="PASS" start="2024-11-30T21:54:41.275798" elapsed="0.825469"/>
 </test>
 <test id="s1-t6" name="Close failed scenario details" line="45">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:00.928527" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-11-30T21:54:42.101677" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-11-30T21:24:00.928428" elapsed="0.714047"/>
+<status status="PASS" start="2024-11-30T21:54:42.101576" elapsed="0.713775"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:24:01.642974" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-11-30T21:54:42.815853" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${feature}</var>
 <arg>xpath=//*[@id="Sum of two numbers"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.642806" elapsed="0.000183"/>
+<status status="PASS" start="2024-11-30T21:54:42.815691" elapsed="0.000177"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:01.660967" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<msg time="2024-11-30T21:54:42.840406" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${feature}</arg>
 <arg>Scenario: Sum of two numbers</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.643072" elapsed="0.017957"/>
+<status status="PASS" start="2024-11-30T21:54:42.815947" elapsed="0.024528"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:24:01.661255" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<msg time="2024-11-30T21:54:42.840900" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
 <var>${button}</var>
 <arg>xpath=//*[@id="Sum of two numbers"]/div/button</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.661164" elapsed="0.000104"/>
+<status status="PASS" start="2024-11-30T21:54:42.840686" elapsed="0.000231"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:01.661422" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
+<msg time="2024-11-30T21:54:42.841168" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
 <arg>${button}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.661333" elapsed="0.046554"/>
+<status status="PASS" start="2024-11-30T21:54:42.840996" elapsed="0.052768"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:01.718068" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
+<msg time="2024-11-30T21:54:42.905647" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
 <arg>${feature}</arg>
 <arg>AssertionError</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.708055" elapsed="0.010069"/>
+<status status="PASS" start="2024-11-30T21:54:42.893901" elapsed="0.011804"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:01.718398" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
+<msg time="2024-11-30T21:54:42.905951" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
 <arg>${button}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.718251" elapsed="0.037230"/>
+<status status="PASS" start="2024-11-30T21:54:42.905832" elapsed="0.032388"/>
 </kw>
 <kw name="Get Element Attribute" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:01.761782" level="INFO">${style_result} = display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent; border: none; cursor: pointer; transform: rotate(-90deg);</msg>
+<msg time="2024-11-30T21:54:42.944841" level="INFO">${style_result} = display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent; border: none; cursor: pointer; transform: rotate(-90deg);</msg>
 <var>${style_result}</var>
 <arg>${button}</arg>
 <arg>style</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.755620" elapsed="0.006182"/>
+<status status="PASS" start="2024-11-30T21:54:42.938482" elapsed="0.006379"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${style_result}</arg>
 <arg>rotate(-90deg)</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.761911" elapsed="0.000091"/>
+<status status="PASS" start="2024-11-30T21:54:42.944975" elapsed="0.000094"/>
 </kw>
 <kw name="Element Should Not Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:01.773340" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' does not contain text 'AssertionError'.</msg>
+<msg time="2024-11-30T21:54:42.955747" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' does not contain text 'AssertionError'.</msg>
 <arg>${feature}</arg>
 <arg>AssertionError</arg>
 <doc>Verifies that element ``locator`` does not contain text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.762124" elapsed="0.011276"/>
+<status status="PASS" start="2024-11-30T21:54:42.945195" elapsed="0.010627"/>
 </kw>
-<status status="PASS" start="2024-11-30T21:24:00.928252" elapsed="0.845305"/>
+<status status="PASS" start="2024-11-30T21:54:42.101387" elapsed="0.854624"/>
 </test>
-<test id="s1-t7" name="Check tooltip for opening scenario details" line="57">
+<test id="s1-t7" name="Check tooltip for opening and closing scenario details" line="57">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:01.774017" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-11-30T21:54:42.956586" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-11-30T21:24:01.773906" elapsed="0.741245"/>
+<status status="PASS" start="2024-11-30T21:54:42.956439" elapsed="0.702739"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:24:02.515610" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-11-30T21:54:43.659679" level="INFO">${feature} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${feature}</var>
 <arg>xpath=//*[@id="Sum of two numbers"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:24:02.515452" elapsed="0.000171"/>
+<status status="PASS" start="2024-11-30T21:54:43.659512" elapsed="0.000182"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:02.534901" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<msg time="2024-11-30T21:54:43.681660" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${feature}</arg>
 <arg>Scenario: Sum of two numbers</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:24:02.515706" elapsed="0.019256"/>
+<status status="PASS" start="2024-11-30T21:54:43.659784" elapsed="0.021956"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-11-30T21:24:02.535195" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<msg time="2024-11-30T21:54:43.681992" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
 <var>${button}</var>
 <arg>xpath=//*[@id="Sum of two numbers"]/div/button</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-11-30T21:24:02.535096" elapsed="0.000111"/>
+<status status="PASS" start="2024-11-30T21:54:43.681886" elapsed="0.000120"/>
 </kw>
 <kw name="Element Attribute Value Should Be" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:02.546805" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' attribute 'title' contains value 'Open error message'.</msg>
+<msg time="2024-11-30T21:54:43.695536" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' attribute 'title' contains value 'Open error message'.</msg>
 <arg>${button}</arg>
 <arg>title</arg>
 <arg>Open error message</arg>
 <doc>Verifies element identified by ``locator`` contains expected attribute value.</doc>
-<status status="PASS" start="2024-11-30T21:24:02.535321" elapsed="0.011540"/>
+<status status="PASS" start="2024-11-30T21:54:43.682087" elapsed="0.013540"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:02.547110" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
+<msg time="2024-11-30T21:54:43.695966" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
 <arg>${button}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-11-30T21:24:02.546989" elapsed="0.047111"/>
+<status status="PASS" start="2024-11-30T21:54:43.695771" elapsed="0.044882"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:02.607325" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
+<msg time="2024-11-30T21:54:43.750692" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
 <arg>${feature}</arg>
 <arg>AssertionError</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-11-30T21:24:02.594238" elapsed="0.013145"/>
+<status status="PASS" start="2024-11-30T21:54:43.740796" elapsed="0.009946"/>
 </kw>
 <kw name="Element Attribute Value Should Be" owner="SeleniumLibrary">
-<msg time="2024-11-30T21:24:02.613193" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' attribute 'title' contains value 'Close error message'.</msg>
+<msg time="2024-11-30T21:54:43.758169" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' attribute 'title' contains value 'Close error message'.</msg>
 <arg>${button}</arg>
 <arg>title</arg>
 <arg>Close error message</arg>
 <doc>Verifies element identified by ``locator`` contains expected attribute value.</doc>
-<status status="PASS" start="2024-11-30T21:24:02.607518" elapsed="0.005724"/>
+<status status="PASS" start="2024-11-30T21:54:43.750869" elapsed="0.007353"/>
 </kw>
-<tag>dev</tag>
-<status status="PASS" start="2024-11-30T21:24:01.773696" elapsed="0.839658"/>
+<status status="PASS" start="2024-11-30T21:54:42.956165" elapsed="0.802190"/>
 </test>
-<status status="PASS" start="2024-11-30T21:22:42.053110" elapsed="80.560511"/>
+<status status="PASS" start="2024-11-30T21:54:38.470904" elapsed="5.287753"/>
 </suite>
 <statistics>
 <total>
 <stat pass="7" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="2" fail="0" skip="0">dev</stat>
+<stat pass="1" fail="0" skip="0">dev</stat>
 </tag>
 <suite>
 <stat pass="7" fail="0" skip="0" id="s1" name="Test-Scenarios">Test-Scenarios</stat>

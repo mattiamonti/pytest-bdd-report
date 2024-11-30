@@ -54,8 +54,7 @@ Close failed scenario details
     Should Contain    ${style_result}    rotate(-90deg)
     Element Should Not Contain  ${feature}   AssertionError
 
-Check tooltip for opening scenario details
-    [Tags]  dev
+Check tooltip for opening and closing scenario details
     Open Browser  ${URL}  ${BROWSER}
     ${feature}=    Set Variable     xpath=//*[@id="Sum of two numbers"]/div
     Element Should Contain  ${feature}   Scenario: Sum of two numbers
@@ -64,7 +63,8 @@ Check tooltip for opening scenario details
     Click Button   ${button} 
     Element Should Contain  ${feature}   AssertionError
     Element Attribute Value Should Be  ${button}   title    Close error message
-    
+   
+
 *** Keywords ***
 Generate HTML Report
     [Arguments]     ${title}
