@@ -3,8 +3,7 @@ Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
-Resource          common.robot
-Resource          step_keywords.robot
+Resource          common.resource
 
 *** Variables ***
 ${BROWSER}        headlesschrome    #chrome
@@ -40,10 +39,27 @@ Check Failed Scenario Steps
 Check Durations For Passed Scenario
     Open Report In Browser
     ${durations}=   Get Scenario Steps Duration     Sum of a number
-    List Should Not Contain Value   ${durations}    0.0
+    ${zero}=    Convert To Number   0.0
+    List Should Not Contain Value   ${durations}    ${zero}
 
 Check Durations For Failed Scenario
     Open Report In Browser
     ${durations}=   Get Scenario Steps Duration     Sum of two numbers
-    List Should Not Contain Value   ${durations}    0.0
+    ${zero}=    Convert To Number   0.0
+    List Should Not Contain Value   ${durations}    ${zero}
+
+*** Keywords ***
+Get Scenario Steps Duration
+    [Arguments]    ${scenario_name}
+    ${scenario}=    Get Scenario    ${scenario_name}
+    Element Should Contain    ${scenario}    Scenario: ${scenario_name}
+    ${steps}=    Get Web Elements    ${scenario}/div[2]/*[@class="step-container"]/p
+    ${current_durations}=   Create List
+    FOR    ${element}    IN    @{steps}
+           ${text}=    Get Text    ${element}
+           ${text}=    Remove String   ${text}     ms
+           ${duration}=     Convert To Number   ${text}
+           Append To List   ${current_durations}    ${duration}
+    END
+    RETURN    ${current_durations}
 

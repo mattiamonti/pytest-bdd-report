@@ -1,8 +1,8 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  OperatingSystem
-Resource          common.robot
-Resource    step_keywords.robot
+Library  String
+Resource          common.resource
 
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
@@ -50,27 +50,37 @@ Check tooltip for opening and closing scenario details
     Element Should Contain  ${scenario}   AssertionError
     Element Tooltip Should Be   ${button}   Close error message 
    
+Check Passed Scenario Duration
+    Open Report In Browser
+    ${scenario}=    Get Scenario    Sum of a number
+    Verify Scenario Duration Not Zero   ${scenario}
+
+Check Failed Scenario Duration
+    Open Report In Browser
+    ${scenario}=    Get Scenario    Sum of two numbers
+    Verify Scenario Duration Not Zero   ${scenario}
+
+Check Skipped Scenario Duration
+    Open Report In Browser
+    ${scenario}=    Get Scenario    Shutdown
+    Verify Scenario Duration Is Zero   ${scenario}
+
 *** Keywords ***
-Get Scenario
-    [Arguments]    ${scenario_name}
-    ${scenario}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div
-    Element Should Contain    ${scenario}    Scenario: ${scenario_name}
-    RETURN   ${scenario}
+Verify Scenario Duration Not Zero
+    [Arguments]    ${scenario}
+    ${text}=  Get Text     ${scenario}/div[1]/p
+    ${text}=  Remove String     ${text}    Executed in      ms
+    ${time}=  Convert To Number   ${text}
+    ${zero}=  Convert To Number     0.0
+    Should Not Be Equal As Numbers   ${time}    ${zero}
 
-Get Scenario Details Button
-    [Arguments]    ${scenario_name}
-    ${button}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div/button
-    Element Should Be Visible   ${button}
-    RETURN  ${button}
-
-Element Tooltip Should Be
-    [Arguments]     ${element}   ${text}
-    Element Attribute Value Should Be  ${element}   title    ${text}
-    
-Element Style Should Contain
-    [Arguments]     ${element}   ${text}
-    ${style_result}=     Get Element Attribute   ${element}     style
-    Should Contain    ${style_result}    ${text}
+Verify Scenario Duration Is Zero
+    [Arguments]    ${scenario}
+    ${text}=  Get Text     ${scenario}/div[1]/p
+    ${text}=  Remove String     ${text}    Executed in      ms
+    ${time}=  Convert To Number   ${text}
+    ${zero}=  Convert To Number     0.0
+    Should Be Equal As Numbers   ${time}    ${zero}
 
 
 

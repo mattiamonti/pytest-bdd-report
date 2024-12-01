@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  OperatingSystem
+Library    Collections
 
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
@@ -25,6 +26,11 @@ Get Feature
     Element Should Contain    ${feature}    Feature: ${feature_name}
     RETURN   ${feature}
 
+Get Feature Scenarios
+    [Arguments]    ${feature_name}
+    ${scenarios}=    Get Web Elements    xpath=//*[@id="${feature_name}"]/div[2]/div
+    RETURN    ${scenarios}
+
 Get Scenario
     [Arguments]    ${scenario_name}
     ${scenario}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div
@@ -36,6 +42,17 @@ Get Scenario Details Button
     ${button}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div/button
     Element Should Be Visible   ${button}
     RETURN  ${button}
+
+Get Scenario Steps
+    [Arguments]    ${scenario_name}
+    ${scenario}=    Get Scenario    ${scenario_name}
+    ${steps}=    Get Web Elements    ${scenario}/div[2]/*[@class="step-container"]/div
+    ${current_steps}=   Create List
+    FOR    ${element}    IN    @{steps}
+           ${text}=    Get Text    ${element}
+           Append To List   ${current_steps}    ${text}
+    END
+    RETURN  ${current_steps}
 
 Element Tooltip Should Be
     [Arguments]     ${element}   ${text}
