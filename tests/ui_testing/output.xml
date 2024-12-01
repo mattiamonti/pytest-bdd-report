@@ -1,427 +1,427 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.12.3 on darwin)" generated="2024-12-01T15:19:39.714516" rpa="false" schemaversion="5">
-<suite id="s1" name="Refactored-Test-Step" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/refactored-test-step.robot">
-<test id="s1-t1" name="Passed Scenario Has Steps" line="13">
-<kw name="Open Report In Browser">
-<kw name="Generate HTML Report">
+<robot generator="Robot 7.1.1 (Python 3.12.3 on darwin)" generated="2024-12-01T15:32:40.867336" rpa="false" schemaversion="5">
+<suite id="s1" name="Test-Steps" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-steps.robot">
+<test id="s1-t1" name="Passed Scenario Has Steps" line="14">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:39.785290" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T15:32:40.940638" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:19:39.783369" elapsed="0.260531"/>
+<status status="PASS" start="2024-12-01T15:32:40.938821" elapsed="0.263724"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:40.044439" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T15:32:41.203066" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:19:40.044173" elapsed="0.000300"/>
+<status status="PASS" start="2024-12-01T15:32:41.202806" elapsed="0.000293"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:40.044646" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:41.203267" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:40.044544" elapsed="0.000118"/>
+<status status="PASS" start="2024-12-01T15:32:41.203167" elapsed="0.000114"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:19:40.044780" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:41.203396" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:19:40.044718" elapsed="0.000082"/>
+<status status="PASS" start="2024-12-01T15:32:41.203339" elapsed="0.000076"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:19:40.044835" elapsed="0.000049"/>
+<status status="PASS" start="2024-12-01T15:32:41.203451" elapsed="0.000051"/>
 </return>
-<msg time="2024-12-01T15:19:40.044973" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:41.203584" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:19:39.782958" elapsed="0.262025"/>
+<status status="PASS" start="2024-12-01T15:32:40.938432" elapsed="0.265162"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:40.045194" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T15:32:41.203805" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:19:40.045061" elapsed="0.995669"/>
+<status status="PASS" start="2024-12-01T15:32:41.203668" elapsed="0.865621"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:19:39.782775" elapsed="1.258109"/>
+<status status="PASS" start="2024-12-01T15:32:40.938266" elapsed="1.131192"/>
 </kw>
-<kw name="Get Scenario Steps">
+<kw name="Get Scenario Steps" owner="step_keywords">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:41.042150" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
+<msg time="2024-12-01T15:32:42.070163" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.041842" elapsed="0.000331"/>
+<status status="PASS" start="2024-12-01T15:32:42.070039" elapsed="0.000141"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:41.057018" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
+<msg time="2024-12-01T15:32:42.088535" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.042269" elapsed="0.014812"/>
+<status status="PASS" start="2024-12-01T15:32:42.070252" elapsed="0.018342"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:41.064695" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="d8985378ef0ff6507fa59a04c289b321", element="f.DB86CDFB9C56DA49DD1DD82E2E2D7E12.d.401242733514AB7E422355C2A7731D2C.e.12")&gt;, &lt;selenium.webdriv...</msg>
+<msg time="2024-12-01T15:32:42.093673" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.12")&gt;, &lt;selenium.webdriv...</msg>
 <var>${steps}</var>
 <arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.057187" elapsed="0.007533"/>
+<status status="PASS" start="2024-12-01T15:32:42.088702" elapsed="0.004993"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:19:41.064900" level="INFO">${current_steps} = []</msg>
+<msg time="2024-12-01T15:32:42.093834" level="INFO">${current_steps} = []</msg>
 <var>${current_steps}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.064823" elapsed="0.000089"/>
+<status status="PASS" start="2024-12-01T15:32:42.093771" elapsed="0.000073"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:41.069088" level="INFO">${text} = Given: I have a calculator</msg>
+<msg time="2024-12-01T15:32:42.100572" level="INFO">${text} = Given: I have a calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.065117" elapsed="0.003994"/>
+<status status="PASS" start="2024-12-01T15:32:42.094034" elapsed="0.006561"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.069196" elapsed="0.000085"/>
+<status status="PASS" start="2024-12-01T15:32:42.100691" elapsed="0.000100"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d8985378ef0ff6507fa59a04c289b321", element="f.DB86CDFB9C56DA49DD1DD82E2E2D7E12.d.401242733514AB7E422355C2A7731D2C.e.12")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:41.065055" elapsed="0.004248"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.12")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:42.093980" elapsed="0.006834"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:41.073468" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
+<msg time="2024-12-01T15:32:42.104676" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.069413" elapsed="0.004075"/>
+<status status="PASS" start="2024-12-01T15:32:42.100927" elapsed="0.003766"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.073556" elapsed="0.000076"/>
+<status status="PASS" start="2024-12-01T15:32:42.104768" elapsed="0.000072"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d8985378ef0ff6507fa59a04c289b321", element="f.DB86CDFB9C56DA49DD1DD82E2E2D7E12.d.401242733514AB7E422355C2A7731D2C.e.13")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:41.069369" elapsed="0.004291"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.13")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:42.100881" elapsed="0.003980"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:41.078808" level="INFO">${text} = And: I press the add button</msg>
+<msg time="2024-12-01T15:32:42.108656" level="INFO">${text} = And: I press the add button</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.073755" elapsed="0.005087"/>
+<status status="PASS" start="2024-12-01T15:32:42.104954" elapsed="0.003718"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.078959" elapsed="0.000097"/>
+<status status="PASS" start="2024-12-01T15:32:42.108737" elapsed="0.000070"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d8985378ef0ff6507fa59a04c289b321", element="f.DB86CDFB9C56DA49DD1DD82E2E2D7E12.d.401242733514AB7E422355C2A7731D2C.e.14")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:41.073714" elapsed="0.005364"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.14")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:42.104913" elapsed="0.003914"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:41.083288" level="INFO">${text} = Then: The result should be 7 on the screen</msg>
+<msg time="2024-12-01T15:32:42.114685" level="INFO">${text} = Then: The result should be 7 on the screen</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.079177" elapsed="0.004129"/>
+<status status="PASS" start="2024-12-01T15:32:42.108912" elapsed="0.005801"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.083375" elapsed="0.000075"/>
+<status status="PASS" start="2024-12-01T15:32:42.114814" elapsed="0.000091"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d8985378ef0ff6507fa59a04c289b321", element="f.DB86CDFB9C56DA49DD1DD82E2E2D7E12.d.401242733514AB7E422355C2A7731D2C.e.15")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:41.079136" elapsed="0.004398"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.15")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:42.108873" elapsed="0.006131"/>
 </iter>
 <var>${element}</var>
 <value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:19:41.064957" elapsed="0.018604"/>
+<status status="PASS" start="2024-12-01T15:32:42.093888" elapsed="0.021148"/>
 </for>
 <return>
 <value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:19:41.083599" elapsed="0.000034"/>
+<status status="PASS" start="2024-12-01T15:32:42.115074" elapsed="0.000035"/>
 </return>
-<msg time="2024-12-01T15:19:41.083695" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I press the add button', 'Then: The result should be 7 on the screen']</msg>
+<msg time="2024-12-01T15:32:42.115186" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I press the add button', 'Then: The result should be 7 on the screen']</msg>
 <var>${steps}</var>
 <arg>Sum of a number</arg>
-<status status="PASS" start="2024-12-01T15:19:41.041357" elapsed="0.042350"/>
+<status status="PASS" start="2024-12-01T15:32:42.069780" elapsed="0.045418"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2024-12-01T15:19:41.083847" level="INFO">Length is 4.</msg>
+<msg time="2024-12-01T15:32:42.115359" level="INFO">Length is 4.</msg>
 <arg>${steps}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.083782" elapsed="0.000083"/>
+<status status="PASS" start="2024-12-01T15:32:42.115285" elapsed="0.000094"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:19:39.782438" elapsed="1.301506"/>
+<status status="PASS" start="2024-12-01T15:32:40.937980" elapsed="1.177522"/>
 </test>
-<test id="s1-t2" name="Failed Scenario Has Steps" line="18">
-<kw name="Open Report In Browser">
-<kw name="Generate HTML Report">
+<test id="s1-t2" name="Failed Scenario Has Steps" line="19">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:41.086699" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T15:32:42.117642" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.084521" elapsed="0.282190"/>
+<status status="PASS" start="2024-12-01T15:32:42.116044" elapsed="0.270256"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:41.367329" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T15:32:42.386817" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.367004" elapsed="0.000359"/>
+<status status="PASS" start="2024-12-01T15:32:42.386553" elapsed="0.000290"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:41.367520" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:42.386989" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.367422" elapsed="0.000110"/>
+<status status="PASS" start="2024-12-01T15:32:42.386902" elapsed="0.000099"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:19:41.367646" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:42.387106" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.367585" elapsed="0.000079"/>
+<status status="PASS" start="2024-12-01T15:32:42.387053" elapsed="0.000069"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:19:41.367692" elapsed="0.000048"/>
+<status status="PASS" start="2024-12-01T15:32:42.387151" elapsed="0.000040"/>
 </return>
-<msg time="2024-12-01T15:19:41.367823" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:42.387266" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:19:41.084427" elapsed="0.283406"/>
+<status status="PASS" start="2024-12-01T15:32:42.115942" elapsed="0.271333"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:41.368040" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T15:32:42.387475" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.367906" elapsed="0.655645"/>
+<status status="PASS" start="2024-12-01T15:32:42.387351" elapsed="0.684394"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:19:41.084307" elapsed="0.939430"/>
+<status status="PASS" start="2024-12-01T15:32:42.115820" elapsed="0.956089"/>
 </kw>
-<kw name="Get Scenario Steps">
+<kw name="Get Scenario Steps" owner="step_keywords">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:42.024389" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-12-01T15:32:43.072538" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.024274" elapsed="0.000130"/>
+<status status="PASS" start="2024-12-01T15:32:43.072434" elapsed="0.000118"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:42.045247" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<msg time="2024-12-01T15:32:43.091954" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.024480" elapsed="0.020827"/>
+<status status="PASS" start="2024-12-01T15:32:43.072620" elapsed="0.019392"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:42.050675" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="3f25440043f0edc94a089465309325fd", element="f.4EB2ADD64BB68D2A66AF72FDE0CCB87D.d.61877896140DE4CDE6D2F02DE86BEA3B.e.27")&gt;, &lt;selenium.webdriv...</msg>
+<msg time="2024-12-01T15:32:43.099598" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.28")&gt;, &lt;selenium.webdriv...</msg>
 <var>${steps}</var>
 <arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.045417" elapsed="0.005283"/>
+<status status="PASS" start="2024-12-01T15:32:43.092118" elapsed="0.007510"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:19:42.050863" level="INFO">${current_steps} = []</msg>
+<msg time="2024-12-01T15:32:43.099817" level="INFO">${current_steps} = []</msg>
 <var>${current_steps}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.050793" elapsed="0.000083"/>
+<status status="PASS" start="2024-12-01T15:32:43.099735" elapsed="0.000094"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:42.055057" level="INFO">${text} = Given: I have a calculator</msg>
+<msg time="2024-12-01T15:32:43.105261" level="INFO">${text} = Given: I have a calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.051055" elapsed="0.004023"/>
+<status status="PASS" start="2024-12-01T15:32:43.100024" elapsed="0.005263"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.055156" elapsed="0.000080"/>
+<status status="PASS" start="2024-12-01T15:32:43.105391" elapsed="0.000101"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="3f25440043f0edc94a089465309325fd", element="f.4EB2ADD64BB68D2A66AF72FDE0CCB87D.d.61877896140DE4CDE6D2F02DE86BEA3B.e.27")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:42.050997" elapsed="0.004261"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.28")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:43.099967" elapsed="0.005548"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:42.062305" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
+<msg time="2024-12-01T15:32:43.110162" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.055350" elapsed="0.006981"/>
+<status status="PASS" start="2024-12-01T15:32:43.105622" elapsed="0.004563"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.062443" elapsed="0.000117"/>
+<status status="PASS" start="2024-12-01T15:32:43.110280" elapsed="0.000092"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="3f25440043f0edc94a089465309325fd", element="f.4EB2ADD64BB68D2A66AF72FDE0CCB87D.d.61877896140DE4CDE6D2F02DE86BEA3B.e.28")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:42.055309" elapsed="0.007276"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.29")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:43.105575" elapsed="0.004818"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:42.067095" level="INFO">${text} = And: I enter the number 3 into the calculator</msg>
+<msg time="2024-12-01T15:32:43.115863" level="INFO">${text} = And: I enter the number 3 into the calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.062708" elapsed="0.004408"/>
+<status status="PASS" start="2024-12-01T15:32:43.110495" elapsed="0.005390"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.067198" elapsed="0.000142"/>
+<status status="PASS" start="2024-12-01T15:32:43.116039" elapsed="0.000090"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="3f25440043f0edc94a089465309325fd", element="f.4EB2ADD64BB68D2A66AF72FDE0CCB87D.d.61877896140DE4CDE6D2F02DE86BEA3B.e.29")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:42.062658" elapsed="0.004705"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.30")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:43.110451" elapsed="0.005701"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:42.071300" level="INFO">${text} = And: I press the add button</msg>
+<msg time="2024-12-01T15:32:43.120305" level="INFO">${text} = And: I press the add button</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.067459" elapsed="0.003857"/>
+<status status="PASS" start="2024-12-01T15:32:43.116258" elapsed="0.004064"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.071376" elapsed="0.000068"/>
+<status status="PASS" start="2024-12-01T15:32:43.120398" elapsed="0.000075"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="3f25440043f0edc94a089465309325fd", element="f.4EB2ADD64BB68D2A66AF72FDE0CCB87D.d.61877896140DE4CDE6D2F02DE86BEA3B.e.30")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:42.067417" elapsed="0.004052"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.31")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:43.116211" elapsed="0.004283"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:42.075449" level="INFO">${text} = Then: The result should be 101 on the screen</msg>
+<msg time="2024-12-01T15:32:43.124253" level="INFO">${text} = Then: The result should be 101 on the screen</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.071555" elapsed="0.003915"/>
+<status status="PASS" start="2024-12-01T15:32:43.120593" elapsed="0.003678"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.075553" elapsed="0.000079"/>
+<status status="PASS" start="2024-12-01T15:32:43.124340" elapsed="0.000076"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="3f25440043f0edc94a089465309325fd", element="f.4EB2ADD64BB68D2A66AF72FDE0CCB87D.d.61877896140DE4CDE6D2F02DE86BEA3B.e.31")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:42.071516" elapsed="0.004137"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.32")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:43.120552" elapsed="0.003890"/>
 </iter>
 <var>${element}</var>
 <value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:19:42.050916" elapsed="0.024761"/>
+<status status="PASS" start="2024-12-01T15:32:43.099879" elapsed="0.024587"/>
 </for>
 <return>
 <value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:19:42.075710" elapsed="0.000052"/>
+<status status="PASS" start="2024-12-01T15:32:43.124502" elapsed="0.000033"/>
 </return>
-<msg time="2024-12-01T15:19:42.075823" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I enter the number 3 into the calculator', 'And: I press the add button', 'Then: The result should be 101 on the ...</msg>
+<msg time="2024-12-01T15:32:43.124597" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I enter the number 3 into the calculator', 'And: I press the add button', 'Then: The result should be 101 on the ...</msg>
 <var>${steps}</var>
 <arg>Sum of two numbers</arg>
-<status status="PASS" start="2024-12-01T15:19:42.024037" elapsed="0.051798"/>
+<status status="PASS" start="2024-12-01T15:32:43.072204" elapsed="0.052405"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2024-12-01T15:19:42.075982" level="INFO">Length is 5.</msg>
+<msg time="2024-12-01T15:32:43.124753" level="INFO">Length is 5.</msg>
 <arg>${steps}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.075916" elapsed="0.000084"/>
+<status status="PASS" start="2024-12-01T15:32:43.124687" elapsed="0.000086"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:19:41.084131" elapsed="0.991942"/>
+<status status="PASS" start="2024-12-01T15:32:42.115641" elapsed="1.009205"/>
 </test>
-<test id="s1-t3" name="Skipped Scenario Has No Steps" line="23">
-<kw name="Open Report In Browser">
-<kw name="Generate HTML Report">
+<test id="s1-t3" name="Skipped Scenario Has No Steps" line="24">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:42.079051" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T15:32:43.127021" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.076633" elapsed="0.278075"/>
+<status status="PASS" start="2024-12-01T15:32:43.125340" elapsed="0.271455"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:42.355253" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T15:32:43.397319" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.354998" elapsed="0.000282"/>
+<status status="PASS" start="2024-12-01T15:32:43.397038" elapsed="0.000307"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:42.355437" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:43.397497" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.355342" elapsed="0.000110"/>
+<status status="PASS" start="2024-12-01T15:32:43.397405" elapsed="0.000104"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:19:42.355559" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:43.397615" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.355506" elapsed="0.000069"/>
+<status status="PASS" start="2024-12-01T15:32:43.397564" elapsed="0.000067"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:19:42.355601" elapsed="0.000043"/>
+<status status="PASS" start="2024-12-01T15:32:43.397658" elapsed="0.000042"/>
 </return>
-<msg time="2024-12-01T15:19:42.355720" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:43.397776" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:19:42.076547" elapsed="0.279183"/>
+<status status="PASS" start="2024-12-01T15:32:43.125247" elapsed="0.272539"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:42.355927" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T15:32:43.397979" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.355809" elapsed="0.749073"/>
+<status status="PASS" start="2024-12-01T15:32:43.397865" elapsed="0.722309"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:19:42.076428" elapsed="1.028630"/>
+<status status="PASS" start="2024-12-01T15:32:43.125134" elapsed="0.995233"/>
 </kw>
-<kw name="Get Scenario Steps">
+<kw name="Get Scenario Steps" owner="step_keywords">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:43.105689" level="INFO">${scenario} = xpath=//*[@id="Shutdown"]/div</msg>
+<msg time="2024-12-01T15:32:44.121413" level="INFO">${scenario} = xpath=//*[@id="Shutdown"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.105582" elapsed="0.000122"/>
+<status status="PASS" start="2024-12-01T15:32:44.121267" elapsed="0.000166"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:43.118958" level="INFO">Element 'xpath=//*[@id="Shutdown"]/div' contains text 'Scenario: Shutdown'.</msg>
+<msg time="2024-12-01T15:32:44.138177" level="INFO">Element 'xpath=//*[@id="Shutdown"]/div' contains text 'Scenario: Shutdown'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.105772" elapsed="0.013243"/>
+<status status="PASS" start="2024-12-01T15:32:44.121533" elapsed="0.016703"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:43.123970" level="INFO">${steps} = []</msg>
+<msg time="2024-12-01T15:32:44.143106" level="INFO">${steps} = []</msg>
 <var>${steps}</var>
 <arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.119115" elapsed="0.004876"/>
+<status status="PASS" start="2024-12-01T15:32:44.138343" elapsed="0.004780"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:19:43.124140" level="INFO">${current_steps} = []</msg>
+<msg time="2024-12-01T15:32:44.143259" level="INFO">${current_steps} = []</msg>
 <var>${current_steps}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.124076" elapsed="0.000075"/>
+<status status="PASS" start="2024-12-01T15:32:44.143198" elapsed="0.000072"/>
 </kw>
 <for flavor="IN">
 <iter>
@@ -429,868 +429,868 @@
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2024-12-01T15:19:43.124317" elapsed="0.000012"/>
+<status status="NOT RUN" start="2024-12-01T15:32:44.143428" elapsed="0.000012"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="NOT RUN" start="2024-12-01T15:19:43.124374" elapsed="0.000011"/>
+<status status="NOT RUN" start="2024-12-01T15:32:44.143483" elapsed="0.000065"/>
 </kw>
 <var name="${element}"/>
-<status status="NOT RUN" start="2024-12-01T15:19:43.124258" elapsed="0.000192"/>
+<status status="NOT RUN" start="2024-12-01T15:32:44.143376" elapsed="0.000192"/>
 </iter>
 <var>${element}</var>
 <value>@{steps}</value>
-<status status="NOT RUN" start="2024-12-01T15:19:43.124190" elapsed="0.000282"/>
+<status status="NOT RUN" start="2024-12-01T15:32:44.143310" elapsed="0.000278"/>
 </for>
 <return>
 <value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:19:43.124498" elapsed="0.000030"/>
+<status status="PASS" start="2024-12-01T15:32:44.143614" elapsed="0.000031"/>
 </return>
-<msg time="2024-12-01T15:19:43.124589" level="INFO">${steps} = []</msg>
+<msg time="2024-12-01T15:32:44.143706" level="INFO">${steps} = []</msg>
 <var>${steps}</var>
 <arg>Shutdown</arg>
-<status status="PASS" start="2024-12-01T15:19:43.105347" elapsed="0.019253"/>
+<status status="PASS" start="2024-12-01T15:32:44.120956" elapsed="0.022761"/>
 </kw>
 <kw name="Should Be Empty" owner="BuiltIn">
-<msg time="2024-12-01T15:19:43.124749" level="INFO">Length is 0.</msg>
+<msg time="2024-12-01T15:32:44.143848" level="INFO">Length is 0.</msg>
 <arg>${steps}</arg>
 <doc>Verifies that the given item is empty.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.124667" elapsed="0.000210"/>
+<status status="PASS" start="2024-12-01T15:32:44.143787" elapsed="0.000079"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:19:42.076249" elapsed="1.048725"/>
+<status status="PASS" start="2024-12-01T15:32:43.124961" elapsed="1.018961"/>
 </test>
-<test id="s1-t4" name="Check Passed Scenario Steps" line="28">
-<kw name="Open Report In Browser">
-<kw name="Generate HTML Report">
+<test id="s1-t4" name="Check Passed Scenario Steps" line="29">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:43.127755" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T15:32:44.148829" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.125978" elapsed="0.284468"/>
+<status status="PASS" start="2024-12-01T15:32:44.145656" elapsed="0.276947"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:43.410955" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T15:32:44.423115" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.410703" elapsed="0.000278"/>
+<status status="PASS" start="2024-12-01T15:32:44.422847" elapsed="0.000295"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:43.411132" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:44.423293" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.411040" elapsed="0.000103"/>
+<status status="PASS" start="2024-12-01T15:32:44.423202" elapsed="0.000102"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:19:43.411250" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:44.423408" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.411196" elapsed="0.000070"/>
+<status status="PASS" start="2024-12-01T15:32:44.423356" elapsed="0.000068"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:19:43.411293" elapsed="0.000039"/>
+<status status="PASS" start="2024-12-01T15:32:44.423452" elapsed="0.000039"/>
 </return>
-<msg time="2024-12-01T15:19:43.411410" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:44.423568" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:19:43.125867" elapsed="0.285553"/>
+<status status="PASS" start="2024-12-01T15:32:44.144950" elapsed="0.278627"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:43.411621" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T15:32:44.423767" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.411501" elapsed="0.638093"/>
+<status status="PASS" start="2024-12-01T15:32:44.423651" elapsed="0.868010"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:19:43.125706" elapsed="0.924053"/>
+<status status="PASS" start="2024-12-01T15:32:44.144429" elapsed="1.147472"/>
 </kw>
-<kw name="Get Scenario Steps">
+<kw name="Get Scenario Steps" owner="step_keywords">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:44.050442" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
+<msg time="2024-12-01T15:32:45.292924" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.050330" elapsed="0.000127"/>
+<status status="PASS" start="2024-12-01T15:32:45.292764" elapsed="0.000182"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:44.066750" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
+<msg time="2024-12-01T15:32:45.313886" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.050532" elapsed="0.016278"/>
+<status status="PASS" start="2024-12-01T15:32:45.293046" elapsed="0.020908"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:44.071750" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="bc878c61ebfeedb78099f97151e91195", element="f.71B27D84B1B00087CC06E439F7C8CA92.d.5973707C808C63B7620371BEB3D0AA9B.e.11")&gt;, &lt;selenium.webdriv...</msg>
+<msg time="2024-12-01T15:32:45.320487" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.28")&gt;, &lt;selenium.webdriv...</msg>
 <var>${steps}</var>
 <arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.066913" elapsed="0.004856"/>
+<status status="PASS" start="2024-12-01T15:32:45.314084" elapsed="0.006433"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:19:44.071893" level="INFO">${current_steps} = []</msg>
+<msg time="2024-12-01T15:32:45.320710" level="INFO">${current_steps} = []</msg>
 <var>${current_steps}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.071836" elapsed="0.000068"/>
+<status status="PASS" start="2024-12-01T15:32:45.320629" elapsed="0.000094"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:44.079335" level="INFO">${text} = Given: I have a calculator</msg>
+<msg time="2024-12-01T15:32:45.325627" level="INFO">${text} = Given: I have a calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.072059" elapsed="0.007303"/>
+<status status="PASS" start="2024-12-01T15:32:45.320926" elapsed="0.004723"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.079478" elapsed="0.000110"/>
+<status status="PASS" start="2024-12-01T15:32:45.325738" elapsed="0.000103"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="bc878c61ebfeedb78099f97151e91195", element="f.71B27D84B1B00087CC06E439F7C8CA92.d.5973707C808C63B7620371BEB3D0AA9B.e.11")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:44.072010" elapsed="0.007603"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.28")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:45.320863" elapsed="0.005003"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:44.084855" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
+<msg time="2024-12-01T15:32:45.330382" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.079734" elapsed="0.005154"/>
+<status status="PASS" start="2024-12-01T15:32:45.325977" elapsed="0.004428"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.084983" elapsed="0.000092"/>
+<status status="PASS" start="2024-12-01T15:32:45.330494" elapsed="0.000091"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="bc878c61ebfeedb78099f97151e91195", element="f.71B27D84B1B00087CC06E439F7C8CA92.d.5973707C808C63B7620371BEB3D0AA9B.e.12")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:44.079683" elapsed="0.005415"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.29")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:45.325929" elapsed="0.004683"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:44.089942" level="INFO">${text} = And: I press the add button</msg>
+<msg time="2024-12-01T15:32:45.334738" level="INFO">${text} = And: I press the add button</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.085209" elapsed="0.004759"/>
+<status status="PASS" start="2024-12-01T15:32:45.330719" elapsed="0.004035"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.090098" elapsed="0.000121"/>
+<status status="PASS" start="2024-12-01T15:32:45.334816" elapsed="0.000073"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="bc878c61ebfeedb78099f97151e91195", element="f.71B27D84B1B00087CC06E439F7C8CA92.d.5973707C808C63B7620371BEB3D0AA9B.e.13")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:44.085162" elapsed="0.005080"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.30")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:45.330672" elapsed="0.004312"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:44.095158" level="INFO">${text} = Then: The result should be 7 on the screen</msg>
+<msg time="2024-12-01T15:32:45.339102" level="INFO">${text} = Then: The result should be 7 on the screen</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.090497" elapsed="0.004680"/>
+<status status="PASS" start="2024-12-01T15:32:45.335083" elapsed="0.004038"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.095260" elapsed="0.000079"/>
+<status status="PASS" start="2024-12-01T15:32:45.339197" elapsed="0.000083"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="bc878c61ebfeedb78099f97151e91195", element="f.71B27D84B1B00087CC06E439F7C8CA92.d.5973707C808C63B7620371BEB3D0AA9B.e.14")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:44.090443" elapsed="0.004917"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.31")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:45.335040" elapsed="0.004263"/>
 </iter>
 <var>${element}</var>
 <value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:19:44.071941" elapsed="0.023444"/>
+<status status="PASS" start="2024-12-01T15:32:45.320771" elapsed="0.018558"/>
 </for>
 <return>
 <value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:19:44.095416" elapsed="0.000033"/>
+<status status="PASS" start="2024-12-01T15:32:45.339370" elapsed="0.000034"/>
 </return>
-<msg time="2024-12-01T15:19:44.095509" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I press the add button', 'Then: The result should be 7 on the screen']</msg>
+<msg time="2024-12-01T15:32:45.339467" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I press the add button', 'Then: The result should be 7 on the screen']</msg>
 <var>${steps}</var>
 <arg>Sum of a number</arg>
-<status status="PASS" start="2024-12-01T15:19:44.050086" elapsed="0.045434"/>
+<status status="PASS" start="2024-12-01T15:32:45.292397" elapsed="0.047082"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${steps}</arg>
 <arg>${PASSED_STEPS}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.095607" elapsed="0.000098"/>
+<status status="PASS" start="2024-12-01T15:32:45.339569" elapsed="0.000103"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:19:43.125105" elapsed="0.970668"/>
+<status status="PASS" start="2024-12-01T15:32:44.144029" elapsed="1.195711"/>
 </test>
-<test id="s1-t5" name="Check Failed Scenario Steps" line="33">
-<kw name="Open Report In Browser">
-<kw name="Generate HTML Report">
+<test id="s1-t5" name="Check Failed Scenario Steps" line="34">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:44.098031" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T15:32:45.341946" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.096355" elapsed="0.278917"/>
+<status status="PASS" start="2024-12-01T15:32:45.340229" elapsed="0.278576"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:44.375787" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T15:32:45.619443" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.375522" elapsed="0.000291"/>
+<status status="PASS" start="2024-12-01T15:32:45.619116" elapsed="0.000358"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:44.375964" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:45.619638" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.375871" elapsed="0.000104"/>
+<status status="PASS" start="2024-12-01T15:32:45.619541" elapsed="0.000109"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:19:44.376075" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:45.619766" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.376025" elapsed="0.000067"/>
+<status status="PASS" start="2024-12-01T15:32:45.619711" elapsed="0.000073"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:19:44.376117" elapsed="0.000042"/>
+<status status="PASS" start="2024-12-01T15:32:45.619816" elapsed="0.000046"/>
 </return>
-<msg time="2024-12-01T15:19:44.376240" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:45.619949" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:19:44.096266" elapsed="0.279985"/>
+<status status="PASS" start="2024-12-01T15:32:45.340134" elapsed="0.279825"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:44.376443" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T15:32:45.620162" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.376322" elapsed="0.747060"/>
+<status status="PASS" start="2024-12-01T15:32:45.620039" elapsed="0.638545"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:19:44.096139" elapsed="1.027443"/>
+<status status="PASS" start="2024-12-01T15:32:45.340019" elapsed="0.918716"/>
 </kw>
-<kw name="Get Scenario Steps">
+<kw name="Get Scenario Steps" owner="step_keywords">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:45.124341" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-12-01T15:32:46.259381" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.124221" elapsed="0.000137"/>
+<status status="PASS" start="2024-12-01T15:32:46.259278" elapsed="0.000116"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:45.143727" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<msg time="2024-12-01T15:32:46.283159" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.124441" elapsed="0.019341"/>
+<status status="PASS" start="2024-12-01T15:32:46.259457" elapsed="0.023794"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:45.149262" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="77b20f50b3412dc67c0ef20f42ed2213", element="f.3389050CE123D4CDEEF6AB45B1F6E4ED.d.18C4A1F8F0D30C5CA7AFFA70308726C8.e.13")&gt;, &lt;selenium.webdriv...</msg>
+<msg time="2024-12-01T15:32:46.289401" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.13")&gt;, &lt;selenium.webdriv...</msg>
 <var>${steps}</var>
 <arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.143884" elapsed="0.005401"/>
+<status status="PASS" start="2024-12-01T15:32:46.283411" elapsed="0.006018"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:19:45.149435" level="INFO">${current_steps} = []</msg>
+<msg time="2024-12-01T15:32:46.289595" level="INFO">${current_steps} = []</msg>
 <var>${current_steps}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.149371" elapsed="0.000076"/>
+<status status="PASS" start="2024-12-01T15:32:46.289527" elapsed="0.000078"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:45.153688" level="INFO">${text} = Given: I have a calculator</msg>
+<msg time="2024-12-01T15:32:46.293904" level="INFO">${text} = Given: I have a calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.149613" elapsed="0.004094"/>
+<status status="PASS" start="2024-12-01T15:32:46.289770" elapsed="0.004156"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.153783" elapsed="0.000083"/>
+<status status="PASS" start="2024-12-01T15:32:46.294023" elapsed="0.000103"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="77b20f50b3412dc67c0ef20f42ed2213", element="f.3389050CE123D4CDEEF6AB45B1F6E4ED.d.18C4A1F8F0D30C5CA7AFFA70308726C8.e.13")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:45.149554" elapsed="0.004333"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.13")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:46.289718" elapsed="0.004431"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:45.157791" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
+<msg time="2024-12-01T15:32:46.301341" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.153981" elapsed="0.003844"/>
+<status status="PASS" start="2024-12-01T15:32:46.294247" elapsed="0.007117"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.157920" elapsed="0.000124"/>
+<status status="PASS" start="2024-12-01T15:32:46.301540" elapsed="0.000098"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="77b20f50b3412dc67c0ef20f42ed2213", element="f.3389050CE123D4CDEEF6AB45B1F6E4ED.d.18C4A1F8F0D30C5CA7AFFA70308726C8.e.14")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:45.153940" elapsed="0.004225"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.14")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:46.294205" elapsed="0.007456"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:45.165133" level="INFO">${text} = And: I enter the number 3 into the calculator</msg>
+<msg time="2024-12-01T15:32:46.306170" level="INFO">${text} = And: I enter the number 3 into the calculator</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.158303" elapsed="0.006855"/>
+<status status="PASS" start="2024-12-01T15:32:46.301769" elapsed="0.004424"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.165258" elapsed="0.000094"/>
+<status status="PASS" start="2024-12-01T15:32:46.306284" elapsed="0.000086"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="77b20f50b3412dc67c0ef20f42ed2213", element="f.3389050CE123D4CDEEF6AB45B1F6E4ED.d.18C4A1F8F0D30C5CA7AFFA70308726C8.e.15")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:45.158245" elapsed="0.007138"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.15")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:46.301723" elapsed="0.004673"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:45.170169" level="INFO">${text} = And: I press the add button</msg>
+<msg time="2024-12-01T15:32:46.310297" level="INFO">${text} = And: I press the add button</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.165491" elapsed="0.004701"/>
+<status status="PASS" start="2024-12-01T15:32:46.306497" elapsed="0.003817"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.170294" elapsed="0.000097"/>
+<status status="PASS" start="2024-12-01T15:32:46.310379" elapsed="0.000074"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="77b20f50b3412dc67c0ef20f42ed2213", element="f.3389050CE123D4CDEEF6AB45B1F6E4ED.d.18C4A1F8F0D30C5CA7AFFA70308726C8.e.16")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:45.165446" elapsed="0.004968"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.16")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:46.306453" elapsed="0.004026"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:45.174462" level="INFO">${text} = Then: The result should be 101 on the screen</msg>
+<msg time="2024-12-01T15:32:46.317670" level="INFO">${text} = Then: The result should be 101 on the screen</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.170530" elapsed="0.003949"/>
+<status status="PASS" start="2024-12-01T15:32:46.310576" elapsed="0.007117"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_steps}</arg>
 <arg>${text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.174542" elapsed="0.000072"/>
+<status status="PASS" start="2024-12-01T15:32:46.317784" elapsed="0.000087"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="77b20f50b3412dc67c0ef20f42ed2213", element="f.3389050CE123D4CDEEF6AB45B1F6E4ED.d.18C4A1F8F0D30C5CA7AFFA70308726C8.e.17")&gt;</var>
-<status status="PASS" start="2024-12-01T15:19:45.170484" elapsed="0.004151"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.17")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:46.310533" elapsed="0.007359"/>
 </iter>
 <var>${element}</var>
 <value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:19:45.149483" elapsed="0.025175"/>
+<status status="PASS" start="2024-12-01T15:32:46.289646" elapsed="0.028276"/>
 </for>
 <return>
 <value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:19:45.174707" elapsed="0.000056"/>
+<status status="PASS" start="2024-12-01T15:32:46.317952" elapsed="0.000034"/>
 </return>
-<msg time="2024-12-01T15:19:45.174861" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I enter the number 3 into the calculator', 'And: I press the add button', 'Then: The result should be 101 on the ...</msg>
+<msg time="2024-12-01T15:32:46.318048" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I enter the number 3 into the calculator', 'And: I press the add button', 'Then: The result should be 101 on the ...</msg>
 <var>${steps}</var>
 <arg>Sum of two numbers</arg>
-<status status="PASS" start="2024-12-01T15:19:45.123950" elapsed="0.050926"/>
+<status status="PASS" start="2024-12-01T15:32:46.259027" elapsed="0.059032"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${steps}</arg>
 <arg>${FAILED_STEPS}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.174997" elapsed="0.000152"/>
+<status status="PASS" start="2024-12-01T15:32:46.318141" elapsed="0.000110"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:19:44.095956" elapsed="1.079310"/>
+<status status="PASS" start="2024-12-01T15:32:45.339850" elapsed="0.978465"/>
 </test>
-<test id="s1-t6" name="Check Durations For Passed Scenario" line="38">
-<kw name="Open Report In Browser">
-<kw name="Generate HTML Report">
+<test id="s1-t6" name="Check Durations For Passed Scenario" line="39">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:45.177655" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T15:32:46.320565" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.175931" elapsed="0.280980"/>
+<status status="PASS" start="2024-12-01T15:32:46.318802" elapsed="0.282388"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:19:45.457464" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T15:32:46.601772" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.457194" elapsed="0.000295"/>
+<status status="PASS" start="2024-12-01T15:32:46.601488" elapsed="0.000315"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:19:45.457630" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:46.601957" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.457542" elapsed="0.000099"/>
+<status status="PASS" start="2024-12-01T15:32:46.601865" elapsed="0.000103"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:19:45.457743" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:46.602076" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.457692" elapsed="0.000067"/>
+<status status="PASS" start="2024-12-01T15:32:46.602023" elapsed="0.000070"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:19:45.457786" elapsed="0.000044"/>
+<status status="PASS" start="2024-12-01T15:32:46.602121" elapsed="0.000041"/>
 </return>
-<msg time="2024-12-01T15:19:45.457912" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:46.602238" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:19:45.175821" elapsed="0.282101"/>
+<status status="PASS" start="2024-12-01T15:32:46.318711" elapsed="0.283537"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:19:45.458178" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T15:32:46.602446" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.458005" elapsed="75.541624"/>
+<status status="PASS" start="2024-12-01T15:32:46.602327" elapsed="0.748481"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:19:45.175620" elapsed="75.824271"/>
+<status status="PASS" start="2024-12-01T15:32:46.318599" elapsed="1.032376"/>
 </kw>
-<kw name="Get Scenario Steps Duration">
+<kw name="Get Scenario Steps Duration" owner="step_keywords">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:21:01.000798" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
+<msg time="2024-12-01T15:32:47.351642" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.000626" elapsed="0.000195"/>
+<status status="PASS" start="2024-12-01T15:32:47.351534" elapsed="0.000123"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:01.022521" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
+<msg time="2024-12-01T15:32:47.369892" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.000927" elapsed="0.021661"/>
+<status status="PASS" start="2024-12-01T15:32:47.351724" elapsed="0.018291"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:01.029087" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="d389f1ca206d55f3044e84a25e7732c9", element="f.890AD08763A4F0D6E3B7F12F1213954D.d.B9E2F7E97217C707D0749BA125679E89.e.14")&gt;, &lt;selenium.webdriv...</msg>
+<msg time="2024-12-01T15:32:47.375466" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.28")&gt;, &lt;selenium.webdriv...</msg>
 <var>${steps}</var>
 <arg>${scenario}/div[2]/*[@class="step-container"]/p</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.022720" elapsed="0.006394"/>
+<status status="PASS" start="2024-12-01T15:32:47.370139" elapsed="0.005405"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:21:01.029382" level="INFO">${current_durations} = []</msg>
+<msg time="2024-12-01T15:32:47.375710" level="INFO">${current_durations} = []</msg>
 <var>${current_durations}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.029302" elapsed="0.000095"/>
+<status status="PASS" start="2024-12-01T15:32:47.375640" elapsed="0.000081"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:01.033729" level="INFO">${text} = 0.02ms</msg>
+<msg time="2024-12-01T15:32:47.382027" level="INFO">${text} = 0.019ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.029601" elapsed="0.004149"/>
+<status status="PASS" start="2024-12-01T15:32:47.375895" elapsed="0.006157"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:01.033919" level="INFO">${text} = 0.02</msg>
+<msg time="2024-12-01T15:32:47.382264" level="INFO">${text} = 0.019</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.033830" elapsed="0.000102"/>
+<status status="PASS" start="2024-12-01T15:32:47.382157" elapsed="0.000119"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:01.034090" level="INFO">${duration} = 0.02</msg>
+<msg time="2024-12-01T15:32:47.382438" level="INFO">${duration} = 0.019</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.033992" elapsed="0.000109"/>
+<status status="PASS" start="2024-12-01T15:32:47.382339" elapsed="0.000110"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.034152" elapsed="0.000070"/>
+<status status="PASS" start="2024-12-01T15:32:47.382502" elapsed="0.000074"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d389f1ca206d55f3044e84a25e7732c9", element="f.890AD08763A4F0D6E3B7F12F1213954D.d.B9E2F7E97217C707D0749BA125679E89.e.14")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:01.029534" elapsed="0.004715"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.28")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:47.375843" elapsed="0.006754"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:01.038001" level="INFO">${text} = 0.043ms</msg>
+<msg time="2024-12-01T15:32:47.387291" level="INFO">${text} = 0.042ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.034359" elapsed="0.003661"/>
+<status status="PASS" start="2024-12-01T15:32:47.382705" elapsed="0.004613"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:01.038158" level="INFO">${text} = 0.043</msg>
+<msg time="2024-12-01T15:32:47.387577" level="INFO">${text} = 0.042</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.038084" elapsed="0.000086"/>
+<status status="PASS" start="2024-12-01T15:32:47.387455" elapsed="0.000133"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:01.038295" level="INFO">${duration} = 0.043</msg>
+<msg time="2024-12-01T15:32:47.387745" level="INFO">${duration} = 0.042</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.038221" elapsed="0.000085"/>
+<status status="PASS" start="2024-12-01T15:32:47.387655" elapsed="0.000101"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.038349" elapsed="0.000060"/>
+<status status="PASS" start="2024-12-01T15:32:47.387811" elapsed="0.000062"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d389f1ca206d55f3044e84a25e7732c9", element="f.890AD08763A4F0D6E3B7F12F1213954D.d.B9E2F7E97217C707D0749BA125679E89.e.15")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:01.034314" elapsed="0.004115"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.29")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:47.382661" elapsed="0.005232"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:01.042401" level="INFO">${text} = 0.015ms</msg>
+<msg time="2024-12-01T15:32:47.392161" level="INFO">${text} = 0.015ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.038527" elapsed="0.003893"/>
+<status status="PASS" start="2024-12-01T15:32:47.388014" elapsed="0.004168"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:01.042575" level="INFO">${text} = 0.015</msg>
+<msg time="2024-12-01T15:32:47.392350" level="INFO">${text} = 0.015</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.042495" elapsed="0.000092"/>
+<status status="PASS" start="2024-12-01T15:32:47.392267" elapsed="0.000094"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:01.042716" level="INFO">${duration} = 0.015</msg>
+<msg time="2024-12-01T15:32:47.392486" level="INFO">${duration} = 0.015</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.042638" elapsed="0.000089"/>
+<status status="PASS" start="2024-12-01T15:32:47.392412" elapsed="0.000083"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.042771" elapsed="0.000061"/>
+<status status="PASS" start="2024-12-01T15:32:47.392536" elapsed="0.000057"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d389f1ca206d55f3044e84a25e7732c9", element="f.890AD08763A4F0D6E3B7F12F1213954D.d.B9E2F7E97217C707D0749BA125679E89.e.16")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:01.038487" elapsed="0.004366"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.30")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:47.387967" elapsed="0.004645"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:01.046634" level="INFO">${text} = 0.024ms</msg>
+<msg time="2024-12-01T15:32:47.398263" level="INFO">${text} = 0.024ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.042954" elapsed="0.003699"/>
+<status status="PASS" start="2024-12-01T15:32:47.392707" elapsed="0.005578"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:01.046806" level="INFO">${text} = 0.024</msg>
+<msg time="2024-12-01T15:32:47.398478" level="INFO">${text} = 0.024</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.046725" elapsed="0.000093"/>
+<status status="PASS" start="2024-12-01T15:32:47.398389" elapsed="0.000100"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:01.046947" level="INFO">${duration} = 0.024</msg>
+<msg time="2024-12-01T15:32:47.398618" level="INFO">${duration} = 0.024</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.046870" elapsed="0.000087"/>
+<status status="PASS" start="2024-12-01T15:32:47.398541" elapsed="0.000087"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.047000" elapsed="0.000061"/>
+<status status="PASS" start="2024-12-01T15:32:47.398669" elapsed="0.000059"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="d389f1ca206d55f3044e84a25e7732c9", element="f.890AD08763A4F0D6E3B7F12F1213954D.d.B9E2F7E97217C707D0749BA125679E89.e.17")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:01.042912" elapsed="0.004170"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.31")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:47.392668" elapsed="0.006079"/>
 </iter>
 <var>${element}</var>
 <value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:21:01.029440" elapsed="0.017667"/>
+<status status="PASS" start="2024-12-01T15:32:47.375764" elapsed="0.023008"/>
 </for>
 <return>
 <value>${current_durations}</value>
-<status status="PASS" start="2024-12-01T15:21:01.047141" elapsed="0.000037"/>
+<status status="PASS" start="2024-12-01T15:32:47.398804" elapsed="0.000034"/>
 </return>
-<msg time="2024-12-01T15:21:01.047244" level="INFO">${durations} = [0.02, 0.043, 0.015, 0.024]</msg>
+<msg time="2024-12-01T15:32:47.398899" level="INFO">${durations} = [0.019, 0.042, 0.015, 0.024]</msg>
 <var>${durations}</var>
 <arg>Sum of a number</arg>
-<status status="PASS" start="2024-12-01T15:21:01.000294" elapsed="0.046961"/>
+<status status="PASS" start="2024-12-01T15:32:47.351285" elapsed="0.047625"/>
 </kw>
 <kw name="List Should Not Contain Value" owner="Collections">
 <arg>${durations}</arg>
 <arg>0.0</arg>
 <doc>Fails if the ``value`` is found from ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.047342" elapsed="0.000088"/>
+<status status="PASS" start="2024-12-01T15:32:47.398996" elapsed="0.000070"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:19:45.175390" elapsed="75.872110"/>
+<status status="PASS" start="2024-12-01T15:32:46.318432" elapsed="1.080697"/>
 </test>
-<test id="s1-t7" name="Check Durations For Failed Scenario" line="43">
-<kw name="Open Report In Browser">
-<kw name="Generate HTML Report">
+<test id="s1-t7" name="Check Durations For Failed Scenario" line="44">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:21:01.049657" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T15:32:47.401308" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.048007" elapsed="0.262655"/>
+<status status="PASS" start="2024-12-01T15:32:47.399623" elapsed="0.274807"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:21:01.311188" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T15:32:47.675057" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.310911" elapsed="0.000376"/>
+<status status="PASS" start="2024-12-01T15:32:47.674760" elapsed="0.000326"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:21:01.311441" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:47.675243" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.311347" elapsed="0.000105"/>
+<status status="PASS" start="2024-12-01T15:32:47.675148" elapsed="0.000108"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:21:01.311561" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:47.675367" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.311507" elapsed="0.000070"/>
+<status status="PASS" start="2024-12-01T15:32:47.675311" elapsed="0.000073"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:21:01.311603" elapsed="0.000040"/>
+<status status="PASS" start="2024-12-01T15:32:47.675420" elapsed="0.000042"/>
 </return>
-<msg time="2024-12-01T15:21:01.311723" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T15:32:47.675537" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:21:01.047912" elapsed="0.263822"/>
+<status status="PASS" start="2024-12-01T15:32:47.399531" elapsed="0.276016"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:01.311928" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T15:32:47.675739" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.311808" elapsed="0.836109"/>
+<status status="PASS" start="2024-12-01T15:32:47.675621" elapsed="0.729202"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:21:01.047791" elapsed="1.100296"/>
+<status status="PASS" start="2024-12-01T15:32:47.399423" elapsed="1.005562"/>
 </kw>
-<kw name="Get Scenario Steps Duration">
+<kw name="Get Scenario Steps Duration" owner="step_keywords">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:21:02.148739" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-12-01T15:32:48.405671" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.148630" elapsed="0.000123"/>
+<status status="PASS" start="2024-12-01T15:32:48.405558" elapsed="0.000128"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:02.164669" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<msg time="2024-12-01T15:32:48.424671" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.148826" elapsed="0.015901"/>
+<status status="PASS" start="2024-12-01T15:32:48.405755" elapsed="0.018978"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:02.170018" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="8e42c0ad8dec8db1eef4e82ddcf3e151", element="f.308050C255B0DEDEA7E1D16FAAD0DE47.d.D8279C437F261FB4768936E85D3FA7AD.e.27")&gt;, &lt;selenium.webdriv...</msg>
+<msg time="2024-12-01T15:32:48.432787" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.11")&gt;, &lt;selenium.webdriv...</msg>
 <var>${steps}</var>
 <arg>${scenario}/div[2]/*[@class="step-container"]/p</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.164840" elapsed="0.005202"/>
+<status status="PASS" start="2024-12-01T15:32:48.424845" elapsed="0.007977"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:21:02.170193" level="INFO">${current_durations} = []</msg>
+<msg time="2024-12-01T15:32:48.433076" level="INFO">${current_durations} = []</msg>
 <var>${current_durations}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.170129" elapsed="0.000075"/>
+<status status="PASS" start="2024-12-01T15:32:48.432979" elapsed="0.000110"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:02.173552" level="INFO">${text} = 0.019ms</msg>
+<msg time="2024-12-01T15:32:48.438234" level="INFO">${text} = 0.012ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.170373" elapsed="0.003196"/>
+<status status="PASS" start="2024-12-01T15:32:48.433352" elapsed="0.004914"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:02.173764" level="INFO">${text} = 0.019</msg>
+<msg time="2024-12-01T15:32:48.438500" level="INFO">${text} = 0.012</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.173633" elapsed="0.000149"/>
+<status status="PASS" start="2024-12-01T15:32:48.438394" elapsed="0.000117"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:02.173951" level="INFO">${duration} = 0.019</msg>
+<msg time="2024-12-01T15:32:48.438669" level="INFO">${duration} = 0.012</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.173851" elapsed="0.000111"/>
+<status status="PASS" start="2024-12-01T15:32:48.438573" elapsed="0.000106"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.174013" elapsed="0.000068"/>
+<status status="PASS" start="2024-12-01T15:32:48.438725" elapsed="0.000068"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="8e42c0ad8dec8db1eef4e82ddcf3e151", element="f.308050C255B0DEDEA7E1D16FAAD0DE47.d.D8279C437F261FB4768936E85D3FA7AD.e.27")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:02.170319" elapsed="0.003783"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.11")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:48.433285" elapsed="0.005527"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:02.180415" level="INFO">${text} = 0.033ms</msg>
+<msg time="2024-12-01T15:32:48.443067" level="INFO">${text} = 0.033ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.174206" elapsed="0.006233"/>
+<status status="PASS" start="2024-12-01T15:32:48.438919" elapsed="0.004170"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:02.180641" level="INFO">${text} = 0.033</msg>
+<msg time="2024-12-01T15:32:48.443270" level="INFO">${text} = 0.033</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.180547" elapsed="0.000106"/>
+<status status="PASS" start="2024-12-01T15:32:48.443183" elapsed="0.000098"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:02.180785" level="INFO">${duration} = 0.033</msg>
+<msg time="2024-12-01T15:32:48.443405" level="INFO">${duration} = 0.033</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.180705" elapsed="0.000092"/>
+<status status="PASS" start="2024-12-01T15:32:48.443331" elapsed="0.000083"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.180840" elapsed="0.000058"/>
+<status status="PASS" start="2024-12-01T15:32:48.443454" elapsed="0.000057"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="8e42c0ad8dec8db1eef4e82ddcf3e151", element="f.308050C255B0DEDEA7E1D16FAAD0DE47.d.D8279C437F261FB4768936E85D3FA7AD.e.28")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:02.174163" elapsed="0.006754"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.12")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:48.438877" elapsed="0.004654"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:02.185204" level="INFO">${text} = 0.017ms</msg>
+<msg time="2024-12-01T15:32:48.448589" level="INFO">${text} = 0.018ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.181027" elapsed="0.004206"/>
+<status status="PASS" start="2024-12-01T15:32:48.443641" elapsed="0.004969"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:02.185446" level="INFO">${text} = 0.017</msg>
+<msg time="2024-12-01T15:32:48.448788" level="INFO">${text} = 0.018</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.185351" elapsed="0.000107"/>
+<status status="PASS" start="2024-12-01T15:32:48.448701" elapsed="0.000097"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:02.185595" level="INFO">${duration} = 0.017</msg>
+<msg time="2024-12-01T15:32:48.448927" level="INFO">${duration} = 0.018</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.185510" elapsed="0.000095"/>
+<status status="PASS" start="2024-12-01T15:32:48.448851" elapsed="0.000086"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.185652" elapsed="0.000060"/>
+<status status="PASS" start="2024-12-01T15:32:48.449048" elapsed="0.000059"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="8e42c0ad8dec8db1eef4e82ddcf3e151", element="f.308050C255B0DEDEA7E1D16FAAD0DE47.d.D8279C437F261FB4768936E85D3FA7AD.e.29")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:02.180980" elapsed="0.004752"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.13")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:48.443597" elapsed="0.005529"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:02.189949" level="INFO">${text} = 0.013ms</msg>
+<msg time="2024-12-01T15:32:48.452637" level="INFO">${text} = 0.013ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.185916" elapsed="0.004056"/>
+<status status="PASS" start="2024-12-01T15:32:48.449228" elapsed="0.003424"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:02.190136" level="INFO">${text} = 0.013</msg>
+<msg time="2024-12-01T15:32:48.452789" level="INFO">${text} = 0.013</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.190053" elapsed="0.000093"/>
+<status status="PASS" start="2024-12-01T15:32:48.452719" elapsed="0.000080"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:02.190275" level="INFO">${duration} = 0.013</msg>
+<msg time="2024-12-01T15:32:48.452915" level="INFO">${duration} = 0.013</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.190201" elapsed="0.000084"/>
+<status status="PASS" start="2024-12-01T15:32:48.452846" elapsed="0.000078"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.190327" elapsed="0.000119"/>
+<status status="PASS" start="2024-12-01T15:32:48.452964" elapsed="0.000055"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="8e42c0ad8dec8db1eef4e82ddcf3e151", element="f.308050C255B0DEDEA7E1D16FAAD0DE47.d.D8279C437F261FB4768936E85D3FA7AD.e.30")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:02.185867" elapsed="0.004612"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.14")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:48.449186" elapsed="0.003852"/>
 </iter>
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:21:02.194137" level="INFO">${text} = 0.068ms</msg>
+<msg time="2024-12-01T15:32:48.456496" level="INFO">${text} = 0.068ms</msg>
 <var>${text}</var>
 <arg>${element}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.190630" elapsed="0.003523"/>
+<status status="PASS" start="2024-12-01T15:32:48.453129" elapsed="0.003381"/>
 </kw>
 <kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:21:02.194296" level="INFO">${text} = 0.068</msg>
+<msg time="2024-12-01T15:32:48.456634" level="INFO">${text} = 0.068</msg>
 <var>${text}</var>
 <arg>${text}</arg>
 <arg>ms</arg>
 <doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.194222" elapsed="0.000083"/>
+<status status="PASS" start="2024-12-01T15:32:48.456568" elapsed="0.000076"/>
 </kw>
 <kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:21:02.194417" level="INFO">${duration} = 0.068</msg>
+<msg time="2024-12-01T15:32:48.456754" level="INFO">${duration} = 0.068</msg>
 <var>${duration}</var>
 <arg>${text}</arg>
 <doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.194350" elapsed="0.000076"/>
+<status status="PASS" start="2024-12-01T15:32:48.456690" elapsed="0.000073"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${current_durations}</arg>
 <arg>${duration}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.194464" elapsed="0.000053"/>
+<status status="PASS" start="2024-12-01T15:32:48.456808" elapsed="0.000053"/>
 </kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="8e42c0ad8dec8db1eef4e82ddcf3e151", element="f.308050C255B0DEDEA7E1D16FAAD0DE47.d.D8279C437F261FB4768936E85D3FA7AD.e.31")&gt;</var>
-<status status="PASS" start="2024-12-01T15:21:02.190552" elapsed="0.003983"/>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.15")&gt;</var>
+<status status="PASS" start="2024-12-01T15:32:48.453091" elapsed="0.003788"/>
 </iter>
 <var>${element}</var>
 <value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:21:02.170241" elapsed="0.024318"/>
+<status status="PASS" start="2024-12-01T15:32:48.433146" elapsed="0.023756"/>
 </for>
 <return>
 <value>${current_durations}</value>
-<status status="PASS" start="2024-12-01T15:21:02.194593" elapsed="0.000036"/>
+<status status="PASS" start="2024-12-01T15:32:48.456931" elapsed="0.000031"/>
 </return>
-<msg time="2024-12-01T15:21:02.194688" level="INFO">${durations} = [0.019, 0.033, 0.017, 0.013, 0.068]</msg>
+<msg time="2024-12-01T15:32:48.457018" level="INFO">${durations} = [0.012, 0.033, 0.018, 0.013, 0.068]</msg>
 <var>${durations}</var>
 <arg>Sum of two numbers</arg>
-<status status="PASS" start="2024-12-01T15:21:02.148395" elapsed="0.046303"/>
+<status status="PASS" start="2024-12-01T15:32:48.405301" elapsed="0.051726"/>
 </kw>
 <kw name="List Should Not Contain Value" owner="Collections">
 <arg>${durations}</arg>
 <arg>0.0</arg>
 <doc>Fails if the ``value`` is found from ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:21:02.194790" elapsed="0.000066"/>
+<status status="PASS" start="2024-12-01T15:32:48.457108" elapsed="0.000095"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:21:01.047620" elapsed="1.147302"/>
+<status status="PASS" start="2024-12-01T15:32:47.399246" elapsed="1.058064"/>
 </test>
-<status status="PASS" start="2024-12-01T15:19:39.715473" elapsed="82.479715"/>
+<status status="PASS" start="2024-12-01T15:32:40.868168" elapsed="7.589493"/>
 </suite>
 <statistics>
 <total>
@@ -1299,7 +1299,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="7" fail="0" skip="0" id="s1" name="Refactored-Test-Step">Refactored-Test-Step</stat>
+<stat pass="7" fail="0" skip="0" id="s1" name="Test-Steps">Test-Steps</stat>
 </suite>
 </statistics>
 <errors>
