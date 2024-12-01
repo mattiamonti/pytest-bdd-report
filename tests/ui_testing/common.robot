@@ -19,6 +19,12 @@ Generate HTML Report
     Log    Generated report at: ${result}
     RETURN    ${result}
 
+Get Feature
+    [Arguments]    ${feature_name}
+    ${feature}=    Set Variable    xpath=//*[@id="${feature_name}"]/div[1]
+    Element Should Contain    ${feature}    Feature: ${feature_name}
+    RETURN   ${feature}
+
 Get Scenario
     [Arguments]    ${scenario_name}
     ${scenario}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div
