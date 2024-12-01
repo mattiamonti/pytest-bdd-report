@@ -6,8 +6,6 @@ Library  OperatingSystem
 ${BROWSER}    headlesschrome    #chrome
 
 *** Keywords ***
-
-
 Open Report In Browser
     [Documentation]    Opens the browser and navigates to the target URL.
     ${url}=    Generate HTML Report    RFTest

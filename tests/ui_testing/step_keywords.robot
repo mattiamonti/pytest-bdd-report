@@ -3,6 +3,7 @@ Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
+Resource          common.robot
 
 *** Variables ***
 ${BROWSER}        headlesschrome    #chrome
@@ -10,8 +11,7 @@ ${BROWSER}        headlesschrome    #chrome
 *** Keywords ***
 Get Scenario Steps
     [Arguments]    ${scenario_name}
-    ${scenario}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div
-    Element Should Contain    ${scenario}    Scenario: ${scenario_name}
+    ${scenario}=    Get Scenario    ${scenario_name}
     ${steps}=    Get Web Elements    ${scenario}/div[2]/*[@class="step-container"]/div
     ${current_steps}=   Create List
     FOR    ${element}    IN    @{steps}
@@ -22,7 +22,7 @@ Get Scenario Steps
 
 Get Scenario Steps Duration
     [Arguments]    ${scenario_name}
-    ${scenario}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div
+    ${scenario}=    Get Scenario    ${scenario_name}
     Element Should Contain    ${scenario}    Scenario: ${scenario_name}
     ${steps}=    Get Web Elements    ${scenario}/div[2]/*[@class="step-container"]/p
     ${current_durations}=   Create List
