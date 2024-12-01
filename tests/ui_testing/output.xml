@@ -1,1305 +1,696 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.12.3 on darwin)" generated="2024-12-01T15:32:40.867336" rpa="false" schemaversion="5">
-<suite id="s1" name="Test-Steps" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-steps.robot">
-<test id="s1-t1" name="Passed Scenario Has Steps" line="14">
+<robot generator="Robot 7.1.1 (Python 3.12.3 on darwin)" generated="2024-12-01T16:01:10.909561" rpa="false" schemaversion="5">
+<suite id="s1" name="Test-Scenarios" source="/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/test-scenarios.robot">
+<test id="s1-t1" name="Failed scenario color" line="10">
 <kw name="Open Report In Browser" owner="step_keywords">
 <kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:40.940638" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T16:01:10.981425" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:32:40.938821" elapsed="0.263724"/>
+<status status="PASS" start="2024-12-01T16:01:10.979628" elapsed="0.268167"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:41.203066" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T16:01:11.248339" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:32:41.202806" elapsed="0.000293"/>
+<status status="PASS" start="2024-12-01T16:01:11.248068" elapsed="0.000307"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:41.203267" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:11.248541" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:41.203167" elapsed="0.000114"/>
+<status status="PASS" start="2024-12-01T16:01:11.248443" elapsed="0.000112"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:32:41.203396" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:11.248668" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:32:41.203339" elapsed="0.000076"/>
+<status status="PASS" start="2024-12-01T16:01:11.248613" elapsed="0.000071"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:32:41.203451" elapsed="0.000051"/>
+<status status="PASS" start="2024-12-01T16:01:11.248717" elapsed="0.000049"/>
 </return>
-<msg time="2024-12-01T15:32:41.203584" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:11.248849" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:32:40.938432" elapsed="0.265162"/>
+<status status="PASS" start="2024-12-01T16:01:10.979232" elapsed="0.269627"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:41.203805" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T16:01:11.249073" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:32:41.203668" elapsed="0.865621"/>
+<status status="PASS" start="2024-12-01T16:01:11.248940" elapsed="0.696609"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:32:40.938266" elapsed="1.131192"/>
+<status status="PASS" start="2024-12-01T16:01:10.979058" elapsed="0.966681"/>
 </kw>
-<kw name="Get Scenario Steps" owner="step_keywords">
+<kw name="Get Scenario">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:42.070163" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
+<msg time="2024-12-01T16:01:11.946443" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.070039" elapsed="0.000141"/>
+<status status="PASS" start="2024-12-01T16:01:11.946313" elapsed="0.000146"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:42.088535" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
+<msg time="2024-12-01T16:01:11.966966" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.070252" elapsed="0.018342"/>
-</kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:42.093673" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.12")&gt;, &lt;selenium.webdriv...</msg>
-<var>${steps}</var>
-<arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.088702" elapsed="0.004993"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:32:42.093834" level="INFO">${current_steps} = []</msg>
-<var>${current_steps}</var>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.093771" elapsed="0.000073"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:42.100572" level="INFO">${text} = Given: I have a calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.094034" elapsed="0.006561"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.100691" elapsed="0.000100"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.12")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:42.093980" elapsed="0.006834"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:42.104676" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.100927" elapsed="0.003766"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.104768" elapsed="0.000072"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.13")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:42.100881" elapsed="0.003980"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:42.108656" level="INFO">${text} = And: I press the add button</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.104954" elapsed="0.003718"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.108737" elapsed="0.000070"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.14")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:42.104913" elapsed="0.003914"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:42.114685" level="INFO">${text} = Then: The result should be 7 on the screen</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.108912" elapsed="0.005801"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.114814" elapsed="0.000091"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="98e384d5aa6f615e51ad55a3eb1eac4c", element="f.1C2974BE2B82FE69150291AECAD964A4.d.1A7A49CCE13A7FA2BF7E3A031963704A.e.15")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:42.108873" elapsed="0.006131"/>
-</iter>
-<var>${element}</var>
-<value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:32:42.093888" elapsed="0.021148"/>
-</for>
-<return>
-<value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:32:42.115074" elapsed="0.000035"/>
-</return>
-<msg time="2024-12-01T15:32:42.115186" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I press the add button', 'Then: The result should be 7 on the screen']</msg>
-<var>${steps}</var>
-<arg>Sum of a number</arg>
-<status status="PASS" start="2024-12-01T15:32:42.069780" elapsed="0.045418"/>
-</kw>
-<kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2024-12-01T15:32:42.115359" level="INFO">Length is 4.</msg>
-<arg>${steps}</arg>
-<doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.115285" elapsed="0.000094"/>
-</kw>
-<status status="PASS" start="2024-12-01T15:32:40.937980" elapsed="1.177522"/>
-</test>
-<test id="s1-t2" name="Failed Scenario Has Steps" line="19">
-<kw name="Open Report In Browser" owner="step_keywords">
-<kw name="Generate HTML Report" owner="step_keywords">
-<kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:42.117642" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
-<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
-<doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.116044" elapsed="0.270256"/>
-</kw>
-<kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:42.386817" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
-<arg>./${title}.html</arg>
-<doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.386553" elapsed="0.000290"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:42.386989" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<var>${result}</var>
-<arg>file://${EXECDIR}/${title}.html</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.386902" elapsed="0.000099"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:32:42.387106" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<arg>Generated report at: ${result}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.387053" elapsed="0.000069"/>
+<status status="PASS" start="2024-12-01T16:01:11.946537" elapsed="0.020491"/>
 </kw>
 <return>
-<value>${result}</value>
-<status status="PASS" start="2024-12-01T15:32:42.387151" elapsed="0.000040"/>
+<value>${scenario}</value>
+<status status="PASS" start="2024-12-01T16:01:11.967087" elapsed="0.000049"/>
 </return>
-<msg time="2024-12-01T15:32:42.387266" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<var>${url}</var>
-<arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:32:42.115942" elapsed="0.271333"/>
-</kw>
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:42.387475" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
-<arg>${url}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.387351" elapsed="0.684394"/>
-</kw>
-<doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:32:42.115820" elapsed="0.956089"/>
-</kw>
-<kw name="Get Scenario Steps" owner="step_keywords">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:43.072538" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-12-01T16:01:11.967247" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${scenario}</var>
-<arg>xpath=//*[@id="${scenario_name}"]/div</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.072434" elapsed="0.000118"/>
-</kw>
-<kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:43.091954" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
-<arg>${scenario}</arg>
-<arg>Scenario: ${scenario_name}</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.072620" elapsed="0.019392"/>
-</kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:43.099598" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.28")&gt;, &lt;selenium.webdriv...</msg>
-<var>${steps}</var>
-<arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.092118" elapsed="0.007510"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:32:43.099817" level="INFO">${current_steps} = []</msg>
-<var>${current_steps}</var>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.099735" elapsed="0.000094"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:43.105261" level="INFO">${text} = Given: I have a calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.100024" elapsed="0.005263"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.105391" elapsed="0.000101"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.28")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:43.099967" elapsed="0.005548"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:43.110162" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.105622" elapsed="0.004563"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.110280" elapsed="0.000092"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.29")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:43.105575" elapsed="0.004818"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:43.115863" level="INFO">${text} = And: I enter the number 3 into the calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.110495" elapsed="0.005390"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.116039" elapsed="0.000090"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.30")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:43.110451" elapsed="0.005701"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:43.120305" level="INFO">${text} = And: I press the add button</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.116258" elapsed="0.004064"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.120398" elapsed="0.000075"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.31")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:43.116211" elapsed="0.004283"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:43.124253" level="INFO">${text} = Then: The result should be 101 on the screen</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.120593" elapsed="0.003678"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.124340" elapsed="0.000076"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="e9099a5ed96f1d3efd68e36f279580d3", element="f.74D09A834DE4046BF0099FD4A4ACC685.d.AD9946EE8E3471C3D82C74AA9ED378A0.e.32")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:43.120552" elapsed="0.003890"/>
-</iter>
-<var>${element}</var>
-<value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:32:43.099879" elapsed="0.024587"/>
-</for>
-<return>
-<value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:32:43.124502" elapsed="0.000033"/>
-</return>
-<msg time="2024-12-01T15:32:43.124597" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I enter the number 3 into the calculator', 'And: I press the add button', 'Then: The result should be 101 on the ...</msg>
-<var>${steps}</var>
 <arg>Sum of two numbers</arg>
-<status status="PASS" start="2024-12-01T15:32:43.072204" elapsed="0.052405"/>
+<status status="PASS" start="2024-12-01T16:01:11.946057" elapsed="0.021204"/>
 </kw>
-<kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2024-12-01T15:32:43.124753" level="INFO">Length is 5.</msg>
-<arg>${steps}</arg>
-<doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.124687" elapsed="0.000086"/>
+<kw name="Element Style Should Contain">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:11.977612" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(175, 35, 58); background: rgb(24...</msg>
+<var>${style_result}</var>
+<arg>${element}</arg>
+<arg>style</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:11.967646" elapsed="0.009989"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:32:42.115641" elapsed="1.009205"/>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${style_result}</arg>
+<arg>${text}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-12-01T16:01:11.977744" elapsed="0.000106"/>
+</kw>
+<arg>${scenario}</arg>
+<arg>rgb(249, 225, 229)</arg>
+<status status="PASS" start="2024-12-01T16:01:11.967395" elapsed="0.010493"/>
+</kw>
+<status status="PASS" start="2024-12-01T16:01:10.978729" elapsed="0.999255"/>
 </test>
-<test id="s1-t3" name="Skipped Scenario Has No Steps" line="24">
+<test id="s1-t2" name="Skipped scenario color" line="15">
 <kw name="Open Report In Browser" owner="step_keywords">
 <kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:43.127021" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T16:01:11.980628" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.125340" elapsed="0.271455"/>
+<status status="PASS" start="2024-12-01T16:01:11.978762" elapsed="0.272848"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:43.397319" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T16:01:12.252119" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.397038" elapsed="0.000307"/>
+<status status="PASS" start="2024-12-01T16:01:12.251877" elapsed="0.000271"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:43.397497" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:12.252307" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.397405" elapsed="0.000104"/>
+<status status="PASS" start="2024-12-01T16:01:12.252213" elapsed="0.000106"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:32:43.397615" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:12.252433" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.397564" elapsed="0.000067"/>
+<status status="PASS" start="2024-12-01T16:01:12.252374" elapsed="0.000076"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:32:43.397658" elapsed="0.000042"/>
+<status status="PASS" start="2024-12-01T16:01:12.252478" elapsed="0.000040"/>
 </return>
-<msg time="2024-12-01T15:32:43.397776" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:12.252601" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:32:43.125247" elapsed="0.272539"/>
+<status status="PASS" start="2024-12-01T16:01:11.978653" elapsed="0.273958"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:43.397979" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T16:01:12.252817" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.397865" elapsed="0.722309"/>
+<status status="PASS" start="2024-12-01T16:01:12.252689" elapsed="4.632105"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:32:43.125134" elapsed="0.995233"/>
+<status status="PASS" start="2024-12-01T16:01:11.978319" elapsed="4.906816"/>
 </kw>
-<kw name="Get Scenario Steps" owner="step_keywords">
+<kw name="Get Scenario">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:44.121413" level="INFO">${scenario} = xpath=//*[@id="Shutdown"]/div</msg>
+<msg time="2024-12-01T16:01:16.886980" level="INFO">${scenario} = xpath=//*[@id="Shutdown"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.121267" elapsed="0.000166"/>
+<status status="PASS" start="2024-12-01T16:01:16.886716" elapsed="0.000302"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:44.138177" level="INFO">Element 'xpath=//*[@id="Shutdown"]/div' contains text 'Scenario: Shutdown'.</msg>
+<msg time="2024-12-01T16:01:16.911359" level="INFO">Element 'xpath=//*[@id="Shutdown"]/div' contains text 'Scenario: Shutdown'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.121533" elapsed="0.016703"/>
+<status status="PASS" start="2024-12-01T16:01:16.887192" elapsed="0.024244"/>
 </kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:44.143106" level="INFO">${steps} = []</msg>
-<var>${steps}</var>
-<arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.138343" elapsed="0.004780"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:32:44.143259" level="INFO">${current_steps} = []</msg>
-<var>${current_steps}</var>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.143198" elapsed="0.000072"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2024-12-01T15:32:44.143428" elapsed="0.000012"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="NOT RUN" start="2024-12-01T15:32:44.143483" elapsed="0.000065"/>
-</kw>
-<var name="${element}"/>
-<status status="NOT RUN" start="2024-12-01T15:32:44.143376" elapsed="0.000192"/>
-</iter>
-<var>${element}</var>
-<value>@{steps}</value>
-<status status="NOT RUN" start="2024-12-01T15:32:44.143310" elapsed="0.000278"/>
-</for>
 <return>
-<value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:32:44.143614" elapsed="0.000031"/>
+<value>${scenario}</value>
+<status status="PASS" start="2024-12-01T16:01:16.911510" elapsed="0.000064"/>
 </return>
-<msg time="2024-12-01T15:32:44.143706" level="INFO">${steps} = []</msg>
-<var>${steps}</var>
+<msg time="2024-12-01T16:01:16.911705" level="INFO">${scenario} = xpath=//*[@id="Shutdown"]/div</msg>
+<var>${scenario}</var>
 <arg>Shutdown</arg>
-<status status="PASS" start="2024-12-01T15:32:44.120956" elapsed="0.022761"/>
+<status status="PASS" start="2024-12-01T16:01:16.885980" elapsed="0.025743"/>
 </kw>
-<kw name="Should Be Empty" owner="BuiltIn">
-<msg time="2024-12-01T15:32:44.143848" level="INFO">Length is 0.</msg>
-<arg>${steps}</arg>
-<doc>Verifies that the given item is empty.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.143787" elapsed="0.000079"/>
+<kw name="Element Style Should Contain">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:16.921262" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(237, 181, 39); background: rgb(2...</msg>
+<var>${style_result}</var>
+<arg>${element}</arg>
+<arg>style</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:16.912217" elapsed="0.009074"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:32:43.124961" elapsed="1.018961"/>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${style_result}</arg>
+<arg>${text}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-12-01T16:01:16.921407" elapsed="0.000191"/>
+</kw>
+<arg>${scenario}</arg>
+<arg>rgb(255, 248, 231)</arg>
+<status status="PASS" start="2024-12-01T16:01:16.911905" elapsed="0.009757"/>
+</kw>
+<status status="PASS" start="2024-12-01T16:01:11.978127" elapsed="4.943672"/>
 </test>
-<test id="s1-t4" name="Check Passed Scenario Steps" line="29">
+<test id="s1-t3" name="Passed scenario color" line="20">
 <kw name="Open Report In Browser" owner="step_keywords">
 <kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:44.148829" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T16:01:16.924610" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.145656" elapsed="0.276947"/>
+<status status="PASS" start="2024-12-01T16:01:16.922504" elapsed="0.273808"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:44.423115" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T16:01:17.196832" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.422847" elapsed="0.000295"/>
+<status status="PASS" start="2024-12-01T16:01:17.196573" elapsed="0.000286"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:44.423293" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:17.197008" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.423202" elapsed="0.000102"/>
+<status status="PASS" start="2024-12-01T16:01:17.196917" elapsed="0.000102"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:32:44.423408" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:17.197128" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.423356" elapsed="0.000068"/>
+<status status="PASS" start="2024-12-01T16:01:17.197071" elapsed="0.000074"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:32:44.423452" elapsed="0.000039"/>
+<status status="PASS" start="2024-12-01T16:01:17.197174" elapsed="0.000052"/>
 </return>
-<msg time="2024-12-01T15:32:44.423568" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:17.197320" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:32:44.144950" elapsed="0.278627"/>
+<status status="PASS" start="2024-12-01T16:01:16.922373" elapsed="0.274957"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:44.423767" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T16:01:17.197548" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.423651" elapsed="0.868010"/>
+<status status="PASS" start="2024-12-01T16:01:17.197410" elapsed="1.016748"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:32:44.144429" elapsed="1.147472"/>
+<status status="PASS" start="2024-12-01T16:01:16.922200" elapsed="1.292159"/>
 </kw>
-<kw name="Get Scenario Steps" owner="step_keywords">
+<kw name="Get Scenario">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:45.292924" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
+<msg time="2024-12-01T16:01:18.215411" level="INFO">${scenario} = xpath=//*[@id="Eating cucumbers"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.292764" elapsed="0.000182"/>
+<status status="PASS" start="2024-12-01T16:01:18.215217" elapsed="0.000217"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:45.313886" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
+<msg time="2024-12-01T16:01:18.236273" level="INFO">Element 'xpath=//*[@id="Eating cucumbers"]/div' contains text 'Scenario: Eating cucumbers'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.293046" elapsed="0.020908"/>
+<status status="PASS" start="2024-12-01T16:01:18.215577" elapsed="0.020766"/>
 </kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:45.320487" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.28")&gt;, &lt;selenium.webdriv...</msg>
-<var>${steps}</var>
-<arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.314084" elapsed="0.006433"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:32:45.320710" level="INFO">${current_steps} = []</msg>
-<var>${current_steps}</var>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.320629" elapsed="0.000094"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:45.325627" level="INFO">${text} = Given: I have a calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.320926" elapsed="0.004723"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.325738" elapsed="0.000103"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.28")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:45.320863" elapsed="0.005003"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:45.330382" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.325977" elapsed="0.004428"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.330494" elapsed="0.000091"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.29")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:45.325929" elapsed="0.004683"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:45.334738" level="INFO">${text} = And: I press the add button</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.330719" elapsed="0.004035"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.334816" elapsed="0.000073"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.30")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:45.330672" elapsed="0.004312"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:45.339102" level="INFO">${text} = Then: The result should be 7 on the screen</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.335083" elapsed="0.004038"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.339197" elapsed="0.000083"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a9782dd1c575c5920266baa498830875", element="f.1AE2821FE7B5F7C3E5D6FE09433F928D.d.322A3AB40A941E2AC9CCFD6800224155.e.31")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:45.335040" elapsed="0.004263"/>
-</iter>
-<var>${element}</var>
-<value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:32:45.320771" elapsed="0.018558"/>
-</for>
 <return>
-<value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:32:45.339370" elapsed="0.000034"/>
+<value>${scenario}</value>
+<status status="PASS" start="2024-12-01T16:01:18.236406" elapsed="0.000047"/>
 </return>
-<msg time="2024-12-01T15:32:45.339467" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I press the add button', 'Then: The result should be 7 on the screen']</msg>
-<var>${steps}</var>
-<arg>Sum of a number</arg>
-<status status="PASS" start="2024-12-01T15:32:45.292397" elapsed="0.047082"/>
+<msg time="2024-12-01T16:01:18.236557" level="INFO">${scenario} = xpath=//*[@id="Eating cucumbers"]/div</msg>
+<var>${scenario}</var>
+<arg>Eating cucumbers</arg>
+<status status="PASS" start="2024-12-01T16:01:18.214766" elapsed="0.021806"/>
 </kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${steps}</arg>
-<arg>${PASSED_STEPS}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.339569" elapsed="0.000103"/>
+<kw name="Element Style Should Contain">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:18.244734" level="INFO">${style_result} = display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex: 1 1 0%; border-radius: 0.625rem; border: 1.5px solid rgb(13, 104, 50); background: rgb(21...</msg>
+<var>${style_result}</var>
+<arg>${element}</arg>
+<arg>style</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:18.236913" elapsed="0.007849"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:32:44.144029" elapsed="1.195711"/>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${style_result}</arg>
+<arg>${text}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-12-01T16:01:18.244867" elapsed="0.000119"/>
+</kw>
+<arg>${scenario}</arg>
+<arg>rgb(214, 240, 224)</arg>
+<status status="PASS" start="2024-12-01T16:01:18.236715" elapsed="0.008313"/>
+</kw>
+<status status="PASS" start="2024-12-01T16:01:16.921962" elapsed="1.323149"/>
 </test>
-<test id="s1-t5" name="Check Failed Scenario Steps" line="34">
+<test id="s1-t4" name="Open failed scenario details" line="25">
 <kw name="Open Report In Browser" owner="step_keywords">
 <kw name="Generate HTML Report" owner="step_keywords">
 <kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:45.341946" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<msg time="2024-12-01T16:01:18.247564" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
 <arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
 <doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.340229" elapsed="0.278576"/>
+<status status="PASS" start="2024-12-01T16:01:18.245744" elapsed="0.274472"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:45.619443" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<msg time="2024-12-01T16:01:18.520750" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
 <arg>./${title}.html</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.619116" elapsed="0.000358"/>
+<status status="PASS" start="2024-12-01T16:01:18.520478" elapsed="0.000304"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:45.619638" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:18.520935" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${result}</var>
 <arg>file://${EXECDIR}/${title}.html</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.619541" elapsed="0.000109"/>
+<status status="PASS" start="2024-12-01T16:01:18.520845" elapsed="0.000102"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:32:45.619766" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:18.521064" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <arg>Generated report at: ${result}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.619711" elapsed="0.000073"/>
+<status status="PASS" start="2024-12-01T16:01:18.521004" elapsed="0.000079"/>
 </kw>
 <return>
 <value>${result}</value>
-<status status="PASS" start="2024-12-01T15:32:45.619816" elapsed="0.000046"/>
+<status status="PASS" start="2024-12-01T16:01:18.521115" elapsed="0.000042"/>
 </return>
-<msg time="2024-12-01T15:32:45.619949" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<msg time="2024-12-01T16:01:18.521238" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
 <var>${url}</var>
 <arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:32:45.340134" elapsed="0.279825"/>
+<status status="PASS" start="2024-12-01T16:01:18.245636" elapsed="0.275612"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:45.620162" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<msg time="2024-12-01T16:01:18.521444" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.620039" elapsed="0.638545"/>
+<status status="PASS" start="2024-12-01T16:01:18.521323" elapsed="0.693831"/>
 </kw>
 <doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:32:45.340019" elapsed="0.918716"/>
+<status status="PASS" start="2024-12-01T16:01:18.245504" elapsed="0.969838"/>
 </kw>
-<kw name="Get Scenario Steps" owner="step_keywords">
+<kw name="Get Scenario">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:46.259381" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<msg time="2024-12-01T16:01:19.216286" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
 <var>${scenario}</var>
 <arg>xpath=//*[@id="${scenario_name}"]/div</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.259278" elapsed="0.000116"/>
+<status status="PASS" start="2024-12-01T16:01:19.216161" elapsed="0.000143"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:46.283159" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<msg time="2024-12-01T16:01:19.236506" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
 <arg>${scenario}</arg>
 <arg>Scenario: ${scenario_name}</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.259457" elapsed="0.023794"/>
+<status status="PASS" start="2024-12-01T16:01:19.216388" elapsed="0.020177"/>
 </kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:46.289401" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.13")&gt;, &lt;selenium.webdriv...</msg>
-<var>${steps}</var>
-<arg>${scenario}/div[2]/*[@class="step-container"]/div</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.283411" elapsed="0.006018"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:32:46.289595" level="INFO">${current_steps} = []</msg>
-<var>${current_steps}</var>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.289527" elapsed="0.000078"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:46.293904" level="INFO">${text} = Given: I have a calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.289770" elapsed="0.004156"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.294023" elapsed="0.000103"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.13")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:46.289718" elapsed="0.004431"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:46.301341" level="INFO">${text} = When: I enter the number 7 into the calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.294247" elapsed="0.007117"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.301540" elapsed="0.000098"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.14")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:46.294205" elapsed="0.007456"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:46.306170" level="INFO">${text} = And: I enter the number 3 into the calculator</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.301769" elapsed="0.004424"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.306284" elapsed="0.000086"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.15")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:46.301723" elapsed="0.004673"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:46.310297" level="INFO">${text} = And: I press the add button</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.306497" elapsed="0.003817"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.310379" elapsed="0.000074"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.16")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:46.306453" elapsed="0.004026"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:46.317670" level="INFO">${text} = Then: The result should be 101 on the screen</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.310576" elapsed="0.007117"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_steps}</arg>
-<arg>${text}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.317784" elapsed="0.000087"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="a3e298daa6fe763bcb579c404a824538", element="f.689EB9EA966C118C9252CA62982BCC9E.d.326F0CC0F0707CC708CA38DB6D753E59.e.17")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:46.310533" elapsed="0.007359"/>
-</iter>
-<var>${element}</var>
-<value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:32:46.289646" elapsed="0.028276"/>
-</for>
 <return>
-<value>${current_steps}</value>
-<status status="PASS" start="2024-12-01T15:32:46.317952" elapsed="0.000034"/>
+<value>${scenario}</value>
+<status status="PASS" start="2024-12-01T16:01:19.236621" elapsed="0.000039"/>
 </return>
-<msg time="2024-12-01T15:32:46.318048" level="INFO">${steps} = ['Given: I have a calculator', 'When: I enter the number 7 into the calculator', 'And: I enter the number 3 into the calculator', 'And: I press the add button', 'Then: The result should be 101 on the ...</msg>
-<var>${steps}</var>
+<msg time="2024-12-01T16:01:19.236750" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<var>${scenario}</var>
 <arg>Sum of two numbers</arg>
-<status status="PASS" start="2024-12-01T15:32:46.259027" elapsed="0.059032"/>
+<status status="PASS" start="2024-12-01T16:01:19.215879" elapsed="0.020883"/>
 </kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${steps}</arg>
-<arg>${FAILED_STEPS}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.318141" elapsed="0.000110"/>
-</kw>
-<status status="PASS" start="2024-12-01T15:32:45.339850" elapsed="0.978465"/>
-</test>
-<test id="s1-t6" name="Check Durations For Passed Scenario" line="39">
-<kw name="Open Report In Browser" owner="step_keywords">
-<kw name="Generate HTML Report" owner="step_keywords">
-<kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:46.320565" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
-<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
-<doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.318802" elapsed="0.282388"/>
-</kw>
-<kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:46.601772" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
-<arg>./${title}.html</arg>
-<doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.601488" elapsed="0.000315"/>
-</kw>
+<kw name="Get Scenario Details Button">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:46.601957" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<var>${result}</var>
-<arg>file://${EXECDIR}/${title}.html</arg>
+<msg time="2024-12-01T16:01:19.237117" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<var>${button}</var>
+<arg>xpath=//*[@id="${scenario_name}"]/div/button</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.601865" elapsed="0.000103"/>
+<status status="PASS" start="2024-12-01T16:01:19.237036" elapsed="0.000093"/>
 </kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:32:46.602076" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<arg>Generated report at: ${result}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.602023" elapsed="0.000070"/>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:19.250084" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' is displayed.</msg>
+<arg>${button}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.237182" elapsed="0.012961"/>
 </kw>
 <return>
-<value>${result}</value>
-<status status="PASS" start="2024-12-01T15:32:46.602121" elapsed="0.000041"/>
+<value>${button}</value>
+<status status="PASS" start="2024-12-01T16:01:19.250195" elapsed="0.000028"/>
 </return>
-<msg time="2024-12-01T15:32:46.602238" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<var>${url}</var>
-<arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:32:46.318711" elapsed="0.283537"/>
-</kw>
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:46.602446" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
-<arg>${url}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.602327" elapsed="0.748481"/>
-</kw>
-<doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:32:46.318599" elapsed="1.032376"/>
-</kw>
-<kw name="Get Scenario Steps Duration" owner="step_keywords">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:47.351642" level="INFO">${scenario} = xpath=//*[@id="Sum of a number"]/div</msg>
-<var>${scenario}</var>
-<arg>xpath=//*[@id="${scenario_name}"]/div</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.351534" elapsed="0.000123"/>
-</kw>
-<kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:47.369892" level="INFO">Element 'xpath=//*[@id="Sum of a number"]/div' contains text 'Scenario: Sum of a number'.</msg>
-<arg>${scenario}</arg>
-<arg>Scenario: ${scenario_name}</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.351724" elapsed="0.018291"/>
-</kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:47.375466" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.28")&gt;, &lt;selenium.webdriv...</msg>
-<var>${steps}</var>
-<arg>${scenario}/div[2]/*[@class="step-container"]/p</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.370139" elapsed="0.005405"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:32:47.375710" level="INFO">${current_durations} = []</msg>
-<var>${current_durations}</var>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.375640" elapsed="0.000081"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:47.382027" level="INFO">${text} = 0.019ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.375895" elapsed="0.006157"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:47.382264" level="INFO">${text} = 0.019</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.382157" elapsed="0.000119"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:47.382438" level="INFO">${duration} = 0.019</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.382339" elapsed="0.000110"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.382502" elapsed="0.000074"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.28")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:47.375843" elapsed="0.006754"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:47.387291" level="INFO">${text} = 0.042ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.382705" elapsed="0.004613"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:47.387577" level="INFO">${text} = 0.042</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.387455" elapsed="0.000133"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:47.387745" level="INFO">${duration} = 0.042</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.387655" elapsed="0.000101"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.387811" elapsed="0.000062"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.29")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:47.382661" elapsed="0.005232"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:47.392161" level="INFO">${text} = 0.015ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.388014" elapsed="0.004168"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:47.392350" level="INFO">${text} = 0.015</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.392267" elapsed="0.000094"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:47.392486" level="INFO">${duration} = 0.015</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.392412" elapsed="0.000083"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.392536" elapsed="0.000057"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.30")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:47.387967" elapsed="0.004645"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:47.398263" level="INFO">${text} = 0.024ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.392707" elapsed="0.005578"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:47.398478" level="INFO">${text} = 0.024</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.398389" elapsed="0.000100"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:47.398618" level="INFO">${duration} = 0.024</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.398541" elapsed="0.000087"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.398669" elapsed="0.000059"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="c86380f1a5ab94977c3d101d8a338c45", element="f.5A8C44B5177269A645E5B767FF653CC3.d.3B5745CA5DD0EF5CEF00D830CDA4051B.e.31")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:47.392668" elapsed="0.006079"/>
-</iter>
-<var>${element}</var>
-<value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:32:47.375764" elapsed="0.023008"/>
-</for>
-<return>
-<value>${current_durations}</value>
-<status status="PASS" start="2024-12-01T15:32:47.398804" elapsed="0.000034"/>
-</return>
-<msg time="2024-12-01T15:32:47.398899" level="INFO">${durations} = [0.019, 0.042, 0.015, 0.024]</msg>
-<var>${durations}</var>
-<arg>Sum of a number</arg>
-<status status="PASS" start="2024-12-01T15:32:47.351285" elapsed="0.047625"/>
-</kw>
-<kw name="List Should Not Contain Value" owner="Collections">
-<arg>${durations}</arg>
-<arg>0.0</arg>
-<doc>Fails if the ``value`` is found from ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.398996" elapsed="0.000070"/>
-</kw>
-<status status="PASS" start="2024-12-01T15:32:46.318432" elapsed="1.080697"/>
-</test>
-<test id="s1-t7" name="Check Durations For Failed Scenario" line="44">
-<kw name="Open Report In Browser" owner="step_keywords">
-<kw name="Generate HTML Report" owner="step_keywords">
-<kw name="Run" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:47.401308" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
-<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
-<doc>Runs the given command in the system and returns the output.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.399623" elapsed="0.274807"/>
-</kw>
-<kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2024-12-01T15:32:47.675057" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
-<arg>./${title}.html</arg>
-<doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.674760" elapsed="0.000326"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:47.675243" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<var>${result}</var>
-<arg>file://${EXECDIR}/${title}.html</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.675148" elapsed="0.000108"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2024-12-01T15:32:47.675367" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<arg>Generated report at: ${result}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.675311" elapsed="0.000073"/>
-</kw>
-<return>
-<value>${result}</value>
-<status status="PASS" start="2024-12-01T15:32:47.675420" elapsed="0.000042"/>
-</return>
-<msg time="2024-12-01T15:32:47.675537" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
-<var>${url}</var>
-<arg>RFTest</arg>
-<status status="PASS" start="2024-12-01T15:32:47.399531" elapsed="0.276016"/>
-</kw>
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:47.675739" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
-<arg>${url}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.675621" elapsed="0.729202"/>
-</kw>
-<doc>Opens the browser and navigates to the target URL.</doc>
-<status status="PASS" start="2024-12-01T15:32:47.399423" elapsed="1.005562"/>
-</kw>
-<kw name="Get Scenario Steps Duration" owner="step_keywords">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2024-12-01T15:32:48.405671" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
-<var>${scenario}</var>
-<arg>xpath=//*[@id="${scenario_name}"]/div</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.405558" elapsed="0.000128"/>
-</kw>
-<kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:48.424671" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
-<arg>${scenario}</arg>
-<arg>Scenario: ${scenario_name}</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.405755" elapsed="0.018978"/>
-</kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:48.432787" level="INFO">${steps} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.11")&gt;, &lt;selenium.webdriv...</msg>
-<var>${steps}</var>
-<arg>${scenario}/div[2]/*[@class="step-container"]/p</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.424845" elapsed="0.007977"/>
-</kw>
-<kw name="Create List" owner="BuiltIn">
-<msg time="2024-12-01T15:32:48.433076" level="INFO">${current_durations} = []</msg>
-<var>${current_durations}</var>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.432979" elapsed="0.000110"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:48.438234" level="INFO">${text} = 0.012ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.433352" elapsed="0.004914"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:48.438500" level="INFO">${text} = 0.012</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.438394" elapsed="0.000117"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:48.438669" level="INFO">${duration} = 0.012</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.438573" elapsed="0.000106"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.438725" elapsed="0.000068"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.11")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:48.433285" elapsed="0.005527"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:48.443067" level="INFO">${text} = 0.033ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.438919" elapsed="0.004170"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:48.443270" level="INFO">${text} = 0.033</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.443183" elapsed="0.000098"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:48.443405" level="INFO">${duration} = 0.033</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.443331" elapsed="0.000083"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.443454" elapsed="0.000057"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.12")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:48.438877" elapsed="0.004654"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:48.448589" level="INFO">${text} = 0.018ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.443641" elapsed="0.004969"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:48.448788" level="INFO">${text} = 0.018</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.448701" elapsed="0.000097"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:48.448927" level="INFO">${duration} = 0.018</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.448851" elapsed="0.000086"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.449048" elapsed="0.000059"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.13")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:48.443597" elapsed="0.005529"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:48.452637" level="INFO">${text} = 0.013ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.449228" elapsed="0.003424"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:48.452789" level="INFO">${text} = 0.013</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.452719" elapsed="0.000080"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:48.452915" level="INFO">${duration} = 0.013</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.452846" elapsed="0.000078"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.452964" elapsed="0.000055"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.14")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:48.449186" elapsed="0.003852"/>
-</iter>
-<iter>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2024-12-01T15:32:48.456496" level="INFO">${text} = 0.068ms</msg>
-<var>${text}</var>
-<arg>${element}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.453129" elapsed="0.003381"/>
-</kw>
-<kw name="Remove String" owner="String">
-<msg time="2024-12-01T15:32:48.456634" level="INFO">${text} = 0.068</msg>
-<var>${text}</var>
-<arg>${text}</arg>
-<arg>ms</arg>
-<doc>Removes all ``removables`` from the given ``string``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.456568" elapsed="0.000076"/>
-</kw>
-<kw name="Convert To Number" owner="BuiltIn">
-<msg time="2024-12-01T15:32:48.456754" level="INFO">${duration} = 0.068</msg>
-<var>${duration}</var>
-<arg>${text}</arg>
-<doc>Converts the given item to a floating point number.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.456690" elapsed="0.000073"/>
-</kw>
-<kw name="Append To List" owner="Collections">
-<arg>${current_durations}</arg>
-<arg>${duration}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.456808" elapsed="0.000053"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5d54caabd629862dc28ef9bbed423511", element="f.714F0687C7A9331E0D0E8ADA04B79BAD.d.8E911F92D35686EBDCB187C3AE91B97F.e.15")&gt;</var>
-<status status="PASS" start="2024-12-01T15:32:48.453091" elapsed="0.003788"/>
-</iter>
-<var>${element}</var>
-<value>@{steps}</value>
-<status status="PASS" start="2024-12-01T15:32:48.433146" elapsed="0.023756"/>
-</for>
-<return>
-<value>${current_durations}</value>
-<status status="PASS" start="2024-12-01T15:32:48.456931" elapsed="0.000031"/>
-</return>
-<msg time="2024-12-01T15:32:48.457018" level="INFO">${durations} = [0.012, 0.033, 0.018, 0.013, 0.068]</msg>
-<var>${durations}</var>
+<msg time="2024-12-01T16:01:19.250301" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<var>${button}</var>
 <arg>Sum of two numbers</arg>
-<status status="PASS" start="2024-12-01T15:32:48.405301" elapsed="0.051726"/>
+<status status="PASS" start="2024-12-01T16:01:19.236891" elapsed="0.013421"/>
 </kw>
-<kw name="List Should Not Contain Value" owner="Collections">
-<arg>${durations}</arg>
-<arg>0.0</arg>
-<doc>Fails if the ``value`` is found from ``list``.</doc>
-<status status="PASS" start="2024-12-01T15:32:48.457108" elapsed="0.000095"/>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:19.250537" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>${button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.250429" elapsed="0.043501"/>
 </kw>
-<status status="PASS" start="2024-12-01T15:32:47.399246" elapsed="1.058064"/>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:19.304612" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
+<arg>${scenario}</arg>
+<arg>AssertionError</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.294087" elapsed="0.010580"/>
+</kw>
+<kw name="Element Style Should Contain">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:19.312728" level="INFO">${style_result} = display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent; border: none; cursor: pointer; transform: rotate(0deg);</msg>
+<var>${style_result}</var>
+<arg>${element}</arg>
+<arg>style</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.305008" elapsed="0.007744"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${style_result}</arg>
+<arg>${text}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.312846" elapsed="0.000108"/>
+</kw>
+<arg>${button}</arg>
+<arg>rotate(0deg)</arg>
+<status status="PASS" start="2024-12-01T16:01:19.304823" elapsed="0.008165"/>
+</kw>
+<status status="PASS" start="2024-12-01T16:01:18.245303" elapsed="1.067769"/>
 </test>
-<status status="PASS" start="2024-12-01T15:32:40.868168" elapsed="7.589493"/>
+<test id="s1-t5" name="Close failed scenario details" line="33">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-12-01T16:01:19.315279" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.313561" elapsed="0.272028"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2024-12-01T16:01:19.586124" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<arg>./${title}.html</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.585862" elapsed="0.000290"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-12-01T16:01:19.586368" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${result}</var>
+<arg>file://${EXECDIR}/${title}.html</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.586277" elapsed="0.000102"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-12-01T16:01:19.586480" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<arg>Generated report at: ${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.586429" elapsed="0.000068"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-12-01T16:01:19.586527" elapsed="0.000041"/>
+</return>
+<msg time="2024-12-01T16:01:19.586652" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${url}</var>
+<arg>RFTest</arg>
+<status status="PASS" start="2024-12-01T16:01:19.313471" elapsed="0.273191"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:19.586863" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.586742" elapsed="0.677750"/>
+</kw>
+<doc>Opens the browser and navigates to the target URL.</doc>
+<status status="PASS" start="2024-12-01T16:01:19.313360" elapsed="0.951324"/>
+</kw>
+<kw name="Get Scenario">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-12-01T16:01:20.266012" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<var>${scenario}</var>
+<arg>xpath=//*[@id="${scenario_name}"]/div</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.265815" elapsed="0.000216"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:20.288348" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<arg>${scenario}</arg>
+<arg>Scenario: ${scenario_name}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.266112" elapsed="0.022292"/>
+</kw>
+<return>
+<value>${scenario}</value>
+<status status="PASS" start="2024-12-01T16:01:20.288454" elapsed="0.000038"/>
+</return>
+<msg time="2024-12-01T16:01:20.288580" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<var>${scenario}</var>
+<arg>Sum of two numbers</arg>
+<status status="PASS" start="2024-12-01T16:01:20.265556" elapsed="0.023036"/>
+</kw>
+<kw name="Get Scenario Details Button">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-12-01T16:01:20.289080" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<var>${button}</var>
+<arg>xpath=//*[@id="${scenario_name}"]/div/button</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.288972" elapsed="0.000120"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:20.301899" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' is displayed.</msg>
+<arg>${button}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.289189" elapsed="0.012766"/>
+</kw>
+<return>
+<value>${button}</value>
+<status status="PASS" start="2024-12-01T16:01:20.302005" elapsed="0.000027"/>
+</return>
+<msg time="2024-12-01T16:01:20.302111" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<var>${button}</var>
+<arg>Sum of two numbers</arg>
+<status status="PASS" start="2024-12-01T16:01:20.288717" elapsed="0.013412"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:20.302343" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>${button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.302235" elapsed="0.044592"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:20.358197" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
+<arg>${scenario}</arg>
+<arg>AssertionError</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.346972" elapsed="0.011287"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:20.358533" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>${button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.358404" elapsed="0.031131"/>
+</kw>
+<kw name="Element Style Should Contain">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:20.397158" level="INFO">${style_result} = display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent; border: none; cursor: pointer; transform: rotate(-90deg);</msg>
+<var>${style_result}</var>
+<arg>${element}</arg>
+<arg>style</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.390177" elapsed="0.007004"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${style_result}</arg>
+<arg>${text}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.397295" elapsed="0.000102"/>
+</kw>
+<arg>${button}</arg>
+<arg>rotate(-90deg)</arg>
+<status status="PASS" start="2024-12-01T16:01:20.389695" elapsed="0.007740"/>
+</kw>
+<kw name="Element Should Not Contain" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:20.407301" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' does not contain text 'AssertionError'.</msg>
+<arg>${scenario}</arg>
+<arg>AssertionError</arg>
+<doc>Verifies that element ``locator`` does not contain text ``expected``.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.397523" elapsed="0.009851"/>
+</kw>
+<status status="PASS" start="2024-12-01T16:01:19.313192" elapsed="1.094310"/>
+</test>
+<test id="s1-t6" name="Check tooltip for opening and closing scenario details" line="43">
+<kw name="Open Report In Browser" owner="step_keywords">
+<kw name="Generate HTML Report" owner="step_keywords">
+<kw name="Run" owner="OperatingSystem">
+<msg time="2024-12-01T16:01:20.409946" level="INFO">Running command 'pytest --bdd-report="RFTest" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py 2&gt;&amp;1'.</msg>
+<arg>pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.408214" elapsed="0.272497"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2024-12-01T16:01:20.681232" level="INFO" html="true">File '&lt;a href="file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html"&gt;/Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html&lt;/a&gt;' exists.</msg>
+<arg>./${title}.html</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.680969" elapsed="0.000289"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-12-01T16:01:20.681406" level="INFO">${result} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${result}</var>
+<arg>file://${EXECDIR}/${title}.html</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.681320" elapsed="0.000150"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-12-01T16:01:20.681577" level="INFO">Generated report at: file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<arg>Generated report at: ${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.681525" elapsed="0.000069"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-12-01T16:01:20.681623" elapsed="0.000040"/>
+</return>
+<msg time="2024-12-01T16:01:20.681754" level="INFO">${url} = file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html</msg>
+<var>${url}</var>
+<arg>RFTest</arg>
+<status status="PASS" start="2024-12-01T16:01:20.408086" elapsed="0.273678"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:20.681955" level="INFO">Opening browser 'headlesschrome' to base url 'file:///Users/mattia/Projects/pytest-bdd-report/tests/ui_testing/RFTest.html'.</msg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.681838" elapsed="0.673990"/>
+</kw>
+<doc>Opens the browser and navigates to the target URL.</doc>
+<status status="PASS" start="2024-12-01T16:01:20.407860" elapsed="0.948780"/>
+</kw>
+<kw name="Get Scenario">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-12-01T16:01:21.358279" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<var>${scenario}</var>
+<arg>xpath=//*[@id="${scenario_name}"]/div</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-12-01T16:01:21.358026" elapsed="0.000384"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:21.380073" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'Scenario: Sum of two numbers'.</msg>
+<arg>${scenario}</arg>
+<arg>Scenario: ${scenario_name}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-12-01T16:01:21.358730" elapsed="0.021411"/>
+</kw>
+<return>
+<value>${scenario}</value>
+<status status="PASS" start="2024-12-01T16:01:21.380207" elapsed="0.000057"/>
+</return>
+<msg time="2024-12-01T16:01:21.380373" level="INFO">${scenario} = xpath=//*[@id="Sum of two numbers"]/div</msg>
+<var>${scenario}</var>
+<arg>Sum of two numbers</arg>
+<status status="PASS" start="2024-12-01T16:01:21.357221" elapsed="0.023165"/>
+</kw>
+<kw name="Get Scenario Details Button">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-12-01T16:01:21.380755" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<var>${button}</var>
+<arg>xpath=//*[@id="${scenario_name}"]/div/button</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-12-01T16:01:21.380675" elapsed="0.000092"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:21.392282" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' is displayed.</msg>
+<arg>${button}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2024-12-01T16:01:21.380819" elapsed="0.011525"/>
+</kw>
+<return>
+<value>${button}</value>
+<status status="PASS" start="2024-12-01T16:01:21.392407" elapsed="0.000031"/>
+</return>
+<msg time="2024-12-01T16:01:21.392526" level="INFO">${button} = xpath=//*[@id="Sum of two numbers"]/div/button</msg>
+<var>${button}</var>
+<arg>Sum of two numbers</arg>
+<status status="PASS" start="2024-12-01T16:01:21.380530" elapsed="0.012013"/>
+</kw>
+<kw name="Element Tooltip Should Be">
+<kw name="Element Attribute Value Should Be" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:21.399184" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' attribute 'title' contains value 'Open error message'.</msg>
+<arg>${element}</arg>
+<arg>title</arg>
+<arg>${text}</arg>
+<doc>Verifies element identified by ``locator`` contains expected attribute value.</doc>
+<status status="PASS" start="2024-12-01T16:01:21.392823" elapsed="0.006416"/>
+</kw>
+<arg>${button}</arg>
+<arg>Open error message</arg>
+<status status="PASS" start="2024-12-01T16:01:21.392661" elapsed="0.006649"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:21.399663" level="INFO">Clicking button 'xpath=//*[@id="Sum of two numbers"]/div/button'.</msg>
+<arg>${button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-12-01T16:01:21.399451" elapsed="0.037458"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:21.448065" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div' contains text 'AssertionError'.</msg>
+<arg>${scenario}</arg>
+<arg>AssertionError</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2024-12-01T16:01:21.437076" elapsed="0.011047"/>
+</kw>
+<kw name="Element Tooltip Should Be">
+<kw name="Element Attribute Value Should Be" owner="SeleniumLibrary">
+<msg time="2024-12-01T16:01:21.454675" level="INFO">Element 'xpath=//*[@id="Sum of two numbers"]/div/button' attribute 'title' contains value 'Close error message'.</msg>
+<arg>${element}</arg>
+<arg>title</arg>
+<arg>${text}</arg>
+<doc>Verifies element identified by ``locator`` contains expected attribute value.</doc>
+<status status="PASS" start="2024-12-01T16:01:21.448458" elapsed="0.006276"/>
+</kw>
+<arg>${button}</arg>
+<arg>Close error message</arg>
+<status status="PASS" start="2024-12-01T16:01:21.448269" elapsed="0.006531"/>
+</kw>
+<status status="PASS" start="2024-12-01T16:01:20.407644" elapsed="1.047262"/>
+</test>
+<status status="PASS" start="2024-12-01T16:01:10.910597" elapsed="10.544612"/>
 </suite>
 <statistics>
 <total>
-<stat pass="7" fail="0" skip="0">All Tests</stat>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="7" fail="0" skip="0" id="s1" name="Test-Steps">Test-Steps</stat>
+<stat pass="6" fail="0" skip="0" id="s1" name="Test-Scenarios">Test-Scenarios</stat>
 </suite>
 </statistics>
 <errors>

@@ -82,7 +82,7 @@
                 </div>
                 <div>
                     <p style="color: #535353; margin: 0; text-align: right">
-                        2024-12-01 15:32:47
+                        2024-12-01 16:01:20
                     </p>
                     <div
                         style="
@@ -171,7 +171,7 @@
                 <p>
                     <span style="font-size: 1.25rem;">
                         
-                        1.81ms
+                        1.85ms
                         
                     </span>
                     <span style=" color: #555; margin-left: 0.25rem;"> Total duration</span>
@@ -401,7 +401,7 @@
     <td style="text-align:center;">67%</td>
 
     
-    <td style="text-align:center;">0.34ms</td>
+    <td style="text-align:center;">0.35ms</td>
     
 </tr><tr>
     
@@ -424,7 +424,7 @@
     <td style="text-align:center;">33%</td>
 
     
-    <td style="text-align:center;">1.31ms</td>
+    <td style="text-align:center;">1.35ms</td>
     
 </tr><tr>
     
@@ -527,7 +527,7 @@
         font-weight: 400;
         line-height: normal;">
             
-            Executed in 0.345ms
+            Executed in 0.354ms
             
         </p>
     </div>
@@ -568,7 +568,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of a number">
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.098ms
+                        Executed in 0.099ms
                         
                     </p>
                 </div>
@@ -595,7 +595,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of a number">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.018ms
+        0.019ms
         
     </p>
 </div><div class="step-container"
@@ -709,7 +709,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.144ms
+                        Executed in 0.155ms
                         
                     </p>
                 </div>
@@ -736,7 +736,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.012ms
+        0.013ms
         
     </p>
 </div><div class="step-container"
@@ -760,7 +760,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.033ms
+        0.035ms
         
     </p>
 </div><div class="step-container"
@@ -784,7 +784,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.018ms
+        0.017ms
         
     </p>
 </div><div class="step-container"
@@ -808,7 +808,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.013ms
+        0.015ms
         
     </p>
 </div><div class="step-container"
@@ -829,7 +829,7 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.068ms
+        0.074ms
         
     </p>
 </div>
@@ -845,9 +845,9 @@ align-self: stretch;" class="failed-scenario searchable" id="Sum of two numbers"
                 </button>
                 <!--Collapsable error message and log-->
                 <div id="message-Sum of two numbers" style="display: none; font-family: monospace;">
-                    <p style="white-space: pre-wrap;">fixturefunc = <function result_should_be at 0x10200d1c0>
+                    <p style="white-space: pre-wrap;">fixturefunc = <function result_should_be at 0x1023a91c0>
 request = <FixtureRequest for <Function test_sum_2>>
-kwargs = {'i_have_a_calculator': <sample_test_calculator.Calculator object at 0x102039410>, 'result': '101'}
+kwargs = {'i_have_a_calculator': <sample_test_calculator.Calculator object at 0x1023d5010>, 'result': '101'}
 
     def call_fixture_func(
         fixturefunc: "_FixtureFunc[FixtureValue]", request: FixtureRequest, kwargs
@@ -870,14 +870,14 @@ kwargs = {'i_have_a_calculator': <sample_test_calculator.Calculator object at 0x
 /opt/homebrew/lib/python3.11/site-packages/_pytest/fixtures.py:902: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-i_have_a_calculator = <sample_test_calculator.Calculator object at 0x102039410>
+i_have_a_calculator = <sample_test_calculator.Calculator object at 0x1023d5010>
 result = '101'
 
     @then(parsers.cfparse("The result should be {result} on the screen"))
     def result_should_be(i_have_a_calculator, result):
 >       assert i_have_a_calculator.result == int(result)
 E       AssertionError: assert 10 == 101
-E        +  where 10 = <sample_test_calculator.Calculator object at 0x102039410>.result
+E        +  where 10 = <sample_test_calculator.Calculator object at 0x1023d5010>.result
 E        +  and   101 = int('101')
 
 sample_tests/sample_test_calculator.py:38: AssertionError</p>
@@ -922,7 +922,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.103ms
+                        Executed in 0.1ms
                         
                     </p>
                 </div>
@@ -973,7 +973,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.038ms
+        0.036ms
         
     </p>
 </div><div class="step-container"
@@ -1097,7 +1097,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Sum of negative num
         font-weight: 400;
         line-height: normal;">
             
-            Executed in 1.314ms
+            Executed in 1.348ms
             
         </p>
     </div>
@@ -1138,7 +1138,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Startup">
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 1.314ms
+                        Executed in 1.348ms
                         
                     </p>
                 </div>
@@ -1213,7 +1213,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Startup">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.012ms
+        0.018ms
         
     </p>
 </div>
@@ -1351,7 +1351,7 @@ align-self: stretch;" class="skipped-scenario searchable" id="Activation">
         font-weight: 400;
         line-height: normal;">
             
-            Executed in 0.152ms
+            Executed in 0.151ms
             
         </p>
     </div>
@@ -1394,7 +1394,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.077ms
+                        Executed in 0.074ms
                         
                     </p>
                 </div>
@@ -1421,7 +1421,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.039ms
+        0.038ms
         
     </p>
 </div><div class="step-container"
@@ -1516,7 +1516,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
                     <p
                         style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
                         
-                        Executed in 0.075ms
+                        Executed in 0.076ms
                         
                     </p>
                 </div>
@@ -1543,7 +1543,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.039ms
+        0.041ms
         
     </p>
 </div><div class="step-container"
@@ -1567,7 +1567,7 @@ align-self: stretch;" class="passed-scenario searchable" id="Eating cucumbers">
     </div>
     <p style="display: inline; margin: 0;">
         
-        0.019ms
+        0.018ms
         
     </p>
 </div><div class="step-container"
