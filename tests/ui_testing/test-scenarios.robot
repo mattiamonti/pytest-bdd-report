@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  OperatingSystem
+Resource          common.robot
 Resource    step_keywords.robot
 
 *** Variables ***

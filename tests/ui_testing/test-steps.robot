@@ -3,6 +3,7 @@ Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
+Resource          common.robot
 Resource          step_keywords.robot
 
 *** Variables ***
