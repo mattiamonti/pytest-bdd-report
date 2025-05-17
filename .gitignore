@@ -94,3 +94,6 @@ target/
 # VSCode
 .vscode/
 tests/ui_testing/RFTest.html
+tests/ui_testing/log.html
+tests/ui_testing/report.html
+tests/ui_testing/output.xml
