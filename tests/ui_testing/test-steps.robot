@@ -4,6 +4,7 @@ Library           OperatingSystem
 Library           Collections
 Library           String
 Resource          common.resource
+Test Setup        Open Report In Browser
 
 *** Variables ***
 ${BROWSER}        headlesschrome    #chrome
@@ -12,38 +13,31 @@ ${BROWSER}        headlesschrome    #chrome
 
 *** Test Cases ***
 Passed Scenario Has Steps
-    Open Report In Browser
     ${steps}=   Get Scenario Steps     Sum of a number
     Should Not Be Empty    ${steps}
 
 Failed Scenario Has Steps
-    Open Report In Browser
     ${steps}=   Get Scenario Steps     Sum of two numbers
     Should Not Be Empty    ${steps}
 
 Skipped Scenario Has No Steps
-    Open Report In Browser
     ${steps}=   Get Scenario Steps     Shutdown
     Should Be Empty    ${steps}
 
 Check Passed Scenario Steps
-    Open Report In Browser
     ${steps}=   Get Scenario Steps     Sum of a number
     Should Be Equal     ${steps}    ${PASSED_STEPS}
     
 Check Failed Scenario Steps
-    Open Report In Browser
     ${steps}=   Get Scenario Steps     Sum of two numbers
     Should Be Equal     ${steps}    ${FAILED_STEPS}
 
 Check Durations For Passed Scenario
-    Open Report In Browser
     ${durations}=   Get Scenario Steps Duration     Sum of a number
     ${zero}=    Convert To Number   0.0
     List Should Not Contain Value   ${durations}    ${zero}
 
 Check Durations For Failed Scenario
-    Open Report In Browser
     ${durations}=   Get Scenario Steps Duration     Sum of two numbers
     ${zero}=    Convert To Number   0.0
     List Should Not Contain Value   ${durations}    ${zero}
