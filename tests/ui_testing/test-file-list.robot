@@ -5,7 +5,7 @@ Resource          common.resource
 Test Setup        Open Report In Browser
 
 *** Variables ***
-${BROWSER}        chrome    #chrome
+${BROWSER}        headlesschrome    #chrome
 
 *** Test Cases ***
 Open File list
