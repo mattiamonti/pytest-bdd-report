@@ -25,6 +25,7 @@ Generate HTML Report
 
 Remove HTML Report
     Remove File    ${EXECDIR}/${report_title}.html
+    Remove File    ${EXECDIR}/.cucumber-data.json
 
 Get Feature
     [Arguments]    ${feature_name}
