@@ -4,25 +4,22 @@ Library           OperatingSystem
 Library           Collections
 Library           String
 Resource          common.resource
+Test Setup        Open Report In Browser
 
 *** Variables ***
 ${BROWSER}        headlesschrome    #chrome
 
 *** Test Cases ***
 View Failed Feature By Link
-    Skip
-    Open Report In Browser
-    Click Feature Link In Feature Statistics     1
+    Click Feature Link In Feature Statistics     2
     Wait Until Element Is Visible   id:Calculator
 
 View Skipped Feature By Link
-    Open Report In Browser
-    Click Feature Link In Feature Statistics     2
+    Click Feature Link In Feature Statistics     3
     Wait Until Element Is Visible   id:Controls
 
 View Passed Feature By Link
-    Open Report In Browser
-    Click Feature Link In Feature Statistics     3
+    Click Feature Link In Feature Statistics     4
     Wait Until Element Is Visible   id:Cucuber basket
 
 *** Keywords ***
