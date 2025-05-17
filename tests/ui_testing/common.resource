@@ -2,6 +2,7 @@
 Library  SeleniumLibrary
 Library  OperatingSystem
 Library    Collections
+Library    ../../venv/lib/python3.12/site-packages/robot/libraries/XML.py
 
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
@@ -9,7 +10,7 @@ ${BROWSER}    headlesschrome    #chrome
 *** Keywords ***
 Open Report In Browser
     [Documentation]    Opens the browser and navigates to the target URL.
-    ${report_title}=    Set Variable    RFTest
+    Set Suite Variable    ${report_title}    RFTest
     ${url}=    Generate HTML Report    ${report_title}
     Open Browser    ${url}    ${BROWSER}
     Page Should Contain    ${report_title}
@@ -21,6 +22,9 @@ Generate HTML Report
     ${result}=    Set Variable    file://${EXECDIR}/${title}.html
     Log    Generated report at: ${result}
     RETURN    ${result}
+
+Remove HTML Report
+    Remove File    ${EXECDIR}/${report_title}.html
 
 Get Feature
     [Arguments]    ${feature_name}
@@ -62,5 +66,5 @@ Element Tooltip Should Be
     
 Element Style Should Contain
     [Arguments]     ${element}   ${text}
-    ${style_result}=     Get Element Attribute   ${element}     style
+    ${style_result}=     SeleniumLibrary.Get Element Attribute   ${element}     style
     Should Contain    ${style_result}    ${text}

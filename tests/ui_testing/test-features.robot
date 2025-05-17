@@ -32,7 +32,7 @@ Feature With Passed Template Scenarios
     Element Should Contain  ${feature}/div/div/div/p   2
     ${scenarios}=   Get Feature Scenarios   Cucuber basket
     FOR    ${scenario}    IN    @{scenarios}
-        ${class}=  Get Element Attribute    ${scenario}    class
+        ${class}=  SeleniumLibrary.Get Element Attribute    ${scenario}    class
         Should Contain   ${class}    passed
     END
 
