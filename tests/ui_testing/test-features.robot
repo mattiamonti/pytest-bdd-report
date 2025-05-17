@@ -3,7 +3,8 @@ Library  SeleniumLibrary
 Library  OperatingSystem
 Library  String
 Resource    common.resource
-Test Setup        Open Report In Browser
+Test Setup        common.Open Report In Browser
+Test Teardown     common.Remove HTML Report   
 
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
