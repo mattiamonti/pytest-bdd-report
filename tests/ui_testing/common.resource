@@ -9,8 +9,10 @@ ${BROWSER}    headlesschrome    #chrome
 *** Keywords ***
 Open Report In Browser
     [Documentation]    Opens the browser and navigates to the target URL.
-    ${url}=    Generate HTML Report    RFTest
+    ${report_title}=    Set Variable    RFTest
+    ${url}=    Generate HTML Report    ${report_title}
     Open Browser    ${url}    ${BROWSER}
+    Page Should Contain    ${report_title}
 
 Generate HTML Report
     [Arguments]    ${title}

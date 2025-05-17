@@ -2,18 +2,17 @@
 Library           SeleniumLibrary
 Library           OperatingSystem
 Resource          common.resource
+Test Setup        Open Report In Browser
 
 *** Variables ***
-${BROWSER}        headlesschrome    #chrome
+${BROWSER}        chrome    #chrome
 
 *** Test Cases ***
 Open File list
-    Open Report In Browser
     Click File List Accordion
     Wait Until Element Is Visible  id:test-file-uri
 
 Close File list
-    Open Report In Browser
     Click File List Accordion
     Wait Until Element Is Visible  id:test-file-uri
     Click File List Accordion
