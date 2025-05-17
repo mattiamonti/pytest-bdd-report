@@ -6,6 +6,21 @@ __pycache__/
 # C extensions
 *.so
 
+# Robot Framework files
+log.html
+output.xml
+report.html
+__pycache__
+.classpath
+.settings
+.jython_cache
+.mypy_cache/
+node_modules
+.cache/
+.parcel-cache/
+selenium-screenshot*
+
+
 # Distribution / packaging
 .Python
 env/
@@ -78,3 +93,4 @@ target/
 
 # VSCode
 .vscode/
+tests/ui_testing/RFTest.html

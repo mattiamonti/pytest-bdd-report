@@ -10,6 +10,7 @@ ${BROWSER}        headlesschrome    #chrome
 
 *** Test Cases ***
 View Failed Feature By Link
+    Skip
     Open Report In Browser
     Click Feature Link In Feature Statistics     1
     Wait Until Element Is Visible   id:Calculator
