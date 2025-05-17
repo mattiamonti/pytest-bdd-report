@@ -29,25 +29,48 @@ Remove Test Directory And Files
     Remove File    ${EXECDIR}/.cucumber-data.json
 
 *** Test Cases ***
-Generate a report with all tests passed
+Verify a report with all tests passed
     ${mock_dir}=    Set Variable    mock_generated_tests
+    ${report_title}=    Set Variable    RF-Passed
     BDDGeneratorLibrary.Create Builder    ${mock_dir}
     BDDGeneratorLibrary.Create Feature    Feature di esempio
-    BDDGeneratorLibrary.Create Scenario   Scenario misto
+    BDDGeneratorLibrary.Create Scenario   Scenario passato
     BDDGeneratorLibrary.Add Passed Step   Step passato correttamente
-    BDDGeneratorLibrary.Add Failed Step   Step che fallisce
-    BDDGeneratorLibrary.Add Skipped Step  Step skippato
+    BDDGeneratorLibrary.Add Passed Step   Step passato correttamente
+    BDDGeneratorLibrary.Add Passed Step   Step passato correttamente
     BDDGeneratorLibrary.Attach Scenario To Feature
     BDDGeneratorLibrary.Attach Feature To Builder
-    BDDGeneratorLibrary.Create Feature    Secondo esempio
-    BDDGeneratorLibrary.Create Scenario   Secondo scenario
-    BDDGeneratorLibrary.Add Failed Step   Secondo step fallito
+    BDDGeneratorLibrary.Create Scenario   Secondo Scenario passato
+    BDDGeneratorLibrary.Add Passed Step   Step passato correttamente
     BDDGeneratorLibrary.Attach Scenario To Feature
     BDDGeneratorLibrary.Attach Feature To Builder
     BDDGeneratorLibrary.Build Tests 
-    ${url}=    Generate HTML Report From Directory    MockGenRFTest    ${mock_dir}
+    ${url}=    Generate HTML Report From Directory    ${report_title}    ${mock_dir}
     Open Report In Browser    ${url} 
-    Page Should Contain    MockGenRFTest
-    Remove Test Directory And Files    ${mock_dir}    MockGenRFTest
+    Page Should Contain    ${report_title}
+    Element Should Contain    xpath=//*[@id="passed"]    2
+    Remove Test Directory And Files    ${mock_dir}    ${report_title}
+
+Verify a report with all tests failed
+    ${mock_dir}=    Set Variable    mock_generated_tests
+    ${report_title}=    Set Variable    RF-Failed
+    BDDGeneratorLibrary.Create Builder    ${mock_dir}
+    BDDGeneratorLibrary.Create Feature    Feature di esempio
+    BDDGeneratorLibrary.Create Scenario   Scenario fallito
+    BDDGeneratorLibrary.Add Passed Step   Step passato correttamente
+    BDDGeneratorLibrary.Add Passed Step   Step passato correttamente
+    BDDGeneratorLibrary.Add Failed Step   Step fallito
+    BDDGeneratorLibrary.Attach Scenario To Feature
+    BDDGeneratorLibrary.Attach Feature To Builder
+    BDDGeneratorLibrary.Create Scenario   Secondo Scenario fallito
+    BDDGeneratorLibrary.Add Failed Step   Step fallito
+    BDDGeneratorLibrary.Attach Scenario To Feature
+    BDDGeneratorLibrary.Attach Feature To Builder
+    BDDGeneratorLibrary.Build Tests 
+    ${url}=    Generate HTML Report From Directory    ${report_title}    ${mock_dir}
+    Open Report In Browser    ${url} 
+    Page Should Contain    ${report_title}
+    Element Should Contain    xpath=//*[@id="failed"]    2
+    Remove Test Directory And Files    ${mock_dir}    ${report_title}
 
     
