@@ -6,6 +6,7 @@ Library    ../../venv/lib/python3.12/site-packages/robot/libraries/XML.py
 
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
+${element_plot_widget}=    xpath=/html/body/div[2]/div/div[1]
 
 *** Keywords ***
 Open Report In Browser
@@ -60,6 +61,12 @@ Get Scenario Steps
            Append To List   ${current_steps}    ${text}
     END
     RETURN  ${current_steps}
+
+Scenario Background Color Should Be
+    [Arguments]    ${scenario_name}    ${rgb_color_code}
+    [Documentation]    Example: Scenario Background Color Should Be    NomeScenario    214, 240, 224
+    ${stile_scenario}=    SeleniumLibrary.Get Element Attribute    xpath=//*[@id="${scenario_name}"]/div    style
+    Should Be True    "rgb(${rgb_color_code})" in "${stile_scenario}"
 
 Element Tooltip Should Be
     [Arguments]     ${element}   ${text}
