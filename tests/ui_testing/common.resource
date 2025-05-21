@@ -76,3 +76,26 @@ Element Style Should Contain
     [Arguments]     ${element}   ${text}
     ${style_result}=     SeleniumLibrary.Get Element Attribute   ${element}     style
     Should Contain    ${style_result}    ${text}
+
+Count Scenarios In Report
+    ${general_scenario_xpath}=    Set Variable    xpath=//div[contains(@class, "scenario")]
+    ${elements}=    Get WebElements    ${general_scenario_xpath}
+    ${count}=       Get Length         ${elements}
+    RETURN        ${count}
+
+Count Steps In Report
+    ${general_scenario_xpath}=    Set Variable    xpath=//div[contains(@class, "step")]
+    ${elements}=    Get WebElements    ${general_scenario_xpath}
+    ${count}=       Get Length         ${elements}
+    RETURN        ${count}
+
+Count Feature In Report
+    [Arguments]    ${feature_id_to_search_for}=${EMPTY}
+    IF    '${feature_id_to_search_for}' == '${EMPTY}'
+        ${general_scenario_xpath}=    Set Variable    xpath=//div[contains(@id, "Feature")]
+    ELSE
+        ${general_scenario_xpath}=    Set Variable    xpath=//div[contains(@id, "${feature_id_to_search_for}")]
+    END
+    ${elements}=    Get WebElements    ${general_scenario_xpath}
+    ${count}=       Get Length         ${elements}
+    RETURN        ${count}

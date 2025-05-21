@@ -16,6 +16,7 @@ Verify a report with all tests passed in a feature
     BDDGeneratorLibrary.Create Feature    Feature di esempio
     Generate Passed Scenario    name=Passato 1
     Generate Passed Scenario    name=Passato 2
+    BDDGeneratorLibrary.Attach Feature To Builder
     BDDGeneratorLibrary.Build Tests 
     ${url}=    Generate HTML Report From Directory    ${report_title}    ${mock_dir}
     Open Report In Browser    ${url} 
@@ -35,6 +36,7 @@ Verify a report with all tests failed in a feature
     BDDGeneratorLibrary.Create Feature    Feature di esempio
     Generate Failed Scenario    name=Fallito 1
     Generate Failed Scenario    name=Fallito 2
+    BDDGeneratorLibrary.Attach Feature To Builder
     BDDGeneratorLibrary.Build Tests 
     ${url}=    Generate HTML Report From Directory    ${report_title}    ${mock_dir}
     Open Report In Browser    ${url} 
@@ -79,7 +81,6 @@ Generate Passed Scenario
     BDDGeneratorLibrary.Add Passed Step   Step 2 passato correttamente
     BDDGeneratorLibrary.Add Passed Step   Step 3 passato correttamente
     BDDGeneratorLibrary.Attach Scenario To Feature
-    BDDGeneratorLibrary.Attach Feature To Builder
 
 Generate Failed Scenario
     [Arguments]    ${name}=${EMPTY}
@@ -92,4 +93,3 @@ Generate Failed Scenario
     BDDGeneratorLibrary.Add Passed Step   Step 2 passato correttamente
     BDDGeneratorLibrary.Add Failed Step   Step 3 fallito
     BDDGeneratorLibrary.Attach Scenario To Feature
-    BDDGeneratorLibrary.Attach Feature To Builder
