@@ -49,6 +49,7 @@ class BDDTestBuilder:
                 for j, scenario in enumerate(feature.scenarios, 1):
                     scenario_name = scenario.name
                     f.write(f"  Scenario: {scenario_name}\n")
+                    is_skipped = False
                     for step in scenario.steps:
                         line = f"    Given {step.name}\n"
                         f.write(line)
@@ -56,8 +57,10 @@ class BDDTestBuilder:
                         if step_func_name not in all_step_names:
                             self.step_defs.append(self._generate_step_function(step_func_name, step.name, step.outcome))
                             all_step_names.add(step_func_name)
+                        if step.outcome == "skip":
+                            is_skipped = True
 
-                    self.test_funcs.append(self._generate_test_function(feature_filename, scenario_name))
+                    self.test_funcs.append(self._generate_test_function(feature_filename, scenario_name, is_skipped))
 
         self._write_steps()
 
@@ -77,8 +80,16 @@ class BDDTestBuilder:
             {body}
         """).strip()
 
-    def _generate_test_function(self, feature_file: str, scenario_name: str) -> str:
+    def _generate_test_function(self, feature_file: str, scenario_name: str, is_skipped: bool) -> str:
         test_name = "test_" + self._sanitize_name(scenario_name)
+        if is_skipped:
+            return dedent(f"""
+            @pytest.mark.skip(reason="no way of currently testing this")
+            @scenario("{feature_file}", "{scenario_name}")
+            def {test_name}():
+                pass
+            """).strip()
+            
         return dedent(f"""
         @scenario("{feature_file}", "{scenario_name}")
         def {test_name}():
