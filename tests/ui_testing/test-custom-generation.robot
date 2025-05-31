@@ -72,34 +72,35 @@ Verify a report with all tests failed in multiple features
     common.Scenario Background Color Should Be    Fallito 2    ${failed_scenario_rgb_color}
     
 Verify a report with all tests skipped in a feature
-    Skip
     BDDGeneratorLibrary.Create Builder    ${mock_dir}
     BDDGeneratorLibrary.Create Feature    Feature di esempio
     Generate Skipped Scenario    name=Skipped 1
     Generate Skipped Scenario    name=Skipped 2
+    Generate Passed Scenario    name=Passato 3
     BDDGeneratorLibrary.Attach Feature To Builder
     BDDGeneratorLibrary.Build Tests 
     ${url}=    generation.Generate HTML Report From Directory    ${report_title}    ${mock_dir}
     Open Report In Browser    ${url} 
     Wait Until Page Contains    ${report_title}
-    common.Check Plot Widget Statistics    total_executed=2    total_skipped=2
+    common.Check Plot Widget Statistics    total_executed=3    total_skipped=2    total_passed=1
 #    common.Scenario Background Color Should Be    Fallito 1    ${failed_scenario_rgb_color}
 #    common.Scenario Background Color Should Be    Fallito 2    ${failed_scenario_rgb_color}
 
 Verify a report with all tests skipped in multiple features
-    Skip
     BDDGeneratorLibrary.Create Builder    ${mock_dir}
     BDDGeneratorLibrary.Create Feature    Feature A
     Generate Skipped Scenario    name=Skipped 1
+    Generate Passed Scenario    name=Passato 1
     BDDGeneratorLibrary.Attach Feature To Builder
     BDDGeneratorLibrary.Create Feature    Feature B
     Generate Skipped Scenario    name=Skipped 2
+    Generate Passed Scenario    name=Passato 2
     BDDGeneratorLibrary.Attach Feature To Builder
     BDDGeneratorLibrary.Build Tests 
     ${url}=    generation.Generate HTML Report From Directory    ${report_title}    ${mock_dir}
     Open Report In Browser    ${url} 
     Wait Until Page Contains    ${report_title}
-    common.Check Plot Widget Statistics    total_executed=2    total_skipped=2
+    common.Check Plot Widget Statistics    total_executed=4    total_skipped=2    total_passed=2
 #    common.Scenario Background Color Should Be    Fallito 1    ${failed_scenario_rgb_color}
 #    common.Scenario Background Color Should Be    Fallito 2    ${failed_scenario_rgb_color}
 
