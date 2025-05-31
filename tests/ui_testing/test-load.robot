@@ -4,10 +4,12 @@ Library  OperatingSystem
 Library    Collections
 Library           bdd_generator_library/BDDGeneratorLibrary.py
 Resource    common.resource
-# TODO aggiungere test teardown per rimuovere i file, non ci devono essere variabili?
+Test Teardown    Custom Test Teardown
 
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
+${mock_dir}    generated_bdd_cases_for_tests
+${report_title}    generated_test
 
 *** Test Cases ***
 Verify Report Renders Many Scenarios
@@ -39,8 +41,6 @@ Verify Report Renders Many Steps
 *** Keywords ***
 Test Counting Scenario Elements
     [Arguments]    ${expected_count}
-    ${mock_dir}=    Set Variable    mock_generated_tests
-    ${report_title}=    Set Variable    Load-test-scenarios
     BDDGeneratorLibrary.Create Builder    ${mock_dir}
     BDDGeneratorLibrary.Create Feature    Feature di esempio
     FOR    ${i}    IN RANGE    0    ${expected_count}
@@ -53,14 +53,10 @@ Test Counting Scenario Elements
     Generate Report And Open It    ${report_title}    ${mock_dir}
     ${actual_count}=    common.Count Scenarios In Report
     Log    Trovati ${actual_count} elementi, attesi: ${expected_count}
-    # TODO migliroare gestione log solo se check sotto fallisce, magari metter in una keyword
     Should Be Equal As Integers    ${actual_count}    ${expected_count}
-    Remove Test Directory And Files    ${mock_dir}    ${report_title}
 
 Test Counting Feature Elements
     [Arguments]    ${expected_count}
-    ${mock_dir}=    Set Variable    mock_generated_tests
-    ${report_title}=    Set Variable    Load-test-features
     BDDGeneratorLibrary.Create Builder    ${mock_dir}
     FOR    ${i}    IN RANGE    0    ${expected_count}
         BDDGeneratorLibrary.Create Feature    FEATURE DI CARICO ${i}
@@ -74,12 +70,9 @@ Test Counting Feature Elements
     ${actual_count}=    common.Count Feature In Report    feature_id_to_search_for=FEATURE DI CARICO
     Log    Trovati ${actual_count} elementi, attesi: ${expected_count}
     Should Be Equal As Integers    ${actual_count}    ${expected_count}
-    Remove Test Directory And Files    ${mock_dir}    ${report_title}
 
 Test Counting Step Elements
     [Arguments]    ${expected_count}
-    ${mock_dir}=    Set Variable    mock_generated_tests
-    ${report_title}=    Set Variable    Load-test-steps
     BDDGeneratorLibrary.Create Builder    ${mock_dir}
     BDDGeneratorLibrary.Create Feature    Feature per test di carico steps
     BDDGeneratorLibrary.Create Scenario   Scenario per test di carico steps
@@ -93,8 +86,10 @@ Test Counting Step Elements
     ${actual_count}=    common.Count Steps In Report 
     Log    Trovati ${actual_count} elementi, attesi: ${expected_count}
     Should Be Equal As Integers    ${actual_count}    ${expected_count}
-    Remove Test Directory And Files    ${mock_dir}    ${report_title}
 
+Custom Test Teardown
+    common.Remove Test Directory And Files    ${mock_dir}    ${report_title}
+    
 Open Report In Browser
     [Documentation]    Opens the browser and navigates to the target URL.
     [Arguments]    ${url}
@@ -108,11 +103,6 @@ Generate HTML Report From Directory
     Log    Generated report at: ${result}
     RETURN    ${result}
 
-Remove Test Directory And Files
-    [Arguments]    ${path}    ${report_title}
-    Remove Directory    ${path}    recursive=${True}
-    Remove File    ${EXECDIR}/${report_title}.html
-    Remove File    ${EXECDIR}/.cucumber-data.json
 
 Generate Report And Open It
     [Arguments]    ${report_title}    ${mock_dir}

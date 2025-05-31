@@ -8,6 +8,7 @@ Library    ../../venv/lib/python3.12/site-packages/robot/libraries/XML.py
 ${BROWSER}    headlesschrome    #chrome
 ${element_plot_widget}=    xpath=/html/body/div[2]/div/div[1]
 
+
 *** Keywords ***
 Open Report In Browser
     [Documentation]    Opens the browser and navigates to the target URL.
@@ -25,6 +26,12 @@ Generate HTML Report
     RETURN    ${result}
 
 Remove HTML Report
+    Remove File    ${EXECDIR}/${report_title}.html
+    Remove File    ${EXECDIR}/.cucumber-data.json
+
+Remove Test Directory And Files
+    [Arguments]    ${path}    ${report_title}
+    Remove Directory    ${path}    recursive=${True}
     Remove File    ${EXECDIR}/${report_title}.html
     Remove File    ${EXECDIR}/.cucumber-data.json
 
