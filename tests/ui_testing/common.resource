@@ -7,6 +7,11 @@ Library    ../../venv/lib/python3.12/site-packages/robot/libraries/XML.py
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
 ${element_plot_widget}=    xpath=/html/body/div[2]/div/div[1]
+${passed_scenario_rgb_color}    214, 240, 224
+${failed_scenario_rgb_color}    249, 225, 229
+
+
+
 
 
 *** Keywords ***
@@ -106,3 +111,10 @@ Count Feature In Report
     ${elements}=    Get WebElements    ${general_scenario_xpath}
     ${count}=       Get Length         ${elements}
     RETURN        ${count}
+
+Check Plot Widget Statistics
+    [Arguments]    ${total_executed}=0    ${total_passed}=0    ${total_failed}=0    ${total_skipped}=0
+    Element Should Contain    ${element_plot_widget}    ${total_executed} Total tests executed
+    Element Should Contain    ${element_plot_widget}    ${total_passed} Passed tests
+    Element Should Contain    ${element_plot_widget}    ${total_failed} Failed tests
+    Element Should Contain    ${element_plot_widget}    ${total_skipped} Skipped tests
