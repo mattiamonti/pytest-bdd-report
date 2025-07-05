@@ -20,9 +20,9 @@ align-self: stretch;" class="{{status}}-scenario searchable" id="{{name}}">
                             {% if status == "passed" %}
                             {{icon.pass("1.17rem","1.17rem")}}
                             {% elif status == "failed" %}
-                            {{icon.fail(20,21)}}
+                            {{icon.fail("1.17rem","1.17rem")}}
                             {% else %}
-                            {{icon.skip(20,21)}}
+                            {{icon.skip("1.17rem","1.17rem")}}
                             {% endif %}
                             <h3 style="margin: 0;font-family: Roboto;font-style: normal;font-weight: 500;">
                                 Scenario: {{name}}
