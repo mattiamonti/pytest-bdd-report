@@ -1,209 +1,167 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-        <title>{{title}}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
-            rel="stylesheet"
-        />
-        <script>
-            function showhide(
-                item,
-                id,
-                tooltip_when_showed = "",
-                tooltip_when_hided = "",
-            ) {
-                var div = document.getElementById(id);
-                if (div.style.display !== "block") {
-                    div.style.display = "block";
-                    item.style.transform = "rotate(0deg)";
-                    item.title = tooltip_when_showed;
-                } else {
-                    div.style.display = "none";
-                    item.style.transform = "rotate(-90deg)";
-                    item.title = tooltip_when_hided;
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>{{title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+    <script>
+        function showhide(
+            item,
+            id,
+            tooltip_when_showed = "",
+            tooltip_when_hided = "",
+        ) {
+            var div = document.getElementById(id);
+            if (div.style.display !== "block") {
+                div.style.display = "block";
+                item.style.transform = "rotate(0deg)";
+                item.title = tooltip_when_showed;
+            } else {
+                div.style.display = "none";
+                item.style.transform = "rotate(-90deg)";
+                item.title = tooltip_when_hided;
+            }
+        }
+
+        function showTest(checked, type) {
+            var scenarios = document.getElementsByClassName(
+                type + "-scenario",
+            );
+            if (checked) {
+                for (let i = 0; i < scenarios.length; i++) {
+                    scenarios[i].style.display = "flex";
+                }
+            } else {
+                for (let i = 0; i < scenarios.length; i++) {
+                    scenarios[i].style.display = "none";
                 }
             }
+        }
+    </script>
+</head>
 
-            function showTest(checked, type) {
-                var scenarios = document.getElementsByClassName(
-                    type + "-scenario",
-                );
-                if (checked) {
-                    for (let i = 0; i < scenarios.length; i++) {
-                        scenarios[i].style.display = "flex";
-                    }
-                } else {
-                    for (let i = 0; i < scenarios.length; i++) {
-                        scenarios[i].style.display = "none";
-                    }
-                }
-            }
-        </script>
-    </head>
-
-    <body
-        style="
+<body style="
             font-family: &quot;Roboto&quot;, sans-serif;
             padding: 4rem;
             background: #f5f6f7;
-            scroll-behavior: smooth;
             color: #1a1a1a;
-        "
-    >
-        {% include './components/feature_statistics_link.html' %}
-        <div style="margin-bottom: 1rem">
-            <div
-                style="
+        ">
+    {% include './components/feature_statistics_link.html' %}
+    <div style="margin-bottom: 1rem">
+        <div style="
                     display: flex;
                     align-items: first baseline;
                     justify-content: space-between;
-                "
-            >
-                <div>
-                    <h1
-                        style="
+                ">
+            <div>
+                <h1 style="
                             font-size: 2rem;
                             font-weight: 400;
                             margin-bottom: 0.25rem;
-                        "
-                    >
-                        Test report: {{title}}
-                    </h1>
-                    <p style="color: #535353; margin: 0 0 0.5rem 0">
-                        {{file_path}}
-                    </p>
-                </div>
-                <div>
-                    <p style="color: #535353; margin: 0; text-align: right">
-                        {{date_time}}
-                    </p>
-                    <div
-                        style="
+                        ">
+                    Test report: {{title}}
+                </h1>
+                <p style="color: #535353; margin: 0 0 0.5rem 0">
+                    {{file_path}}
+                </p>
+            </div>
+            <div>
+                <p style="color: #535353; margin: 0; text-align: right">
+                    {{date_time}}
+                </p>
+                <div style="
                             transform: scale(0.6);
                             margin: 0 -3.5rem 0 0;
                             padding: 0;
-                        "
-                    >
-                        <script
-                            type="text/javascript"
-                            src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-                            data-name="bmc-button"
-                            data-slug="mattiamonti"
-                            data-color="#D6F0E0"
-                            data-emoji=""
-                            data-font="Inter"
-                            data-text="Buy me a coffee"
-                            data-outline-color="#000000"
-                            data-font-color="#000000"
-                            data-coffee-color="#ffffff"
-                        ></script>
-                    </div>
+                        ">
+                    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+                        data-name="bmc-button" data-slug="mattiamonti" data-color="#D6F0E0" data-emoji=""
+                        data-font="Inter" data-text="Buy me a coffee" data-outline-color="#000000"
+                        data-font-color="#000000" data-coffee-color="#ffffff"></script>
                 </div>
             </div>
-
-            {% include './components/test_file_uri.html' %}
         </div>
 
-        {{summary | safe}}
+        {% include './components/test_file_uri.html' %}
+    </div>
 
-        <br />
-        <div
-            id="feature-statistics"
-            style="
+    {{summary | safe}}
+
+    <br />
+    <div id="feature-statistics" style="
                 background-color: white;
                 padding: 2rem;
                 border-radius: 0.625rem;
                 box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-            "
-        >
-            <table
-                border="0"
-                cellpadding="2"
-                style="width: 100%; border-collapse: collapse"
-                class="sortable"
-            >
-                <tbody>
-                    <tr style="border-bottom: 1px solid #555; color: #555">
-                        <td style="width: 50%; cursor: pointer">Feature</td>
+            ">
+        <table border="0" cellpadding="2" style="width: 100%; border-collapse: collapse" class="sortable">
+            <tbody>
+                <tr style="border-bottom: 1px solid #555; color: #555">
+                    <td style="width: 50%; cursor: pointer">Feature</td>
 
-                        <td
-                            style="
+                    <td style="
                                 width: fit-content;
                                 text-align: center;
                                 cursor: pointer;
-                            "
-                        >
-                            Total
-                        </td>
-                        <td
-                            style="
+                            ">
+                        Total
+                    </td>
+                    <td style="
                                 width: fit-content;
                                 text-align: center;
                                 cursor: pointer;
-                            "
-                        >
-                            Passed
-                        </td>
-                        <td
-                            style="
+                            ">
+                        Passed
+                    </td>
+                    <td style="
                                 width: fit-content;
                                 text-align: center;
                                 cursor: pointer;
-                            "
-                        >
-                            Failed
-                        </td>
-                        <td
-                            style="
+                            ">
+                        Failed
+                    </td>
+                    <td style="
                                 width: fit-content;
                                 text-align: center;
                                 cursor: pointer;
-                            "
-                        >
-                            Skipped
-                        </td>
-                        <td
-                            style="
+                            ">
+                        Skipped
+                    </td>
+                    <td style="
                                 width: fit-content;
                                 text-align: center;
                                 cursor: pointer;
-                            "
-                        >
-                            Success Rate
-                        </td>
-                        <td
-                            style="
+                            ">
+                        Success Rate
+                    </td>
+                    <td style="
                                 width: fit-content;
                                 text-align: center;
                                 cursor: pointer;
-                            "
-                        >
-                            Duration
-                        </td>
-                    </tr>
-                    {{feature_statistics | safe}}
-                </tbody>
-            </table>
-        </div>
+                            ">
+                        Duration
+                    </td>
+                </tr>
+                {{feature_statistics | safe}}
+            </tbody>
+        </table>
+    </div>
 
-        <br />
+    <br />
 
-        <div
-            id="control-box"
-            style="display: flex; justify-content: space-between"
-        >
-            {% include './components/filters.html' %}
-        </div>
+    <div id="control-box" style="display: flex; justify-content: space-between">
+        {% include './components/filters.html' %}
+    </div>
 
-        <br />
-        <div style="display: flex; flex-direction: column; gap: 3.5rem">
-            {{features | safe}}
-        </div>
+    <br />
+    <div style="display: flex; flex-direction: column; gap: 3.5rem">
+        {{features | safe}}
+    </div>
 
-        <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
-    </body>
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+</body>
+
 </html>
