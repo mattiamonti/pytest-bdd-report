@@ -6,7 +6,7 @@
 
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div style="width: 60%;">
-                    <canvas id="piechart"><canvas>
+                    <canvas id="piechart"></canvas>
                 </div>
 
                 <div style="text-align: right;">
@@ -111,7 +111,8 @@
                         beginAtZero: true
                     }
                 },
-                responsive: false
+                responsive: true,
+                maintainAspectRatio: false
             }
         });
 
@@ -158,7 +159,9 @@
                         display: false
                     },
                 }
-            }
+            },
+            responsive: true,
+            maintainAspectRatio: false
         });
 
     </script>
