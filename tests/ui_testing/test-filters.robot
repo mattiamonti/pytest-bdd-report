@@ -15,19 +15,28 @@ Filters Must Be Checked
     Checkbox Should Be Selected    id:show-failed
 
 Filter Out The Passed Scenarios
+    Scroll To Filters
     Click Button    id:show-passed
     Element Should Be Visible    class:skipped-scenario
     Element Should Be Visible    class:failed-scenario
     Element Should Not Be Visible    class:passed-scenario
 
 Filter Out The Skipped Scenarios
+    Scroll To Filters
     Click Button    id:show-skipped
     Element Should Be Visible    class:passed-scenario
     Element Should Be Visible    class:failed-scenario
     Element Should Not Be Visible    class:skipped-scenario
 
 Filter Out The Failed Scenarios
+    Scroll To Filters
     Click Button    id:show-failed
     Element Should Be Visible    class:passed-scenario
     Element Should Be Visible    class:skipped-scenario
     Element Should Not Be Visible    class:failed-scenario
+
+
+*** Keywords ***
+Scroll To Filters
+    Wait Until Page Contains Element    id:filters
+    Scroll Element Into View    id:filters
