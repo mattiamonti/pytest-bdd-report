@@ -47,38 +47,8 @@
                 {%endif%}
             </p>
             {% if failed != 0 %}
-            {% import './components/icon.html' as icon %}
-            <button onclick="(() => {this.nextElementSibling.showModal()})()"
-                style="text-decoration: none; background-color: white;color: black; padding: 0.5rem 1rem; border-radius: 50px;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);cursor: pointer;border: none; font-size: 0.75rem; display: flex; flex-direction: row; gap: 0.5rem; align-items: center;"
-                class="failed-scenarios-links" onmouseover="this.style.backgroundColor='#fafafa'"
-                onmouseout="this.style.backgroundColor='white'" onmousedown="this.style.backgroundColor='#f0f0f0'"
-                onmouseup="this.style.backgroundColor='white'">Failed
-                scenario links {{icon.open("1rem","1rem")}}</button>
-            <dialog style="padding: 1rem 1rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);cursor: pointer;color: #AF233A;
-        font-family: Roboto;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal; border: none;">
-                <div style="display: flex; flex-direction: row; gap: 1rem; justify-content: space-between;">
-                    <summary>Failed scenarios quick links</summary>
-                    <button autofocus id="close-dialog" onclick="(() => {this.parentNode.parentNode.close()})()"
-                        style="float: right;">X</button>
-                </div>
-                <br>
-                <div id="scenarios-quick-index">
-                    {% for scenario in failed_scenarios_names %}
-                    <a href="#{{scenario}}" onclick="(() => {this.parentNode.parentNode.close()})()"
-                        style="color: inherit; display: flex; align-items: center; gap: 0.25rem;color: #535353;">
-                        <div
-                            style="display: flex; align-items:center; gap: 0.25rem; margin: 0; padding-left: 0.25rem; ">
-                            {{icon.fail()}}
-                            <p style="color:#535353">{{scenario}}</p>
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
-            </dialog>
+            {% import './components/failed_scenarios_link.html' as fsl %}
+            {{fsl.failedScenariosLink(failed_scenarios_names)}}
             {% endif %}
         </div>
     </div>
