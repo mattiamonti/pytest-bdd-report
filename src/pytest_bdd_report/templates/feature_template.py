@@ -10,7 +10,6 @@ class FeatureTemplate(BaseTemplate):
 
     def render_template(self, data: Feature, rendered_scenarios: str = "") -> str:
         failed_scenarios_names = [scenario.name for scenario in data.scenarios if scenario.status == "failed"]
-        print(failed_scenarios_names)
         return self.template.render(
             id=data.id,
             name=data.name,

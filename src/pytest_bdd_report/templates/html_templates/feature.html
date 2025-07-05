@@ -49,16 +49,22 @@
 
     {% if failed != 0 %}
     {% import './components/icon.html' as icon %}
-    <details style="padding: 0.5rem 1rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);cursor: pointer;color: #AF233A;
+    <button onclick="(() => {this.nextElementSibling.showModal()})()">Show failed scenario quick
+        access</button>
+    <dialog style="padding: 1rem 1rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);cursor: pointer;color: #AF233A;
         font-family: Roboto;
         font-size: 1rem;
         font-style: normal;
         font-weight: 400;
-        line-height: normal;">
-        <summary>Failed scenarios index</summary>
+        line-height: normal; border: 1px;">
+        <div style="display: flex; flex-direction: row; gap: 1rem; justify-content: space-between;">
+            <summary>Failed scenarios index</summary>
+            <button autofocus id="close-dialog" onclick="(() => {this.parentNode.parentNode.close()})()"
+                style="float: right;">X</button>
+        </div>
         <div id="scenarios-quick-index">
             {% for scenario in failed_scenarios_names %}
-            <a href="#{{scenario}}"
+            <a href="#{{scenario}}" onclick="(() => {this.parentNode.parentNode.close()})()"
                 style="color: inherit; display: flex; align-items: center; gap: 0.25rem;color: #535353;">
                 <div style="display: flex; align-items:center; gap: 0.25rem; margin: 0; padding-left: 0.25rem; ">
                     {{icon.fail()}}
@@ -67,7 +73,7 @@
             </a>
             {% endfor %}
         </div>
-    </details>
+    </dialog>
 
     {% endif %}
 
