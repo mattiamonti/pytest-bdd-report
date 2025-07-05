@@ -30,13 +30,23 @@
             var scenarios = document.getElementsByClassName(
                 type + "-scenario",
             );
-            if (checked) {
-                for (let i = 0; i < scenarios.length; i++) {
+            var failedScenariosLinks = document.getElementsByClassName("failed-scenarios-links");
+
+            for (let i = 0; i < scenarios.length; i++) {
+                if (checked) {
                     scenarios[i].style.display = "flex";
-                }
-            } else {
-                for (let i = 0; i < scenarios.length; i++) {
+                } else {
                     scenarios[i].style.display = "none";
+                }
+            }
+
+            if (type == "failed") {
+                for (let i = 0; i < failedScenariosLinks.length; i++) {
+                    if (checked) {
+                        failedScenariosLinks[i].style.display = "block";
+                    } else {
+                        failedScenariosLinks[i].style.display = "none";
+                    }
                 }
             }
         }
