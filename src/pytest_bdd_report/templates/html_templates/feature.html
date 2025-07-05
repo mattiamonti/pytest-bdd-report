@@ -47,6 +47,30 @@
         </p>
     </div>
 
+    {% if failed != 0 %}
+    {% import './components/icon.html' as icon %}
+    <details style="padding: 0.5rem 1rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);cursor: pointer;color: #AF233A;
+        font-family: Roboto;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;">
+        <summary>Failed scenarios index</summary>
+        <div id="scenarios-quick-index">
+            {% for scenario in failed_scenarios_names %}
+            <a href="#{{scenario}}"
+                style="color: inherit; display: flex; align-items: center; gap: 0.25rem;color: #535353;">
+                <div style="display: flex; align-items:center; gap: 0.25rem; margin: 0; padding-left: 0.25rem; ">
+                    {{icon.fail()}}
+                    <p style="color:#535353">{{scenario}}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </details>
+
+    {% endif %}
+
     <div style="width: 100%; display: flex; gap: 1rem; flex-direction: column;">
         {{scenarios|safe}}
     </div>
