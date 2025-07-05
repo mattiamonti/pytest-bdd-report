@@ -52,18 +52,14 @@ align-self: stretch;" class="{{status}}-scenario searchable" id="{{name}}">
                     {{steps|safe}}
                 </div>
                 {% if status == "failed" %}
-                <button
-                    onclick="showhide(this, this.nextElementSibling.id, 'Close error message', 'Open error message')"
-                    style="display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent;border: none; cursor: pointer; transform: rotate(-90deg);"
-                    title="Open error message">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 15 8" fill="none">
-                        <path d="M0 0.5L7.5 8L15 0.5H0Z" fill="#AF233A" />
-                    </svg>
-                </button>
-                <!--Collapsable error message and log-->
-                <div id="message-{{name}}" style="display: none; font-family: monospace;">
-                    <p style="white-space: pre-wrap;">{{error_message}}</p>
-                </div>
+                <details style="margin-top: 0.5rem;">
+                    <summary style="cursor: pointer; font-size: 1.25rem;color: #AF233A;"><span
+                            style="font-size: 1rem;">Error
+                            message</span></summary>
+                    <div id="message-{{name}}" style="font-family: monospace;">
+                        <p style="white-space: pre-wrap; font-size: small;">{{error_message}}</p>
+                    </div>
+                </details>
                 {%endif%}
 
 

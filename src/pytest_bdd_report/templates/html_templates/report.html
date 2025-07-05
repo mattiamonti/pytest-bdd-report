@@ -8,24 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
     <script>
-        function showhide(
-            item,
-            id,
-            tooltip_when_showed = "",
-            tooltip_when_hided = "",
-        ) {
-            var div = document.getElementById(id);
-            if (div.style.display !== "block") {
-                div.style.display = "block";
-                item.style.transform = "rotate(0deg)";
-                item.title = tooltip_when_showed;
-            } else {
-                div.style.display = "none";
-                item.style.transform = "rotate(-90deg)";
-                item.title = tooltip_when_hided;
-            }
-        }
-
         function showTest(checked, type) {
             var scenarios = document.getElementsByClassName(
                 type + "-scenario",
