@@ -33,14 +33,10 @@
             }
         }
     </script>
+    {% include './style.html' %}
 </head>
 
-<body style="
-            font-family: &quot;Roboto&quot;, sans-serif;
-            padding: 2rem 4rem;
-            background: #f5f6f7;
-            color: #1a1a1a;
-        ">
+<body>
     {% include './components/feature_statistics_link.html' %}
     <div style="margin-bottom: 1rem">
         <div style="
@@ -49,19 +45,15 @@
                     justify-content: space-between;
                 ">
             <div>
-                <h1 style="
-                            font-size: 2rem;
-                            font-weight: 400;
-                            margin-bottom: 0.25rem;
-                        ">
+                <h1>
                     Test report: {{title}}
                 </h1>
-                <p style="color: #535353; margin: 0 0 0.5rem 0">
+                <p class="secondary-text" style="margin: 0 0 0.5rem 0">
                     {{file_path}}
                 </p>
             </div>
             <div>
-                <p style="color: #535353; margin: 0; text-align: right">
+                <p class="secondary-text text-right">
                     {{date_time}}
                 </p>
                 <div style="
@@ -83,57 +75,28 @@
     {{summary | safe}}
 
     <br />
-    <div id="feature-statistics" style="
-                background-color: white;
-                padding: 2rem;
-                border-radius: 0.625rem;
-                box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-            ">
+    <div id="feature-statistics" class="container">
         <table border="0" cellpadding="2" style="width: 100%; border-collapse: collapse" class="sortable">
             <tbody>
                 <tr style="border-bottom: 1px solid #555; color: #555">
                     <td style="width: 50%; cursor: pointer">Feature</td>
 
-                    <td style="
-                                width: fit-content;
-                                text-align: center;
-                                cursor: pointer;
-                            ">
+                    <td class="feature-table-row">
                         Total
                     </td>
-                    <td style="
-                                width: fit-content;
-                                text-align: center;
-                                cursor: pointer;
-                            ">
+                    <td class="feature-table-row">
                         Passed
                     </td>
-                    <td style="
-                                width: fit-content;
-                                text-align: center;
-                                cursor: pointer;
-                            ">
+                    <td class="feature-table-row">
                         Failed
                     </td>
-                    <td style="
-                                width: fit-content;
-                                text-align: center;
-                                cursor: pointer;
-                            ">
+                    <td class="feature-table-row">
                         Skipped
                     </td>
-                    <td style="
-                                width: fit-content;
-                                text-align: center;
-                                cursor: pointer;
-                            ">
+                    <td class="feature-table-row">
                         Success Rate
                     </td>
-                    <td style="
-                                width: fit-content;
-                                text-align: center;
-                                cursor: pointer;
-                            ">
+                    <td class="feature-table-row">
                         Duration
                     </td>
                 </tr>
@@ -144,12 +107,12 @@
 
     <br />
 
-    <div id="control-box" style="display: flex; justify-content: space-between">
+    <div id="control-box" class="flex-between">
         {% include './components/filters.html' %}
     </div>
 
     <br />
-    <div style="display: flex; flex-direction: column; gap: 3.5rem">
+    <div class="flex-column" style="gap: 3.5rem">
         {{features | safe}}
     </div>
 
