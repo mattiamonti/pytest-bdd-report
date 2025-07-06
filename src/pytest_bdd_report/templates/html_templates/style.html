@@ -60,6 +60,31 @@
         align-self: stretch;
     }
 
+    .button {
+        text-decoration: none;
+        background-color: white;
+        color: var(--primary-text-color);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+        cursor: pointer;
+        border: none;
+        font-size: 0.75rem;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+        margin: 0;
+    }
+
+    .button:hover {
+        background-color: #fafafa;
+    }
+
+    .button:active {
+        background-color: #f0f0f0;
+    }
+
 
     /* === Components === */
     .container {
@@ -89,6 +114,7 @@
         border: 1.5px solid var(--failed-fg);
         background: var(--failed-bg);
     }
+
 
     /* === Utility === */
     .bold {
