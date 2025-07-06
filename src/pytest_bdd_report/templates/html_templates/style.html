@@ -4,6 +4,12 @@
     :root {
         --primary-text-color: #1a1a1a;
         --secondary-text-color: #535353;
+        --passed-fg: #0D6832;
+        --passed-bg: #D6F0E0;
+        --skipped-fg: #EDB527;
+        --skipped-bg: #FFF8E7;
+        --failed-fg: #AF233A;
+        --failed-bg: #F9E1E5;
     }
 
     body {
@@ -19,6 +25,7 @@
         margin-bottom: 0.25rem;
     }
 
+
     .primary-text {
         font-size: 1rem;
         color: var(--primary-text-color);
@@ -28,7 +35,31 @@
         color: var(--secondary-text-color);
     }
 
+    .monospace {
+        font-family: monospace;
+    }
+
     /* === Layout === */
+
+    .scenario {
+        display: flex;
+        width: auto;
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        flex: 1;
+        border-radius: 0.625rem;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    .scenario-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        align-self: stretch;
+    }
+
 
     /* === Components === */
     .container {
@@ -44,7 +75,30 @@
         cursor: pointer;
     }
 
+    .scenario-passed {
+        border: 1.5px solid var(--passed-fg);
+        background: var(--passed-bg);
+    }
+
+    .scenario-skipped {
+        border: 1.5px solid var(--skipped-fg);
+        background: var(--skipped-bg);
+    }
+
+    .scenario-failed {
+        border: 1.5px solid var(--failed-fg);
+        background: var(--failed-bg);
+    }
+
     /* === Utility === */
+    .bold {
+        font-weight: 500;
+    }
+
+    .semi-bold {
+        font-weight: 400;
+    }
+
     .text-right {
         margin: 0;
         text-align: right
@@ -58,5 +112,15 @@
     .flex-column {
         display: flex;
         flex-direction: column;
+    }
+
+    .flex-center {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .no-margin {
+        margin: 0
     }
 </style>
