@@ -1,55 +1,54 @@
 <div>
 
     <div style="width: 100%; display: flex; gap: 5%;">
-        <div
-            style="width: 35%; padding: 1rem 2rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10); display: flex; justify-content: space-between; flex-direction: column;">
+        <div class="container flex-between"
+            style="width: 35%; padding: 1rem 2rem;display: flex; justify-content: space-between; flex-direction: column;">
 
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="flex-between" style="align-items: center;">
                 <div style="width: 60%;">
                     <canvas id="piechart"></canvas>
                 </div>
 
                 <div style="text-align: right;">
                     <p>
-                        <span style="font-size: 1.25rem;">{{total}}</span>
-                        <span style=" color: #555;"> Tests executed</span>
+                        <span class="important-text">{{total}}</span>
+                        <span class="secondary-text"> Tests executed</span>
                     </p>
                     <p>
-                        <span id="passed" style="font-size: 1.25rem;">{{passed}}</span>
-                        <span style="color: #555;"> Passed tests</span>
+                        <span id="passed" class="important-text">{{passed}}</span>
+                        <span class="secondary-text"> Passed tests</span>
                     </p>
                     <p>
-                        <span id="failed" style="font-size: 1.25rem;">{{failed}}</span>
-                        <span style=" color: #555; margin-left: 0.25rem;"> Failed tests</span>
+                        <span id="failed" class="important-text">{{failed}}</span>
+                        <span class="secondary-text" style="margin-left: 0.25rem;"> Failed tests</span>
                     </p>
                     <p>
-                        <span id="skipped" style="font-size: 1.25rem;">{{skipped}}</span>
-                        <span style=" color: #555; margin-left: 0.25rem;"> Skipped tests</span>
+                        <span id="skipped" class="important-text">{{skipped}}</span>
+                        <span class="secondary-text" style="margin-left: 0.25rem;"> Skipped tests</span>
                     </p>
                 </div>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <p>
-                    <span style="font-size: 1.25rem;">{{percentage}}%</span>
-                    <span style=" color: #555; margin-left: 0.25rem;"> of tests passed</span>
+                    <span class="important-text">{{percentage}}%</span>
+                    <span class="secondary-text" style="margin-left: 0.25rem;"> of tests passed</span>
                 </p>
                 <p>
-                    <span style="font-size: 1.25rem;">
+                    <span class="important-text">
                         {% if duration > 0.5 %}
                         {{duration|round(3)}}s
                         {% else %}
                         {{(duration*1000)|round(3)}}ms
                         {%endif%}
                     </span>
-                    <span style=" color: #555; margin-left: 0.25rem;"> Total duration</span>
+                    <span class="secondary-text" style="margin-left: 0.25rem;"> Total duration</span>
                 </p>
             </div>
 
         </div>
 
-        <div
-            style="width: 55%; padding: 1rem 2rem; background-color: white; border-radius: 0.625rem; box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
-            <p style="color: #555;">Top failed Features</p>
+        <div class="container" style="width: 55%; padding: 1rem 2rem;">
+            <p class="secondary-text">Top failed Features</p>
             <div style="max-height: 80%;">
                 <canvas id="barchart"></canvas>
             </div>
