@@ -2,6 +2,7 @@
     /* === Reset / Base === */
 
     :root {
+        --primary-text-color: #1a1a1a;
         --secondary-text-color: #535353;
     }
 
@@ -9,13 +10,18 @@
         font-family: 'Roboto', sans-serif;
         padding: 2rem 4rem;
         background: #f5f6f7;
-        color: #1a1a1a;
+        color: var(--primary-text-color);
     }
 
     h1 {
         font-size: 2rem;
         font-weight: 400;
         margin-bottom: 0.25rem;
+    }
+
+    .primary-text {
+        font-size: 1rem;
+        color: var(--primary-text-color);
     }
 
     .secondary-text {
