@@ -32,13 +32,8 @@
                         <p style="margin: 0">Tags: {{tags}}</p>
                         {%endif%}
                     </div>
-                    <p class="primary-text no-margin semi-bold" style="display: inline;line-height: normal;">
-                        {% if duration > 1 %}
-                        Executed in {{duration|round(3)}}s
-                        {% else %}
-                        Executed in {{(duration*1000)|round(3)}}ms
-                        {%endif%}
-                    </p>
+                    {% import './components/duration.html' as execution %}
+                    {{execution.scenario(duration, "Executed in")}}
                 </div>
                 <div class="flex-column" style="width: 100%; align-items: flex-start; gap: 0.5rem; margin-top: 0.5rem;">
                     {{steps|safe}}

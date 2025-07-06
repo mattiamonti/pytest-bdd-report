@@ -1,10 +1,5 @@
-{% macro gray(duration, premble='') -%}
-<p style="color: #535353;
-        font-family: Roboto;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;">
+{% macro scenario(duration, preamble='') -%}
+<p class="primary-text no-margin semi-bold" style="display: inline;line-height: normal;">
     {% if duration > 1 %}
     {{preamble}} {{duration|round(3)}}s
     {% else %}
@@ -13,17 +8,22 @@
 </p>
 {%- endmacro %}
 
-{%- macro black(duration, premble='') -%}
-<p style="color: #1a1a1a;
-        font-family: Roboto;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;">
+{%- macro feature(duration, preamble='') -%}
+<p class="secondary-text" style="text-align: right;">
     {% if duration > 1 %}
     {{preamble}} {{duration|round(3)}}s
     {% else %}
     {{preamble}} {{(duration*1000)|round(3)}}ms
+    {%endif%}
+</p>
+{%- endmacro %}
+
+{%- macro step(duration, preamble='') -%}
+<p class="no-margin" style="display: inline;">
+    {% if (duration/1_000_000) > 1 %}
+    {{preamble}} {{(duration/1_000_000_000)|round(3)}}s
+    {% else %}
+    {{preamble}} {{(duration/1_000_000)|round(3)}}ms
     {%endif%}
 </p>
 {%- endmacro %}

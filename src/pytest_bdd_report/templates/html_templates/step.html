@@ -12,11 +12,6 @@
             <span class="keyword" style="font-weight: 500;">{{keyword}}</span>: {{name}}
         </p>
     </div>
-    <p class="no-margin" style="display: inline;">
-        {% if (duration/1_000_000) > 1 %}
-        {{(duration/1_000_000_000)|round(3)}}s
-        {% else %}
-        {{(duration/1_000_000)|round(3)}}ms
-        {%endif%}
-    </p>
+    {% import './components/duration.html' as execution %}
+    {{execution.step(duration)}}
 </div>

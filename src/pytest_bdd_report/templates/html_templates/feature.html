@@ -33,13 +33,9 @@
         </div>
 
         <div class="flex-column">
-            <p class="secondary-text" style="text-align: right;">
-                {% if duration > 1 %}
-                Executed in {{duration|round(3)}}s
-                {% else %}
-                Executed in {{(duration*1000)|round(3)}}ms
-                {%endif%}
-            </p>
+            {% import './components/duration.html' as execution %}
+            {{execution.feature(duration, "Executed in")}}
+
             {% if failed != 0 %}
             {% import './components/failed_scenarios_link.html' as fsl %}
             {{fsl.failedScenariosLink(failed_scenarios_names)}}
