@@ -1,31 +1,31 @@
 <tr>
     {% import './components/icon.html' as icon %}
     {% if failed != 0 %}
-    <td><a style="color: inherit; display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
+    <td><a class="feature-table-link" href="#{{name}}">
             {{icon.fail()}}
             {{name}}
         </a></td>
     {% elif skipped != 0 %}
-    <td><a style="color: inherit; display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
+    <td><a class="feature-table-link" href="#{{name}}">
             {{icon.skip()}}
             {{name}}
         </a></td>
     {% else %}
-    <td><a style="color: inherit;display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
+    <td><a class="feature-table-link" href="#{{name}}">
             {{icon.pass()}}
             {{name}}
         </a></td>
     {%endif%}
 
-    <td style="text-align:center;">{{total}}</td>
-    <td style="text-align:center;">{{passed}}</td>
-    <td style="text-align:center;">{{failed}}</td>
-    <td style="text-align:center;">{{skipped}}</td>
-    <td style="text-align:center;">{{rate}}%</td>
+    <td class="feature-table-data">{{total}}</td>
+    <td class="feature-table-data">{{passed}}</td>
+    <td class="feature-table-data">{{failed}}</td>
+    <td class="feature-table-data">{{skipped}}</td>
+    <td class="feature-table-data">{{rate}}%</td>
 
     {% if duration > 0.5 %}
-    <td style="text-align:center;">{{duration|round(3)}}s</td>
+    <td class="feature-table-data">{{duration|round(3)}}s</td>
     {% else %}
-    <td style="text-align:center;">{{(duration*1000)|round(3)}}ms</td>
+    <td class="feature-table-data">{{(duration*1000)|round(3)}}ms</td>
     {%endif%}
 </tr>
