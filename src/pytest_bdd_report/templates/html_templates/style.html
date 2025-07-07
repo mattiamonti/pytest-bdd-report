@@ -1,4 +1,5 @@
 <style>
+    /* TODO pulire gli style e vedere se astrarre o generalizzare altri stili */
     /* === Reset / Base === */
 
     :root {
@@ -117,6 +118,7 @@
 
     .button:active {
         background-color: #f0f0f0;
+        scale: 1.025;
     }
 
     .modal {
@@ -197,6 +199,22 @@
     .badge-failed {
         background: var(--failed-fg);
     }
+
+    .return-to-top-text {
+        max-width: 0;
+        display: inline;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: max-width 0.4s ease, opacity 0.5s ease, padding 0.3s ease;
+    }
+
+    .return-to-top-button:hover .return-to-top-text {
+        max-width: 10rem;
+        opacity: 1;
+        padding-right: 0.5rem;
+    }
+
 
     /* === Utility === */
     .bold {
