@@ -81,31 +81,20 @@
 
     <br />
     <div id="feature-statistics" class="container">
-        <table border="0" cellpadding="2" style="width: 100%; border-collapse: collapse" class="sortable">
-            <tbody>
-                <tr style="border-bottom: 1px solid #555; color: #555">
-                    <td style="width: 50%; cursor: pointer">Feature</td>
-
-                    <td class="feature-table-row">
-                        Total
-                    </td>
-                    <td class="feature-table-row">
-                        Passed
-                    </td>
-                    <td class="feature-table-row">
-                        Failed
-                    </td>
-                    <td class="feature-table-row">
-                        Skipped
-                    </td>
-                    <td class="feature-table-row">
-                        Success Rate
-                    </td>
-                    <td class="feature-table-row">
-                        Duration
-                    </td>
+        <table class="feature-table sortable">
+            <thead>
+                <tr>
+                    <th style="width: 40%; cursor: pointer;">Feature</th>
+                    <th>Total</th>
+                    <th>Passed</th>
+                    <th>Failed</th>
+                    <th>Skipped</th>
+                    <th>Success Rate</th>
+                    <th>Duration</th>
                 </tr>
-                {{feature_statistics | safe}}
+            </thead>
+            <tbody>
+                {{ feature_statistics | safe }}
             </tbody>
         </table>
     </div>
@@ -121,7 +110,7 @@
         {{features | safe}}
     </div>
 
-    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sorttable@1.0.2/sorttable.min.js"></script>
 </body>
 
 </html>

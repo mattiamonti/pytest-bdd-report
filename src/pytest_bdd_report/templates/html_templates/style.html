@@ -171,22 +171,76 @@
         background: var(--failed-fg);
     }
 
-    /* === Feature Table === */
-    .feature-table-row {
-        width: fit-content;
+    /* === Feature table === */
+
+    table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+        content: " \25B4\25BE"
+            /* display the symbols before the table is sorted */
+    }
+
+    .feature-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+
+    .feature-table thead {
+        background-color: transparent;
+        color: var(--secondary-text-color);
+        text-align: left;
+        font-size: 0.85rem;
+    }
+
+    .feature-table thead tr {
+        border-bottom: 1px solid var(--hover-dark);
+    }
+
+    .feature-table th {
+        padding: 0.75rem 1rem;
         text-align: center;
         cursor: pointer;
+        user-select: none;
+        font-weight: 500;
+        color: var(--secondary-text-color);
+    }
+
+    .feature-table th:first-child {
+        text-align: left;
+    }
+
+    .feature-table td {
+        padding: 0.75rem 1rem;
+        text-align: center;
+    }
+
+    .feature-table tbody tr {
+        transition: background-color 0.2s ease;
+    }
+
+    .feature-table tbody tr:hover {
+        background-color: var(--light-bg);
     }
 
     .feature-table-link {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        color: inherit;
+        color: var(--primary-text-color);
+        text-decoration: underline;
     }
 
-    .feature-table-data {
-        text-align: center;
+    /* Stato colorato */
+    .feature-table-data.passed {
+        color: var(--passed-fg);
+        font-weight: 500;
+    }
+
+    .feature-table-data.failed {
+        color: var(--failed-fg);
+        font-weight: 500;
+    }
+
+    .feature-table-data.skipped {
+        color: var(--skipped-fg);
+        font-weight: 500;
     }
 
     /* === Buttons === */
