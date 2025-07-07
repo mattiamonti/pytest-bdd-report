@@ -3,22 +3,23 @@
 <button onclick="(() => {this.nextElementSibling.showModal()})()" class="button failed-scenarios-link">
     Failed scenario links {{icon.open("1rem","1rem")}}
 </button>
-<dialog class="modal">
-    <div class="flex-between" style="gap: 1rem; align-items: center;">
-        <summary class="bold">Failed scenarios quick links</summary>
-        <button autofocus id="close-dialog" onclick="(() => {this.parentNode.parentNode.close()})()" class="button"
-            style="float: right; text-decoration: none; border-radius: 0.375rem; padding: 0.25rem; box-shadow: none;">
-            {{icon.close("1.25rem", "1.25rem")}}</button>
-    </div>
-    <br>
-    <div id="failed-scenarios-list" class="flex-column" style="gap: 1.25rem;">
-        {% for scenario in scenarios %}
-        <a href="#{{scenario}}" onclick="(() => {this.parentNode.parentNode.close()})()" class="secondary-text"
-            style="display: flex; align-items: center; gap: 0.25rem;">
-            {{icon.fail()}}
-            <p style="margin: 0;">{{scenario}}</p>
-        </a>
-        {% endfor %}
+<dialog class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title bold">Failed scenarios quick links</h2>
+            <button class="modal-close" onclick="this.closest('dialog').close()">
+                {{ icon.close("1.25rem", "1.25rem") }}
+            </button>
+        </div>
+
+        <div class="modal-body">
+            {% for scenario in scenarios %}
+            <a href="#{{scenario}}" onclick="this.closest('dialog').close()" class="modal-link">
+                {{ icon.fail() }}
+                <span>{{ scenario }}</span>
+            </a>
+            {% endfor %}
+        </div>
     </div>
 </dialog>
 {%- endmacro %}
