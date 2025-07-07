@@ -1,10 +1,9 @@
 <style>
-    /* TODO pulire gli style e vedere se astrarre o generalizzare altri stili */
-    /* === Reset / Base === */
-
+    /* === Variables === */
     :root {
         --primary-text-color: #1a1a1a;
         --secondary-text-color: #535353;
+
         --passed-fg: #15803d;
         --passed-bg: #dcfce7;
         --skipped-fg: #eab308;
@@ -13,6 +12,7 @@
         --failed-bg: #fee2e2;
     }
 
+    /* === Base Reset === */
     body {
         font-family: 'Roboto', sans-serif;
         padding: 2rem 4rem;
@@ -28,11 +28,11 @@
 
     h2 {
         display: inline-block;
-        font-size: 1.5 rem;
+        font-size: 1.5rem;
         font-weight: 400;
     }
 
-
+    /* === Typography Utilities === */
     .primary-text {
         font-size: 1rem;
         color: var(--primary-text-color);
@@ -42,50 +42,84 @@
         color: var(--secondary-text-color);
     }
 
+    .important-text {
+        font-size: 1.25rem;
+    }
+
     .monospace {
         font-family: monospace;
     }
 
-    .important-text {
-        font-size: 1.25rem;
-        color: var(--primary-text-color);
+    .bold {
+        font-weight: 500;
     }
 
-    /* === Layout === */
+    .semi-bold {
+        font-weight: 400;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .no-margin {
+        margin: 0;
+    }
+
+    /* === Layout Utilities === */
+    .flex-between {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .flex-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .flex-center {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* === Containers === */
+    .container {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 0.625rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
     .feature-container {
         display: flex;
-        width: 72rem;
         flex-direction: column;
-        align-items: flex-start;
         gap: 1rem;
         width: 100%;
     }
 
     .feature {
         display: flex;
-        width: 100%;
         justify-content: space-between;
         align-items: first baseline;
+        width: 100%;
     }
 
     .scenario {
         display: flex;
-        width: auto;
-        padding: 1rem;
         flex-direction: column;
-        align-items: flex-start;
         gap: 0.5rem;
         flex: 1;
+        padding: 1rem;
         border-radius: 0.625rem;
-        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .scenario-container {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        align-self: stretch;
+        width: 100%;
     }
 
     .step-container {
@@ -95,67 +129,7 @@
         margin-left: 1.5rem;
     }
 
-    .button {
-        text-decoration: none;
-        background-color: white;
-        color: var(--primary-text-color);
-        padding: 0.5rem 1rem;
-        border-radius: 50px;
-        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
-        cursor: pointer;
-        border: none;
-        font-size: 0.75rem;
-        display: flex;
-        flex-direction: row;
-        gap: 0.5rem;
-        align-items: center;
-        margin: 0;
-    }
-
-    .button:hover {
-        background-color: #fafafa;
-    }
-
-    .button:active {
-        background-color: #f0f0f0;
-        scale: 1.025;
-    }
-
-    .modal {
-        padding: 1rem 1.5rem;
-        background-color: white;
-        border-radius: 0.625rem;
-        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
-        cursor: pointer;
-        border: none;
-        cursor: default;
-    }
-
-    /* === Components === */
-    .container {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 0.625rem;
-        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-    }
-
-    .feature-table-row {
-        width: fit-content;
-        text-align: center;
-        cursor: pointer;
-    }
-
-    .feature-table-link {
-        color: inherit;
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-    }
-
-    .feature-table-data {
-        text-align: center;
-    }
-
+    /* === Status Styling === */
     .scenario-passed {
         border: 1.5px solid var(--passed-fg);
         background: var(--passed-bg);
@@ -171,20 +145,14 @@
         background: var(--failed-bg);
     }
 
-    .filter-item {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem
-    }
-
+    /* === Badges === */
     .badge {
-        margin: 0;
-        color: white;
         display: inline-block;
-        border-radius: 50px;
         padding: 0.25rem 0.5rem;
+        border-radius: 50px;
         font-size: 0.75rem;
         font-weight: 500;
+        color: white;
     }
 
     .badge-passed {
@@ -192,14 +160,75 @@
     }
 
     .badge-skipped {
-        color: var(--primary-text-color);
         background: var(--skipped-fg);
+        color: var(--primary-text-color);
     }
 
     .badge-failed {
         background: var(--failed-fg);
     }
 
+    /* === Feature Table === */
+    .feature-table-row {
+        width: fit-content;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .feature-table-link {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: inherit;
+    }
+
+    .feature-table-data {
+        text-align: center;
+    }
+
+    /* === Buttons === */
+    .button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: white;
+        color: var(--primary-text-color);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        border: none;
+        margin: 0;
+    }
+
+    .button:hover {
+        background-color: #fafafa;
+    }
+
+    .button:active {
+        background-color: #f0f0f0;
+        scale: 1.025;
+    }
+
+    /* === Modal === */
+    .modal {
+        padding: 1rem 1.5rem;
+        background-color: white;
+        border-radius: 0.625rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: default;
+        border: none;
+    }
+
+    /* === Filters === */
+    .filter-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    /* === Return to Top Interaction === */
     .return-to-top-text {
         max-width: 0;
         display: inline;
@@ -213,40 +242,5 @@
         max-width: 10rem;
         opacity: 1;
         padding-right: 0.5rem;
-    }
-
-
-    /* === Utility === */
-    .bold {
-        font-weight: 500;
-    }
-
-    .semi-bold {
-        font-weight: 400;
-    }
-
-    .text-right {
-        margin: 0;
-        text-align: right
-    }
-
-    .flex-between {
-        display: flex;
-        justify-content: space-between
-    }
-
-    .flex-column {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .flex-center {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-    }
-
-    .no-margin {
-        margin: 0
     }
 </style>
