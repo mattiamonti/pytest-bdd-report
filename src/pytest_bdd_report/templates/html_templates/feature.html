@@ -21,7 +21,8 @@
                 </h2>
             </div>
 
-            <p class="secondary-text no-margin">{{id}}</p>
+            {% import './components/icon.html' as icons %}
+            <p class="secondary-text no-margin flex-center">{{icons.folder('1rem', '1rem')}} {{id}}</p>
 
             {% if description != "" %}
             <p class="secondary-text" style="margin: 0.5rem 0 0 0;">Description: {{description}}</p>

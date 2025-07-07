@@ -12,11 +12,11 @@
                         <div class="flex-center">
                             {% import './components/icon.html' as icon %}
                             {% if status == "passed" %}
-                            {{icon.pass("1.17rem","1.17rem")}}
+                            {{icon.pass('1.17rem','1.17rem')}}
                             {% elif status == "failed" %}
-                            {{icon.fail("1.17rem","1.17rem")}}
+                            {{icon.fail('1.17rem','1.17rem')}}
                             {% else %}
-                            {{icon.skip("1.17rem","1.17rem")}}
+                            {{icon.skip('1.17rem','1.17rem')}}
                             {% endif %}
                             <h3 class="no-margin bold">
                                 Scenario: {{name}}
