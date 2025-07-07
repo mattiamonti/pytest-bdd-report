@@ -4,6 +4,8 @@
         --primary-text-color: #1a1a1a;
         --secondary-text-color: #535353;
         --light-bg: #f9fafb;
+        --hover-bg: #f3f4f6;
+        --hover-dark: #e5e7eb;
 
         --passed-fg: #15803d;
         --passed-bg: #dcfce7;
@@ -204,11 +206,11 @@
     }
 
     .button:hover {
-        background-color: #fafafa;
+        background-color: var(--light-bg);
     }
 
     .button:active {
-        background-color: #f0f0f0;
+        background-color: var(--hover-bg);
         scale: 1.025;
     }
 
@@ -229,6 +231,16 @@
         transition: max-width 0.4s ease, opacity 0.5s ease, padding 0.3s ease;
     }
 
+    .return-to-top-button {
+        position: fixed;
+        z-index: 10;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 1rem;
+        gap: 0;
+        text-decoration: none;
+    }
+
     .return-to-top-button:hover .return-to-top-text {
         max-width: 10rem;
         opacity: 1;
@@ -236,7 +248,7 @@
     }
 
 
-    /* === Modal GPT === */
+    /* === Modal === */
     .modal-dialog {
         border: none;
         padding: 0;
@@ -285,7 +297,7 @@
     }
 
     .modal-close:hover {
-        background-color: #f3f4f6;
+        background-color: var(--hover-bg);
     }
 
     .modal-body {
@@ -358,5 +370,92 @@
             transform: scale(1);
             opacity: 1;
         }
+    }
+
+    /* === Chip Container === */
+    .chip-container {
+        gap: 1rem;
+        padding: 0.5rem;
+        border-radius: 99px;
+    }
+
+    /* === Input nascosto === */
+    .chip-input {
+        display: none;
+    }
+
+    /* === Chip base === */
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 99px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        user-select: none;
+        border: 1.5px solid transparent;
+        background-color: var(--hover-bg);
+        color: var(--secondary-text-color);
+        transition: all 0.25s ease;
+    }
+
+    .chip:hover {
+        background-color: var(--hover-dark);
+    }
+
+    /* === Icone === */
+    .chip-icon {
+        width: 1rem;
+        height: 1rem;
+        transition: color 0.25s ease;
+        color: #999;
+    }
+
+    .icon-on,
+    .icon-off {
+        display: none;
+    }
+
+    /* === Icona attiva/disattiva === */
+    .chip-input:checked+.chip .icon-on {
+        display: inline-block;
+    }
+
+    .chip-input:not(:checked)+.chip .icon-off {
+        display: inline-block;
+    }
+
+    /* === Colore dinamico icona quando attivo === */
+    .chip-input:checked+.chip.passed .chip-icon {
+        color: var(--passed-fg);
+    }
+
+    .chip-input:checked+.chip.failed .chip-icon {
+        color: var(--failed-fg);
+    }
+
+    .chip-input:checked+.chip.skipped .chip-icon {
+        color: var(--skipped-fg);
+    }
+
+    /* === Stato attivo: stile per ogni chip === */
+    .chip-input:checked+.chip.passed {
+        background-color: var(--passed-bg);
+        border-color: var(--passed-fg);
+        color: var(--passed-fg);
+    }
+
+    .chip-input:checked+.chip.failed {
+        background-color: var(--failed-bg);
+        border-color: var(--failed-fg);
+        color: var(--failed-fg);
+    }
+
+    .chip-input:checked+.chip.skipped {
+        background-color: var(--skipped-bg);
+        border-color: var(--skipped-fg);
+        color: var(--skipped-fg);
     }
 </style>

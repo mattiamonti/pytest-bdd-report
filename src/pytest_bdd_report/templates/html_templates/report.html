@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
     <script>
+        function toggleChip(input) {
+            const type = input.id.replace('show-', '');
+            showTest(input.checked, type);
+        }
+
         function showTest(checked, type) {
             var scenarios = document.getElementsByClassName(
                 type + "-scenario",

@@ -47,3 +47,22 @@
         d="M368 368L144 144M368 144L144 368" />
 </svg>
 {%- endmacro %}
+{% macro check(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+        d="M416 128L192 384l-96-96" />
+</svg>
+{%- endmacro %}
+
+{% macro circle(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+    <circle cx="256" cy="256" r="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+        stroke-width="32" />
+</svg>
+{%- endmacro %}
+
+{% macro circle_full(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+    <path d="M256 464c-114.69 0-208-93.31-208-208S141.31 48 256 48s208 93.31 208 208-93.31 208-208 208z" />
+</svg>
+{%- endmacro %}
