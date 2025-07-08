@@ -49,8 +49,8 @@
 
         <div class="container" style="width: 55%; padding: 1rem 2rem;">
             <p class="secondary-text">Top failed Features</p>
-            <div style="max-height: 80%;">
-                <canvas id="barchart"></canvas>
+            <div style="height: 18rem;">
+                <canvas id="barchart" style="width: 100%; height: 100%;"></canvas>
             </div>
             <div style="display: none;">
                 {% for f in top_feature_fail%}
@@ -82,13 +82,14 @@
                 ],
                 datasets: [
                     {
-                        "fill": true,
-                        "data": [
+                        fill: true,
+                        data: [
                             passed,
                             failed,
                             skipped
                         ],
-                        "borderWidth": "2",
+                        borderWidth: 2,
+                        borderAlign: 'center',
                         backgroundColor: [
                             '#15803d',
                             '#b91c1c',
@@ -130,23 +131,24 @@
                 labels: f_name,
                 datasets: [
                     {
-                        "fill": true,
-                        "data": f_tests,
-                        "borderWidth": "1",
+                        fill: true,
+                        data: f_tests,
+                        borderWidth: 2,
                         borderRadius: 10,
                         backgroundColor: [
-                            '#b91c1c',
+                            '#b91c1c', //fee2e2
                         ],
                     }
                 ]
             },
             options: {
+                maxBarThickness: 75,
                 scales: {
                     y: {
                         beginAtZero: true,
                         suggestedMax: 100,
                         ticks: {
-                            // Include a dollar sign in the ticks
+                            // Include a percent sign in the ticks
                             callback: function (value, index, ticks) {
                                 return value + '%';
                             }
