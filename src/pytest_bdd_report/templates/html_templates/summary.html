@@ -9,10 +9,19 @@
         <div class="flex-column" style="gap: 1rem;">
             {% include './statistics.html' %}
             <div class="container" style=" padding: 1rem 2rem;">
+                {% if failed > 0 %}
                 <p class="secondary-text">Top failed Features</p>
                 <div style="height: 18rem;">
                     <canvas id="barchart" style="width: 100%; height: 100%;"></canvas>
                 </div>
+                {% else %}
+                <div class="flex-column"
+                    style="height: 12rem; justify-content: center; align-items: center; text-align: center;">
+                    <p class="secondary-text" style="font-style: italic;">
+                        🎉 There are no failed tests <br>Fantastic job! Keep pushing for excellence 💪
+                    </p>
+                </div>
+                {% endif %}
                 <div style="display: none;">
                     {% for f in top_feature_fail%}
                     <p class="top-feature-fail-name">{{f.name}}</p>
@@ -29,7 +38,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
 <script>
     var piechart = document.getElementById('piechart').getContext('2d');
-    var barchart = document.getElementById('barchart').getContext('2d');
     var passed = document.getElementById('passed').innerHTML
     var failed = document.getElementById('failed').innerHTML
     var skipped = document.getElementById('skipped').innerHTML
@@ -72,52 +80,57 @@
         },
     });
 
-    var feature_fail_name = document.getElementsByClassName('top-feature-fail-name')
-    var feature_fail_tests = document.getElementsByClassName('top-feature-fail-tests')
-    var f_name = []
-    var f_tests = []
-    for (var i = 0; i < feature_fail_name.length; i++) {
-        f_name.push(feature_fail_name[i].innerHTML)
-        f_tests.push(feature_fail_tests[i].innerHTML)
-    }
-    new Chart(barchart, {
-        type: 'bar',
-        data: {
-            labels: f_name,
-            datasets: [
-                {
-                    fill: true,
-                    data: f_tests,
-                    borderWidth: 2,
-                    borderRadius: 10,
-                    backgroundColor: [
-                        getComputedStyle(document.documentElement).getPropertyValue('--failed-fg').trim(),
-                    ],
-                }
-            ]
-        },
-        options: {
-            maxBarThickness: 75,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    suggestedMax: 100,
-                    ticks: {
-                        // Include a percent sign in the ticks
-                        callback: function (value, index, ticks) {
-                            return value + '%';
+
+    barchartElement = document.getElementById('barchart')
+    if (barchartElement != null) {
+        var barchart = barchartElement.getContext('2d');
+        var feature_fail_name = document.getElementsByClassName('top-feature-fail-name')
+        var feature_fail_tests = document.getElementsByClassName('top-feature-fail-tests')
+        var f_name = []
+        var f_tests = []
+        for (var i = 0; i < feature_fail_name.length; i++) {
+            f_name.push(feature_fail_name[i].innerHTML)
+            f_tests.push(feature_fail_tests[i].innerHTML)
+        }
+        new Chart(barchart, {
+            type: 'bar',
+            data: {
+                labels: f_name,
+                datasets: [
+                    {
+                        fill: true,
+                        data: f_tests,
+                        borderWidth: 2,
+                        borderRadius: 10,
+                        backgroundColor: [
+                            getComputedStyle(document.documentElement).getPropertyValue('--failed-fg').trim(),
+                        ],
+                    }
+                ]
+            },
+            options: {
+                maxBarThickness: 75,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: 100,
+                        ticks: {
+                            // Include a percent sign in the ticks
+                            callback: function (value, index, ticks) {
+                                return value + '%';
+                            }
                         }
                     }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
                 }
             },
-            plugins: {
-                legend: {
-                    display: false
-                },
-            }
-        },
-        responsive: true,
-        maintainAspectRatio: false
-    });
+            responsive: true,
+            maintainAspectRatio: false
+        });
+    }
 
 </script>
