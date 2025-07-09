@@ -19,6 +19,7 @@
     body {
         font-family: 'Roboto', sans-serif;
         padding: 2rem 4rem;
+
         background: #f5f6f7;
         color: var(--primary-text-color);
     }
@@ -510,5 +511,119 @@
         background-color: var(--skipped-bg);
         border-color: var(--skipped-fg);
         color: var(--skipped-fg);
+    }
+
+    .test-summary {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Grid di statistiche */
+    .stat-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+
+    .stat-card {
+        background-color: var(--light-bg);
+        border-radius: 0.35rem;
+        padding: 1rem;
+        /*box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);*/
+        text-align: center;
+        min-width: 5rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        margin: 0;
+        color: var(--secondary-text-color);
+        margin-bottom: 0.25rem;
+        text-transform: uppercase;
+    }
+
+    .stat-value {
+        font-weight: 600;
+        font-weight: 1.25rem;
+        color: var(--primary-text-color);
+        margin: 0;
+    }
+
+    /* Colori per gli stati */
+    .stat-card.passed {
+        background-color: var(--passed-bg);
+        color: var(--passed-fg);
+    }
+
+    .stat-card.passed .stat-value {
+        color: var(--passed-fg);
+    }
+
+    .stat-card.failed {
+        background-color: var(--failed-bg);
+        color: var(--failed-fg);
+    }
+
+    .stat-card.failed .stat-value {
+        color: var(--failed-fg);
+    }
+
+    .stat-card.skipped {
+        background-color: var(--skipped-bg);
+        color: var(--skipped-fg);
+    }
+
+    .stat-card.skipped .stat-value {
+        color: var(--skipped-fg);
+    }
+
+    /* Progress bar segmentata */
+    .progress-bar-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: relative;
+        padding-top: 1.5rem;
+        /* 👈 aggiunto spazio sopra per non tagliare l'emoji */
+    }
+
+    .progress-bar {
+        display: flex;
+        height: 1rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: #f3f4f6;
+        position: relative;
+    }
+
+    .bar.passed {
+        background-color: var(--passed-fg);
+    }
+
+    .bar.failed-bg {
+        background-color: var(--failed-bg);
+    }
+
+    .bar.skipped-bg {
+        background-color: var(--skipped-bg);
+    }
+
+    /* Icona 🧪 che segue la fine dei passed */
+    .progress-icon {
+        position: absolute;
+        top: -1.25rem;
+        transform: translateX(-50%);
+        font-size: 1rem;
+        pointer-events: none;
+        transition: left 0.4s ease;
+    }
+
+    /* Messaggio motivazionale */
+    .progress-message {
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--secondary-text-color);
+        font-style: italic;
     }
 </style>

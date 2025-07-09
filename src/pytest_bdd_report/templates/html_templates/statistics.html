@@ -1,0 +1,45 @@
+<div class="flex-between" style="gap: 1rem; margin: 0;  width: auto; align-self: stretch;">
+    <div class="container flex-between" style="gap: 0.5rem; padding: 1rem 1rem; width: auto;">
+        <div class="stat-card">
+            <p class="stat-label">Executed</p>
+            <p class="stat-value">{{ total }}</p>
+        </div>
+
+        <div class="stat-card passed">
+            <p class="stat-label">Passed</p>
+            <p class="stat-value" id="passed">{{ passed }}</p>
+        </div>
+
+        <div class="stat-card skipped">
+            <p class="stat-label">Skipped</p>
+            <p class="stat-value" id="skipped">{{ skipped }}</p>
+        </div>
+
+        <div class="stat-card failed">
+            <p class="stat-label">Failed</p>
+            <p class="stat-value" id="failed">{{ failed }}</p>
+        </div>
+    </div>
+
+    <div class="container flex-between" style="gap: 0.5rem; padding: 1rem 1rem; width: auto;">
+        <div class="stat-card">
+            <p class="stat-label">Pass Rate</p>
+            <p class="stat-value">{{ pass_rate }}%</p>
+        </div>
+        <div class="stat-card">
+            <p class="stat-label">Fail Rate</p>
+            <p class="stat-value">{{ fail_rate }}%</p>
+        </div>
+
+        <div class="stat-card">
+            <p class="stat-label">Duration</p>
+            <p class="stat-value">
+                {% if duration > 0.5 %}
+                {{ duration|round(3) }}s
+                {% else %}
+                {{ (duration * 1000)|round(3) }}ms
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>

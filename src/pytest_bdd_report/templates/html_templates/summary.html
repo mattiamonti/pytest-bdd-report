@@ -1,172 +1,131 @@
-<div>
-
-    <div style="width: 100%; display: flex; gap: 5%;">
+<div style=" width: 100%;">
+    <div style="width: 100%; display: flex; justify-content: space-between;">
         <div class="container flex-between"
-            style="width: 35%; padding: 1rem 2rem;display: flex; justify-content: space-between; flex-direction: column;">
+            style="width: 24%; padding: 1rem 2rem;display: flex; justify-content: space-between; flex-direction: column;">
 
-            <div class="flex-between" style="align-items: center;">
-                <div style="width: 60%;">
-                    <canvas id="piechart"></canvas>
-                </div>
-
-                <div style="text-align: right;">
-                    <p>
-                        <span class="important-text">{{total}}</span>
-                        <span class="secondary-text"> Executed</span>
-                    </p>
-                    <p>
-                        <span id="passed" class="important-text">{{passed}}</span>
-                        <span class="secondary-text"> Passed</span>
-                    </p>
-                    <p>
-                        <span id="failed" class="important-text">{{failed}}</span>
-                        <span class="secondary-text" style="margin-left: 0.25rem;"> Failed</span>
-                    </p>
-                    <p>
-                        <span id="skipped" class="important-text">{{skipped}}</span>
-                        <span class="secondary-text" style="margin-left: 0.25rem;"> Skipped</span>
-                    </p>
-                </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <p>
-                    <span class="important-text">{{percentage}}%</span>
-                    <span class="secondary-text" style="margin-left: 0.25rem;"> of tests passed</span>
-                </p>
-                <p>
-                    <span class="important-text">
-                        {% if duration > 0.5 %}
-                        {{duration|round(3)}}s
-                        {% else %}
-                        {{(duration*1000)|round(3)}}ms
-                        {%endif%}
-                    </span>
-                    <span class="secondary-text" style="margin-left: 0.25rem;"> Total duration</span>
-                </p>
-            </div>
+            <canvas id="piechart"></canvas>
 
         </div>
 
-        <div class="container" style="width: 55%; padding: 1rem 2rem;">
-            <p class="secondary-text">Top failed Features</p>
-            <div style="height: 18rem;">
-                <canvas id="barchart" style="width: 100%; height: 100%;"></canvas>
-            </div>
-            <div style="display: none;">
-                {% for f in top_feature_fail%}
-                <p class="top-feature-fail-name">{{f.name}}</p>
-                <p class="top-feature-fail-tests">{{f.failed_tests/f.total_tests*100}}</p>
-                {%endfor%}
+        <div class="flex-column" style="width: auto; gap: 1rem;">
+            {% include './statistics.html' %}
+            <div class="container" style="width: auto; padding: 1rem 2rem;">
+                <p class="secondary-text">Top failed Features</p>
+                <div style="height: 18rem;">
+                    <canvas id="barchart" style="width: 100%; height: 100%;"></canvas>
+                </div>
+                <div style="display: none;">
+                    {% for f in top_feature_fail%}
+                    <p class="top-feature-fail-name">{{f.name}}</p>
+                    <p class="top-feature-fail-tests">{{f.failed_tests/f.total_tests*100}}</p>
+                    {%endfor%}
+                </div>
             </div>
         </div>
     </div>
 
+</div>
 
+<!--Pie chart -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
+<script>
+    var piechart = document.getElementById('piechart').getContext('2d');
+    var barchart = document.getElementById('barchart').getContext('2d');
+    var passed = document.getElementById('passed').innerHTML
+    var failed = document.getElementById('failed').innerHTML
+    var skipped = document.getElementById('skipped').innerHTML
 
-    <!--Pie chart -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
-    <script>
-        var piechart = document.getElementById('piechart').getContext('2d');
-        var barchart = document.getElementById('barchart').getContext('2d');
-        var passed = document.getElementById('passed').innerHTML
-        var failed = document.getElementById('failed').innerHTML
-        var skipped = document.getElementById('skipped').innerHTML
-
-        new Chart(piechart, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    "Passed",
-                    "Failed",
-                    "Skipped"
-                ],
-                datasets: [
-                    {
-                        fill: true,
-                        data: [
-                            passed,
-                            failed,
-                            skipped
-                        ],
-                        borderWidth: 2,
-                        borderAlign: 'center',
-                        backgroundColor: [
-                            '#15803d',
-                            '#b91c1c',
-                            '#eab308'
-                        ],
-                    }
-                ]
+    new Chart(piechart, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                "Passed",
+                "Failed",
+                "Skipped"
+            ],
+            datasets: [
+                {
+                    fill: true,
+                    data: [
+                        passed,
+                        failed,
+                        skipped
+                    ],
+                    borderWidth: 2,
+                    borderAlign: 'center',
+                    backgroundColor: [
+                        '#15803d',
+                        '#b91c1c',
+                        '#eab308'
+                    ],
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: false
             },
-            options: {
-                title: {
-                    display: false
-                },
-                legend: {
-                    display: false
-                },
-                scales: {
-                    y: {
-                        display: false,
-                        beginAtZero: true
-                    }
-                },
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
-
-
-        var feature_fail_name = document.getElementsByClassName('top-feature-fail-name')
-        var feature_fail_tests = document.getElementsByClassName('top-feature-fail-tests')
-        var f_name = []
-        var f_tests = []
-        for (var i = 0; i < feature_fail_name.length; i++) {
-            f_name.push(feature_fail_name[i].innerHTML)
-            f_tests.push(feature_fail_tests[i].innerHTML)
-        }
-        new Chart(barchart, {
-            type: 'bar',
-            data: {
-                labels: f_name,
-                datasets: [
-                    {
-                        fill: true,
-                        data: f_tests,
-                        borderWidth: 2,
-                        borderRadius: 10,
-                        backgroundColor: [
-                            '#b91c1c', //fee2e2
-                        ],
-                    }
-                ]
+            legend: {
+                display: false
             },
-            options: {
-                maxBarThickness: 75,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        suggestedMax: 100,
-                        ticks: {
-                            // Include a percent sign in the ticks
-                            callback: function (value, index, ticks) {
-                                return value + '%';
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    },
+            scales: {
+                y: {
+                    display: false,
+                    beginAtZero: true
                 }
             },
             responsive: true,
             maintainAspectRatio: false
-        });
-
-    </script>
-
+        }
+    });
 
 
-</div>
+    var feature_fail_name = document.getElementsByClassName('top-feature-fail-name')
+    var feature_fail_tests = document.getElementsByClassName('top-feature-fail-tests')
+    var f_name = []
+    var f_tests = []
+    for (var i = 0; i < feature_fail_name.length; i++) {
+        f_name.push(feature_fail_name[i].innerHTML)
+        f_tests.push(feature_fail_tests[i].innerHTML)
+    }
+    new Chart(barchart, {
+        type: 'bar',
+        data: {
+            labels: f_name,
+            datasets: [
+                {
+                    fill: true,
+                    data: f_tests,
+                    borderWidth: 2,
+                    borderRadius: 10,
+                    backgroundColor: [
+                        '#b91c1c', //fee2e2
+                    ],
+                }
+            ]
+        },
+        options: {
+            maxBarThickness: 75,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: 100,
+                    ticks: {
+                        // Include a percent sign in the ticks
+                        callback: function (value, index, ticks) {
+                            return value + '%';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+            }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+    });
+
+</script>
