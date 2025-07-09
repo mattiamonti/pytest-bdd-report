@@ -42,4 +42,23 @@
             </p>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const passed = parseInt("{{passed}}");
+            const failed = parseInt("{{failed}}");
+
+            if (failed === 0 && passed > 0) {
+                // Trigger confetti 🎉
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 150,
+                        angle: 90,
+                        spread: 90,
+                        origin: { x: 0.5, y: 1.1 },
+                        colors: ['#15803d', '#dcfce7', '#16a34a']
+                    });
+                }, 300);
+            }
+        });
+    </script>
 </div>
