@@ -2,13 +2,15 @@
     {% import './components/icon.html' as icon %}
     <td>
         <a class="flex-center feature-table-link" href="#{{ name }}">
-            {% if failed != 0 %}
-            {{ icon.fail() }}
-            {% elif skipped != 0 %}
-            {{ icon.skip() }}
-            {% else %}
-            {{ icon.pass() }}
-            {% endif %}
+            <div style="flex-shrink: 0; margin-top: 0.2rem;">
+                {% if failed != 0 %}
+                {{ icon.fail() }}
+                {% elif skipped != 0 %}
+                {{ icon.skip() }}
+                {% else %}
+                {{ icon.pass() }}
+                {% endif %}
+            </div>
             {{ name }}
         </a>
     </td>

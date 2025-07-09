@@ -1,8 +1,9 @@
 <style>
-    /* === Variables === */
+    /* === Root Variables === */
     :root {
         --primary-text-color: #1a1a1a;
         --secondary-text-color: #535353;
+
         --light-bg: #f9fafb;
         --hover-bg: #f3f4f6;
         --hover-dark: #e5e7eb;
@@ -15,11 +16,10 @@
         --failed-bg: #fee2e2;
     }
 
-    /* === Base Reset === */
+    /* === Base === */
     body {
         font-family: 'Roboto', sans-serif;
         padding: 2rem 4rem;
-
         background: #f5f6f7;
         color: var(--primary-text-color);
     }
@@ -70,7 +70,7 @@
         margin: 0;
     }
 
-    /* === Layout Utilities === */
+    /* === Flex Utilities === */
     .flex-between {
         display: flex;
         justify-content: space-between;
@@ -87,10 +87,10 @@
         gap: 0.5rem;
     }
 
-    /* === Containers === */
+    /* === Layout & Containers === */
     .container {
         background-color: white;
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 0.625rem;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
@@ -133,7 +133,7 @@
         margin-left: 1.5rem;
     }
 
-    /* === Status Styling === */
+    /* === Status Color Blocks === */
     .scenario-passed {
         border: 1.5px solid var(--passed-fg);
         background: var(--passed-bg);
@@ -172,11 +172,9 @@
         background: var(--failed-fg);
     }
 
-    /* === Feature table === */
-
-    table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
-        content: " \25B4\25BE"
-            /* display the symbols before the table is sorted */
+    /* === Feature Table === */
+    table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort)::after {
+        content: " \25B4\25BE";
     }
 
     .feature-table {
@@ -189,30 +187,22 @@
     .feature-table thead {
         background-color: transparent;
         color: var(--secondary-text-color);
-        text-align: left;
         font-size: 0.85rem;
+        text-align: left;
     }
 
     .feature-table thead tr {
         border-bottom: 1px solid var(--hover-dark);
     }
 
-    .feature-table th {
+    .feature-table th,
+    .feature-table td {
         padding: 0.75rem 1rem;
         text-align: center;
-        cursor: pointer;
-        user-select: none;
-        font-weight: 500;
-        color: var(--secondary-text-color);
     }
 
     .feature-table th:first-child {
         text-align: left;
-    }
-
-    .feature-table td {
-        padding: 0.75rem 1rem;
-        text-align: center;
     }
 
     .feature-table tbody tr {
@@ -226,9 +216,11 @@
     .feature-table-link {
         color: var(--primary-text-color);
         text-decoration: underline;
+
+        text-align: start;
+        flex-shrink: 0;
     }
 
-    /* Stato colorato */
     .feature-table-data.passed {
         color: var(--passed-fg);
         font-weight: 500;
@@ -249,15 +241,15 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        background-color: white;
-        color: var(--primary-text-color);
         padding: 0.5rem 1rem;
         border-radius: 50px;
         font-size: 0.75rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
+        background-color: white;
+        color: var(--primary-text-color);
         border: none;
         margin: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
     }
 
     .button:hover {
@@ -268,39 +260,93 @@
         background-color: var(--hover-bg);
     }
 
-    /* === Filters === */
+    /* === Filter Chips === */
     .filter-item {
         display: flex;
         align-items: center;
         gap: 0.25rem;
     }
 
-    /* === Return to Top Interaction === */
-    .return-to-top-text {
-        max-width: 0;
-        display: inline;
-        opacity: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        transition: max-width 0.4s ease, opacity 0.5s ease, padding 0.3s ease;
+    .chip-container {
+        display: flex;
+        gap: 1rem;
+        padding: 0.5rem;
+        border-radius: 99px;
     }
 
-    .return-to-top-button {
-        position: fixed;
-        z-index: 10;
-        bottom: 1rem;
-        right: 1rem;
-        font-size: 1rem;
-        gap: 0;
-        text-decoration: none;
+    .chip-input {
+        display: none;
     }
 
-    .return-to-top-button:hover .return-to-top-text {
-        max-width: 10rem;
-        opacity: 1;
-        padding-right: 0.5rem;
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 99px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        user-select: none;
+        border: 1.5px solid transparent;
+        background-color: var(--hover-bg);
+        color: var(--secondary-text-color);
+        transition: all 0.25s ease;
     }
 
+    .chip:hover {
+        background-color: var(--hover-dark);
+    }
+
+    .chip-icon {
+        width: 1rem;
+        height: 1rem;
+        color: #999;
+        transition: color 0.25s ease;
+    }
+
+    .icon-on,
+    .icon-off {
+        display: none;
+    }
+
+    .chip-input:checked+.chip .icon-on {
+        display: inline-block;
+    }
+
+    .chip-input:not(:checked)+.chip .icon-off {
+        display: inline-block;
+    }
+
+    .chip-input:checked+.chip.passed {
+        background-color: var(--passed-bg);
+        border-color: var(--passed-fg);
+        color: var(--passed-fg);
+    }
+
+    .chip-input:checked+.chip.failed {
+        background-color: var(--failed-bg);
+        border-color: var(--failed-fg);
+        color: var(--failed-fg);
+    }
+
+    .chip-input:checked+.chip.skipped {
+        background-color: var(--skipped-bg);
+        border-color: var(--skipped-fg);
+        color: var(--skipped-fg);
+    }
+
+    .chip-input:checked+.chip.passed .chip-icon {
+        color: var(--passed-fg);
+    }
+
+    .chip-input:checked+.chip.failed .chip-icon {
+        color: var(--failed-fg);
+    }
+
+    .chip-input:checked+.chip.skipped .chip-icon {
+        color: var(--skipped-fg);
+    }
 
     /* === Modal === */
     .modal-dialog {
@@ -317,17 +363,17 @@
     }
 
     .modal-content {
-        min-width: 320px;
-        max-width: 500px;
-        margin: auto;
-        background: #fff;
-        padding: 1.5rem 2rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        animation: scaleIn 0.25s ease;
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        padding: 1.5rem 2rem;
+        border-radius: 0.75rem;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        animation: scaleIn 0.25s ease;
+        min-width: 320px;
+        max-width: 500px;
+        margin: auto;
     }
 
     .modal-header {
@@ -374,23 +420,41 @@
         line-height: 1.4;
     }
 
-    .modal-link svg {
-        flex-shrink: 0;
-        height: 15;
-        /* o quello che usi di default */
-        width: 14;
-        margin-top: 0.20rem;
-        /* fine-tuning per centrare visivamente con la prima riga */
-    }
-
-    .modal-link span {
-        display: inline-block;
-        line-height: 1.4;
-        word-break: break-word;
-    }
-
     .modal-link:hover {
         background-color: var(--light-bg);
+    }
+
+    .modal-link svg {
+        flex-shrink: 0;
+        width: 14px;
+        height: 15px;
+        margin-top: 0.2rem;
+    }
+
+    /* === Return to Top Button === */
+    .return-to-top-button {
+        position: fixed;
+        z-index: 10;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 1rem;
+        text-decoration: none;
+        gap: 0;
+    }
+
+    .return-to-top-text {
+        max-width: 0;
+        display: inline;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: max-width 0.4s ease, opacity 0.5s ease, padding 0.3s ease;
+    }
+
+    .return-to-top-button:hover .return-to-top-text {
+        max-width: 10rem;
+        opacity: 1;
+        padding-right: 0.5rem;
     }
 
     /* === Animations === */
@@ -426,100 +490,13 @@
         }
     }
 
-    /* === Chip Container === */
-    .chip-container {
-        gap: 1rem;
-        padding: 0.5rem;
-        border-radius: 99px;
-    }
-
-    /* === Input nascosto === */
-    .chip-input {
-        display: none;
-    }
-
-    /* === Chip base === */
-    .chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        padding: 0.35rem 0.75rem;
-        border-radius: 99px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        cursor: pointer;
-        user-select: none;
-        border: 1.5px solid transparent;
-        background-color: var(--hover-bg);
-        color: var(--secondary-text-color);
-        transition: all 0.25s ease;
-    }
-
-    .chip:hover {
-        background-color: var(--hover-dark);
-    }
-
-    /* === Icone === */
-    .chip-icon {
-        width: 1rem;
-        height: 1rem;
-        transition: color 0.25s ease;
-        color: #999;
-    }
-
-    .icon-on,
-    .icon-off {
-        display: none;
-    }
-
-    /* === Icona attiva/disattiva === */
-    .chip-input:checked+.chip .icon-on {
-        display: inline-block;
-    }
-
-    .chip-input:not(:checked)+.chip .icon-off {
-        display: inline-block;
-    }
-
-    /* === Colore dinamico icona quando attivo === */
-    .chip-input:checked+.chip.passed .chip-icon {
-        color: var(--passed-fg);
-    }
-
-    .chip-input:checked+.chip.failed .chip-icon {
-        color: var(--failed-fg);
-    }
-
-    .chip-input:checked+.chip.skipped .chip-icon {
-        color: var(--skipped-fg);
-    }
-
-    /* === Stato attivo: stile per ogni chip === */
-    .chip-input:checked+.chip.passed {
-        background-color: var(--passed-bg);
-        border-color: var(--passed-fg);
-        color: var(--passed-fg);
-    }
-
-    .chip-input:checked+.chip.failed {
-        background-color: var(--failed-bg);
-        border-color: var(--failed-fg);
-        color: var(--failed-fg);
-    }
-
-    .chip-input:checked+.chip.skipped {
-        background-color: var(--skipped-bg);
-        border-color: var(--skipped-fg);
-        color: var(--skipped-fg);
-    }
-
+    /* === Stats Section === */
     .test-summary {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
     }
 
-    /* Grid di statistiche */
     .stat-cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -530,100 +507,45 @@
         background-color: var(--light-bg);
         border-radius: 0.35rem;
         padding: 1rem;
-        /*box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);*/
         text-align: center;
         min-width: 5rem;
     }
 
     .stat-label {
         font-size: 0.75rem;
-        margin: 0;
         color: var(--secondary-text-color);
-        margin-bottom: 0.25rem;
+        margin: 0 0 0.25rem 0;
         text-transform: uppercase;
     }
 
     .stat-value {
+        font-size: 1.25rem;
         font-weight: 600;
-        font-weight: 1.25rem;
-        color: var(--primary-text-color);
         margin: 0;
+        color: var(--primary-text-color);
     }
 
-    /* Colori per gli stati */
     .stat-card.passed {
         background-color: var(--passed-bg);
-        color: var(--passed-fg);
+    }
+
+    .stat-card.failed {
+        background-color: var(--failed-bg);
+    }
+
+    .stat-card.skipped {
+        background-color: var(--skipped-bg);
     }
 
     .stat-card.passed .stat-value {
         color: var(--passed-fg);
     }
 
-    .stat-card.failed {
-        background-color: var(--failed-bg);
-        color: var(--failed-fg);
-    }
-
     .stat-card.failed .stat-value {
         color: var(--failed-fg);
     }
 
-    .stat-card.skipped {
-        background-color: var(--skipped-bg);
-        color: var(--skipped-fg);
-    }
-
     .stat-card.skipped .stat-value {
         color: var(--skipped-fg);
-    }
-
-    /* Progress bar segmentata */
-    .progress-bar-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        position: relative;
-        padding-top: 1.5rem;
-        /* 👈 aggiunto spazio sopra per non tagliare l'emoji */
-    }
-
-    .progress-bar {
-        display: flex;
-        height: 1rem;
-        border-radius: 0.5rem;
-        overflow: hidden;
-        background-color: #f3f4f6;
-        position: relative;
-    }
-
-    .bar.passed {
-        background-color: var(--passed-fg);
-    }
-
-    .bar.failed-bg {
-        background-color: var(--failed-bg);
-    }
-
-    .bar.skipped-bg {
-        background-color: var(--skipped-bg);
-    }
-
-    /* Icona 🧪 che segue la fine dei passed */
-    .progress-icon {
-        position: absolute;
-        top: -1.25rem;
-        transform: translateX(-50%);
-        font-size: 1rem;
-        pointer-events: none;
-        transition: left 0.4s ease;
-    }
-
-    /* Messaggio motivazionale */
-    .progress-message {
-        text-align: center;
-        font-size: 0.85rem;
-        color: var(--secondary-text-color);
-        font-style: italic;
     }
 </style>
