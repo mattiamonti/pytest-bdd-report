@@ -37,47 +37,40 @@
     new Chart(piechart, {
         type: 'doughnut',
         data: {
-            labels: [
-                "Passed",
-                "Failed",
-                "Skipped"
-            ],
+            labels: ["Passed", "Failed", "Skipped"],
             datasets: [
                 {
-                    fill: true,
-                    data: [
-                        passed,
-                        failed,
-                        skipped
-                    ],
-                    borderWidth: 2,
-                    borderAlign: 'center',
+                    data: [passed, failed, skipped],
+                    borderWidth: 3,
                     backgroundColor: [
-                        '#15803d',
-                        '#b91c1c',
-                        '#eab308'
+                        getComputedStyle(document.documentElement).getPropertyValue('--passed-fg').trim(),
+                        getComputedStyle(document.documentElement).getPropertyValue('--failed-fg').trim(),
+                        getComputedStyle(document.documentElement).getPropertyValue('--skipped-fg').trim()
                     ],
                 }
             ]
         },
         options: {
-            title: {
-                display: false
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                    labels: {
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--primary-text-color').trim(),
+                        font: {
+                            size: 14,
+                            weight: '500',
+                        },
+                        padding: 20,
+                        boxWidth: 16,
+                    }
+                },
             },
-            legend: {
-                display: false
-            },
-            scales: {
-                y: {
-                    display: false,
-                    beginAtZero: true
-                }
-            },
+            cutout: '60%',
             responsive: true,
-            maintainAspectRatio: false
-        }
+            maintainAspectRatio: false,
+        },
     });
-
 
     var feature_fail_name = document.getElementsByClassName('top-feature-fail-name')
     var feature_fail_tests = document.getElementsByClassName('top-feature-fail-tests')
@@ -98,7 +91,7 @@
                     borderWidth: 2,
                     borderRadius: 10,
                     backgroundColor: [
-                        '#b91c1c', //fee2e2
+                        getComputedStyle(document.documentElement).getPropertyValue('--failed-fg').trim(),
                     ],
                 }
             ]
