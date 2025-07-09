@@ -2,10 +2,16 @@
     <details id="test-file-uri">
         <summary style="cursor: pointer; font-size: 1.25rem;"><span class="primary-text">Test file paths</span>
         </summary>
-        <ul style="margin: 0.25rem 0;">
+        {% import './components/icon.html' as icons %}
+        <div class="flex-column" style="gap: 0.5rem; margin-left: 1rem; margin-top: 0.5rem;">
             {% for test in test_file_uri %}
-            <li class="secondary-text">{{test}}</li>
+            <div class="flex-center" style="width: fit-content;">
+                <span class="no-margin" style="display: inline-flex;">
+                    {{icons.file("1rem", "1rem")}}
+                </span>
+                <p class="secondary-text no-margin" style="line-height: 1;">{{test}}</p>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
     </details>
 </div>
