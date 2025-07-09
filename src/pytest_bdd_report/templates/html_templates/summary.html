@@ -1,5 +1,5 @@
-<div style=" width: 100%;">
-    <div style="width: 100%; display: flex; justify-content: space-between;">
+<div>
+    <div style="display: flex; justify-content: space-between;">
         <div class="container flex-between"
             style="width: 24%; padding: 1rem 2rem;display: flex; justify-content: space-between; flex-direction: column;">
 
@@ -7,9 +7,9 @@
 
         </div>
 
-        <div class="flex-column" style="width: auto; gap: 1rem;">
+        <div class="flex-column" style="gap: 1rem;">
             {% include './statistics.html' %}
-            <div class="container" style="width: auto; padding: 1rem 2rem;">
+            <div class="container" style=" padding: 1rem 2rem;">
                 <p class="secondary-text">Top failed Features</p>
                 <div style="height: 18rem;">
                     <canvas id="barchart" style="width: 100%; height: 100%;"></canvas>
