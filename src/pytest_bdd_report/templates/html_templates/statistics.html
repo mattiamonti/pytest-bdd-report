@@ -2,38 +2,38 @@
     <div class="container flex-between" style="gap: 0.5rem;">
         <div class="stat-card">
             <p class="stat-label">Executed</p>
-            <p class="stat-value">{{ total }}</p>
+            <p class="stat-value" data-testid="tests-executed">{{ total }}</p>
         </div>
 
         <div class="stat-card passed">
             <p class="stat-label">Passed</p>
-            <p class="stat-value" id="passed">{{ passed }}</p>
+            <p class="stat-value" id="passed" data-testid="tests-passed">{{ passed }}</p>
         </div>
 
         <div class="stat-card skipped">
             <p class="stat-label">Skipped</p>
-            <p class="stat-value" id="skipped">{{ skipped }}</p>
+            <p class="stat-value" id="skipped" data-testid="tests-skipped">{{ skipped }}</p>
         </div>
 
         <div class="stat-card failed">
             <p class="stat-label">Failed</p>
-            <p class="stat-value" id="failed">{{ failed }}</p>
+            <p class="stat-value" id="failed" data-testid="tests-failed">{{ failed }}</p>
         </div>
     </div>
 
     <div class="container flex-between" style="gap: 0.5rem;">
         <div class="stat-card">
             <p class="stat-label">Pass Rate</p>
-            <p class="stat-value">{{ pass_rate }}%</p>
+            <p class="stat-value" data-testid="passed-rate">{{ pass_rate }}%</p>
         </div>
         <div class="stat-card">
             <p class="stat-label">Fail Rate</p>
-            <p class="stat-value">{{ fail_rate }}%</p>
+            <p class="stat-value" data-testid="failed-rate">{{ fail_rate }}%</p>
         </div>
 
         <div class="stat-card">
             <p class="stat-label">Duration</p>
-            <p class="stat-value">
+            <p class="stat-value" data-testid="total-duration">
                 {% if duration > 0.5 %}
                 {{ duration|round(3) }}s
                 {% else %}
