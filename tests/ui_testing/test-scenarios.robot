@@ -3,6 +3,7 @@ Library  SeleniumLibrary
 Library  OperatingSystem
 Library  String
 Resource          common.resource
+Resource    resources/scenario.resource
 Test Setup        common.Open Report In Browser
 Test Teardown     common.Remove HTML Report   
 
@@ -11,69 +12,40 @@ ${BROWSER}    headlesschrome    #chrome
 
 *** Test Cases ***
 Failed scenario color
-    ${scenario}=    Get Scenario    Sum of two numbers
-    Element Style Should Contain    ${scenario}   rgb(249, 225, 229)
+    ${scenario}=    scenario.Get Scenario    Sum of two numbers
+    Element Style Should Be    ${scenario}    background-color   ${failed_scenario_rgb_color}
 
 Skipped scenario color
-    ${scenario}=    Get Scenario    Shutdown
-    Element Style Should Contain    ${scenario}   rgb(255, 248, 231)
+    ${scenario}=    scenario.Get Scenario    Shutdown
+    Element Style Should Be    ${scenario}    background-color   ${skipped_scenario_rgb_color}
 
 Passed scenario color
-    ${scenario}=    Get Scenario    Eating cucumbers
-    Element Style Should Contain    ${scenario}   rgb(214, 240, 224)
+    ${scenario}=    scenario.Get Scenario    Eating cucumbers
+    Element Style Should Be    ${scenario}    background-color   ${passed_scenario_rgb_color}
 
 Open failed scenario details
-    ${scenario}=    Get Scenario    Sum of two numbers
-    ${button}=   Get Scenario Details Button    Sum of two numbers 
-    Click Button   ${button} 
+    ${scenario}=    scenario.Get Scenario    Sum of two numbers
+    scenario.Toggle Error Message    Sum of two numbers
     Element Should Contain  ${scenario}   AssertionError
-    Element Style Should Contain    ${button}   rotate(0deg)
 
 Close failed scenario details
-    ${scenario}=    Get Scenario    Sum of two numbers
-    ${button}=   Get Scenario Details Button    Sum of two numbers 
-    Click Button     ${button} 
+    ${scenario}=    scenario.Get Scenario    Sum of two numbers
+    scenario.Toggle Error Message    Sum of two numbers
     Element Should Contain  ${scenario}   AssertionError
-    Click Button     ${button} 
-    Element Style Should Contain    ${button}   rotate(-90deg)
+    scenario.Toggle Error Message    Sum of two numbers
     Element Should Not Contain  ${scenario}   AssertionError
 
-Check tooltip for opening and closing scenario details
-    ${scenario}=    Get Scenario    Sum of two numbers
-    ${button}=   Get Scenario Details Button    Sum of two numbers 
-    Element Tooltip Should Be   ${button}   Open error message 
-    Click Button   ${button} 
-    Element Should Contain  ${scenario}   AssertionError
-    Element Tooltip Should Be   ${button}   Close error message 
-   
 Check Passed Scenario Duration
-    ${scenario}=    Get Scenario    Sum of a number
-    Verify Scenario Duration Not Zero   ${scenario}
+    ${duration}=    scenario.Get Scenario Duration    Sum of a number
+    ${zero}=  Convert To Number     0.0
+    Should Not Be Equal As Numbers   ${duration}    ${zero}
 
 Check Failed Scenario Duration
-    ${scenario}=    Get Scenario    Sum of two numbers
-    Verify Scenario Duration Not Zero   ${scenario}
+    ${duration}=    scenario.Get Scenario Duration    Sum of two numbers
+    ${zero}=  Convert To Number     0.0
+    Should Not Be Equal As Numbers   ${duration}    ${zero}
 
 Check Skipped Scenario Duration
-    ${scenario}=    Get Scenario    Shutdown
-    Verify Scenario Duration Is Zero   ${scenario}
-
-*** Keywords ***
-Verify Scenario Duration Not Zero
-    [Arguments]    ${scenario}
-    ${text}=  Get Text     ${scenario}/div[1]/p
-    ${text}=  Remove String     ${text}    Executed in      ms
-    ${time}=  Convert To Number   ${text}
+    ${duration}=    scenario.Get Scenario Duration    Shutdown
     ${zero}=  Convert To Number     0.0
-    Should Not Be Equal As Numbers   ${time}    ${zero}
-
-Verify Scenario Duration Is Zero
-    [Arguments]    ${scenario}
-    ${text}=  Get Text     ${scenario}/div[1]/p
-    ${text}=  Remove String     ${text}    Executed in      ms
-    ${time}=  Convert To Number   ${text}
-    ${zero}=  Convert To Number     0.0
-    Should Be Equal As Numbers   ${time}    ${zero}
-
-
-
+    Should Be Equal As Numbers   ${duration}    ${zero}

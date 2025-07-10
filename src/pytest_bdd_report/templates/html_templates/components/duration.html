@@ -1,5 +1,6 @@
 {% macro scenario(duration, preamble='') -%}
-<p class="primary-text no-margin semi-bold" style="display: inline;line-height: normal;">
+<p class="primary-text no-margin semi-bold" style="display: inline;line-height: normal;"
+    data-testid="scenario-duration">
     {% if duration > 1 %}
     {{preamble}} {{duration|round(3)}}s
     {% else %}
@@ -9,7 +10,7 @@
 {%- endmacro %}
 
 {%- macro feature(duration, preamble='') -%}
-<p class="secondary-text" style="text-align: right;">
+<p class="secondary-text" style="text-align: right;" data-testid="feature-duration">
     {% if duration > 1 %}
     {{preamble}} {{duration|round(3)}}s
     {% else %}
@@ -19,7 +20,7 @@
 {%- endmacro %}
 
 {%- macro step(duration, preamble='') -%}
-<p class="no-margin" style="display: inline;">
+<p class="no-margin" style="display: inline;" data-testid="step-duration">
     {% if (duration/1_000_000) > 1 %}
     {{preamble}} {{(duration/1_000_000_000)|round(3)}}s
     {% else %}

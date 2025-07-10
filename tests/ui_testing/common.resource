@@ -2,14 +2,13 @@
 Library  SeleniumLibrary
 Library  OperatingSystem
 Library    Collections
-Library    ../../venv/lib/python3.12/site-packages/robot/libraries/XML.py
 
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
 ${element_plot_widget}=    xpath=/html/body/div[2]/div/div[1]
 ${passed_scenario_rgb_color}    220, 252, 231
 ${failed_scenario_rgb_color}    254, 226, 226
-
+${skipped_scenario_rgb_color}    255, 251, 235
 
 
 
@@ -56,28 +55,6 @@ Get Feature Scenarios
     ${scenarios}=    Get Web Elements    xpath=//*[@id="${feature_name}"]/div[2]/div
     RETURN    ${scenarios}
 
-Get Scenario
-    [Arguments]    ${scenario_name}
-    ${scenario}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div
-    Element Should Contain    ${scenario}    Scenario: ${scenario_name}
-    RETURN   ${scenario}
-
-Get Scenario Details Button
-    [Arguments]    ${scenario_name}
-    ${button}=    Set Variable    xpath=//*[@id="${scenario_name}"]/div/button
-    Element Should Be Visible   ${button}
-    RETURN  ${button}
-
-Get Scenario Steps
-    [Arguments]    ${scenario_name}
-    ${scenario}=    Get Scenario    ${scenario_name}
-    ${steps}=    Get Web Elements    ${scenario}/div[2]/*[@class="step-container"]/div
-    ${current_steps}=   Create List
-    FOR    ${element}    IN    @{steps}
-           ${text}=    Get Text    ${element}
-           Append To List   ${current_steps}    ${text}
-    END
-    RETURN  ${current_steps}
 
 Scenario Background Color Should Be
     [Arguments]    ${scenario_name}    ${rgb_color_code}
@@ -89,10 +66,11 @@ Element Tooltip Should Be
     [Arguments]     ${element}   ${text}
     Element Attribute Value Should Be  ${element}   title    ${text}
     
-Element Style Should Contain
-    [Arguments]     ${element}   ${text}
-    ${style_result}=     SeleniumLibrary.Get Element Attribute   ${element}     style
-    Should Contain    ${style_result}    ${text}
+Element Style Should Be
+    [Arguments]     ${element}   ${attribute_name}    ${expected_value}
+    ${style}=    Get CSS Property Value    ${element}    ${attribute_name}
+    Should Contain    ${style}    ${expected_value}
+    
 
 Count Scenarios In Report
     ${general_scenario_xpath}=    Set Variable    xpath=//div[contains(@class, "scenario-container")]
@@ -123,3 +101,21 @@ Check Report Statistics
     Element Should Contain    xpath=//*[@data-testid="tests-passed"]    ${total_passed}
     Element Should Contain    xpath=//*[@data-testid="tests-failed"]    ${total_failed}
     Element Should Contain    xpath=//*[@data-testid="tests-skipped"]    ${total_skipped}
+
+Get CSS Property Value
+    [Documentation]
+    ...    Get the CSS property value of an Element.
+    ...    
+    ...    This keyword retrieves the CSS property value of an element. The element
+    ...    is retrieved using the locator.
+    ...    
+    ...    Arguments:
+    ...    - locator           (string)    any Selenium Library supported locator xpath/css/id etc.
+    ...    - property_name     (string)    the name of the css property for which the value is returned.
+    ...    
+    ...    Returns             (string)    returns the string value of the given css attribute or fails.
+    ...        
+    [Arguments]    ${locator}    ${attribute name}
+    ${css}=         Get WebElement    ${locator}
+    ${prop_val}=    Call Method       ${css}    value_of_css_property    ${attribute name}
+    RETURN     ${prop_val}
