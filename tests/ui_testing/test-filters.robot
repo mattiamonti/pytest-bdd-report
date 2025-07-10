@@ -16,21 +16,21 @@ Filters Must Be Checked
 
 Filter Out The Passed Scenarios
     Scroll To Filters
-    Click Button    id:show-passed
+    Click Element    xpath=//label[@for="show-passed"]
     Element Should Be Visible    class:skipped-scenario
     Element Should Be Visible    class:failed-scenario
     Element Should Not Be Visible    class:passed-scenario
 
 Filter Out The Skipped Scenarios
     Scroll To Filters
-    Click Button    id:show-skipped
+    Click Element    xpath=//label[@for="show-skipped"]
     Element Should Be Visible    class:passed-scenario
     Element Should Be Visible    class:failed-scenario
     Element Should Not Be Visible    class:skipped-scenario
 
 Filter Out The Failed Scenarios
     Scroll To Filters
-    Click Button    id:show-failed
+    Click Element    xpath=//label[@for="show-failed"]
     Element Should Be Visible    class:passed-scenario
     Element Should Be Visible    class:skipped-scenario
     Element Should Not Be Visible    class:failed-scenario
