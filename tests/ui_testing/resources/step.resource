@@ -1,6 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    String
+Library    ../../../venv/lib/python3.12/site-packages/robot/libraries/XML.py
 Resource    ../common.resource
 Resource    scenario.resource
 
@@ -30,3 +31,13 @@ Get Scenario Steps Duration
            Append To List   ${current_durations}    ${duration}
     END
     RETURN    ${current_durations}
+
+Scenario Step Should Be Failed
+    [Arguments]    ${scenario_name}    ${step_name}
+    ${scenario}=    Get Scenario    ${scenario_name}
+    Page Should Contain Element    ${scenario}//*[@data-testid="step-failed"]//p[contains(.,"${step_name}")]
+
+Scenario Step Should Be Passed
+    [Arguments]    ${scenario_name}    ${step_name}
+    ${scenario}=    Get Scenario    ${scenario_name}
+    Page Should Contain Element    ${scenario}//*[@data-testid="step-passed"]//p[contains(.,"${step_name}")]
