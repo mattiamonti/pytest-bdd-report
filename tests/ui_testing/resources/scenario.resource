@@ -12,17 +12,6 @@ Get Scenario
     Element Should Contain    ${scenario}    ${scenario_name}
     RETURN   ${scenario}
 
-Get Scenario Steps
-    [Documentation]    Get the steps of the scenario
-    [Arguments]    ${scenario_name}
-    ${scenario}=    Get Scenario    ${scenario_name}
-    ${steps}=    Get Web Elements    ${scenario}/div[2]/*[@class="step-container"]/div
-    ${current_steps}=   Create List
-    FOR    ${element}    IN    @{steps}
-           ${text}=    Get Text    ${element}
-           Append To List   ${current_steps}    ${text}
-    END
-    RETURN  ${current_steps}
 Toggle Error Message
     [Documentation]
     ...    Expand the error message of the scenario.
