@@ -1,12 +1,12 @@
 <div>
-    <div class="flex-between">
-        <div class="container flex-between" style="width: 24%; padding: 1rem 2rem; flex-direction: column;">
+    <div class="flex-between" style="gap: 1rem;">
+        <div class="container flex-between" style="width: 24%; padding: 1rem 2rem; flex-direction: column; ">
 
             <canvas id="piechart"></canvas>
 
         </div>
 
-        <div class="flex-column" style="gap: 1rem;">
+        <div class="flex-column" style="gap: 1rem; flex-grow:1;">
             {% include './statistics.html' %}
             <div class="container" style=" padding: 1rem 2rem;">
                 {% if failed > 0 %}
