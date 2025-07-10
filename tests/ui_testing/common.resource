@@ -95,7 +95,7 @@ Element Style Should Contain
     Should Contain    ${style_result}    ${text}
 
 Count Scenarios In Report
-    ${general_scenario_xpath}=    Set Variable    xpath=//div[contains(@class, "scenario")]
+    ${general_scenario_xpath}=    Set Variable    xpath=//div[contains(@class, "scenario-container")]
     ${elements}=    Get WebElements    ${general_scenario_xpath}
     ${count}=       Get Length         ${elements}
     RETURN        ${count}
