@@ -49,7 +49,7 @@ Check Features Execution Time
 *** Keywords ***
 Verify Feature Duration Not Zero
     [Arguments]    ${feature}
-    ${text}=  Get Text     ${feature}/p
+    ${text}=  Get Text     ${feature}/div[2]/p
     ${text}=  Remove String     ${text}    Executed in      ms
     ${time}=  Convert To Number   ${text}
     ${zero}=  Convert To Number     0.0

@@ -1,7 +1,7 @@
 *** Settings ***
 Library           SeleniumLibrary
 Library           bdd_generator_library/BDDGeneratorLibrary.py
-Resource    generation.resource
+Resource          generation.resource
 Resource          common.resource
 Test Setup        Custom Test Setup
 Test Teardown     Custom Test Teardown
