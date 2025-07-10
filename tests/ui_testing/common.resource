@@ -22,6 +22,11 @@ Open Report In Browser
     Open Browser    ${url}    ${BROWSER}
     Page Should Contain    ${report_title}
 
+Open Generated Report In Browser
+    [Documentation]    Opens the browser and navigates to the target URL.
+    [Arguments]    ${url}
+    Open Browser    ${url}    ${BROWSER}
+
 Generate HTML Report
     [Arguments]    ${title}
     Run    pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py
