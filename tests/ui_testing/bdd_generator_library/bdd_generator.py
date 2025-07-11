@@ -9,7 +9,7 @@ class BDDFeature:
         self.name = name or "Auto Feature"
         self.scenarios: List[BDDScenario] = []
 
-    def add_scenario(self, scenario: 'BDDScenario'):
+    def add_scenario(self, scenario: "BDDScenario"):
         self.scenarios.append(scenario)
 
 
@@ -18,7 +18,7 @@ class BDDScenario:
         self.name = name or "Auto Scenario"
         self.steps: List[BDDStep] = []
 
-    def add_step(self, step: 'BDDStep'):
+    def add_step(self, step: "BDDStep"):
         self.steps.append(step)
 
 
@@ -55,46 +55,64 @@ class BDDTestBuilder:
                         f.write(line)
                         step_func_name = self._sanitize_name(step.name)
                         if step_func_name not in all_step_names:
-                            self.step_defs.append(self._generate_step_function(step_func_name, step.name, step.outcome))
+                            self.step_defs.append(
+                                self._generate_step_function(
+                                    step_func_name, step.name, step.outcome
+                                )
+                            )
                             all_step_names.add(step_func_name)
                         if step.outcome == "skip":
                             is_skipped = True
 
-                    self.test_funcs.append(self._generate_test_function(feature_filename, scenario_name, is_skipped))
+                    self.test_funcs.append(
+                        self._generate_test_function(
+                            feature_filename, scenario_name, is_skipped
+                        )
+                    )
 
         self._write_steps()
 
     def _sanitize_name(self, name: str) -> str:
         return name.lower().replace(" ", "_").replace("-", "_")
 
-    def _generate_step_function(self, func_name: str, step_text: str, outcome: str) -> str:
+    def _generate_step_function(
+        self, func_name: str, step_text: str, outcome: str
+    ) -> str:
         outcome_map = {
             "pass": "    pass",
             "fail": '    raise AssertionError("Step failed intentionally")',
-            "skip": '    pytest.skip("Step skipped intentionally")'
+            "skip": '    pytest.skip("Step skipped intentionally")',
         }
         body = outcome_map.get(outcome)
-        return dedent(f"""
+        return dedent(
+            f"""
         @given("{step_text}")
         def {func_name}(request):
             {body}
-        """).strip()
+        """
+        ).strip()
 
-    def _generate_test_function(self, feature_file: str, scenario_name: str, is_skipped: bool) -> str:
+    def _generate_test_function(
+        self, feature_file: str, scenario_name: str, is_skipped: bool
+    ) -> str:
         test_name = "test_" + self._sanitize_name(scenario_name)
         if is_skipped:
-            return dedent(f"""
+            return dedent(
+                f"""
             @pytest.mark.skip(reason="no way of currently testing this")
             @scenario("{feature_file}", "{scenario_name}")
             def {test_name}():
                 pass
-            """).strip()
-            
-        return dedent(f"""
+            """
+            ).strip()
+
+        return dedent(
+            f"""
         @scenario("{feature_file}", "{scenario_name}")
         def {test_name}():
             pass
-        """).strip()
+        """
+        ).strip()
 
     def _write_steps(self):
         steps_path = self.output_dir / "test_steps.py"
@@ -117,8 +135,10 @@ def create_failed_step(name: Optional[str] = None) -> BDDStep:
 def create_skipped_step(name: Optional[str] = None) -> BDDStep:
     return BDDStep(name=name, outcome="skip")
 
+
 def create_scenario_fantastico(name: str = None):
     pass
+
 
 if __name__ == "__main__":
     builder = BDDTestBuilder("generated_tests_iter_2")

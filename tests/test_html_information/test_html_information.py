@@ -52,6 +52,7 @@ def sample_test(testdir):
 
     return testdir
 
+
 @pytest.fixture()
 def sample_test_with_utf_8_characters(testdir):
     testdir.makefile(
@@ -135,12 +136,17 @@ def test_information_in_report(sample_test):
     assert "I know it will fails" in content
     assert " It fails" in content
 
+
 def test_utf_8_information_in_report(sample_test_with_utf_8_characters):
     sample_test_with_utf_8_characters.runpytest("--bdd-report=report.html")
     content = ""
-    with open((sample_test_with_utf_8_characters.tmpdir / "report.html"), "r", encoding="utf-8") as f:
+    with open(
+        (sample_test_with_utf_8_characters.tmpdir / "report.html"),
+        "r",
+        encoding="utf-8",
+    ) as f:
         content = f.read()
     assert "Testing utf-8 characters like 👋 and 貓 feature" in content
     assert "Testing utf-8 characters like 👋 and 貓 scenario" in content
-    assert 'I include a 👋 character' in content
-    assert 'I include a 貓 character' in content
+    assert "I include a 👋 character" in content
+    assert "I include a 貓 character" in content

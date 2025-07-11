@@ -16,7 +16,9 @@ class Scenario:
     error_message: str = ""
 
     def calculate_duration(self) -> None:
-        self.duration = sum(step.duration for step in self.steps) / 1_000_000_000  # from nanosecond to second
+        self.duration = (
+            sum(step.duration for step in self.steps) / 1_000_000_000
+        )  # from nanosecond to second
 
     def add_step(self, step: Step) -> None:
         self.steps.append(step)
