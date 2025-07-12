@@ -25,6 +25,7 @@ Open Generated Report In Browser
     [Documentation]    Opens the browser and navigates to the target URL.
     [Arguments]    ${url}
     Open Browser    ${url}    ${BROWSER}
+    Maximize Browser Window
 
 Generate HTML Report
     [Arguments]    ${title}
