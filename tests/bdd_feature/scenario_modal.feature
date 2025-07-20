@@ -9,7 +9,7 @@ Feature: Scenario Modal Behavior
     Then the modal should not be visible
 
   Scenario: Verify modal content
-    Given the report is open with a failed scenario
+    Given the report is open with multiple failed scenarios
     When I open the failed scenarios modal
     Then the modal should be visible
     Then the modal should contain 3 link

@@ -9,33 +9,13 @@ scenarios("../bdd_feature/scenario_modal.feature")
 
 
 @given("the report is open with a failed scenario")
-def setup_report_with_failed_scenario(page: Page, cleanup_bdd_generated):
-    builder = BDDTestBuilder("generated_tests")
-    feature = BDDFeature("Testing failed scenarios links")
-    scenario1 = BDDScenario("Failed 1")
-    scenario1.add_step(create_passed_step("lo step è passato"))
-    scenario1.add_step(create_passed_step("lo step è passato"))
-    scenario1.add_step(create_failed_step("lo step è fallito"))
-    feature.add_scenario(scenario1)
-    scenario2 = BDDScenario("Failed 2")
-    scenario2.add_step(create_passed_step("lo step è passato"))
-    scenario2.add_step(create_passed_step("lo step è passato"))
-    scenario2.add_step(create_failed_step("lo step è fallito"))
-    feature.add_scenario(scenario2)
-    scenario3 = BDDScenario("Failed 3")
-    scenario3.add_step(create_passed_step("lo step è passato"))
-    scenario3.add_step(create_passed_step("lo step è passato"))
-    scenario3.add_step(create_failed_step("lo step è fallito"))
-    feature.add_scenario(scenario3)
-    builder.add_feature(feature)
-    builder.build()
+def setup_report_with_failed_scenario(page: Page, generate_report_with_one_failed_feature, cleanup_bdd_generated):
+    page.goto(generate_report_with_one_failed_feature)  
+    time.sleep(1)
 
-    os.system("pytest --bdd-report=proto_bdd_testing.html generated_tests/")
-
-    path = os.path.abspath("proto_bdd_testing.html")
-    file_url = "file://" + path
-
-    page.goto(file_url)  # Replace with actual page URL
+@given("the report is open with multiple failed scenarios")
+def setup_report_with_failed_scenario(page: Page, generate_report_with_feature_with_multiple_failed_scenarios, cleanup_bdd_generated):
+    page.goto(generate_report_with_feature_with_multiple_failed_scenarios)  
     time.sleep(1)
 
 @pytest.fixture
