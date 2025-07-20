@@ -9,7 +9,7 @@ scenarios("../bdd_feature/scenario_modal.feature")
 
 
 @given("the report is open with a failed scenario")
-def setup_report_with_failed_scenario(page: Page):
+def setup_report_with_failed_scenario(page: Page, cleanup_bdd_generated):
     builder = BDDTestBuilder("generated_tests")
     feature = BDDFeature("Testing failed scenarios links")
     scenario1 = BDDScenario("Failed 1")
