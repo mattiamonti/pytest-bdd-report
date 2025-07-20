@@ -14,8 +14,20 @@ def setup_report_with_failed_scenario(page: Page, generate_report_with_one_faile
     time.sleep(1)
 
 @given("the report is open with multiple failed scenarios")
-def setup_report_with_failed_scenario(page: Page, generate_report_with_feature_with_multiple_failed_scenarios, cleanup_bdd_generated):
-    page.goto(generate_report_with_feature_with_multiple_failed_scenarios)  
+def setup_report_with_multiple_failed_scenarios(page: Page, generate_custom_bdd_report, cleanup_bdd_generated):
+    report_structure = {
+        "Feature 1": {
+            "passed": ["Passed 4"],
+            "failed": ["Failed 1", "Failed 2", "Failed ABC"]
+        },
+        "Feature 2": {
+            "passed": ["Scenario 5"],
+            "failed": []
+        }
+    }
+
+    report_url = generate_custom_bdd_report(report_structure)
+    page.goto(report_url)  
     time.sleep(1)
 
 @pytest.fixture
