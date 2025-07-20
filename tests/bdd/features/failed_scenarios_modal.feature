@@ -1,14 +1,14 @@
-Feature: Failed scenario modal behavior
+Feature: Failed scenarios modal behavior
 
-  Scenario: Failed scenarios link should be present in failed feature
+  Scenario: Failed scenarios button should be present in failed feature
     Given the report is open with a failed scenario
-    Then the feature scenarios link should be visible 
+    Then the feature scenarios link should be visible
 
-  Scenario: Failed scenarios link should be present in passed feature
+  Scenario: Failed scenarios button should be present in passed feature
     Given the report is open with a passed scenario
-    Then the feature scenarios link should not be visible 
+    Then the feature scenarios link should not be visible
 
-  Scenario: Open and close the failed scenarios link modal
+  Scenario: Open and close the failed scenarios modal
     Given the report is open with a failed scenario
     Then the modal should not be visible
     When I open the failed scenarios modal
@@ -16,7 +16,7 @@ Feature: Failed scenario modal behavior
     When I close the modal
     Then the modal should not be visible
 
-  Scenario: Verify modal content
+  Scenario: Failed scenarios modal should contain all failed scenarios of a feature
     Given the report is open with multiple failed scenarios
     When I open the failed scenarios modal
     Then the modal should be visible
@@ -25,7 +25,7 @@ Feature: Failed scenario modal behavior
     Then the modal should contain link with text "Failed 2"
     Then the modal should contain link with text "Failed 3"
 
-  Scenario: Navigate to failed scenario from failed scenarios link modal
+  Scenario: Navigate to failed scenario from failed scenarios modal
     Given the report is open with multiple failed scenarios
     When I open the failed scenarios modal
     Then the modal should be visible
@@ -33,7 +33,7 @@ Feature: Failed scenario modal behavior
     When I click on the link "Failed 3"
     Then the scenario "Failed 3" should be visible
 
-  Scenario: Navigate To Every Failed Scenario From Failed Scenarios Link Modal
+  Scenario: Navigate to every failed scenario from failed scenarios modal
     Given the report is open with multiple failed scenarios
     When I open the failed scenarios modal
     Then the modal should be visible

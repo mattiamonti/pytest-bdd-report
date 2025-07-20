@@ -1,7 +1,7 @@
 import shutil
 import os
 import pytest
-from tests.bdd_generator.bdd_generator import (
+from tests.bdd.generator.bdd_generator import (
     BDDFeature,
     BDDTestBuilder,
     BDDScenario,
