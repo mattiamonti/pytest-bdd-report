@@ -2,14 +2,6 @@ from pytest_bdd import when, then, parsers
 from playwright.sync_api import Page, Locator, expect
 import pytest
 
-@pytest.fixture
-def modal_button(page: Page):
-    return page.locator("//*[contains(@class, 'failed-scenarios-link')]")
-
-@pytest.fixture
-def modal_close(page: Page):
-    return page.locator("//dialog//button[contains(@class, 'modal-close')]")
-
 @when("I open the failed scenarios modal")
 def open_modal(page: Page, modal_button: Locator):
     modal_button.scroll_into_view_if_needed()
@@ -26,7 +18,7 @@ def verify_modal_visible(page: Page, modal):
     expect(modal).to_be_visible()
 
 @then("the modal should not be visible")
-def verify_modal_not_visible(page: Page):
+def verify_modal_not_visible(page: Page, modal:Locator):
     expect(modal).not_to_be_visible()
 
 @then("the feature scenarios link should be visible")

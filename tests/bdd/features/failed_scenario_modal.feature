@@ -1,4 +1,4 @@
-Feature: Scenario Modal Behavior
+Feature: Failed scenario modal behavior
 
   Scenario: Failed scenarios link should be present in failed feature
     Given the report is open with a failed scenario
@@ -33,7 +33,6 @@ Feature: Scenario Modal Behavior
     When I click on the link "Failed 3"
     Then the scenario "Failed 3" should be visible
 
-  @focus
   Scenario: Navigate To Every Failed Scenario From Failed Scenarios Link Modal
     Given the report is open with multiple failed scenarios
     When I open the failed scenarios modal
