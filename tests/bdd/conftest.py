@@ -10,7 +10,7 @@ from tests.bdd_generator.bdd_generator import (
     create_skipped_step,
 )
 from typing import Generator, Dict, List, Callable
-
+from tests.bdd.fixtures.report_fixtures import *
 
 @pytest.fixture()
 def cleanup_bdd_generated():
