@@ -4,8 +4,9 @@ import pytest
 class FailedScenariosModalPOM:
     def __init__(self, page: Page) -> None:
         self.modal = page.get_by_role("dialog")
-        self.open_button = page.locator("//*[contains(@class, 'failed-scenarios-link')]")
-        self.close_button = page.locator("//dialog//button[contains(@class, 'modal-close')]")
+        self.open_button = page.get_by_role("button").get_by_text("failed scenario links")
+        self.close_button = self.modal.get_by_role("button")
+        self.links = self.modal.get_by_role("link")
 
     def open(self) -> None:
         self.open_button.scroll_into_view_if_needed()
@@ -32,12 +33,12 @@ class FailedScenariosModalPOM:
         expect(self.modal).not_to_be_visible()
 
     def get_links(self) -> Locator:
-        return self.modal.get_by_role("link")
+        return self.links
 
     def should_contain_link(self, link_name: str):
-        expect(self.modal.get_by_role("link").get_by_text(link_name)).to_be_visible()
+        expect(self.links.get_by_text(link_name)).to_be_visible()
 
     def click_on_link(self, link_name: str):
-        link = self.get_links().get_by_text(link_name)
+        link = self.links.get_by_text(link_name)
         expect(link).to_be_visible()
         link.click()
