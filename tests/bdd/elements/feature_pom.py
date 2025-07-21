@@ -16,4 +16,7 @@ class FeaturePOM:
     def should_not_be_visible(self, feature_name: str) -> None:
         expect(self.get(feature_name)).not_to_be_visible()
 
+    def get_all(self) -> list[Locator]:
+        return self.page.locator(".feature")
+
 

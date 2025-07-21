@@ -1,11 +1,14 @@
 Feature: Report creation
 
+  @current
   Scenario Outline: Check report content
-    Given a test builder with <feature> feature
-    And <passed> passed scenarios
-    And <failed> failed scenarios
-    And <skipped> skipped scenarios
-    When I generate the report
+    Given a test builder with a feature named 'Feature ABC'
+    And <passed> passed scenarios for the feature 'Feature ABC'
+    And <failed> failed scenarios for the feature 'Feature ABC'
+    And <skipped> skipped scenarios for the feature 'Feature ABC'
+    And I build the feature
+    When I create the report
+    When I open the report
     Then the report should have <feature> feature
     And the report should have <total> scenarios
     And the report should have <passed> passed scenarios
@@ -31,24 +34,24 @@ Feature: Report creation
     And a failed scenario named 'Failing One' for the feature 'Feature 123'
     And I build the feature
     When I create the report
+    When I open the report
     Then the report should have 2 feature
     And the report should have 3 scenarios
     And the report should have 1 skipped scenarios
     And the report should have 1 failed scenarios
     And the report should have 1 passed scenarios
 
-  @current
   Scenario: Verify a report with all tests passed in a feature
     Given a test builder with a feature named 'Feature 1'
     And a passed scenario named 'Passing 1' for the feature 'Feature 1'
     And a passed scenario named 'Passing 2' for the feature 'Feature 1'
     And I build the feature
     When I create the report
+    When I open the report
     Then the report should have 1 feature
     And the report should have 2 scenarios
     And the report should have 2 passed scenarios
 
-  @current
   Scenario: Verify a report with tests passed in multiple features
     Given a test builder with a feature named 'Feature 1'
     And a passed scenario named 'Passing 1' for the feature 'Feature 1'
@@ -57,22 +60,22 @@ Feature: Report creation
     And a passed scenario named 'Passing 2' for the feature 'Feature 2'
     And I build the feature
     When I create the report
+    When I open the report
     Then the report should have 2 feature
     And the report should have 2 scenarios
     And the report should have 2 passed scenarios
 
-  @current
   Scenario: Verify a report with all tests failed in a feature
     Given a test builder with a feature named 'Feature 1'
     And a failed scenario named 'Failing 1' for the feature 'Feature 1'
     And a failed scenario named 'Failing 2' for the feature 'Feature 1'
     And I build the feature
     When I create the report
+    When I open the report
     Then the report should have 1 feature
     And the report should have 2 scenarios
     And the report should have 2 failed scenarios
 
-  @current
   Scenario: Verify a report with tests failed in multiple features
     Given a test builder with a feature named 'Feature 1'
     And a failed scenario named 'Failing 1' for the feature 'Feature 1'
@@ -81,11 +84,11 @@ Feature: Report creation
     And a failed scenario named 'Failing 2' for the feature 'Feature 2'
     And I build the feature
     When I create the report
+    When I open the report
     Then the report should have 2 feature
     And the report should have 2 scenarios
     And the report should have 2 failed scenarios
 
-  @current
   Scenario Outline: Verify a report with some skipped scenario in a feature
     Given a test builder with a feature named 'Feature 1'
     And a skipped scenario named 'Passing 1' for the feature 'Feature 1'
@@ -93,6 +96,7 @@ Feature: Report creation
     And a <type> scenario named 'Passing 3' for the feature 'Feature 1'
     And I build the feature
     When I create the report
+    When I open the report
     Then the report should have 1 feature
     And the report should have 3 scenarios
     And the report should have 2 skipped scenarios
