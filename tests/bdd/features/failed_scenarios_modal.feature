@@ -37,6 +37,7 @@ Feature: Failed scenarios modal behavior
     Then the modal should contain link with text "Failed 3"
     When I click on the link "Failed 3"
     Then the scenario "Failed 3" should be visible
+    And the scenario "Failed 3" should be failed
 
   @navigation
   Scenario: Navigate to every failed scenario from failed scenarios modal
