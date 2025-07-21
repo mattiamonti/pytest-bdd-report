@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, Locator, expect
 import pytest
 
+
 class ScenarioPOM:
     def __init__(self, page: Page) -> None:
         self.page = page

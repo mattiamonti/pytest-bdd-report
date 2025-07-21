@@ -1,6 +1,6 @@
-
 from playwright.sync_api import Page, Locator, expect
 import pytest
+
 
 class FeaturePOM:
     def __init__(self, page: Page) -> None:
@@ -8,7 +8,7 @@ class FeaturePOM:
 
     def get(self, feature_name: str) -> Locator:
         return self.page.locator(f"//div[@id='{feature_name}']")
-    
+
     def should_be_visible(self, feature_name: str) -> None:
         expect(self.get(feature_name)).to_be_visible()
         expect(self.get(feature_name)).to_be_in_viewport()
@@ -18,5 +18,3 @@ class FeaturePOM:
 
     def get_all(self) -> list[Locator]:
         return self.page.locator(".feature")
-
-

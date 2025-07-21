@@ -103,6 +103,7 @@ def check_text_of_links_in_modal(page: Page, expected: str, modal: Locator):
     link = modal.get_by_role("link").get_by_text(expected)
     expect(link).to_be_visible()
 
+
 @when(parsers.cfparse('I click on the link "{name}"'))
 def click_on_link_in_modal(modal: Locator, name: str):
     link = modal.get_by_role("link").get_by_text(name)
@@ -115,6 +116,7 @@ def verify_scenario_is_visible(page: Page, name: str):
     scenario = page.locator(f"//*[@id='{name}']/div")
     scenario.is_visible()
     expect(scenario).to_be_in_viewport()
+
 
 @then("the modal should not be visible")
 def verify_modal_not_visible(page: Page):

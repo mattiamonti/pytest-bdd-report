@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, Locator, expect
 import pytest
 
+
 class FeatureTablePOM:
     def __init__(self, page: Page) -> None:
         self.page = page
@@ -11,6 +12,3 @@ class FeatureTablePOM:
 
     def click_feature_link(self, feature_name: str) -> None:
         self.get_row(feature_name).get_by_role("link").click()
-
-
-

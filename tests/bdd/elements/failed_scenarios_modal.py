@@ -1,10 +1,13 @@
 from playwright.sync_api import Page, Locator, expect
 import pytest
 
+
 class FailedScenariosModalPOM:
     def __init__(self, page: Page) -> None:
         self.modal = page.get_by_role("dialog")
-        self.open_button = page.get_by_role("button").get_by_text("failed scenario links")
+        self.open_button = page.get_by_role("button").get_by_text(
+            "failed scenario links"
+        )
         self.close_button = self.modal.get_by_role("button")
         self.links = self.modal.get_by_role("link")
 

@@ -11,9 +11,10 @@ from tests.bdd.generator.bdd_generator import (
 )
 from typing import Generator, Dict, List, Callable
 
+
 @pytest.fixture()
 def cleanup_bdd_generated():
-    # Setup 
+    # Setup
     yield
     # Teardown
     folder = "generated_tests"
