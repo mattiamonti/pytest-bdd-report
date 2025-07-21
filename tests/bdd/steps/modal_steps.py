@@ -1,44 +1,45 @@
 from pytest_bdd import when, then, parsers
 from playwright.sync_api import Page, Locator, expect
 import pytest
+from tests.bdd.pages.failed_scenarios_modal import FailedScenariosModalPOM
+
+@pytest.fixture
+def failed_scenarios_modal(page: Page):
+    return FailedScenariosModalPOM(page)
 
 @when("I open the failed scenarios modal")
-def open_modal(page: Page, modal_button: Locator):
-    modal_button.scroll_into_view_if_needed()
-    expect(modal_button).to_be_in_viewport()
-    modal_button.click()
+def open_modal(failed_scenarios_modal: FailedScenariosModalPOM):
+    failed_scenarios_modal.open()
     
 @when("I close the modal")
-def close_modal(page: Page, modal_close):
-    expect(modal_close).to_be_visible()
-    modal_close.click()
+def close_modal(failed_scenarios_modal: FailedScenariosModalPOM):
+    failed_scenarios_modal.close()
     
 @then("the modal should be visible")
-def verify_modal_visible(page: Page, modal):
-    expect(modal).to_be_visible()
+def verify_modal_visible(failed_scenarios_modal: FailedScenariosModalPOM):
+    failed_scenarios_modal.should_be_visible()
 
 @then("the modal should not be visible")
-def verify_modal_not_visible(page: Page, modal:Locator):
-    expect(modal).not_to_be_visible()
+def verify_modal_not_visible(failed_scenarios_modal: FailedScenariosModalPOM):
+    failed_scenarios_modal.should_not_be_visible()
 
 @then("the feature scenarios link should be visible")
-def feature_link_visible(page: Page):
-    expect(page.locator("//*[contains(@class, 'failed-scenarios-link')]")).to_be_visible()
+def feature_link_visible(failed_scenarios_modal: FailedScenariosModalPOM):
+    failed_scenarios_modal.open_button_should_be_visible()
+    
 
 @then("the feature scenarios link should not be visible")
-def feature_link_not_visible(page: Page):
-    expect(page.locator("//*[contains(@class, 'failed-scenarios-link')]")).not_to_be_visible()
+def feature_link_not_visible(failed_scenarios_modal: FailedScenariosModalPOM):
+    failed_scenarios_modal.open_button_should_not_be_visible()
 
 @then(parsers.cfparse("the modal should contain {expected:d} link"))
-def modal_contains_links(modal: Locator, expected: int):
-    expect(modal.locator("a")).to_have_count(expected)
+def modal_contains_links(failed_scenarios_modal: FailedScenariosModalPOM, expected: int):
+    expect(failed_scenarios_modal.get_links()).to_have_count(expected)
 
 @then(parsers.cfparse('the modal should contain link with text "{expected}"'))
-def modal_contains_link_text(modal: Locator, expected: str):
-    expect(modal.get_by_role("link").get_by_text(expected)).to_be_visible()
+def modal_contains_link_text(failed_scenarios_modal: FailedScenariosModalPOM, expected: str):
+    failed_scenarios_modal.should_contain_link(expected)
 
 @when(parsers.cfparse('I click on the link "{name}"'))
-def click_link(modal: Locator, name: str):
-    link = modal.get_by_role("link").get_by_text(name)
-    assert link.is_visible()
-    link.click()
+def click_link(failed_scenarios_modal: FailedScenariosModalPOM, name: str):
+    failed_scenarios_modal.click_on_link(name)
