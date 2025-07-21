@@ -1,5 +1,6 @@
 Feature: Feature table
 
+  @navigation @smoke
   Scenario Outline: Navigate to a feature by link
     Given a test builder with a feature named 'Feature passed'
     And a passed scenario named 'Passed 1' for the feature 'Feature passed'
@@ -21,3 +22,17 @@ Feature: Feature table
       | Feature failed  |
       | Feature skipped |
       | Feature passed  |
+
+  @navigation @regression
+  Scenario Outline: Navigate to a long named feature by link
+    Given a test builder with a feature named '<feature>'
+    And a passed scenario named 'Passed 1' for the feature '<feature>'
+    And I build the feature
+    When I create the report
+    And I open the report
+    When I click on the feature link '<feature>'
+    Then the feature '<feature>' should be visible
+
+    Examples:
+      | feature                                                                                                 |
+      | Feature that has the longer name ever created in the realm of software engineering and testing combined |
