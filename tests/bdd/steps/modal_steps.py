@@ -1,7 +1,7 @@
 from pytest_bdd import when, then, parsers
 from playwright.sync_api import Page, Locator, expect
 import pytest
-from tests.bdd.pages.failed_scenarios_modal import FailedScenariosModalPOM
+from tests.bdd.elements.failed_scenarios_modal import FailedScenariosModalPOM
 
 @pytest.fixture
 def failed_scenarios_modal(page: Page):
