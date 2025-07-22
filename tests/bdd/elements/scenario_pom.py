@@ -25,14 +25,3 @@ class ScenarioPOM:
     def is_skipped(self, name: str) -> None:
         expect(self.get(name)).to_contain_class("scenario-skipped")
 
-    def get_all(self) -> list[Locator]:
-        return self.page.locator(".scenario")
-
-    def get_passed(self) -> list[Locator]:
-        return self.page.locator(".scenario-passed")
-
-    def get_failed(self) -> list[Locator]:
-        return self.page.locator(".scenario-failed")
-
-    def get_skipped(self) -> list[Locator]:
-        return self.page.locator(".scenario-skipped")

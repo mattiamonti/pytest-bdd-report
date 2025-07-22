@@ -23,9 +23,6 @@ class FeaturePOM:
             feature_name = self.name
         expect(self.get(feature_name)).not_to_be_visible()
 
-    def get_all(self) -> list[Locator]: #FIXME move this in a new class ReportPOM, not in the scope of this class
-        return self.page.locator(".feature")
-
     def should_have_description(self, description: str, feature_name: str = None) -> None:
         if feature_name is None:
             feature_name = self.name

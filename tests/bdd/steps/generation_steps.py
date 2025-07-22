@@ -11,13 +11,13 @@ from tests.bdd.generator.bdd_generator import (
     create_failed_step,
     create_skipped_step,
 )
-from tests.bdd.elements.feature_pom import FeaturePOM
+from tests.bdd.elements.report_pom import ReportPOM
 from tests.bdd.elements.scenario_pom import ScenarioPOM
 
 
 @pytest.fixture
-def feature(page: Page) -> FeaturePOM:
-    return FeaturePOM(page)
+def report(page: Page) -> ReportPOM:
+    return ReportPOM(page)
 
 
 @pytest.fixture
@@ -98,21 +98,21 @@ def open_the_report(page: Page):
 
 
 @then(parsers.parse("the report should have {expected:d} feature"))
-def check_feature_in_report(feature: FeaturePOM, expected: int):
-    assert feature.get_all().count() == expected
+def check_feature_in_report(report: ReportPOM, expected: int):
+    assert report.get_all_features().count() == expected
 
 
 @then(parsers.parse("the report should have {expected:d} scenarios"))
-def check_scenarios_count(scenario: ScenarioPOM, expected: int):
-    assert scenario.get_all().count() == expected
+def check_scenarios_count(report: ReportPOM, expected: int):
+    assert report.get_all_scenarios().count() == expected
 
 
 @then(parsers.parse("the report should have {expected:d} {type} scenarios"))
-def check_passed(scenario: ScenarioPOM, expected: int, type: str):
+def check_passed(report: ReportPOM, expected: int, type: str):
     assert type in ["passed", "failed", "skipped"]
     if type == "failed":
-        assert scenario.get_failed().count() == expected
+        assert report.get_failed_scenarios().count() == expected
     elif type == "skipped":
-        assert scenario.get_skipped().count() == expected
+        assert report.get_skipped_scenarios().count() == expected
     else:
-        assert scenario.get_passed().count() == expected
+        assert report.get_passed_scenarios().count() == expected
