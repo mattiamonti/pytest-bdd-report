@@ -12,17 +12,11 @@ from tests.bdd.generator.bdd_generator import (
     create_skipped_step,
 )
 from tests.bdd.elements.report_pom import ReportPOM
-from tests.bdd.elements.scenario_pom import ScenarioPOM
 
 
 @pytest.fixture
 def report(page: Page) -> ReportPOM:
     return ReportPOM(page)
-
-
-@pytest.fixture
-def scenario(page: Page):
-    return ScenarioPOM(page)
 
 
 @pytest.fixture

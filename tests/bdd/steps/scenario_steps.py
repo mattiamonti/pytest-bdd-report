@@ -4,26 +4,25 @@ from tests.bdd.elements.scenario_pom import ScenarioPOM
 import pytest
 
 
-@pytest.fixture
-def scenario(page: Page):
-    return ScenarioPOM(page)
-
-
 @then(parsers.cfparse('the scenario "{name}" should be visible'))
-def scenario_should_be_visible(scenario: ScenarioPOM, name: str):
-    scenario.should_be_visible(name)
+def scenario_should_be_visible(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.should_be_visible()
 
 
 @then(parsers.cfparse('the scenario "{name}" should be passed'))
-def scenario_should_be_visible(scenario: ScenarioPOM, name: str):
-    scenario.is_passed(name)
+def scenario_should_be_visible(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.is_passed()
 
 
 @then(parsers.cfparse('the scenario "{name}" should be failed'))
-def scenario_should_be_visible(scenario: ScenarioPOM, name: str):
-    scenario.is_failed(name)
+def scenario_should_be_visible(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.is_failed()
 
 
 @then(parsers.cfparse('the scenario "{name}" should be skipped'))
-def scenario_should_be_visible(scenario: ScenarioPOM, name: str):
-    scenario.is_skipped(name)
+def scenario_should_be_visible(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.is_skipped()

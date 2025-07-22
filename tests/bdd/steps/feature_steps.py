@@ -4,18 +4,16 @@ from tests.bdd.elements.feature_pom import FeaturePOM
 import pytest
 
 
-@pytest.fixture
-def feature(page: Page):
-    return FeaturePOM(page)
-
 
 @then(parsers.cfparse("the feature '{name}' should be visible"))
-def feature_should_be_visible(feature: FeaturePOM, name: str):
-    feature.should_be_visible(name)
+def feature_should_be_visible(page: Page, name: str):
+    feature = FeaturePOM(page, name)
+    feature.should_be_visible()
 
 @then(parsers.parse("the feature '{name}' should have description '{description}'"))
-def feature_should_have_description(feature: FeaturePOM, name:str, description: str):
-    feature.should_have_description(feature_name=name, description=f"Description: {description}")
+def feature_should_have_description(page: Page, name:str, description: str):
+    feature = FeaturePOM(page, name)
+    feature.should_have_description(f"Description: {description}")
 
 @then(parsers.parse("the feature '{name}' should have path '{path}'"))
 def feature_should_have_description(page: Page, name:str, path: str):
