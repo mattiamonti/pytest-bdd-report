@@ -72,13 +72,14 @@ def add_multiple_passed_scenarios(
 
 def _add_step_to_scenario(scenario_type: str, scenario: BDDScenario) -> BDDScenario:
     assert scenario_type in ["passed", "failed", "skipped"]
-    if scenario_type == "failed":
-        scenario.add_step(create_failed_step("step failed"))
-    elif scenario_type == "skipped":
-        scenario.add_step(create_passed_step("step passed"))
-        scenario.add_step(create_skipped_step("step skipped"))
-    else:
-        scenario.add_step(create_passed_step("step passed"))
+    match scenario_type:
+        case "failed":
+            scenario.add_step(create_failed_step("step failed"))
+        case "skipped":
+            scenario.add_step(create_passed_step("step passed"))
+            scenario.add_step(create_skipped_step("step skipped"))
+        case "passed":
+            scenario.add_step(create_passed_step("step passed"))
     return scenario
 
 
@@ -111,9 +112,10 @@ def check_scenarios_count(report: ReportPOM, expected: int):
 @then(parsers.parse("the report should have {expected:d} {type} scenarios"))
 def check_passed(report: ReportPOM, expected: int, type: str):
     assert type in ["passed", "failed", "skipped"]
-    if type == "failed":
-        assert report.get_failed_scenarios().count() == expected
-    elif type == "skipped":
-        assert report.get_skipped_scenarios().count() == expected
-    else:
-        assert report.get_passed_scenarios().count() == expected
+    match type:
+        case "failed":
+            assert report.get_failed_scenarios().count() == expected
+        case "skipped":
+            assert report.get_skipped_scenarios().count() == expected
+        case "passed":
+            assert report.get_passed_scenarios().count() == expected
