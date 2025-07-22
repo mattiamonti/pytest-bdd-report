@@ -27,12 +27,20 @@ class FeaturePOM:
     def get_duration(self) -> float:
         feature = self.get()
         duration = feature.get_by_text("Executed in").all_inner_texts()
-        duration = duration[0].replace("Executed in ", "").replace("ms", "").replace("m", "")
+        duration = (
+            duration[0].replace("Executed in ", "").replace("ms", "").replace("m", "")
+        )
         duration_number = float(duration)
         return duration_number
 
     def get_scenario_badge(self, scenario_type: str) -> int:
-        assert scenario_type in ["passed", "failed", "skipped"], f"Scenario type {scenario_type} not correct, try: passed, failed or skipped"
+        assert scenario_type in [
+            "passed",
+            "failed",
+            "skipped",
+        ], f"Scenario type {scenario_type} not correct, try: passed, failed or skipped"
         feature = self.get()
-        badge = feature.get_by_title(f"Number of test {scenario_type}").all_inner_texts()
+        badge = feature.get_by_title(
+            f"Number of test {scenario_type}"
+        ).all_inner_texts()
         return int(badge[0].strip())

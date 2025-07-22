@@ -28,10 +28,17 @@ def builder() -> BDDTestBuilder:
 def setup_features(builder, feature_name: str, cleanup_bdd_generated):
     builder.add_feature(BDDFeature(feature_name))
 
-@given(parsers.parse("the feature '{feature_name}' has the description '{feature_description}'"))
+
+@given(
+    parsers.parse(
+        "the feature '{feature_name}' has the description '{feature_description}'"
+    )
+)
 def add_feature_description(builder, feature_name: str, feature_description: str):
     for feature in builder.features:
-        if feature.name == feature_name: feature.add_description(feature_description)
+        if feature.name == feature_name:
+            feature.add_description(feature_description)
+
 
 @given(
     parsers.parse(

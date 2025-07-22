@@ -26,4 +26,3 @@ class ScenarioPOM:
 
     def is_skipped(self) -> None:
         expect(self.get()).to_contain_class("scenario-skipped")
-

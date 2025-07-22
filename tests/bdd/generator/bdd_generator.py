@@ -50,7 +50,8 @@ class BDDTestBuilder:
             feature_path = self.output_dir / feature_filename
             with open(feature_path, "w") as f:
                 f.write(f"Feature: {feature.name}\n")
-                if feature.description != "": f.write(f"  {feature.description}\n")
+                if feature.description != "":
+                    f.write(f"  {feature.description}\n")
                 for j, scenario in enumerate(feature.scenarios, 1):
                     scenario_name = scenario.name
                     f.write(f"  Scenario: {scenario_name}\n")

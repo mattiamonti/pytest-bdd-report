@@ -22,4 +22,3 @@ class ReportPOM:
 
     def get_skipped_scenarios(self) -> list[Locator]:
         return self.page.locator(".scenario-skipped")
-
