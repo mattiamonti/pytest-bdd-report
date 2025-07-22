@@ -7,10 +7,14 @@ from typing import List, Optional
 class BDDFeature:
     def __init__(self, name: Optional[str] = None):
         self.name = name or "Auto Feature"
+        self.description = ""
         self.scenarios: List[BDDScenario] = []
 
     def add_scenario(self, scenario: "BDDScenario"):
         self.scenarios.append(scenario)
+
+    def add_description(self, description: str):
+        self.description = description
 
 
 class BDDScenario:
@@ -46,6 +50,7 @@ class BDDTestBuilder:
             feature_path = self.output_dir / feature_filename
             with open(feature_path, "w") as f:
                 f.write(f"Feature: {feature.name}\n")
+                if feature.description != "": f.write(f"  {feature.description}\n")
                 for j, scenario in enumerate(feature.scenarios, 1):
                     scenario_name = scenario.name
                     f.write(f"  Scenario: {scenario_name}\n")
