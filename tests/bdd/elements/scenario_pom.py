@@ -12,7 +12,9 @@ class ScenarioPOM:
         self._green_background = "rgb(220, 252, 231)"
         self._yellow_background = "rgb(255, 251, 235)"
         self._error_message_button = self._scenario.get_by_role("group")
-        self._error_message = self._error_message_button.locator("//*[contains(@id, 'message')]")
+        self._error_message = self._error_message_button.locator(
+            "//*[contains(@id, 'message')]"
+        )
 
     def get(self) -> Locator:
         return self._scenario
@@ -56,3 +58,8 @@ class ScenarioPOM:
     def get_duration(self) -> float:
         scenario = self.get()
         return get_duration(scenario)
+
+    def get_steps(self, step_type: str) -> list[Locator]:
+        assert step_type in ["passed", "failed"]
+        steps = self.get().get_by_test_id(f"step-{step_type}")
+        return steps.all()

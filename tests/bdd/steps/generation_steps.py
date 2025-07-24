@@ -70,6 +70,32 @@ def add_multiple_passed_scenarios(
             correct_feature.add_scenario(scenario)
 
 
+@given(
+    parsers.parse("a real {scenario_type} scenario for the feature '{feature_name}'")
+)
+def add_real_scenarios(builder, scenario_type: str, feature_name: str, get_uuid):
+    correct_feature = None
+    for feature in builder.features:
+        if feature.name == feature_name:
+            correct_feature = feature
+
+    scenario = BDDScenario("Real scenario")
+    assert scenario_type in ["passed", "failed", "skipped"]
+    scenario.add_step(create_passed_step(f"step passed {get_uuid()}"))
+    scenario.add_step(create_passed_step(f"step passed {get_uuid()}"))
+    scenario.add_step(create_passed_step(f"step passed {get_uuid()}"))
+    match scenario_type:
+        case "failed":
+            scenario.add_step(create_failed_step(f"step failed {get_uuid()}"))
+        case "skipped":
+            scenario.add_step(create_skipped_step(f"step skipped {get_uuid()}"))
+        case "passed":
+            scenario.add_step(create_passed_step(f"step passed {get_uuid()}"))
+    scenario.add_step(create_passed_step(f"step passed {get_uuid()}"))
+    if correct_feature is not None:
+        correct_feature.add_scenario(scenario)
+
+
 def _add_step_to_scenario(scenario_type: str, scenario: BDDScenario) -> BDDScenario:
     assert scenario_type in ["passed", "failed", "skipped"]
     match scenario_type:
