@@ -7,6 +7,10 @@ class ScenarioPOM:
         self.page = page
         self.name = name
         self._scenario = self.page.locator(f"//*[@id='{self.name}']/div")
+        self._red_background = "rgb(254, 226, 226)"
+        self._green_background = "rgb(220, 252, 231)"
+        self._yellow_background = "rgb(255, 251, 235)"
+        self._error_message_button = self._scenario.get_by_role("group")
 
     def get(self) -> Locator:
         return self._scenario
@@ -26,3 +30,36 @@ class ScenarioPOM:
 
     def is_skipped(self) -> None:
         expect(self.get()).to_contain_class("scenario-skipped")
+
+    def background_should_be(self, scenario_type: str) -> None:
+        assert scenario_type in ["passed", "failed", "skipped"]
+        match scenario_type:
+            case "passed":
+                color = self._green_background
+            case "failed":
+                color = self._red_background
+            case "skipped":
+                color = self._yellow_background
+        expect(self.get()).to_have_css("background-color", color)
+
+    def toggle_error_message(self) -> None:
+        self._error_message_button.click(position={"x": 0, "y": 0})
+
+    def error_message_should_be_hidden(self) -> None:
+        expect(
+            self._error_message_button.locator("//*[contains(@id, 'message')]")
+        ).to_be_hidden()
+
+    def error_message_should_be_visible(self) -> None:
+        expect(
+            self._error_message_button.locator("//*[contains(@id, 'message')]")
+        ).not_to_be_hidden()
+
+    def get_duration(self) -> float:
+        scenario = self.get()
+        duration = scenario.get_by_text("Executed in").all_inner_texts()
+        duration = (
+            duration[0].replace("Executed in ", "").replace("ms", "").replace("m", "")
+        )
+        duration_number = float(duration)
+        return duration_number
