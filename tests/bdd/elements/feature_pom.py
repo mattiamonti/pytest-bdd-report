@@ -1,5 +1,6 @@
 from playwright.sync_api import Page, Locator, expect
 import pytest
+from tests.bdd.utils.duration import get_duration
 
 
 class FeaturePOM:
@@ -26,12 +27,7 @@ class FeaturePOM:
 
     def get_duration(self) -> float:
         feature = self.get()
-        duration = feature.get_by_text("Executed in").all_inner_texts()
-        duration = (
-            duration[0].replace("Executed in ", "").replace("ms", "").replace("m", "")
-        )
-        duration_number = float(duration)
-        return duration_number
+        return get_duration(feature)
 
     def get_scenario_badge(self, scenario_type: str) -> int:
         assert scenario_type in [

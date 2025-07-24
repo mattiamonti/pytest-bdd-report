@@ -1,5 +1,6 @@
 from playwright.sync_api import Page, Locator, expect
 import pytest
+from tests.bdd.utils.duration import get_duration
 
 
 class ScenarioPOM:
@@ -11,6 +12,7 @@ class ScenarioPOM:
         self._green_background = "rgb(220, 252, 231)"
         self._yellow_background = "rgb(255, 251, 235)"
         self._error_message_button = self._scenario.get_by_role("group")
+        self._error_message = self._error_message_button.locator("//*[contains(@id, 'message')]")
 
     def get(self) -> Locator:
         return self._scenario
@@ -46,20 +48,11 @@ class ScenarioPOM:
         self._error_message_button.click(position={"x": 0, "y": 0})
 
     def error_message_should_be_hidden(self) -> None:
-        expect(
-            self._error_message_button.locator("//*[contains(@id, 'message')]")
-        ).to_be_hidden()
+        expect(self._error_message).to_be_hidden()
 
     def error_message_should_be_visible(self) -> None:
-        expect(
-            self._error_message_button.locator("//*[contains(@id, 'message')]")
-        ).not_to_be_hidden()
+        expect(self._error_message).not_to_be_hidden()
 
     def get_duration(self) -> float:
         scenario = self.get()
-        duration = scenario.get_by_text("Executed in").all_inner_texts()
-        duration = (
-            duration[0].replace("Executed in ", "").replace("ms", "").replace("m", "")
-        )
-        duration_number = float(duration)
-        return duration_number
+        return get_duration(scenario)
