@@ -4,6 +4,7 @@ Feature: Check test file paths
     Given a test builder with a feature named 'Feature 1'
     And 1 passed scenarios for the feature 'Feature 1'
     And 1 failed scenarios for the feature 'Feature 1'
+    And 1 skipped scenarios for the feature 'Feature 1'
     And I build the feature
     When I create the report
     And I open the report
