@@ -145,3 +145,106 @@ def check_passed(report: ReportPOM, expected: int, type: str):
             assert report.get_skipped_scenarios().count() == expected
         case "passed":
             assert report.get_passed_scenarios().count() == expected
+
+@given("a report with multiple features and all type of scenarios inside")
+def report_multiple_feature_all_scenario(builder):
+    """
+    Generate a report with the following names:
+    - Feature all scenarios: with passed, failed, skipped scenarios
+    - Feature passed scenarios: with 3 passed scenarios
+    - Feature failed scenarios: with 3 failed scenarios
+    - Feature skipped scenarios: wit 3 skipped scenarios and 1 passed scenario
+    """
+    feature = BDDFeature("Feature all scenarios")
+
+    scenario1 = BDDScenario("Passed scenario")
+    scenario1.add_step(create_passed_step("passed step"))
+    scenario1.add_step(create_passed_step("passed step"))
+    scenario1.add_step(create_passed_step("passed step"))
+
+    scenario2 = BDDScenario("Failed scenario")
+    scenario2.add_step(create_passed_step("passed step"))
+    scenario2.add_step(create_passed_step("passed step"))
+    scenario2.add_step(create_failed_step("failed step"))
+
+    scenario3 = BDDScenario("Skipped scenario")
+    scenario3.add_step(create_skipped_step("skipped step"))
+    scenario3.add_step(create_passed_step("passed step"))
+    scenario3.add_step(create_passed_step("passed step"))
+
+    feature.add_scenario(scenario1)
+    feature.add_scenario(scenario2)
+    feature.add_scenario(scenario3)
+    builder.add_feature(feature)
+
+    feature = BDDFeature("Feature passed scenarios")
+
+    scenario1 = BDDScenario("Passed scenario 1")
+    scenario1.add_step(create_passed_step("passed step"))
+    scenario1.add_step(create_passed_step("passed step"))
+    scenario1.add_step(create_passed_step("passed step"))
+
+    scenario2 = BDDScenario("Passed scenario 2")
+    scenario2.add_step(create_passed_step("passed step"))
+    scenario2.add_step(create_passed_step("passed step"))
+    scenario2.add_step(create_passed_step("passed step"))
+
+    scenario3 = BDDScenario("Passed scenario 3")
+    scenario3.add_step(create_passed_step("passed step"))
+    scenario3.add_step(create_passed_step("passed step"))
+    scenario3.add_step(create_passed_step("passed step"))
+
+    feature.add_scenario(scenario1)
+    feature.add_scenario(scenario2)
+    feature.add_scenario(scenario3)
+    builder.add_feature(feature)
+
+    feature = BDDFeature("Feature failed scenarios")
+    scenario1 = BDDScenario("Failed scenario 1")
+    scenario1.add_step(create_passed_step("passed step"))
+    scenario1.add_step(create_passed_step("passed step"))
+    scenario1.add_step(create_failed_step("failed step"))
+
+    scenario2 = BDDScenario("Failed scenario 2")
+    scenario2.add_step(create_passed_step("passed step"))
+    scenario2.add_step(create_passed_step("passed step"))
+    scenario2.add_step(create_failed_step("failed step"))
+
+    scenario3 = BDDScenario("Failed scenario 3")
+    scenario3.add_step(create_passed_step("passed step"))
+    scenario3.add_step(create_passed_step("passed step"))
+    scenario3.add_step(create_failed_step("failed step"))
+
+    feature.add_scenario(scenario1)
+    feature.add_scenario(scenario2)
+    feature.add_scenario(scenario3)
+    builder.add_feature(feature)
+
+    feature = BDDFeature("Feature skipped scenarios")
+    scenario1 = BDDScenario("Skipped scenario 1")
+    scenario1.add_step(create_skipped_step("skipped step"))
+    scenario1.add_step(create_passed_step("passed step"))
+    scenario1.add_step(create_passed_step("passed step"))
+
+    scenario2 = BDDScenario("Skipped scenario 2")
+    scenario2.add_step(create_skipped_step("skipped step"))
+    scenario2.add_step(create_passed_step("passed step"))
+    scenario2.add_step(create_passed_step("passed step"))
+
+    scenario3 = BDDScenario("Skipped scenario 3")
+    scenario3.add_step(create_skipped_step("skipped step"))
+    scenario3.add_step(create_passed_step("passed step"))
+    scenario3.add_step(create_passed_step("passed step"))
+
+    scenario4 = BDDScenario("Passed scenario 4")
+    scenario4.add_step(create_passed_step("passed step"))
+    scenario4.add_step(create_passed_step("passed step"))
+    scenario4.add_step(create_passed_step("passed step"))
+
+    feature.add_scenario(scenario1)
+    feature.add_scenario(scenario2)
+    feature.add_scenario(scenario3)
+    feature.add_scenario(scenario4)
+    builder.add_feature(feature)
+
+    builder.build()
