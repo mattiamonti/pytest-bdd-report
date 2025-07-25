@@ -9,17 +9,19 @@ Feature: Check test file paths
     When I create the report
     And I open the report
 
+  @interaction
   Scenario: Open test file paths
     When I click on the test file paths button
     Then the test file paths should be visible
 
+  @interaction
   Scenario: Close test file paths
     When I click on the test file paths button
     Then the test file paths should be visible
     When I click on the test file paths button
     Then the test file paths should be hidden
 
-  @current
+  @visual @smoke
   Scenario: Test file paths should contain all test files
     When I click on the test file paths button
     Then the test file paths should be visible

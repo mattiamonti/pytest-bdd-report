@@ -1,6 +1,5 @@
 from playwright.sync_api import Page, Locator, expect
 import pytest
-from tests.bdd.elements.scenario_pom import ScenarioPOM
 from tests.bdd.utils.duration import get_duration
 
 
