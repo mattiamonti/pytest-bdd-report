@@ -147,7 +147,7 @@ def check_passed(report: ReportPOM, expected: int, type: str):
             assert report.get_passed_scenarios().count() == expected
 
 @given("a report with multiple features and all type of scenarios inside")
-def report_multiple_feature_all_scenario(builder):
+def report_multiple_feature_all_scenario(builder, cleanup_bdd_generated):
     """
     Generate a report with the following names:
     - Feature all scenarios: with passed, failed, skipped scenarios
