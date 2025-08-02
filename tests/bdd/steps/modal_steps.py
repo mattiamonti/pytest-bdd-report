@@ -2,6 +2,7 @@ from pytest_bdd import when, then, parsers
 from playwright.sync_api import Page, Locator, expect
 import pytest
 from tests.bdd.elements.failed_scenarios_modal import FailedScenariosModalPOM
+from tests.bdd.elements.feature_pom import FeaturePOM
 
 
 @pytest.fixture
@@ -12,6 +13,12 @@ def failed_scenarios_modal(page: Page):
 @when("I open the failed scenarios modal")
 def open_modal(failed_scenarios_modal: FailedScenariosModalPOM):
     failed_scenarios_modal.open()
+
+@when(parsers.cfparse("I open the failed scenarios modal for the feature '{name}'"))
+def open_modal_for_feature(page: Page, name: str):
+    feature = FeaturePOM(page, name)
+    modal = FailedScenariosModalPOM(feature.get())
+    modal.open()
 
 
 @when("I close the modal")
