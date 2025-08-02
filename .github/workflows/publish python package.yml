@@ -11,6 +11,10 @@ on:
         options:
           - pypi
           - testpypi
+      branch:
+        description: 'Branch to publish from'
+        required: true
+        default: 'main'
 
 jobs:
   build-and-publish:
@@ -18,8 +22,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout selected branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
