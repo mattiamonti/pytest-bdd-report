@@ -14,6 +14,7 @@ def failed_scenarios_modal(page: Page):
 def open_modal(failed_scenarios_modal: FailedScenariosModalPOM):
     failed_scenarios_modal.open()
 
+
 @when(parsers.cfparse("I open the failed scenarios modal for the feature '{name}'"))
 def open_modal_for_feature(page: Page, name: str):
     feature = FeaturePOM(page, name)

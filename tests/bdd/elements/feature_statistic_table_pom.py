@@ -20,19 +20,32 @@ class FeatureStatisticTablePOM:
         return self.row
 
     def get_column(self, column_name: str) -> Locator:
-        assert column_name in ["Feature", "Total", "Passed", "Failed", "Skipped", "Success Rate", "Duration"]
+        assert column_name in [
+            "Feature",
+            "Total",
+            "Passed",
+            "Failed",
+            "Skipped",
+            "Success Rate",
+            "Duration",
+        ]
 
         match column_name:
-            case "Feature": return self.row.locator(self._feature_link)
-            case "Total": return self.row.locator(self._total)
-            case "Passed": return self.row.locator(self._passed)
-            case "Failed": return self.row.locator(self._failed)
-            case "Skipped": return self.row.locator(self._skipped)
-            case "Success Rate": return self.row.locator(self._success_rate)
-            case "Duration": return self.row.locator(self._duration)
+            case "Feature":
+                return self.row.locator(self._feature_link)
+            case "Total":
+                return self.row.locator(self._total)
+            case "Passed":
+                return self.row.locator(self._passed)
+            case "Failed":
+                return self.row.locator(self._failed)
+            case "Skipped":
+                return self.row.locator(self._skipped)
+            case "Success Rate":
+                return self.row.locator(self._success_rate)
+            case "Duration":
+                return self.row.locator(self._duration)
 
     def get_column_duration(self) -> float:
         duration = self.get_column("Duration")
         return _extract_duration_from_string(duration.inner_text())
-        
-        
