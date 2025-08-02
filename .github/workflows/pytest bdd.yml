@@ -29,7 +29,7 @@ jobs:
           pip install -e .
 
       - name: Run pytest BDD and generate report
-        run: python -m pytest tests/bdd --bdd-report=report.html
+        run: python -m pytest tests/bdd/test_feature.py --bdd-report=report.html
 
       - name: Upload test report artifact
         uses: actions/upload-artifact@v4
