@@ -2,16 +2,17 @@ from pytest_bdd import scenario, given, when, then, parsers
 import pytest
 
 
-@scenario('../sample_features/calculator.feature', 'Sum of a number')
+@scenario("../sample_features/calculator.feature", "Sum of a number")
 def test_sum():
     pass
 
 
-@scenario('../sample_features/calculator.feature', 'Sum of two numbers')
+@scenario("../sample_features/calculator.feature", "Sum of two numbers")
 def test_sum_2():
     pass
 
-@scenario('../sample_features/calculator.feature', 'Sum of negative numbers')
+
+@scenario("../sample_features/calculator.feature", "Sum of negative numbers")
 def test_sum_3():
     pass
 
@@ -23,7 +24,7 @@ def i_have_a_calculator():
     return calculator
 
 
-@when(parsers.cfparse('I enter the number {number} into the calculator'))
+@when(parsers.cfparse("I enter the number {number} into the calculator"))
 def enter_number(i_have_a_calculator, number):
     i_have_a_calculator.enter_number(number)
 

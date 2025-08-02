@@ -1,17 +1,23 @@
-<div id="filters"
-    style="display: flex; gap: 1rem; background-color: white; padding: 1rem 2rem; border-radius: 0.625rem;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
-    <div style="display: flex; align-items: center; gap: 0.25rem">
-        <input type="checkbox" id="show-passed" checked="true" onclick="showTest(this.checked, 'passed')">
-        <label for="show-passed">Show passed tests</label>
-    </div>
+{% import './components/icon.html' as icons %}
+<div id="filters" class="flex-between container chip-container">
+    <input type="checkbox" id="show-passed" class="chip-input" checked onchange="toggleChip(this)">
+    <label for="show-passed" class="chip passed" title="Show / hide passed scenarios">
+        <span class="chip-icon icon-on">{{ icons.circle_full() }}</span>
+        <span class="chip-icon icon-off">{{ icons.circle() }}</span>
+        <span class="chip-label">Passed</span>
+    </label>
 
-    <div style="display: flex; align-items: center; gap: 0.25rem">
-        <input type="checkbox" id="show-failed" checked="true" onclick="showTest(this.checked, 'failed')">
-        <label for="show-failed">Show failed tests</label>
-    </div>
+    <input type="checkbox" id="show-skipped" class="chip-input" checked onchange="toggleChip(this)">
+    <label for="show-skipped" class="chip skipped" title="Show / hide skipped scenarios">
+        <span class="chip-icon icon-on">{{ icons.circle_full() }}</span>
+        <span class="chip-icon icon-off">{{ icons.circle() }}</span>
+        <span class="chip-label">Skipped</span>
+    </label>
 
-    <div style="display: flex; align-items: center; gap: 0.25rem">
-        <input type="checkbox" id="show-skipped" checked="true" onclick="showTest(this.checked, 'skipped')">
-        <label for="show-skipped">Show skipped tests</label>
-    </div>
+    <input type="checkbox" id="show-failed" class="chip-input" checked onchange="toggleChip(this)">
+    <label for="show-failed" class="chip failed" title="Show / hide failed scenarios">
+        <span class="chip-icon icon-on">{{ icons.circle_full() }}</span>
+        <span class="chip-icon icon-off">{{ icons.circle() }}</span>
+        <span class="chip-label">Failed</span>
+    </label>
 </div>

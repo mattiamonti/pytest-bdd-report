@@ -3,20 +3,22 @@ import pytest
 import time
 
 
-@scenario('../sample_features/controllo.feature', 'Startup')
+@scenario("../sample_features/controllo.feature", "Startup")
 def test_accensione():
     pass
 
 
 @pytest.mark.skip(reason="no way of currently testing this")
-@scenario('../sample_features/controllo.feature', 'Shutdown')
+@scenario("../sample_features/controllo.feature", "Shutdown")
 def test_spegnimento():
     pass
 
+
 @pytest.mark.skip(reason="no way of currently testing this")
-@scenario('../sample_features/controllo.feature', 'Activation')
+@scenario("../sample_features/controllo.feature", "Activation")
 def test_attivazione():
     pass
+
 
 @pytest.fixture
 @given("I need a calculator")
@@ -39,6 +41,7 @@ def result_should_be(i_need_a_calculator):
 @given("I have a calculator")
 def i_have_a_calculator():
     return True
+
 
 @when("I press the off button")
 def press_off():

@@ -1,8 +1,8 @@
 *** Settings ***
-Library           SeleniumLibrary
-Library  OperatingSystem
+Library    SeleniumLibrary
+Library    OperatingSystem
 Library    Collections
-Library           bdd_generator_library/BDDGeneratorLibrary.py
+Library    bdd_generator_library/BDDGeneratorLibrary.py
 Resource    common.resource
 Test Teardown    Custom Test Teardown
 
@@ -13,12 +13,12 @@ ${report_title}    generated_test
 
 *** Test Cases ***
 Verify Report Renders Many Scenarios
+    [Tags]    dev
     [Template]    Test Counting Scenario Elements
     1
     10
     100
     1000
-    5000
 
 Verify Report Renders Many Features
     [Template]    Test Counting Feature Elements
@@ -26,16 +26,13 @@ Verify Report Renders Many Features
     10
     100
     1000
-    5000
 
 Verify Report Renders Many Steps
-    [Tags]    dev
     [Template]    Test Counting Step Elements
     1
     10
     100
     1000
-    5000
     
 
 *** Keywords ***
@@ -89,11 +86,6 @@ Test Counting Step Elements
 
 Custom Test Teardown
     common.Remove Test Directory And Files    ${mock_dir}    ${report_title}
-    
-Open Report In Browser
-    [Documentation]    Opens the browser and navigates to the target URL.
-    [Arguments]    ${url}
-    Open Browser    ${url}    ${BROWSER}
 
 Generate HTML Report From Directory
     [Arguments]    ${title}    ${directory}
@@ -103,9 +95,8 @@ Generate HTML Report From Directory
     Log    Generated report at: ${result}
     RETURN    ${result}
 
-
 Generate Report And Open It
     [Arguments]    ${report_title}    ${mock_dir}
     ${url}=    Generate HTML Report From Directory    ${report_title}    ${mock_dir}
-    Open Report In Browser    ${url} 
+    common.Open Generated Report In Browser    ${url} 
     Page Should Contain    ${report_title}

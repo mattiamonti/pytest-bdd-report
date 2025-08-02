@@ -1,6 +1,5 @@
-<div class="step-container"
-    style="display: flex; justify-content: space-between; align-self: stretch; margin-left: 1.5rem;">
-    <div style="display: flex; align-items:center; gap: 0.25rem; margin: 0; padding: 0; ">
+<div class="step-container">
+    <div class="flex-center" data-testid="step-{{status}}">
         {% import './components/icon.html' as icon %}
         {% if status == "passed" %}
         {{icon.pass()}}
@@ -9,15 +8,10 @@
         {% else %}
         {{icon.skip()}}
         {% endif %}
-        <p style="display: inline; margin: 0;">
+        <p class="no-margin" style="display: inline;">
             <span class="keyword" style="font-weight: 500;">{{keyword}}</span>: {{name}}
         </p>
     </div>
-    <p style="display: inline; margin: 0;">
-        {% if (duration/1_000_000) > 1 %}
-        {{(duration/1_000_000_000)|round(3)}}s
-        {% else %}
-        {{(duration/1_000_000)|round(3)}}ms
-        {%endif%}
-    </p>
+    {% import './components/duration.html' as execution %}
+    {{execution.step(duration)}}
 </div>

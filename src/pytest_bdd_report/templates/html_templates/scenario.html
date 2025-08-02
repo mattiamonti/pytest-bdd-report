@@ -1,33 +1,27 @@
-<div style="display: flex; font-family: 'Roboto', sans-serif;;
-align-items: center;
-gap: 0.5rem;
-align-self: stretch;" class="{{status}}-scenario searchable" id="{{name}}">
+<div class="{{status}}-scenario scenario-container" id="{{name}}">
     {% if status == "passed"%}
-    <div
-        style="display: flex;width: auto;padding: 1rem;flex-direction: column;align-items: flex-start;gap: 0.5rem;flex: 1; border-radius: 0.625rem;border: 1.5px solid #0D6832;background: #D6F0E0;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
+    <div class="scenario scenario-passed">
         {% elif status == "skipped"%}
-        <div
-            style="display: flex;width: auto;padding: 1rem;flex-direction: column;align-items: flex-start;gap: 0.5rem;flex: 1; border-radius: 0.625rem;border: 1.5px solid #EDB527;background: #FFF8E7;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
+        <div class="scenario scenario-skipped">
             {% elif status == "failed"%}
-            <div
-                style="display: flex; width: auto; padding: 1rem; flex-direction: column; align-items: flex-start;gap: 0.5rem; flex: 1; border-radius: 0.625rem;border: 1.5px solid #AF233A;background: #F9E1E5;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);">
+            <div class="scenario scenario-failed">
                 {%endif%}
 
-                <div style="display: flex; justify-content: space-between; width: 100%;">
+                <div class="flex-between" style="width: 100%;">
                     <div>
-                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <div class="flex-center">
                             {% import './components/icon.html' as icon %}
                             {% if status == "passed" %}
-                            {{icon.pass("1.17rem","1.17rem")}}
+                            {{icon.pass('1.17rem','1.17rem')}}
                             {% elif status == "failed" %}
-                            {{icon.fail(20,21)}}
+                            {{icon.fail('1.17rem','1.17rem')}}
                             {% else %}
-                            {{icon.skip(20,21)}}
+                            {{icon.skip('1.17rem','1.17rem')}}
                             {% endif %}
-                            <h3 style="margin: 0;font-family: Roboto;font-style: normal;font-weight: 500;">
+                            <h3 class="no-margin bold">
                                 Scenario: {{name}}
                                 {% if parameters != "" %}
-                                <span style="font-weight: 400; margin: 0; margin-left: 1rem;">[ {{parameters}} ]</span>
+                                <span class="semi-bold" style="margin-left: 1rem;">[ {{parameters}} ]</span>
                                 {% endif %}
                             </h3>
                         </div>
@@ -38,35 +32,21 @@ align-self: stretch;" class="{{status}}-scenario searchable" id="{{name}}">
                         <p style="margin: 0">Tags: {{tags}}</p>
                         {%endif%}
                     </div>
-                    <p
-                        style="color: #1a1a1a;display: inline;margin: 0;font-family: Roboto;font-size: 1rem;font-style: normal;font-weight: 400;line-height: normal;">
-                        {% if duration > 1 %}
-                        Executed in {{duration|round(3)}}s
-                        {% else %}
-                        Executed in {{(duration*1000)|round(3)}}ms
-                        {%endif%}
-                    </p>
+                    {% import './components/duration.html' as execution %}
+                    {{execution.scenario(duration, "Executed in")}}
                 </div>
-                <div
-                    style="flex-direction: column; display: flex; width: 100%; align-items: flex-start; gap: 0.5rem; margin-top: 0.5rem;">
+                <div class="flex-column" style="width: 100%; align-items: flex-start; gap: 0.5rem; margin-top: 0.5rem;">
                     {{steps|safe}}
                 </div>
                 {% if status == "failed" %}
-                <button
-                    onclick="showhide(this, this.nextElementSibling.id, 'Close error message', 'Open error message')"
-                    style="display: flex; align-self: flex-start; margin-top: 0.5rem; background-color: transparent;border: none; cursor: pointer; transform: rotate(-90deg);"
-                    title="Open error message">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 15 8" fill="none">
-                        <path d="M0 0.5L7.5 8L15 0.5H0Z" fill="#AF233A" />
-                    </svg>
-                </button>
-                <!--Collapsable error message and log-->
-                <div id="message-{{name}}" style="display: none; font-family: monospace;">
-                    <p style="white-space: pre-wrap;">{{error_message}}</p>
-                </div>
+                <details style="margin-top: 0.5rem;">
+                    <summary style="cursor: pointer; font-size: 1.25rem;color: var(--failed-fg);"><span
+                            class="primary-text" style="color: inherit;">Error
+                            message</span></summary>
+                    <div id="message-{{name}}" class="monospace">
+                        <p style="white-space: pre-wrap; font-size: small;">{{error_message}}</p>
+                    </div>
+                </details>
                 {%endif%}
-
-
-
             </div>
         </div>

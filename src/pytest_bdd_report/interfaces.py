@@ -18,13 +18,11 @@ class ISummary(Protocol):
 class ILoader(Protocol):
     path: str  # For type checking, indicating implementing classes should have this attribute
 
-    def load(self) -> list[dict]:
-        ...
+    def load(self) -> list[dict]: ...
 
 
 class IReportBuilder(Protocol):
-    def set_features(self, features: list):
-        ...
+    def set_features(self, features: list): ...
 
     def build(self) -> IReport:
         """

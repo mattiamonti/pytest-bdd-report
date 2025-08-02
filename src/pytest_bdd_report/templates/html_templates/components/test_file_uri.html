@@ -1,19 +1,17 @@
 <div>
-    <div style="display: flex; gap: 0rem; align-items: center; margin-top: 0.5rem;">
-        <button onclick="showhide(this, 'test-file-uri', 'Close test file list', 'Open test file list')"
-            style="background-color: transparent;border: none; cursor: pointer; transform: rotate(-90deg);"
-            title="Open test file list">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 15 8" fill="none">
-                <path d="M0 0.5L7.5 8L15 0.5H0Z" fill="#1a1a1a" />
-            </svg>
-        </button>
-        <p style="margin: 0;">Test file list</p>
-    </div>
-    <div id="test-file-uri" style="display: none;">
-        <ul style="margin: 0.25rem 0;">
+    <details id="test-file-uri">
+        <summary style="cursor: pointer; font-size: 1.25rem;"><span class="primary-text">Test file paths</span>
+        </summary>
+        {% import './components/icon.html' as icons %}
+        <div class="flex-column" style="gap: 0.5rem; margin-left: 1rem; margin-top: 0.5rem;">
             {% for test in test_file_uri %}
-            <li style="color: #535353;">{{test}}</li>
+            <div class="flex-center" style="width: fit-content;">
+                <span class="no-margin" style="display: inline-flex;">
+                    {{icons.file("1rem", "1rem")}}
+                </span>
+                <p class="secondary-text no-margin" style="line-height: 1;">{{test}}</p>
+            </div>
             {% endfor %}
-        </ul>
-    </div>
+        </div>
+    </details>
 </div>

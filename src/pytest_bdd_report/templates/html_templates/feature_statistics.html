@@ -1,31 +1,31 @@
-<tr>
+<tr data-testid="feature-table-row-for-{{name}}">
     {% import './components/icon.html' as icon %}
-    {% if failed != 0 %}
-    <td><a style="color: inherit; display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
-            {{icon.fail()}}
-            {{name}}
-        </a></td>
-    {% elif skipped != 0 %}
-    <td><a style="color: inherit; display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
-            {{icon.skip()}}
-            {{name}}
-        </a></td>
-    {% else %}
-    <td><a style="color: inherit;display: flex; align-items: center; gap: 0.25rem;" href="#{{name}}">
-            {{icon.pass()}}
-            {{name}}
-        </a></td>
-    {%endif%}
+    <td>
+        <a class="flex-center feature-table-link" href="#{{ name }}">
+            <div style="flex-shrink: 0; margin-top: 0.2rem;">
+                {% if failed != 0 %}
+                {{ icon.fail() }}
+                {% elif skipped != 0 %}
+                {{ icon.skip() }}
+                {% else %}
+                {{ icon.pass() }}
+                {% endif %}
+            </div>
+            {{ name }}
+        </a>
+    </td>
 
-    <td style="text-align:center;">{{total}}</td>
-    <td style="text-align:center;">{{passed}}</td>
-    <td style="text-align:center;">{{failed}}</td>
-    <td style="text-align:center;">{{skipped}}</td>
-    <td style="text-align:center;">{{rate}}%</td>
+    <td class="feature-table-data">{{ total }}</td>
+    <td class="feature-table-data passed">{{ passed }}</td>
+    <td class="feature-table-data failed">{{ failed }}</td>
+    <td class="feature-table-data skipped">{{ skipped }}</td>
+    <td class="feature-table-data">{{ rate }}%</td>
 
-    {% if duration > 0.5 %}
-    <td style="text-align:center;">{{duration|round(3)}}s</td>
-    {% else %}
-    <td style="text-align:center;">{{(duration*1000)|round(3)}}ms</td>
-    {%endif%}
+    <td class="feature-table-data">
+        {% if duration > 0.5 %}
+        {{ duration|round(3) }}s
+        {% else %}
+        {{ (duration * 1000)|round(3) }}ms
+        {% endif %}
+    </td>
 </tr>

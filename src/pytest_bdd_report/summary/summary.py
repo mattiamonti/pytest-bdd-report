@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import Optional
 from pytest_bdd_report.interfaces import ISummary
 
+
 @dataclass
 class Summary(ISummary):
     report_title: str = ""

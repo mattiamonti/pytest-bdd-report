@@ -1,9 +1,8 @@
-<div id="{{name}}" class="searchable"
-    style="display: flex; width: 72rem; flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%;">
-    <div style="display: flex; width: 100%; justify-content: space-between; align-items:first baseline;">
+<div id="{{name}}" class="feature-container">
+    <div class="feature">
         <div>
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <div>
+            <div class="flex-center">
+                <div style="flex-shrink: 0;">
                     {% import './components/badge.html' as badge %}
                     {% if passed != 0 %}
                     {{badge.passed(passed)}}
@@ -17,37 +16,36 @@
 
                 </div>
 
-                <h2 style="margin: 0; display: inline-block; font-weight: 400; font-size: 1.5 rem;">
+                <h2 class="no-margin">
                     <span>Feature</span>: {{name}}
                 </h2>
             </div>
 
-            <p style="margin: 0; color: #535353;">{{id}}</p>
+            {% import './components/icon.html' as icons %}
+            <p class="secondary-text no-margin flex-center">{{icons.folder('1rem', '1rem')}} {{id}}</p>
 
             {% if description != "" %}
-            <p style="margin: 0.5rem 0 0 0; color: #535353;">Description: {{description}}</p>
+            <p class="secondary-text" style="margin: 0.5rem 0 0 0;">Description: {{description}}</p>
             {%endif%}
 
             {% if tags != "" %}
-            <p style="margin: 0.5rem 0 0 0; color: #535353;">Tags: {{tags}}</p>
+            <p class="secondary-text" style="margin: 0.5rem 0 0 0;">Tags: {{tags}}</p>
             {%endif%}
         </div>
 
-        <p style="color: #535353;
-        font-family: Roboto;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;">
-            {% if duration > 1 %}
-            Executed in {{duration|round(3)}}s
-            {% else %}
-            Executed in {{(duration*1000)|round(3)}}ms
-            {%endif%}
-        </p>
+        <div class="flex-column">
+            {% import './components/duration.html' as execution %}
+            {{execution.feature(duration, "Executed in")}}
+
+            {% if failed != 0 %}
+            {% import './components/failed_scenarios_link.html' as fsl %}
+            {{fsl.failedScenariosLink(failed_scenarios_names)}}
+            {% endif %}
+        </div>
     </div>
 
-    <div style="width: 100%; display: flex; gap: 1rem; flex-direction: column;">
+
+    <div class="flex-column" style="width: 100%; gap: 1rem;">
         {{scenarios|safe}}
     </div>
 </div>

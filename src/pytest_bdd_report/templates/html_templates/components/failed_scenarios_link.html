@@ -1,0 +1,25 @@
+{% macro failedScenariosLink(scenarios) -%}
+{% import './components/icon.html' as icon %}
+<button onclick="(() => {this.nextElementSibling.showModal()})()" class="button failed-scenarios-link">
+    Failed scenario links {{icon.open('1rem','1rem')}}
+</button>
+<dialog class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title bold">Failed scenarios quick links</h2>
+            <button class="modal-close" onclick="this.closest('dialog').close()">
+                {{ icon.close("1.25rem", "1.25rem") }}
+            </button>
+        </div>
+
+        <div class="modal-body">
+            {% for scenario in scenarios %}
+            <a href="#{{scenario}}" onclick="this.closest('dialog').close()" class="modal-link">
+                {{ icon.fail() }}
+                <span>{{ scenario }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</dialog>
+{%- endmacro %}
