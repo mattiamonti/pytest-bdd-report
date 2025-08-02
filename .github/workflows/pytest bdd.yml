@@ -1,0 +1,36 @@
+name: BDD Tests and Report
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run pytest BDD and generate report
+        run: pytest tests/bdd --bdd-report=report.html
+
+      - name: Upload test report artifact
+        uses: actions/upload-artifact@v4
+        if: success() || failure()
+        with:
+          name: bdd-report
+          path: report.html
