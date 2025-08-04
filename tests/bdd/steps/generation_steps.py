@@ -3,6 +3,7 @@ from playwright.sync_api import Page, expect
 import pytest
 import os
 from pathlib import Path
+import time
 from tests.bdd.generator.bdd_generator import (
     BDDTestBuilder,
     BDDFeature,
@@ -118,6 +119,7 @@ def build_feature(builder):
 def generate_report(builder):
     test_dir = builder.output_dir
     os.system(f"pytest --bdd-report=generated_report.html {test_dir}/")
+    time.sleep(0.5) 
 
 
 @when("I open the report")
