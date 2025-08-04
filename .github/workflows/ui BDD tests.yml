@@ -1,9 +1,8 @@
-name: BDD Tests and Report
+name: UI BDD Tests with Report
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
