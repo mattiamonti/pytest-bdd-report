@@ -3,7 +3,7 @@
 {{ (seconds / 3600) | round(3) }}h
 {% elif seconds > 60 %}
 {{ (seconds / 60) | round(3) }}m
-{% elif seconds > 1 %}
+{% elif seconds > 0.5 %}
 {{ seconds | round(3) }}s
 {% else %}
 {{ (seconds * 1000) | round(3) }}ms
