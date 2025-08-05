@@ -12,7 +12,7 @@
 
 {% macro format_nanoseconds(nanoseconds) -%}
 {% set seconds = nanoseconds / 1_000_000_000 %}
-{% if seconds > 1 %}
+{% if seconds > 0.5 %}
 {{ seconds | round(3) }}s
 {% else %}
 {{ (nanoseconds / 1_000_000) | round(3) }}ms
