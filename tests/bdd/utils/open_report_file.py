@@ -3,6 +3,7 @@ from playwright.sync_api import Page
 import time
 import pytest
 
+
 def open_report_file_with_retry(page: Page, uri: str, retries: int = 3) -> None:
     report_url = uri
     if "file://" not in report_url:
