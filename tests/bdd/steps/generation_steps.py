@@ -122,7 +122,9 @@ def generate_report(builder):
 
 @when("I open the report")
 def open_the_report(page: Page):
-    page.goto("file://" + str(Path("generated_report.html").resolve()))
+    uri = str(Path("generated_report.html").resolve())
+    assert os.path.exists(uri), f"Report file not found: {uri}"
+    page.goto("file://" + uri)
 
 
 @then(parsers.parse("the report should have {expected:d} feature"))
