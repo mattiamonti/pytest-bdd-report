@@ -1,41 +1,51 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  OperatingSystem
+Library  String
+Resource          common.resource
+Resource    resources/scenario.resource
+Test Setup        common.Open Report In Browser
+Test Teardown     common.Remove HTML Report   
 
 *** Variables ***
 ${BROWSER}    headlesschrome    #chrome
 
 *** Test Cases ***
-Generate Report
-    ${path}=    Generate HTML Report    RFTest
-    VAR  ${URL}    ${path}   scope=SUITE
-
 Failed scenario color
-    Open Browser  ${URL}  ${BROWSER}
-    ${feature}=    Set Variable     xpath=//*[@id="Sum of two numbers"]/div
-    Element Should Contain  ${feature}   Scenario: Sum of two numbers
-    ${style_result}=     Get Element Attribute   ${feature}     style
-    Should Contain    ${style_result}    rgb(249, 225, 229)
+    ${scenario}=    scenario.Get Scenario    Sum of two numbers
+    Element Style Should Be    ${scenario}    background-color   ${failed_scenario_rgb_color}
 
 Skipped scenario color
-    Open Browser  ${URL}  ${BROWSER}
-    ${feature}=    Set Variable     xpath=//*[@id="Shutdown"]/div
-    Element Should Contain  ${feature}   Scenario: Shutdown
-    ${style_result}=     Get Element Attribute   ${feature}     style
-    Should Contain    ${style_result}    rgb(255, 248, 231)
+    ${scenario}=    scenario.Get Scenario    Shutdown
+    Element Style Should Be    ${scenario}    background-color   ${skipped_scenario_rgb_color}
 
 Passed scenario color
-    Open Browser  ${URL}  ${BROWSER}
-    ${feature}=    Set Variable     xpath=//*[@id="Eating cucumbers"]/div
-    Element Should Contain  ${feature}   Scenario: Eating cucumbers
-    ${style_result}=     Get Element Attribute   ${feature}     style
-    Should Contain    ${style_result}    rgb(214, 240, 224)
+    ${scenario}=    scenario.Get Scenario    Eating cucumbers
+    Element Style Should Be    ${scenario}    background-color   ${passed_scenario_rgb_color}
 
-*** Keywords ***
-Generate HTML Report
-    [Arguments]     ${title}
-    Run    pytest --bdd-report="${title}" sample_tests/sample_test_calculator.py sample_tests/sample_test_controllo.py sample_tests/sample_test_outline.py
-    File Should Exist  ./${title}.html
-    ${result}=  Set Variable    file://${EXECDIR}/${title}.html
-    Log     ${result}
-    RETURN    ${result}
+Open failed scenario details
+    ${scenario}=    scenario.Get Scenario    Sum of two numbers
+    scenario.Toggle Error Message    Sum of two numbers
+    Element Should Contain  ${scenario}   AssertionError
+
+Close failed scenario details
+    ${scenario}=    scenario.Get Scenario    Sum of two numbers
+    scenario.Toggle Error Message    Sum of two numbers
+    Element Should Contain  ${scenario}   AssertionError
+    scenario.Toggle Error Message    Sum of two numbers
+    Element Should Not Contain  ${scenario}   AssertionError
+
+Check Passed Scenario Duration
+    ${duration}=    scenario.Get Scenario Duration    Sum of a number
+    ${zero}=  Convert To Number     0.0
+    Should Not Be Equal As Numbers   ${duration}    ${zero}
+
+Check Failed Scenario Duration
+    ${duration}=    scenario.Get Scenario Duration    Sum of two numbers
+    ${zero}=  Convert To Number     0.0
+    Should Not Be Equal As Numbers   ${duration}    ${zero}
+
+Check Skipped Scenario Duration
+    ${duration}=    scenario.Get Scenario Duration    Shutdown
+    ${zero}=  Convert To Number     0.0
+    Should Be Equal As Numbers   ${duration}    ${zero}

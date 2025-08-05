@@ -27,3 +27,59 @@
         fill="#EDB527" />
 </svg>
 {%- endmacro %}
+
+{% macro open(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path
+        d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72"
+        fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+</svg>
+{%- endmacro %}
+{% macro arrowUp(width=14, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"
+        d="M112 244l144-144 144 144M256 120v292" />
+</svg>
+{%- endmacro %}
+{% macro close(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+        d="M368 368L144 144M368 144L144 368" />
+</svg>
+{%- endmacro %}
+{% macro check(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+        d="M416 128L192 384l-96-96" />
+</svg>
+{%- endmacro %}
+
+{% macro circle(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+    <circle cx="256" cy="256" r="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+        stroke-width="32" />
+</svg>
+{%- endmacro %}
+
+{% macro circle_full(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+    <path d="M256 464c-114.69 0-208-93.31-208-208S141.31 48 256 48s208 93.31 208 208-93.31 208-208 208z" />
+</svg>
+{%- endmacro %}
+
+{% macro folder(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+    <path
+        d="M440 432H72a40 40 0 01-40-40V120a40 40 0 0140-40h75.89a40 40 0 0122.19 6.72l27.84 18.56a40 40 0 0022.19 6.72H440a40 40 0 0140 40v240a40 40 0 01-40 40zM32 192h448"
+        fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+</svg>
+{%- endmacro %}
+
+{% macro file(width=15, height=15) -%}
+<svg width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+    <path
+        d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z"
+        fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
+    <path d="M256 56v120a32 32 0 0032 32h120" fill="none" stroke="currentColor" stroke-linecap="round"
+        stroke-linejoin="round" stroke-width="32" />
+    {%- endmacro %}

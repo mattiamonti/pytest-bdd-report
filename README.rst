@@ -2,9 +2,11 @@
 pytest-bdd-report
 =================
 
-|python| |pypi| |formatting| |tests| |ui_tests|
+|python| |pypi| |formatting| 
 
-|mstats| |total|
+|tests| |bdd_tests| |ui_tests|
+
+|total|
 
 .. |total| image:: https://static.pepy.tech/badge/pytest-bdd-report
     :target: https://pepy.tech/project/pytest-bdd-report
@@ -18,17 +20,17 @@ pytest-bdd-report
     :target: https://pypi.org/project/pytest-bdd-report
     :alt: Python versions
 
-.. |formatting| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=GitHub%20actions&label=Formatting
+.. |formatting| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/black.yml?logo=GitHub%20actions&label=Formatting
     :alt: GitHub Workflow Status (with event)
 
-.. |tests| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/automated%20tests.yml?logo=pytest&label=Tests
+.. |tests| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/unit%20tests.yml?logo=pytest&label=Unit%20Tests
+    :alt: GitHub Workflow Status (with event)
+
+.. |bdd_tests| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/ui%20BDD%20tests.yml?logo=pytest&label=BDD%20UI%20Tests
     :alt: GitHub Workflow Status (with event)
 
 .. |ui_tests| image:: https://img.shields.io/github/actions/workflow/status/mattiamonti/pytest-bdd-report/ui%20automated%20tests.yml?logo=robotframework&label=UI%20Tests
     :alt: GitHub Workflow Status (with event)
-
-.. |mstats| image:: https://img.shields.io/pypi/dm/pytest-bdd-report
-   :alt: PyPI - Downloads
 
 .. |dstats| image:: https://img.shields.io/pypi/dd/pytest-bdd-report
    :alt: PyPI - Downloads
@@ -108,9 +110,15 @@ To run tests:
 
 ::
 
-    $ python -m pytest
+    $ python -m pytest --ignore=tests/bdd/
 
-5. Run the UI tests with Robot Framework:
+5. Run the BDD UI tests with pytest-bdd:
+
+::
+
+    $ python -m pytest tests/bdd
+
+6. To be deprecated - Run the UI tests with Robot Framework:
 
 ::
 

@@ -46,8 +46,12 @@ class SummaryGenerator:
         @param report:
         @return:
         """
-        failed_features = [feature for feature in report.features if feature.failed_tests > 0]
-        sorted_features = sorted(failed_features, key=lambda x: x.failed_tests, reverse=True)
+        failed_features = [
+            feature for feature in report.features if feature.failed_tests > 0
+        ]
+        sorted_features = sorted(
+            failed_features, key=lambda x: x.failed_tests, reverse=True
+        )
         self.summary.top_feature_fail = sorted_features[:5]
 
     def _get_total_duration(self, report: IReport) -> None:
@@ -56,7 +60,9 @@ class SummaryGenerator:
         @param report:
         @return:
         """
-        self.summary.total_duration = sum(feature.duration for feature in report.features)
+        self.summary.total_duration = sum(
+            feature.duration for feature in report.features
+        )
 
     def _calculate_percentage_test_passed(self) -> None:
         """

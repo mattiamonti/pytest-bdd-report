@@ -1,6 +1,10 @@
-name: Lint
+name: Check black formatting
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   lint:
@@ -9,5 +13,5 @@ jobs:
       - uses: actions/checkout@v3
       - uses: psf/black@stable
         with:
-          options: "--verbose"
+          options: "--check --diff --verbose"
           src: "."

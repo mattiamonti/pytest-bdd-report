@@ -42,7 +42,9 @@ class StepExtractor(BaseExtractor):
 class ScenarioExtractor(BaseExtractor):
     def create_item(self, data: dict) -> Scenario:
         steps = StepExtractor().extract_from(data.get("steps", []))
-        status = "failed" if any(step.status == "failed" for step in steps) else "passed"
+        status = (
+            "failed" if any(step.status == "failed" for step in steps) else "passed"
+        )
         scenario = Scenario(
             id=data["id"],
             name=data["name"],
@@ -100,10 +102,16 @@ class FeatureExtractor(BaseExtractor):
             if not lines:
                 return 0
 
-            scenario_file_names = [line.split(":")[1].strip() for line in lines if line.strip().startswith("Scenario")]
+            scenario_file_names = [
+                line.split(":")[1].strip()
+                for line in lines
+                if line.strip().startswith("Scenario")
+            ]
             scenario_names = [scenario.name for scenario in feature.scenarios]
 
-            skipped = sum(1 for name in scenario_file_names if name not in scenario_names)
+            skipped = sum(
+                1 for name in scenario_file_names if name not in scenario_names
+            )
             for name in scenario_file_names:
                 if name not in scenario_names:
                     feature.add_scenario(

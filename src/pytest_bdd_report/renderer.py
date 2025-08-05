@@ -26,7 +26,7 @@ class BaseRenderer(ABC):
 
 class StepRenderer(BaseRenderer):
     def render(self, items: list[Step], template: BaseTemplate) -> str:
-        return ''.join(template.render_template(item) for item in items)
+        return "".join(template.render_template(item) for item in items)
 
 
 class ScenarioRenderer(BaseRenderer):
@@ -34,8 +34,13 @@ class ScenarioRenderer(BaseRenderer):
         self.step_renderer = step_renderer or StepRenderer()
 
     def render(self, items: list[Scenario], template: BaseTemplate) -> str:
-        rendered_steps = [self.step_renderer.render(item.steps, StepTemplate()) for item in items]
-        return ''.join(template.render_template(item, steps) for item, steps in zip(items, rendered_steps))
+        rendered_steps = [
+            self.step_renderer.render(item.steps, StepTemplate()) for item in items
+        ]
+        return "".join(
+            template.render_template(item, steps)
+            for item, steps in zip(items, rendered_steps)
+        )
 
 
 class FeatureRenderer(BaseRenderer):
@@ -43,11 +48,16 @@ class FeatureRenderer(BaseRenderer):
         self.scenario_renderer = scenario_renderer or ScenarioRenderer()
 
     def render(self, items: list[Feature], template: BaseTemplate) -> str:
-        rendered_scenarios = [self.scenario_renderer.render(item.scenarios, ScenarioTemplate()) for item in items]
-        return ''.join(template.render_template(item, scenarios) for item, scenarios in zip(items, rendered_scenarios))
-
+        rendered_scenarios = [
+            self.scenario_renderer.render(item.scenarios, ScenarioTemplate())
+            for item in items
+        ]
+        return "".join(
+            template.render_template(item, scenarios)
+            for item, scenarios in zip(items, rendered_scenarios)
+        )
 
 
 class FeatureStatisticsRenderer(BaseRenderer):
     def render(self, items: list[Feature], template: BaseTemplate) -> str:
-        return ''.join(template.render_template(item) for item in items)
+        return "".join(template.render_template(item) for item in items)

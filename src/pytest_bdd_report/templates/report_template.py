@@ -19,7 +19,7 @@ class ReportTemplate(BaseTemplate):
         Render the report template.
         """
         return self.template.render(
-            title=data,
+            title=data.replace(".html", ""),
             date_time=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             test_file_uri=self.test_file_uri,
             file_path=self.file_path,
