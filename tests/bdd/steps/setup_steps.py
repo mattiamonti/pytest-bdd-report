@@ -1,6 +1,7 @@
 from pytest_bdd import given
 from playwright.sync_api import Page
 import pytest
+from tests.bdd.utils.open_report_file import open_report_file_with_retry
 
 
 @given("the report is open with a failed scenario")
@@ -9,7 +10,7 @@ def setup_report_with_failed_scenario(
 ):
     report_structure = {"Feature 1": {"passed": ["Passed 1"], "failed": ["Failed 2"]}}
     report_url = generate_custom_bdd_report(report_structure)
-    page.goto(report_url)
+    open_report_file_with_retry(page, report_url)
 
 
 @given("the report is open with a passed scenario")
@@ -18,7 +19,7 @@ def setup_report_with_passed_scenario(
 ):
     report_structure = {"Feature 1": {"passed": ["Passed 1"]}}
     report_url = generate_custom_bdd_report(report_structure)
-    page.goto(report_url)
+    open_report_file_with_retry(page, report_url)
 
 
 @given("the report is open with multiple failed scenarios")
@@ -33,4 +34,4 @@ def setup_report_with_multiple_failed_scenarios(
         "Feature 2": {"passed": ["Scenario 5"], "failed": []},
     }
     report_url = generate_custom_bdd_report(report_structure)
-    page.goto(report_url)
+    open_report_file_with_retry(page, report_url)

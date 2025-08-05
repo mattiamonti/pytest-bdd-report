@@ -21,11 +21,8 @@
     <td class="feature-table-data skipped">{{ skipped }}</td>
     <td class="feature-table-data">{{ rate }}%</td>
 
-    <td class="feature-table-data">
-        {% if duration > 0.5 %}
-        {{ duration|round(3) }}s
-        {% else %}
-        {{ (duration * 1000)|round(3) }}ms
-        {% endif %}
+    <td class="feature-table-data" sorttable_customkey="{{duration}}">
+        {% import './components/duration.html' as execution %}
+        {{execution.format_duration(duration)}}
     </td>
 </tr>

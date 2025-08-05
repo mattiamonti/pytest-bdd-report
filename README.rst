@@ -97,6 +97,7 @@ To run tests:
 ::
 
     $ pip install -r requirements.txt
+    $ playwright install
 
 
 3. Install the plugin locally:
@@ -117,13 +118,6 @@ To run tests:
 ::
 
     $ python -m pytest tests/bdd
-
-6. To be deprecated - Run the UI tests with Robot Framework:
-
-::
-
-    $ cd tests/ui_testing
-    $ ./execute_all_ui_tests.sh
 
 
 Contributing
