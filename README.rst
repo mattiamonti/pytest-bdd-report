@@ -97,6 +97,7 @@ To run tests:
 ::
 
     $ pip install -r requirements.txt
+    $ playwright install
 
 
 3. Install the plugin locally:
