@@ -3,6 +3,7 @@ from playwright.sync_api import Page, expect
 import pytest
 import os
 from pathlib import Path
+from tests.bdd.utils.open_report_file import open_report_file_with_retry
 from tests.bdd.generator.bdd_generator import (
     BDDTestBuilder,
     BDDFeature,
@@ -124,7 +125,7 @@ def generate_report(builder):
 def open_the_report(page: Page):
     uri = str(Path("generated_report.html").resolve())
     assert os.path.exists(uri), f"Report file not found: {uri}"
-    page.goto("file://" + uri)
+    open_report_file_with_retry(page, uri)
 
 
 @then(parsers.parse("the report should have {expected:d} feature"))
