@@ -1,4 +1,17 @@
 <style>
+    details[open] #scenario-details-button svg {
+        transform: rotate(180deg);
+    }
+
+    #scenario-details-button svg {
+        transform: rotate(90deg);
+        color: var(--secondary-text-color);
+        transform-origin: 50%;
+        scale: 1.25;
+        float: right;
+        transition: all 0.25s ease-in-out;
+    }
+
     /* === Root Variables === */
     :root {
         --primary-text-color: #1a1a1a;
