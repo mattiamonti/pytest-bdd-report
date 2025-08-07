@@ -7,7 +7,7 @@ class ScenarioPOM:
     def __init__(self, page: Page, name: str) -> None:
         self.page = page
         self.name = name
-        self._scenario = self.page.locator(f"//*[@id='{self.name}']/div")
+        self._scenario = self.page.locator(f"//*[@id='{self.name}']/details")
         self._red_background = "rgb(254, 226, 226)"
         self._green_background = "rgb(220, 252, 231)"
         self._yellow_background = "rgb(255, 251, 235)"
