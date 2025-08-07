@@ -1,7 +1,12 @@
-<div id="scenario-controls" class="flex-between">
-    <button id="expand-all-scenarios" onclick="openAllScenarios()" class="button">Expand scenarios</button>
-    <button id="collapse-all-scenarios" onclick="closeAllScenarios()" class="button" style="display: none;">Collapse
-        scenarios</button>
+{% import './components/icon.html' as icons %}
+<div id="scenario-controls" class="flex-between flex-center">
+    <button id="expand-all-scenarios" onclick="openAllScenarios()" class="button" title="Show all scenarios's steps">
+        {{ icons.eye_open('1.17rem','1.17rem') }} Expand scenarios
+    </button>
+    <button id="collapse-all-scenarios" onclick="closeAllScenarios()" class="button" style="display: none;"
+        title="Hide all scenarios's steps">
+        {{ icons.eye_close('1.17rem','1.17rem') }} Collapse scenarios
+    </button>
 </div>
 <script>
     function openAllScenarios() {
@@ -10,14 +15,14 @@
                 e.setAttribute('open', true);
             });
         document.getElementById("expand-all-scenarios").style.display = "none";
-        document.getElementById("collapse-all-scenarios").style.display = "block";
+        document.getElementById("collapse-all-scenarios").style.display = "inline-flex";
     }
     function closeAllScenarios() {
         document.body.querySelectorAll('details.scenario')
             .forEach((e) => {
                 e.removeAttribute('open');
             })
-        document.getElementById("expand-all-scenarios").style.display = "block";
+        document.getElementById("expand-all-scenarios").style.display = "inline-flex";
         document.getElementById("collapse-all-scenarios").style.display = "none";
     }
 </script>
