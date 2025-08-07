@@ -1,0 +1,23 @@
+<div id="scenario-controls" class="flex-between">
+    <button id="expand-all-scenarios" onclick="openAllScenarios()" class="button">Expand scenarios</button>
+    <button id="collapse-all-scenarios" onclick="closeAllScenarios()" class="button" style="display: none;">Collapse
+        scenarios</button>
+</div>
+<script>
+    function openAllScenarios() {
+        document.body.querySelectorAll('details.scenario')
+            .forEach((e) => {
+                e.setAttribute('open', true);
+            });
+        document.getElementById("expand-all-scenarios").style.display = "none";
+        document.getElementById("collapse-all-scenarios").style.display = "block";
+    }
+    function closeAllScenarios() {
+        document.body.querySelectorAll('details.scenario')
+            .forEach((e) => {
+                e.removeAttribute('open');
+            })
+        document.getElementById("expand-all-scenarios").style.display = "block";
+        document.getElementById("collapse-all-scenarios").style.display = "none";
+    }
+</script>
