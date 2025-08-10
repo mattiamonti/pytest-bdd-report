@@ -82,7 +82,7 @@ Feature: Check scenarios
     And I open the report
     Then the scenario 'Scenario under test' duration should be zero
 
-  @interaction @current
+  @interaction
   Scenario: Expand and collapse passed scenario
     Given a test builder with a feature named 'Feature 1'
     And a passed scenario named 'Scenario under test' for the feature 'Feature 1'
@@ -94,7 +94,7 @@ Feature: Check scenarios
     When I collapse the scenario 'Scenario under test'
     Then the steps are not visible for the scenario 'Scenario under test'
 
-  @interaction @current
+  @interaction
   Scenario: Expand and collapse failed scenario
     Given a test builder with a feature named 'Feature 1'
     And a failed scenario named 'Scenario under test' for the feature 'Feature 1'
@@ -106,3 +106,18 @@ Feature: Check scenarios
     Then the steps are not visible for the scenario 'Scenario under test'
     When I expand the scenario 'Scenario under test'
     Then the steps are visible for the scenario 'Scenario under test'
+
+  @interaction @current
+  Scenario: Expand and collapse all scenarios
+    Given a test builder with a feature named 'Feature 1'
+    And a passed scenario named 'Passed 1' for the feature 'Feature 1'
+    And a failed scenario named 'Failed 1' for the feature 'Feature 1'
+    And I build the feature
+    When I create the report
+    And I open the report
+    When I expand all the scenarios
+    Then the steps are visible for the scenario 'Passed 1'
+    Then the steps are visible for the scenario 'Failed 1'
+    When I collapse all the scenarios
+    Then the steps are not visible for the scenario 'Passed 1'
+    Then the steps are not visible for the scenario 'Failed 1'
