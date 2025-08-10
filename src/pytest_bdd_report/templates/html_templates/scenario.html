@@ -37,7 +37,8 @@
                         {% import './components/duration.html' as execution %}
                         {{execution.scenario(duration, "Executed in")}}
                         <div id="scenario-details-button">
-                            {{icon.arrowUp()}}
+                            <span id="eye-open">{{icon.eye_open()}}</span>
+                            <span id="eye-close">{{icon.eye_close()}}</span>
                         </div>
                     </div>
                 </summary>

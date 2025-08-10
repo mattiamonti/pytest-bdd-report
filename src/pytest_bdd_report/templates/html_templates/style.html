@@ -3,10 +3,23 @@
         transform: rotate(0deg);
     }
 
+    details[open] #scenario-details-button #eye-close {
+        display: block;
+    }
+
+    details[open] #scenario-details-button #eye-open {
+        display: none;
+    }
+
+    #scenario-details-button #eye-open {
+        display: block;
+    }
+
+    #scenario-details-button #eye-close {
+        display: none;
+    }
+
     #scenario-details-button svg {
-        transform: rotate(180deg);
-        color: var(--secondary-text-color);
-        transform-origin: 50%;
         scale: 1.25;
         float: right;
         transition: all 0.25s ease-in-out;
