@@ -63,3 +63,9 @@ class ScenarioPOM:
         assert step_type in ["passed", "failed"]
         steps = self.get().get_by_test_id(f"step-{step_type}")
         return steps.all()
+
+    def expand(self) -> None:
+        self.get().click()
+
+    def collapse(self) -> None:
+        self.get().locator("//summary[@id='scenario-summary']").click()

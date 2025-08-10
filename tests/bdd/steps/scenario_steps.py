@@ -64,3 +64,36 @@ def scenario_duration(page: Page, name: str):
     scenario = ScenarioPOM(page, name)
     duration = scenario.get_duration()
     assert duration == 0.0
+
+@when(parsers.parse("I expand the scenario '{name}'"))
+def scenario_duration(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.get().scroll_into_view_if_needed()
+    scenario.expand()
+
+@when(parsers.parse("I collapse the scenario '{name}'"))
+def scenario_duration(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.get().scroll_into_view_if_needed()
+    scenario.collapse()
+
+@then(parsers.parse("the steps are visible for the scenario '{name}'"))
+def scenario_duration(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.get().scroll_into_view_if_needed()
+    steps = scenario.get_steps("passed")
+    steps.extend(scenario.get_steps("failed"))
+    for step in steps:
+        expect(step).to_be_visible()
+        expect(step).to_be_in_viewport()
+        
+@then(parsers.parse("the steps are not visible for the scenario '{name}'"))
+def scenario_duration(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.get().scroll_into_view_if_needed()
+    steps = scenario.get_steps("passed")
+    steps.extend(scenario.get_steps("failed"))
+    for step in steps:
+        expect(step).not_to_be_visible()
+        expect(step).not_to_be_in_viewport()
+
