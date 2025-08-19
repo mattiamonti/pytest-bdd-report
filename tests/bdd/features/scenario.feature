@@ -107,7 +107,7 @@ Feature: Check scenarios
     When I expand the scenario 'Scenario under test'
     Then the steps are visible for the scenario 'Scenario under test'
 
-  @interaction @current
+  @interaction
   Scenario: Expand and collapse all scenarios
     Given a test builder with a feature named 'Feature 1'
     And a passed scenario named 'Passed 1' for the feature 'Feature 1'
