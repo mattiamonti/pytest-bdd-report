@@ -7,7 +7,7 @@ class ScenarioPOM:
     def __init__(self, page: Page, name: str) -> None:
         self.page = page
         self.name = name
-        self._scenario = self.page.locator(f"//*[@id='{self.name}']/div")
+        self._scenario = self.page.locator(f"//*[@id='{self.name}']/details")
         self._red_background = "rgb(254, 226, 226)"
         self._green_background = "rgb(220, 252, 231)"
         self._yellow_background = "rgb(255, 251, 235)"
@@ -63,3 +63,9 @@ class ScenarioPOM:
         assert step_type in ["passed", "failed"]
         steps = self.get().get_by_test_id(f"step-{step_type}")
         return steps.all()
+
+    def expand(self) -> None:
+        self.get().click()
+
+    def collapse(self) -> None:
+        self.get().locator("//summary[@id='scenario-summary']").click()

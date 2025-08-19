@@ -1,13 +1,14 @@
 <div class="{{status}}-scenario scenario-container" id="{{name}}">
     {% if status == "passed"%}
-    <div class="scenario scenario-passed">
+    <details class="scenario scenario-passed">
         {% elif status == "skipped"%}
-        <div class="scenario scenario-skipped">
+        <details class="scenario scenario-skipped">
             {% elif status == "failed"%}
-            <div class="scenario scenario-failed">
+            <details class="scenario scenario-failed" open>
                 {%endif%}
 
-                <div class="flex-between" style="width: 100%;">
+                <summary class="flex-between" style="width: 100%; cursor: pointer;" id="scenario-summary"
+                    title="Show / hide scenario's steps">
                     <div>
                         <div class="flex-center">
                             {% import './components/icon.html' as icon %}
@@ -29,12 +30,18 @@
                         <p style="margin-top: 0.5rem;">Description: {{description}}</p>
                         {%endif%}
                         {% if tags != "" %}
-                        <p style="margin: 0">Tags: {{tags}}</p>
+                        <p style="margin: 0; margin-top: 0.5rem;">Tags: {{tags}}</p>
                         {%endif%}
                     </div>
-                    {% import './components/duration.html' as execution %}
-                    {{execution.scenario(duration, "Executed in")}}
-                </div>
+                    <div class="flex-column" style="gap: 0.5rem;">
+                        {% import './components/duration.html' as execution %}
+                        {{execution.scenario(duration, "Executed in")}}
+                        <div id="scenario-details-button">
+                            <span id="eye-open">{{icon.eye_open()}}</span>
+                            <span id="eye-close">{{icon.eye_close()}}</span>
+                        </div>
+                    </div>
+                </summary>
                 <div class="flex-column" style="width: 100%; align-items: flex-start; gap: 0.5rem; margin-top: 0.5rem;">
                     {{steps|safe}}
                 </div>
@@ -48,5 +55,5 @@
                     </div>
                 </details>
                 {%endif%}
-            </div>
-        </div>
+            </details>
+</div>
