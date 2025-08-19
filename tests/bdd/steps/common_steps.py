@@ -14,10 +14,12 @@ def scroll_to_bottom(page: Page):
 def report_top(page: Page):
     page.get_by_role("heading").get_by_text("Report")
 
+
 @when(parsers.parse("I collapse all the scenarios"))
 def collapse_all_scenarios(page: Page):
     report = ReportPOM(page)
     report.collapse_all_scenarios()
+
 
 @when(parsers.parse("I expand all the scenarios"))
 def expand_all_scenarios(page: Page):
