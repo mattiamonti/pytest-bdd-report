@@ -1,4 +1,4 @@
-from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.entities.step import Step
 from pytest_bdd_report.templates.template import BaseTemplate
 
 
@@ -11,6 +11,6 @@ class StepTemplate(BaseTemplate):
         return self.template.render(
             keyword=data.keyword,
             name=data.name,
-            status=data.status,
+            status=data.status.value,
             duration=data.duration,
         )

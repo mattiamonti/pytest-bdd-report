@@ -2,9 +2,10 @@ import os
 from abc import ABC, abstractmethod
 from typing import List
 
-from pytest_bdd_report.components.feature import Feature
-from pytest_bdd_report.components.scenario import Scenario
-from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.entities.feature import Feature
+from pytest_bdd_report.entities.scenario import Scenario
+from pytest_bdd_report.entities.step import Step
+from pytest_bdd_report.entities.status_enum import Status
 
 
 class BaseExtractor(ABC):
@@ -28,7 +29,7 @@ class StepExtractor(BaseExtractor):
             keyword=data["keyword"],
             name=data["name"],
             line=data["line"],
-            status=data["result"]["status"],
+            status=Status(data["result"]["status"]),
             duration=data["result"]["duration"],
         )
         step.error_message = data["result"].get("error_message", "")
@@ -39,7 +40,9 @@ class ScenarioExtractor(BaseExtractor):
     def create_item(self, data: dict) -> Scenario:
         steps = StepExtractor().extract_from(data.get("steps", []))
         status = (
-            "failed" if any(step.status == "failed" for step in steps) else "passed"
+            Status.FAILED
+            if any(step.status == Status.FAILED for step in steps)
+            else Status.PASSED
         )
         scenario = Scenario(
             id=data["id"],
@@ -58,7 +61,7 @@ class FeatureExtractor(BaseExtractor):
     def create_item(self, data: dict) -> Feature:
         scenarios = ScenarioExtractor().extract_from(data.get("elements", []))
         failed, passed, total = self._count_failed_passed_total_tests(scenarios)
-        status = "passed" if failed == 0 else "failed"
+        status = Status.PASSED if failed == 0 else Status.FAILED
         feature = Feature(
             id=data["id"],
             name=data["name"],
@@ -78,8 +81,8 @@ class FeatureExtractor(BaseExtractor):
 
     @staticmethod
     def _count_failed_passed_total_tests(tests: List[Scenario]) -> tuple[int, int, int]:
-        failed = sum(1 for test in tests if test.status == "failed")
-        passed = sum(1 for test in tests if test.status == "passed")
+        failed = sum(1 for test in tests if test.status == Status.FAILED)
+        passed = sum(1 for test in tests if test.status == Status.PASSED)
         total = len(tests)
         return failed, passed, total
 
@@ -112,7 +115,7 @@ class FeatureExtractor(BaseExtractor):
                             description="",
                             tags=[],
                             steps=[],
-                            status="skipped",
+                            status=Status.SKIPPED,
                         )
                     )
             return skipped

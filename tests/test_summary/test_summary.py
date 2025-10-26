@@ -1,7 +1,8 @@
-from pytest_bdd_report.components.scenario import Scenario
-from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.entities.scenario import Scenario
+from pytest_bdd_report.entities.step import Step
+from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.report import Report
-from pytest_bdd_report.components.feature import Feature
+from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 import pytest
 
@@ -25,13 +26,13 @@ def mock_report():
                 description="",
                 tags=[],
                 duration=0.000001,
-                status="passed",
+                status=Status.PASSED,
                 steps=[
                     Step(
                         keyword="Given",
                         name="test given",
                         line=0,
-                        status="passed",
+                        status=Status.PASSED,
                         duration=1000,
                     )
                 ],
@@ -43,13 +44,13 @@ def mock_report():
                 description="",
                 tags=[],
                 duration=0.000001,
-                status="passed",
+                status=Status.PASSED,
                 steps=[
                     Step(
                         keyword="Given",
                         name="test given",
                         line=0,
-                        status="passed",
+                        status=Status.PASSED,
                         duration=1000,
                     )
                 ],
@@ -83,13 +84,13 @@ def mock_report_failed():
                 description="",
                 tags=[],
                 duration=0.000001,
-                status="passed",
+                status=Status.PASSED,
                 steps=[
                     Step(
                         keyword="Given",
                         name="test given",
                         line=0,
-                        status="passed",
+                        status=Status.PASSED,
                         duration=1000,
                     )
                 ],
@@ -107,7 +108,7 @@ def mock_report_failed():
                         keyword="Given",
                         name="test given",
                         line=0,
-                        status="passed",
+                        status=Status.PASSED,
                         duration=1000,
                     )
                 ],
@@ -142,13 +143,13 @@ def mock_report_long():
                 description="",
                 tags=[],
                 duration=0.000001,
-                status="passed",
+                status=Status.PASSED,
                 steps=[
                     Step(
                         keyword="Given",
                         name="test given",
                         line=0,
-                        status="passed",
+                        status=Status.PASSED,
                         duration=1000,
                     )
                 ],
@@ -166,7 +167,7 @@ def mock_report_long():
                         keyword="Given",
                         name="test given",
                         line=0,
-                        status="passed",
+                        status=Status.PASSED,
                         duration=1000,
                     )
                 ],
@@ -199,7 +200,7 @@ def mock_report_long():
                         keyword="Given",
                         name="test given",
                         line=0,
-                        status="passed",
+                        status=Status.PASSED,
                         duration=1000,
                     )
                 ],

@@ -1,4 +1,5 @@
-from pytest_bdd_report.components.scenario import Scenario
+from pytest_bdd_report.entities.scenario import Scenario
+from pytest_bdd_report.entities.status_enum import Status
 from dataclasses import dataclass
 
 
@@ -14,7 +15,7 @@ class Feature:
         uri: str,
         scenarios: list[Scenario],
         duration: float = 0.0,
-        status: str = "passed",
+        status: Status = Status.PASSED,
     ):
         self.id = id
         self.name = name

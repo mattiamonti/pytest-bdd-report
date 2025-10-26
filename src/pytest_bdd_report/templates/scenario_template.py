@@ -1,5 +1,6 @@
 import re
-from pytest_bdd_report.components.scenario import Scenario
+from pytest_bdd_report.entities.scenario import Scenario
+from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.templates.template import BaseTemplate
 from typing import List, Dict
 
@@ -16,7 +17,7 @@ class ScenarioTemplate(BaseTemplate):
         return self.template.render(
             id=data.id,
             name=data.name,
-            status=data.status,
+            status=data.status.value,
             duration=data.duration,
             steps=rendered_steps,
             error_message=data.error_message,

@@ -1,4 +1,5 @@
-from pytest_bdd_report.components.feature import Feature
+from pytest_bdd_report.entities.feature import Feature
+from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.templates.template import BaseTemplate
 from typing import List, Dict
 
@@ -12,7 +13,7 @@ class FeatureTemplate(BaseTemplate):
         return self.template.render(
             id=data.id,
             name=data.name,
-            status=data.status,
+            status=data.status.value,
             duration=data.duration,
             scenarios=rendered_scenarios,
             total=data.total_tests,
@@ -32,7 +33,7 @@ class FeatureTemplate(BaseTemplate):
         failed_scenarios_names = [
             scenario.name
             for scenario in feature.scenarios
-            if scenario.status == "failed"
+            if scenario.status == Status.FAILED
         ]
         return failed_scenarios_names
 

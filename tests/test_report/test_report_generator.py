@@ -1,8 +1,9 @@
 import pytest
 
-from pytest_bdd_report.components.feature import Feature
-from pytest_bdd_report.components.scenario import Scenario
-from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.entities.feature import Feature
+from pytest_bdd_report.entities.scenario import Scenario
+from pytest_bdd_report.entities.step import Step
+from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.interfaces import ILoader
 from pytest_bdd_report.report import ReportBuilder
 from pytest_bdd_report.report_composer import ReportComposer
@@ -98,7 +99,7 @@ def test_report_creation(mock_data):
                 line=2,
                 description="",
                 tags=[],
-                steps=[Step("Given", "I have a calculator", 3, "passed", 23040)],
+                steps=[Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
                 duration=0.00002304,
             )
         ],

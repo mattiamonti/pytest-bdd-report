@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
-from pytest_bdd_report.components.feature import Feature
-from pytest_bdd_report.components.scenario import Scenario
-from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.entities.feature import Feature
+from pytest_bdd_report.entities.scenario import Scenario
+from pytest_bdd_report.entities.step import Step
 from pytest_bdd_report.templates.feature_statistics_template import (
     FeatureStatisticsTemplate,
 )

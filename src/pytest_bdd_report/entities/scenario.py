@@ -1,6 +1,7 @@
 from typing import List
 from dataclasses import dataclass
-from pytest_bdd_report.components.step import Step
+from pytest_bdd_report.entities.step import Step
+from pytest_bdd_report.entities.status_enum import Status
 
 
 @dataclass
@@ -12,7 +13,7 @@ class Scenario:
     tags: List[str]
     steps: List[Step]
     duration: float = 0.0
-    status: str = "passed"
+    status: Status = Status.PASSED
     error_message: str = ""
 
     def calculate_duration(self) -> None:

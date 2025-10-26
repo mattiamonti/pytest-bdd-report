@@ -1,4 +1,4 @@
-from pytest_bdd_report.components.feature import Feature
+from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.templates.template import BaseTemplate
 
 
