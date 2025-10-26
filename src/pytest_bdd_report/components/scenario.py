@@ -16,6 +16,7 @@ class Scenario:
     error_message: str = ""
 
     def calculate_duration(self) -> None:
+        """Calculate the total duration of the scenario in seconds"""
         self.duration = (
             sum(step.duration for step in self.steps) / 1_000_000_000
         )  # from nanosecond to second

@@ -9,9 +9,6 @@ class FeatureTemplate(BaseTemplate):
         super().__init__(self.path)
 
     def render_template(self, data: Feature, rendered_scenarios: str = "") -> str:
-        failed_scenarios_names = [
-            scenario.name for scenario in data.scenarios if scenario.status == "failed"
-        ]
         return self.template.render(
             id=data.id,
             name=data.name,
@@ -24,8 +21,18 @@ class FeatureTemplate(BaseTemplate):
             skipped=data.skipped_tests,
             description=data.description,
             tags=self._format_tags(data.tags),
-            failed_scenarios_names=failed_scenarios_names,
+            failed_scenarios_names=self._extract_failed_scenarios_name(data),
         )
+
+    @staticmethod
+    def _extract_failed_scenarios_name(feature: Feature) -> list[str]:
+        """
+        @return the names of the failed scenarios in the feature
+        """
+        failed_scenarios_names = [
+            scenario.name for scenario in feature.scenarios if scenario.status == "failed"
+        ]
+        return failed_scenarios_names
 
     @staticmethod
     def _format_tags(tags: List[Dict[str, str]]) -> str:
