@@ -30,7 +30,9 @@ class FeatureTemplate(BaseTemplate):
         @return the names of the failed scenarios in the feature
         """
         failed_scenarios_names = [
-            scenario.name for scenario in feature.scenarios if scenario.status == "failed"
+            scenario.name
+            for scenario in feature.scenarios
+            if scenario.status == "failed"
         ]
         return failed_scenarios_names
 
