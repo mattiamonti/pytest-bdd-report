@@ -32,10 +32,11 @@ class StepRenderer(BaseRenderer):
 class ScenarioRenderer(BaseRenderer):
     def __init__(self, step_renderer: StepRenderer = None):
         self.step_renderer = step_renderer or StepRenderer()
+        self.step_template = StepTemplate()
 
     def render(self, items: list[Scenario], template: BaseTemplate) -> str:
         rendered_steps = [
-            self.step_renderer.render(item.steps, StepTemplate()) for item in items
+            self.step_renderer.render(item.steps, self.step_template) for item in items
         ]
         return "".join(
             template.render_template(item, steps)
@@ -46,10 +47,11 @@ class ScenarioRenderer(BaseRenderer):
 class FeatureRenderer(BaseRenderer):
     def __init__(self, scenario_renderer: ScenarioRenderer = None):
         self.scenario_renderer = scenario_renderer or ScenarioRenderer()
+        self.scenario_template = ScenarioTemplate()
 
     def render(self, items: list[Feature], template: BaseTemplate) -> str:
         rendered_scenarios = [
-            self.scenario_renderer.render(item.scenarios, ScenarioTemplate())
+            self.scenario_renderer.render(item.scenarios, self.scenario_template)
             for item in items
         ]
         return "".join(
