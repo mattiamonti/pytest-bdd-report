@@ -7,7 +7,7 @@ from pytest_bdd_report.templates.feature_statistics_template import (
     FeatureStatisticsTemplate,
 )
 from pytest_bdd_report.templates.feature_template import FeatureTemplate
-from pytest_bdd_report.templates.report_template import ReportTemplate
+from pytest_bdd_report.templates.report_template import ReportTemplate, ReportTemplateBuilder
 from pytest_bdd_report.templates.summary_template import SummaryTemplate
 
 
@@ -66,12 +66,13 @@ class ReportFileGenerator:
         rendered_features: str,
         rendered_feature_statistics: str,
     ) -> str:
-        report_template = ReportTemplate()
-        report_template.add_rendered_summary(rendered_summary)
-        report_template.add_rendered_features(rendered_features)
-        report_template.add_rendered_feature_statistics(rendered_feature_statistics)
-        report_template.add_test_file_uri(test_file_uri)
-        report_template.add_file_path(file_path)
+        report_template = (ReportTemplateBuilder()
+            .add_rendered_summary(rendered_summary)
+            .add_rendered_features(rendered_features)
+            .add_rendered_feature_statistics(rendered_feature_statistics)
+            .add_test_file_uri(test_file_uri)
+            .add_file_path(file_path)
+            .build())
         return report_template.render_template(title)
 
     def _save_report_to_file(self, path: str) -> None:
