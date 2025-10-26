@@ -8,12 +8,11 @@ from pytest_bdd_report.components.step import Step
 
 
 class BaseExtractor(ABC):
-    @abstractmethod
     def extract_from(self, data: List[dict]) -> List:
         """
         Extract the objects from the raw data passed.
         """
-        pass
+        return [self.create_item(item_data) for item_data in data]
 
     @abstractmethod
     def create_item(self, data: dict):
@@ -35,9 +34,6 @@ class StepExtractor(BaseExtractor):
         step.error_message = data["result"].get("error_message", "")
         return step
 
-    def extract_from(self, data: List[dict]) -> List[Step]:
-        return [self.create_item(item_data) for item_data in data]
-
 
 class ScenarioExtractor(BaseExtractor):
     def create_item(self, data: dict) -> Scenario:
@@ -56,9 +52,6 @@ class ScenarioExtractor(BaseExtractor):
         )
         scenario.check_and_add_error_message()
         return scenario
-
-    def extract_from(self, data: List[dict]) -> List[Scenario]:
-        return [self.create_item(item_data) for item_data in data]
 
 
 class FeatureExtractor(BaseExtractor):
@@ -82,9 +75,6 @@ class FeatureExtractor(BaseExtractor):
         feature.set_passed_tests(passed)
         feature.set_skipped_test(skipped)
         return feature
-
-    def extract_from(self, data: List[dict]) -> List[Feature]:
-        return [self.create_item(item_data) for item_data in data]
 
     @staticmethod
     def _count_failed_passed_total_tests(tests: List[Scenario]) -> tuple[int, int, int]:
