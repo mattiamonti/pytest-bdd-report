@@ -2,7 +2,7 @@ import pytest
 from pytest_bdd_report.json_loader import JsonLoader
 from pytest_bdd_report.report_composer import ReportComposer
 from pytest_bdd_report.report import Report, ReportBuilder
-from pytest_bdd_report.report_file_generator import ReportFileGenerator
+from pytest_bdd_report.report_file import ReportFile, ReportFileBuilder
 from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 import os
 
@@ -74,8 +74,14 @@ def pytest_sessionfinish(session):
         )
         report = report_generator.create_report()
         summary = SummaryGenerator().populate_summary(report)
-        file_generator = ReportFileGenerator()
-        file_generator.create_report_file(
-            report, summary, test_file_uri, report_file_path
+
+        report_file = (
+            ReportFileBuilder()
+            .add_report(report)
+            .add_summary(summary)
+            .add_test_file_uri(test_file_uri)
+            .build()
         )
+
+        report_file.create(report_file_path)
         print(test_file_uri)

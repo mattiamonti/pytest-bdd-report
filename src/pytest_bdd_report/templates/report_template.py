@@ -70,4 +70,3 @@ class ReportTemplateBuilder:
 
     def build(self) -> ReportTemplate:
         return self.report_template
-    

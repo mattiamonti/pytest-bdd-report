@@ -2,6 +2,7 @@ from pytest_bdd_report.entities.step import Step
 from pytest_bdd_report.templates.template import BaseTemplate
 from typing import Optional, Type
 
+
 class StepTemplate(BaseTemplate):
     _instance: Optional["StepTemplate"] = None
 
