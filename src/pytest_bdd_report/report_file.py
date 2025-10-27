@@ -27,35 +27,17 @@ class ReportFile:
         """
         Create the report in the provided file path.
         """
-        self.report_content = self._render_report(
-            self.report_title,
-            self.test_file_uri,
-            str(os.path.abspath(path)),
-            self.rendered_summary,
-            self.rendered_features,
-            self.rendered_feature_statistics,
-        )
-        self._save_report_to_file(path)
-
-    @staticmethod
-    def _render_report(
-        title: str,
-        test_file_uri: list[str],
-        file_path: str,
-        rendered_summary: str,
-        rendered_features: str,
-        rendered_feature_statistics: str,
-    ) -> str:
         report_template = (
             ReportTemplateBuilder()
-            .add_rendered_summary(rendered_summary)
-            .add_rendered_features(rendered_features)
-            .add_rendered_feature_statistics(rendered_feature_statistics)
-            .add_test_file_uri(test_file_uri)
-            .add_file_path(file_path)
+            .add_rendered_summary(self.rendered_summary)
+            .add_rendered_features(self.rendered_features)
+            .add_rendered_feature_statistics(self.rendered_feature_statistics)
+            .add_test_file_uri(self.test_file_uri)
+            .add_file_path(str(os.path.abspath(path)))
             .build()
         )
-        return report_template.render_template(title)
+        self.report_content = report_template.render_template(self.report_title)
+        self._save_report_to_file(path)
 
     def _save_report_to_file(self, path: str) -> None:
         """
