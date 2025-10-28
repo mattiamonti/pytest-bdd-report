@@ -15,6 +15,7 @@ class Scenario:
     duration: float = 0.0
     status: Status = Status.PASSED
     error_message: str = ""
+    feature_name: str = ""
 
     def calculate_duration(self) -> None:
         """Calculate the total duration of the scenario in seconds"""
@@ -24,6 +25,9 @@ class Scenario:
 
     def add_step(self, step: Step) -> None:
         self.steps.append(step)
+
+    def set_feature_name(self, feature_name: str) -> None:
+        self.feature_name = feature_name
 
     def check_and_add_error_message(self):
         for step in self.steps:

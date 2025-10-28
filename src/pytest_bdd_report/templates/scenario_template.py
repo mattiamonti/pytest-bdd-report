@@ -3,12 +3,13 @@ from pytest_bdd_report.entities.scenario import Scenario
 from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.templates.template import BaseTemplate
 from typing import List, Dict, Optional, Type
+from pytest_bdd_report.screenshot import screenshot_repo
 
 
 class ScenarioTemplate(BaseTemplate):
-    _instance: Optional["StepTemplate"] = None
+    _instance: Optional["ScenarioTemplate"] = None
 
-    def __new__(cls: Type["StepTemplate"], *args, **kwargs) -> "StepTemplate":
+    def __new__(cls: Type["ScenarioTemplate"], *args, **kwargs) -> "ScenarioTemplate":
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
@@ -31,6 +32,7 @@ class ScenarioTemplate(BaseTemplate):
             description=data.description,
             tags=self._format_tags(data.tags),
             parameters=self._check_for_parameters(data.id),
+            image_base64=self._embed_screenshot(data)
         )
 
     @staticmethod
@@ -49,3 +51,8 @@ class ScenarioTemplate(BaseTemplate):
         if match:
             return match.group(1).replace("-", ", ")
         return ""
+
+    @staticmethod
+    def _embed_screenshot(data: Scenario) -> str:
+        if data.status == Status.FAILED:
+            return screenshot_repo.get(data.feature_name, data.name)

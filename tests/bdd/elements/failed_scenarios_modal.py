@@ -4,6 +4,7 @@ import pytest
 
 class FailedScenariosModalPOM:
     def __init__(self, page: Page) -> None:
+        self.page = page # necessary to use the screenshot on fail feature of playwright
         self.modal = page.get_by_role("dialog")
         self.open_button = page.get_by_role("button").get_by_text(
             "failed scenario links"

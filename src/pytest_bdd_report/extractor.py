@@ -60,6 +60,7 @@ class ScenarioExtractor(BaseExtractor):
 class FeatureExtractor(BaseExtractor):
     def create_item(self, data: dict) -> Feature:
         scenarios = ScenarioExtractor().extract_from(data.get("elements", []))
+        self._set_feature_name_to_scenarios(data["name"], scenarios)
         failed, passed, total = self._count_failed_passed_total_tests(scenarios)
         status = Status.PASSED if failed == 0 else Status.FAILED
         feature = Feature(
@@ -85,6 +86,11 @@ class FeatureExtractor(BaseExtractor):
         passed = sum(1 for test in tests if test.status == Status.PASSED)
         total = len(tests)
         return failed, passed, total
+
+    @staticmethod
+    def _set_feature_name_to_scenarios(feature_name, scenarios: list[Scenario]) -> None:
+        for scenario in scenarios:
+            scenario.set_feature_name(feature_name)
 
     @staticmethod
     def _check_for_skipped_scenarios(feature: Feature) -> int:

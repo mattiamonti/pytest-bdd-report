@@ -5,9 +5,9 @@ from typing import List, Dict, Optional, Type
 
 
 class FeatureTemplate(BaseTemplate):
-    _instance: Optional["StepTemplate"] = None
+    _instance: Optional["FeatureTemplate"] = None
 
-    def __new__(cls: Type["StepTemplate"], *args, **kwargs) -> "StepTemplate":
+    def __new__(cls: Type["FeatureTemplate"], *args, **kwargs) -> "FeatureTemplate":
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance

@@ -52,6 +52,9 @@
                             message</span></summary>
                     <div id="message-{{name}}" class="monospace">
                         <p style="white-space: pre-wrap; font-size: small;">{{error_message}}</p>
+                        {% if image_base64 != None %}
+                        <img src="data:image/png;base64, {{image_base64}}" />
+                        {%endif%}
                     </div>
                 </details>
                 {%endif%}
