@@ -30,6 +30,9 @@ class ScreenshotRepo:
         self.repo.append(data)
 
     def get(self, feature_name: str, scenario_name: str) -> str:
+        """
+        @return the screenshot image encoded in base64
+        """
         for item in self.repo:
             if item["feature_name"] == feature_name and item["scenario_name"] == scenario_name:
                 return item["image_base64"]
