@@ -20,6 +20,7 @@ def teardown():
     screenshot_repo.repo = []
 
 
+
 def test_attach_screenshot_from_bytes_is_saved(mock_bytes, feature_name, scenario_name, teardown):
     attach.screenshot(mock_bytes, feature_name, scenario_name)
 
@@ -64,6 +65,22 @@ def test_retrieving_screenshot_with_multiple_saved_with_same_feature(mock_bytes,
     assert  second_bytes == base64.b64decode(second_image)
 
 
-def test_add_more_screenshot_with_same_feature_and_scenario_should_fail():
-    pytest.skip()
+def test_add_more_screenshot_with_same_feature_and_scenario_should_fail(mock_bytes, feature_name, scenario_name, teardown):
+    attach.screenshot(mock_bytes, feature_name, scenario_name)
     
+    with pytest.raises(RuntimeWarning):
+        attach.screenshot(mock_bytes, feature_name, scenario_name)
+
+    assert len(screenshot_repo.repo) == 1
+    
+def test_add_more_screenshot_with_same_feature_and_different_scenario(mock_bytes, feature_name, scenario_name, teardown):
+    attach.screenshot(mock_bytes, feature_name, scenario_name)
+    attach.screenshot(mock_bytes, feature_name, "scenario 2")
+
+    assert len(screenshot_repo.repo) == 2
+
+def test_add_more_screenshot_with_same_scenario_and_different_feature(mock_bytes, feature_name, scenario_name, teardown):
+    attach.screenshot(mock_bytes, feature_name, scenario_name)
+    attach.screenshot(mock_bytes, "feature 2", scenario_name)
+
+    assert len(screenshot_repo.repo) == 2

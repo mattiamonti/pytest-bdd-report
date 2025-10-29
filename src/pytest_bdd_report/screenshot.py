@@ -1,4 +1,5 @@
 from typing import Optional, Type
+from dataclasses import dataclass
 
 class ScreenshotEmbedder:
     def __init__(self):
@@ -17,26 +18,37 @@ class ScreenshotEmbedder:
         # questo dovrà poi essere passato all'oggetto ScenarioTemplate in modo da iniettarlo nello scenario
         pass
 
+@dataclass
+class Screenshot:
+    feature_name: str
+    scenario_name: str
+    image_base64: str
+
 class ScreenshotRepo:
     def __init__(self) -> None:
-        self.repo = []
+        self.repo: list[Screenshot] = []
     
     def add(self, feature_name:str, scenario_name: str, image_base64: str):
-        data = {
-                "feature_name": feature_name,
-                "scenario_name": scenario_name,
-                "image_base64": image_base64
-            }
+        if self._is_already_present(feature_name, scenario_name):
+            raise RuntimeWarning(f"In the screenshot repository there is already a screenshot for {feature_name=}, {scenario_name=}")
+        data = Screenshot(feature_name, scenario_name, image_base64)
         self.repo.append(data)
 
-    def get(self, feature_name: str, scenario_name: str) -> str:
+    def get(self, feature_name: str, scenario_name: str) -> str | None:
         """
-        @return the screenshot image encoded in base64
+        Returns the relative screenshot image encoded in base64
         """
         for item in self.repo:
-            if item["feature_name"] == feature_name and item["scenario_name"] == scenario_name:
-                return item["image_base64"]
+            if item.feature_name == feature_name and item.scenario_name == scenario_name:
+                return item.image_base64
         return None
+
+    def _is_already_present(self, feature_name: str, scenario_name: str) -> bool:
+        for item in self.repo:
+            if item.feature_name == feature_name and item.scenario_name == scenario_name:
+                return True
+        return False
+            
 
 # Object to be used in the different parts of code
 screenshot_repo = ScreenshotRepo()
