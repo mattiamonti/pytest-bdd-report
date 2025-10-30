@@ -101,6 +101,7 @@ def test_report_creation(mock_data):
                 tags=[],
                 steps=[Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
                 duration=0.00002304,
+                feature_name="Calcolatrice",
             )
         ],
         duration=0.00002304,

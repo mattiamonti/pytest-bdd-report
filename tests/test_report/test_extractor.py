@@ -87,6 +87,7 @@ def test_feature_extraction(mock_data):
                 "",
                 [],
                 [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice",
             )
         ],
     )
@@ -95,7 +96,7 @@ def test_feature_extraction(mock_data):
     expected.set_failed_tests(0)
     expected.set_skipped_test(0)
 
-    assert features[0] == expected
+    assert features[0] == expected, f"{features[0].uri=} EXPECTED {expected.uri=}"
 
 
 @pytest.fixture
@@ -240,6 +241,7 @@ def test_feature_extraction_with_more(mock_data_with_more_features):
                 "",
                 [],
                 [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice",
             ),
             Scenario(
                 "test_sum_2",
@@ -248,6 +250,7 @@ def test_feature_extraction_with_more(mock_data_with_more_features):
                 "",
                 [],
                 [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice",
             ),
         ],
     )
@@ -271,6 +274,7 @@ def test_feature_extraction_with_more(mock_data_with_more_features):
                 "",
                 [],
                 [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice 2",
             ),
             Scenario(
                 "test_sum_2",
@@ -279,6 +283,7 @@ def test_feature_extraction_with_more(mock_data_with_more_features):
                 "",
                 [],
                 [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice 2",
             ),
         ],
     )
