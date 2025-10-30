@@ -4,9 +4,9 @@ from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.entities.scenario import Scenario
 from pytest_bdd_report.entities.step import Step
 from pytest_bdd_report.entities.status_enum import Status
-from pytest_bdd_report.interfaces import ILoader
-from pytest_bdd_report.report import ReportBuilder
-from pytest_bdd_report.report_composer import ReportComposer
+from pytest_bdd_report.loader.json_loader import ILoader
+from pytest_bdd_report.report.report import ReportBuilder
+from pytest_bdd_report.report.report_composer import ReportComposer
 
 
 @pytest.fixture

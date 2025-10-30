@@ -1,39 +1,25 @@
-from abc import ABC, abstractmethod
-
+from typing import override
 from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.entities.scenario import Scenario
 from pytest_bdd_report.entities.step import Step
-from pytest_bdd_report.templates.feature_statistics_template import (
-    FeatureStatisticsTemplate,
-)
-from pytest_bdd_report.templates.feature_template import FeatureTemplate
 from pytest_bdd_report.templates.scenario_template import ScenarioTemplate
 from pytest_bdd_report.templates.step_template import StepTemplate
 from pytest_bdd_report.templates.template import BaseTemplate
+from pytest_bdd_report.renderer.base_renderer import BaseRenderer
 
 
-class BaseRenderer(ABC):
-    @abstractmethod
-    def render(self, items: list, template: BaseTemplate) -> str:
-        """
-        Render the items into the template.
-        @param items: to render
-        @param template: in which render the items
-        @return: rendered object
-        """
-        ...
-
-
-class StepRenderer(BaseRenderer):
+class StepRenderer(BaseRenderer[Step]):
+    @override
     def render(self, items: list[Step], template: BaseTemplate) -> str:
         return "".join(template.render_template(item) for item in items)
 
 
-class ScenarioRenderer(BaseRenderer):
-    def __init__(self, step_renderer: StepRenderer = None):
-        self.step_renderer = step_renderer or StepRenderer()
-        self.step_template = StepTemplate()
+class ScenarioRenderer(BaseRenderer[Scenario]):
+    def __init__(self):
+        self.step_renderer: BaseRenderer[Step] = StepRenderer()
+        self.step_template: BaseTemplate = StepTemplate()
 
+    @override
     def render(self, items: list[Scenario], template: BaseTemplate) -> str:
         rendered_steps = [
             self.step_renderer.render(item.steps, self.step_template) for item in items
@@ -44,11 +30,12 @@ class ScenarioRenderer(BaseRenderer):
         )
 
 
-class FeatureRenderer(BaseRenderer):
-    def __init__(self, scenario_renderer: ScenarioRenderer = None):
-        self.scenario_renderer = scenario_renderer or ScenarioRenderer()
-        self.scenario_template = ScenarioTemplate()
+class FeatureRenderer(BaseRenderer[Feature]):
+    def __init__(self):
+        self.scenario_renderer: BaseRenderer[Scenario] = ScenarioRenderer()
+        self.scenario_template: BaseTemplate = ScenarioTemplate()
 
+    @override
     def render(self, items: list[Feature], template: BaseTemplate) -> str:
         rendered_scenarios = [
             self.scenario_renderer.render(item.scenarios, self.scenario_template)
@@ -60,6 +47,7 @@ class FeatureRenderer(BaseRenderer):
         )
 
 
-class FeatureStatisticsRenderer(BaseRenderer):
+class FeatureStatisticsRenderer(BaseRenderer[list[Feature]]):
+    @override
     def render(self, items: list[Feature], template: BaseTemplate) -> str:
         return "".join(template.render_template(item) for item in items)

@@ -1,4 +1,4 @@
-from pytest_bdd_report.interfaces import IReport
+from pytest_bdd_report.report.report import IReport
 from pytest_bdd_report.summary.summary import Summary
 from typing import List
 

@@ -1,6 +1,22 @@
 from dataclasses import dataclass
+from typing import Protocol
 from pytest_bdd_report.entities.feature import Feature
-from pytest_bdd_report.interfaces import IReportBuilder
+
+
+class IReport(Protocol):
+    title: str
+    features: list[Feature]
+
+
+class IReportBuilder(Protocol):
+    def set_features(self, features: list): ...
+
+    def build(self) -> IReport:
+        """
+        Build the report, this should be used at the end of the building function chain.
+        @return: report object
+        """
+        ...
 
 
 @dataclass

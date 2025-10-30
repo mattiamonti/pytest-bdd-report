@@ -1,30 +1,16 @@
 import os
-from abc import ABC, abstractmethod
-from typing import List
+from typing import override, Any
 
 from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.entities.scenario import Scenario
 from pytest_bdd_report.entities.step import Step
 from pytest_bdd_report.entities.status_enum import Status
+from pytest_bdd_report.extractor.base_extractor import BaseExtractor
 
 
-class BaseExtractor(ABC):
-    def extract_from(self, data: List[dict]) -> List:
-        """
-        Extract the objects from the raw data passed.
-        """
-        return [self.create_item(item_data) for item_data in data]
-
-    @abstractmethod
-    def create_item(self, data: dict):
-        """
-        Create one item from the data passed.
-        """
-        pass
-
-
-class StepExtractor(BaseExtractor):
-    def create_item(self, data: dict) -> Step:
+class StepExtractor(BaseExtractor[Step]):
+    @override
+    def create_item(self, data: dict[str, Any]) -> Step:
         step = Step(
             keyword=data["keyword"],
             name=data["name"],
@@ -36,8 +22,9 @@ class StepExtractor(BaseExtractor):
         return step
 
 
-class ScenarioExtractor(BaseExtractor):
-    def create_item(self, data: dict) -> Scenario:
+class ScenarioExtractor(BaseExtractor[Scenario]):
+    @override
+    def create_item(self, data: dict[str, Any]) -> Scenario:
         steps = StepExtractor().extract_from(data.get("steps", []))
         status = (
             Status.FAILED
@@ -57,8 +44,9 @@ class ScenarioExtractor(BaseExtractor):
         return scenario
 
 
-class FeatureExtractor(BaseExtractor):
-    def create_item(self, data: dict) -> Feature:
+class FeatureExtractor(BaseExtractor[Feature]):
+    @override
+    def create_item(self, data: dict[str, Any]) -> Feature:
         scenarios = ScenarioExtractor().extract_from(data.get("elements", []))
         self._set_feature_name_to_scenarios(data["name"], scenarios)
         failed, passed, total = self._count_failed_passed_total_tests(scenarios)
@@ -81,14 +69,16 @@ class FeatureExtractor(BaseExtractor):
         return feature
 
     @staticmethod
-    def _count_failed_passed_total_tests(tests: List[Scenario]) -> tuple[int, int, int]:
+    def _count_failed_passed_total_tests(tests: list[Scenario]) -> tuple[int, int, int]:
         failed = sum(1 for test in tests if test.status == Status.FAILED)
         passed = sum(1 for test in tests if test.status == Status.PASSED)
         total = len(tests)
         return failed, passed, total
 
     @staticmethod
-    def _set_feature_name_to_scenarios(feature_name, scenarios: list[Scenario]) -> None:
+    def _set_feature_name_to_scenarios(
+        feature_name: str, scenarios: list[Scenario]
+    ) -> None:
         for scenario in scenarios:
             scenario.set_feature_name(feature_name)
 

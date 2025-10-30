@@ -1,11 +1,17 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional
-from pytest_bdd_report.interfaces import ISummary
+from typing import Optional, Protocol
+
+
+class ISummary(Protocol):
+    total_test: int
+    test_passed: int
+    test_failed: int
+    test_skipped: int
 
 
 @dataclass
-class Summary(ISummary):
+class Summary:
     report_title: str = ""
     total_tests: int = 0
     tests_passed: int = 0

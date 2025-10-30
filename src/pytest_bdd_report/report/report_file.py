@@ -1,7 +1,11 @@
 import os.path
 from typing import Self
-from pytest_bdd_report.interfaces import IReport, ISummary
-from pytest_bdd_report.renderer import FeatureRenderer, FeatureStatisticsRenderer
+from pytest_bdd_report.summary.summary import ISummary
+from pytest_bdd_report.report.report import IReport
+from pytest_bdd_report.renderer.renderer import (
+    FeatureRenderer,
+    FeatureStatisticsRenderer,
+)
 from pytest_bdd_report.summary.summary import Summary
 from pytest_bdd_report.templates.feature_statistics_template import (
     FeatureStatisticsTemplate,

@@ -1,7 +1,7 @@
 from pytest_bdd_report.entities.scenario import Scenario
 from pytest_bdd_report.entities.step import Step
 from pytest_bdd_report.entities.status_enum import Status
-from pytest_bdd_report.report import Report
+from pytest_bdd_report.report.report import Report
 from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 import pytest
