@@ -1,54 +1,67 @@
-from typing import Optional, Type
+from typing import Protocol
+import base64
 from dataclasses import dataclass
 
-class ScreenshotEmbedder:
-    def __init__(self):
-        pass
 
-    def _scenario_has_screenshot(feature_id, scenario_id):
-        #TODO controlla che uno scenario FALLITO abbia uno screenshot cercando scenario id e feature id nel json "screenshots"
-        pass
+class ImageEncoder(Protocol):
+    @staticmethod
+    def encode(image_bytes: bytes) -> str: ...
 
-    def _get_screenshot(feature_id, scenario_id):
-        #TODO recupera lo screenshot base64 dato i parametri dal json "screenshots"
-        pass
 
-    def create_embed(feature_id, scenario_id):
-        #TODO crea l'elemento html con <img....o boh con iniettata l'immagine image_base64
-        # questo dovrà poi essere passato all'oggetto ScenarioTemplate in modo da iniettarlo nello scenario
-        pass
+class Base64Encoder:
+    @staticmethod
+    def encode(image_bytes: bytes) -> str:
+        return base64.b64encode(image_bytes).decode("utf-8")
+
+    @staticmethod
+    def decode(image_base64: str):
+        return base64.b64decode(image_base64)
+
 
 @dataclass
 class Screenshot:
     feature_name: str
     scenario_name: str
-    image_base64: str
+    encoded_image: str
+
 
 class ScreenshotRepo:
-    def __init__(self) -> None:
+    def __init__(self, encoder: ImageEncoder) -> None:
         self.repo: list[Screenshot] = []
-    
-    def add(self, feature_name:str, scenario_name: str, image_base64: str):
-        if self._is_already_present(feature_name, scenario_name):
-            raise RuntimeWarning(f"In the screenshot repository there is already a screenshot for {feature_name=}, {scenario_name=}")
-        data = Screenshot(feature_name, scenario_name, image_base64)
-        self.repo.append(data)
+        self.encoder: ImageEncoder = encoder
 
-    def get(self, feature_name: str, scenario_name: str) -> str | None:
+    def add(self, feature_name: str, scenario_name: str, image: bytes):
         """
-        Returns the relative screenshot image encoded in base64
+        Adds a new screenshot to the repository.
+
+        Raises:
+            ValueError: If a screenshot for the given feature and scenario already exists in the repository.
+        """
+        if self.exists(feature_name, scenario_name):
+            raise ValueError(
+                f"A screenshot for {feature_name} and {scenario_name} already exists in the repository."
+            )
+        image_base64 = self.encoder.encode(image)
+        self.repo.append(Screenshot(feature_name, scenario_name, image_base64))
+
+    def get(self, feature_name: str, scenario_name: str) -> Screenshot | None:
+        """
+        Returns the saved screenshot
         """
         for item in self.repo:
-            if item.feature_name == feature_name and item.scenario_name == scenario_name:
-                return item.image_base64
+            if (
+                item.feature_name == feature_name
+                and item.scenario_name == scenario_name
+            ):
+                return item
         return None
 
-    def _is_already_present(self, feature_name: str, scenario_name: str) -> bool:
-        for item in self.repo:
-            if item.feature_name == feature_name and item.scenario_name == scenario_name:
-                return True
-        return False
-            
+    def exists(self, feature_name: str, scenario_name: str) -> bool:
+        return any(
+            item.feature_name == feature_name and item.scenario_name == scenario_name
+            for item in self.repo
+        )
+
 
 # Object to be used in the different parts of code
-screenshot_repo = ScreenshotRepo()
+screenshot_repo = ScreenshotRepo(encoder=Base64Encoder)
