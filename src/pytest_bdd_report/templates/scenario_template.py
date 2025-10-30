@@ -3,7 +3,7 @@ from pytest_bdd_report.entities.scenario import Scenario
 from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.templates.template import BaseTemplate
 from typing import List, Dict, Optional, Type
-from pytest_bdd_report.screenshot import screenshot_repo
+from pytest_bdd_report.extensions.screenshot import screenshot_repo
 
 
 class ScenarioTemplate(BaseTemplate):

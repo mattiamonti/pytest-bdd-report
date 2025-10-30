@@ -1,4 +1,4 @@
-from pytest_bdd_report.screenshot import screenshot_repo
+from pytest_bdd_report.extensions.screenshot import screenshot_repo
 
 
 def screenshot_file(path: str, feature_name: str, scenario_name: str) -> None:
