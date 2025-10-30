@@ -53,7 +53,11 @@
                     <div id="message-{{name}}" class="monospace">
                         <p style="white-space: pre-wrap; font-size: small;">{{error_message}}</p>
                         {% if image_base64 != None %}
-                        <img src="data:image/png;base64, {{image_base64}}" />
+                            <img
+                                src="data:image/png;base64, {{image_base64}}"
+                                style="cursor: zoom-in; border-radius: 0.365rem; transition: all 0.15s ease; margin-top: 0.5rem;"
+                                width="30%"
+                                onclick="toggleImageSize(this)" />
                         {%endif%}
                     </div>
                 </details>

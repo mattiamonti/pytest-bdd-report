@@ -1,109 +1,117 @@
 <!doctype html>
-<html lang="en" style="scroll-behavior: smooth;">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <title>{{title}}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
-    <script>
-        function toggleChip(input) {
-            const type = input.id.replace('show-', '');
-            showTest(input.checked, type);
-        }
-
-        function showTest(checked, type) {
-            var scenarios = document.getElementsByClassName(
-                type + "-scenario",
-            );
-            var failedScenariosLinks = document.getElementsByClassName("failed-scenarios-link");
-
-            for (let i = 0; i < scenarios.length; i++) {
-                if (checked) {
-                    scenarios[i].style.display = "flex";
-                } else {
-                    scenarios[i].style.display = "none";
-                }
+<html lang="en" style="scroll-behavior: smooth">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>{{title}}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+            rel="stylesheet"
+        />
+        <script>
+            function toggleChip(input) {
+                const type = input.id.replace("show-", "");
+                showTest(input.checked, type);
             }
 
-            if (type == "failed") {
-                for (let i = 0; i < failedScenariosLinks.length; i++) {
+            function showTest(checked, type) {
+                var scenarios = document.getElementsByClassName(
+                    type + "-scenario",
+                );
+                var failedScenariosLinks = document.getElementsByClassName(
+                    "failed-scenarios-link",
+                );
+
+                for (let i = 0; i < scenarios.length; i++) {
                     if (checked) {
-                        failedScenariosLinks[i].style.display = "flex";
+                        scenarios[i].style.display = "flex";
                     } else {
-                        failedScenariosLinks[i].style.display = "none";
+                        scenarios[i].style.display = "none";
+                    }
+                }
+
+                if (type == "failed") {
+                    for (let i = 0; i < failedScenariosLinks.length; i++) {
+                        if (checked) {
+                            failedScenariosLinks[i].style.display = "flex";
+                        } else {
+                            failedScenariosLinks[i].style.display = "none";
+                        }
                     }
                 }
             }
-        }
-    </script>
-    {% include './style.html' %}
-</head>
+            function toggleImageSize(img) {
+                if (img.style.width === "100%") {
+                    img.style.width = "30%";
+                    img.style.cursor = "zoom-in";
+                } else {
+                    img.style.width = "100%";
+                    img.style.cursor = "zoom-out";
+                }
+            }
+        </script>
+        {% include './style.html' %}
+    </head>
 
-<body>
-    {% include './components/feature_statistics_link.html' %}
-    <div style="margin-bottom: 2rem;">
-        <div style="
+    <body>
+        {% include './components/feature_statistics_link.html' %}
+        <div style="margin-bottom: 2rem">
+            <div
+                style="
                     display: flex;
                     align-items: first baseline;
                     justify-content: space-between;
                     margin-bottom: 1rem;
-                ">
-            <div>
-                <h1>
-                    Report: {{title}}
-                </h1>
-                <p class="secondary-text" style="margin: 0 0 0.5rem 0">
-                    {{file_path}}
-                </p>
+                "
+            >
+                <div>
+                    <h1>Report: {{title}}</h1>
+                    <p class="secondary-text" style="margin: 0 0 0.5rem 0">
+                        {{file_path}}
+                    </p>
+                </div>
+                <div>
+                    <p class="secondary-text text-right">{{date_time}}</p>
+                </div>
             </div>
-            <div>
-                <p class="secondary-text text-right">
-                    {{date_time}}
-                </p>
-            </div>
+
+            {% include './components/test_file_uri.html' %}
         </div>
 
-        {% include './components/test_file_uri.html' %}
-    </div>
+        {{summary | safe}}
 
-    {{summary | safe}}
+        <br />
+        <div id="feature-statistics" class="container">
+            <table class="feature-table sortable">
+                <thead>
+                    <tr>
+                        <th style="width: 40%; cursor: pointer">Feature</th>
+                        <th>Total</th>
+                        <th>Passed</th>
+                        <th>Failed</th>
+                        <th>Skipped</th>
+                        <th>Success Rate</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ feature_statistics | safe }}
+                </tbody>
+            </table>
+        </div>
 
-    <br />
-    <div id="feature-statistics" class="container">
-        <table class="feature-table sortable">
-            <thead>
-                <tr>
-                    <th style="width: 40%; cursor: pointer;">Feature</th>
-                    <th>Total</th>
-                    <th>Passed</th>
-                    <th>Failed</th>
-                    <th>Skipped</th>
-                    <th>Success Rate</th>
-                    <th>Duration</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{ feature_statistics | safe }}
-            </tbody>
-        </table>
-    </div>
+        <br />
 
-    <br />
+        <div id="control-box" class="flex-between">
+            {% include './components/filters.html' %} {% include
+            './components/scenario_control.html' %}
+        </div>
 
-    <div id="control-box" class="flex-between">
-        {% include './components/filters.html' %}
-        {% include './components/scenario_control.html' %}
-    </div>
+        <br />
+        <div class="flex-column" style="gap: 3.5rem">{{features | safe}}</div>
 
-    <br />
-    <div class="flex-column" style="gap: 3.5rem">
-        {{features | safe}}
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/sorttable@1.0.2/sorttable.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-</body>
-
+        <script src="https://cdn.jsdelivr.net/npm/sorttable@1.0.2/sorttable.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    </body>
 </html>
