@@ -1,3 +1,4 @@
+import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 from pytest_bdd_report import attach
@@ -25,8 +26,17 @@ def test_attach_screenshot(feature_name: str, scenario_name: str, image_data: by
     feature_name=st.text(min_size=1),
     scenario_name=st.text(min_size=1),
 )
-def test_attach_screenshot_file(feature_name: str, scenario_name: str):
-    screenshot_path = "tests/data/screenshot.png"
+@pytest.mark.parametrize(
+    "screenshot_path",
+    [
+        "tests/data/screenshot.png",
+        "tests/data/screenshot.jpeg",
+        "tests/data/screenshot.jpg",
+    ],
+)
+def test_attach_screenshot_file_png(
+    feature_name: str, scenario_name: str, screenshot_path: str
+):
     attach.screenshot_file(screenshot_path, feature_name, scenario_name)
 
     assert len(screenshot_repo.repo) == 1
