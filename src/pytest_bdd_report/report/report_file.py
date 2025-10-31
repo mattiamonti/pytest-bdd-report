@@ -6,25 +6,22 @@ from pytest_bdd_report.renderer.renderer import (
     FeatureRenderer,
     FeatureStatisticsRenderer,
 )
-from pytest_bdd_report.summary.summary import Summary
 from pytest_bdd_report.templates.feature_statistics_template import (
     FeatureStatisticsTemplate,
 )
 from pytest_bdd_report.templates.feature_template import FeatureTemplate
-from pytest_bdd_report.templates.report_template import (
-    ReportTemplate,
-    ReportTemplateBuilder,
-)
+from pytest_bdd_report.templates.report_template import ReportTemplateBuilder
+
 from pytest_bdd_report.templates.summary_template import SummaryTemplate
 
 
 class ReportFile:
     def __init__(self) -> None:
-        self.report_content = ""
-        self.report_title = ""
-        self.rendered_summary = ""
-        self.rendered_features = ""
-        self.rendered_feature_statistics = ""
+        self.report_content: str = ""
+        self.report_title: str = ""
+        self.rendered_summary: str = ""
+        self.rendered_features: str = ""
+        self.rendered_feature_statistics: str = ""
         self.test_file_uri: list[str] = []
 
     def create(self, path: str) -> None:
@@ -52,12 +49,12 @@ class ReportFile:
             os.makedirs(os.path.dirname(path), exist_ok=True)
 
         with open(path, "w", encoding="utf-8") as f:
-            f.write(self.report_content)
+            _ = f.write(self.report_content)
 
 
 class ReportFileBuilder:
     def __init__(self) -> None:
-        self.report_file = ReportFile()
+        self.report_file: ReportFile = ReportFile()
 
     def add_report(self, report: IReport) -> Self:
         self.report_file.rendered_features = self._render_features(report)

@@ -1,5 +1,5 @@
 import datetime
-from typing import List, Self
+from typing import override, Self
 
 from pytest_bdd_report.templates.template import BaseTemplate
 
@@ -9,12 +9,13 @@ class ReportTemplate(BaseTemplate):
         self.rendered_summary: str = ""
         self.rendered_features: str = ""
         self.rendered_feature_statistics: str = ""
-        self.test_file_uri: List[str] = []
+        self.test_file_uri: list[str] = []
         self.path: str = "report.html"
         self.file_path: str = ""
         super().__init__(self.path)
 
-    def render_template(self, data: str, **kwargs) -> str:
+    @override
+    def render_template(self, data: str, already_rendered_data: str = "") -> str:
         """
         Render the report template.
         """
@@ -31,7 +32,7 @@ class ReportTemplate(BaseTemplate):
 
 class ReportTemplateBuilder:
     def __init__(self) -> None:
-        self.report_template = ReportTemplate()
+        self.report_template: ReportTemplate = ReportTemplate()
 
     def add_rendered_summary(self, rendered_summary: str) -> Self:
         """
@@ -54,7 +55,7 @@ class ReportTemplateBuilder:
         self.report_template.rendered_feature_statistics = rendered_feature_statistics
         return self
 
-    def add_test_file_uri(self, test_file_uri: List[str]) -> Self:
+    def add_test_file_uri(self, test_file_uri: list[str]) -> Self:
         """
         Add test file URIs to the template.
         """

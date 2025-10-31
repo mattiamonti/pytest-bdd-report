@@ -1,11 +1,10 @@
 from pytest_bdd_report.report.report import IReport
 from pytest_bdd_report.summary.summary import Summary
-from typing import List
 
 
 class SummaryGenerator:
     def __init__(self):
-        self.summary = Summary()
+        self.summary: Summary = Summary()
 
     def populate_summary(self, report: IReport) -> Summary:
         """

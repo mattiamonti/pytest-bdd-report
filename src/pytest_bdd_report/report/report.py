@@ -9,7 +9,7 @@ class IReport(Protocol):
 
 
 class IReportBuilder(Protocol):
-    def set_features(self, features: list): ...
+    def set_features(self, features: list[Feature]): ...
 
     def build(self) -> IReport:
         """
@@ -28,13 +28,13 @@ class Report:
         self.features.append(feature)
 
 
-class ReportBuilder(IReportBuilder):
+class ReportBuilder:
     def __init__(self, title: str):
-        self.report = Report(title, [])
+        self.report: IReport = Report(title, [])
 
     def set_features(self, features: list[Feature]):
         self.report.features = features
         return self
 
-    def build(self) -> Report:
+    def build(self) -> IReport:
         return self.report

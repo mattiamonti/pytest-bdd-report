@@ -1,13 +1,15 @@
+from typing import Any
 from pytest_bdd_report.extractor.extractor import FeatureExtractor
+from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.report.report import IReport, IReportBuilder
 from pytest_bdd_report.loader.json_loader import ILoader
 
 
 class ReportComposer:
     def __init__(self, loader: ILoader, report_builder: IReportBuilder) -> None:
-        self.data: list[dict] = loader.load()
-        self.report_builder = report_builder
-        self.report = None
+        self.data: list[dict[str, Any]] = loader.load()
+        self.report_builder: IReportBuilder = report_builder
+        self.report: IReport | None = None
 
     def create_report(self) -> IReport:
         """
@@ -20,7 +22,7 @@ class ReportComposer:
         self._calculate_durations()
         return self.report
 
-    def _extract_features(self) -> list:
+    def _extract_features(self) -> list[Feature]:
         """
         Extract features from the object data.
         @return: features
@@ -31,7 +33,8 @@ class ReportComposer:
         """
         Calculate the duration for the scenarios and the features.
         """
-        for feature in self.report.features:
-            for scenario in feature.scenarios:
-                scenario.calculate_duration()
-            feature.calculate_duration()
+        if self.report is not None:
+            for feature in self.report.features:
+                for scenario in feature.scenarios:
+                    scenario.calculate_duration()
+                feature.calculate_duration()

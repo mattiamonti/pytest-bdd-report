@@ -1,12 +1,14 @@
+from typing import override
 from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.templates.template import BaseTemplate
 
 
 class FeatureStatisticsTemplate(BaseTemplate):
     def __init__(self) -> None:
-        self.path = "feature_statistics.html"
+        self.path: str = "feature_statistics.html"
         super().__init__(self.path)
 
+    @override
     def render_template(self, data: Feature, already_rendered_data: str = "") -> str:
         passed_rate = self._calculate_passed_rate(data)
         return self.template.render(
