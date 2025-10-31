@@ -1,3 +1,4 @@
+from pathlib import Path
 import pytest
 from pytest_bdd_report.extensions.screenshot import ScreenshotRepo
 from pytest_bdd_report.extensions.encoder import Base64Encoder
@@ -28,6 +29,55 @@ def test_add_screenshot(feature_name: str, scenario_name: str, image_data: bytes
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
     assert added_screenshot.encoded_image
+
+
+@pytest.mark.parametrize(
+    "image_path",
+    [
+        "tests/data/screenshot.png",
+        "tests/data/screenshot.jpg",
+        "tests/data/screenshot.jpeg",
+        Path("tests/data/screenshot.png"),
+        Path("tests/data/screenshot.jpg"),
+        Path("tests/data/screenshot.jpeg"),
+    ],
+)
+def test_add_screenshot_by_path(image_path: str | Path):
+    screenshot_repo = ScreenshotRepo(encoder=Base64Encoder)
+    feature_name = "My feature"
+    scenario_name = "My scenario"
+
+    # Add a new screenshot
+    screenshot_repo.add_by_path(feature_name, scenario_name, image_path)
+
+    # Check that the screenshot was added to the repository
+    assert len(screenshot_repo.repo) == 1
+    added_screenshot = screenshot_repo.get(feature_name, scenario_name)
+    assert added_screenshot is not None
+    assert added_screenshot.feature_name == feature_name
+    assert added_screenshot.scenario_name == scenario_name
+    assert added_screenshot.encoded_image is None
+    assert added_screenshot.path == str(Path(image_path).absolute())
+
+
+def test_add_screenshot_by_path_and_by_data_should_fail():
+    screenshot_repo = ScreenshotRepo(encoder=Base64Encoder)
+    feature_name = "My feature"
+    scenario_name = "My scenario"
+    image_path = "tests/data/screenshot.png"
+    image_data = b"Sample image"
+
+    # Add a new screenshot
+    screenshot_repo.add(feature_name, scenario_name, image_data)
+    with pytest.raises(ValueError):
+        screenshot_repo.add_by_path(feature_name, scenario_name, image_path)
+
+    # Check that the screenshot was added to the repository
+    assert len(screenshot_repo.repo) == 1
+    added_screenshot = screenshot_repo.get(feature_name, scenario_name)
+    assert added_screenshot is not None
+    assert added_screenshot.encoded_image
+    assert added_screenshot.path is None
 
 
 @pytest.mark.parametrize(

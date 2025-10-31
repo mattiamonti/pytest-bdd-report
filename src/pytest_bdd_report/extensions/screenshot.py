@@ -31,6 +31,10 @@ class ScreenshotRepo:
         self.repo.append(Screenshot(feature_name, scenario_name, image_base64, None))
 
     def add_by_path(self, feature_name: str, scenario_name: str, path: str | Path):
+        if self.exists(feature_name, scenario_name):
+            raise ValueError(
+                f"A screenshot for {feature_name} and {scenario_name} already exists in the repository."
+            )
         if isinstance(path, str):
             path = Path(path)
 
