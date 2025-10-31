@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pathlib import Path
 from pytest_bdd_report.extensions.encoder import Base64Encoder, ImageEncoder
 
 
@@ -6,7 +7,8 @@ from pytest_bdd_report.extensions.encoder import Base64Encoder, ImageEncoder
 class Screenshot:
     feature_name: str
     scenario_name: str
-    encoded_image: str
+    encoded_image: str | None
+    path: str | None
 
 
 class ScreenshotRepo:
@@ -26,7 +28,18 @@ class ScreenshotRepo:
                 f"A screenshot for {feature_name} and {scenario_name} already exists in the repository."
             )
         image_base64 = self.encoder.encode(image)
-        self.repo.append(Screenshot(feature_name, scenario_name, image_base64))
+        self.repo.append(Screenshot(feature_name, scenario_name, image_base64, None))
+
+    def add_by_path(self, feature_name: str, scenario_name: str, path: str | Path):
+        if isinstance(path, str):
+            path = Path(path)
+
+        if not path.exists():
+            raise FileNotFoundError
+
+        self.repo.append(
+            Screenshot(feature_name, scenario_name, None, str(path.absolute()))
+        )
 
     def get(self, feature_name: str, scenario_name: str) -> Screenshot | None:
         """

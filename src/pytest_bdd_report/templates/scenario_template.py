@@ -34,6 +34,7 @@ class ScenarioTemplate(BaseTemplate):
             tags=self._format_tags(data.tags),
             parameters=self._check_for_parameters(data.id),
             image_base64=self._embed_screenshot(data),
+            image_path=self._get_screenshot_path(data),
         )
 
     @staticmethod
@@ -61,3 +62,11 @@ class ScenarioTemplate(BaseTemplate):
             if screenshot is None:
                 return None
             return screenshot.encoded_image
+
+    @staticmethod
+    def _get_screenshot_path(data: Scenario) -> str | None:
+        if data.status == Status.FAILED:
+            screenshot = screenshot_repo.get(data.feature_name, data.name)
+            if screenshot is None:
+                return None
+            return screenshot.path

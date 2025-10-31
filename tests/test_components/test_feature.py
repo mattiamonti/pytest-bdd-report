@@ -1,6 +1,8 @@
 from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.entities.scenario import Scenario
 import pytest
+from hypothesis import given
+from hypothesis import strategies as st
 
 
 def test_add_scenario():
@@ -69,3 +71,47 @@ def test_calculate_duration_no_scenarios():
     )
     feature.calculate_duration()
     assert feature.duration == 0
+
+
+@given(
+    id=st.text(min_size=1),
+    name=st.text(min_size=1),
+    line=st.integers(min_value=0),
+    description=st.text(),
+    uri=st.text(min_size=1),
+    scenarios=st.lists(
+        st.builds(
+            Scenario,
+            id=st.text(min_size=1),
+            name=st.text(min_size=1),
+            line=st.integers(min_value=0),
+            description=st.text(),
+            duration=st.floats(min_value=0.1),
+        )
+    ),
+)
+def test_create_feature(
+    id: str,
+    name: str,
+    line: int,
+    description: str,
+    uri: str,
+    scenarios: list[Scenario],
+):
+    feature = Feature(
+        id=id,
+        name=name,
+        line=line,
+        description=description,
+        tags=[],
+        uri=uri,
+        scenarios=scenarios,
+    )
+
+    assert feature.id == id
+    assert feature.name == name
+    assert feature.line == line
+    assert feature.description == description
+    assert feature.tags == []
+    assert feature.uri == uri
+    assert feature.scenarios == scenarios

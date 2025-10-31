@@ -33,4 +33,4 @@ def pytest_bdd_step_error(
 
             # _ = page.screenshot(path=screenshot_path)
             # # pytest-bdd-report code to attach the screenshot
-            # attach.screenshot_file(screenshot_path, feature.name, scenario.name)
+            # attach.screenshot(screenshot_path, feature.name, scenario.name)
