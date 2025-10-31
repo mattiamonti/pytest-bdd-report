@@ -8,6 +8,7 @@ import os
 
 BDD_REPORT_FLAG = "--bdd-report"
 DEFAULT_CUCUMBER_JSON_PATH = ".cucumber-data.json"
+test_file_uri: list[str] = []
 
 
 # Command-line option setup
@@ -40,9 +41,6 @@ def pytest_configure(config):
         current_cucumber_path = config.option.cucumber_json_path
         if current_cucumber_path is None or current_cucumber_path == "":
             config.option.cucumber_json_path = DEFAULT_CUCUMBER_JSON_PATH
-
-
-test_file_uri = []
 
 
 def pytest_collection_modifyitems(config, items):
@@ -86,4 +84,3 @@ def pytest_sessionfinish(session):
         )
 
         report_file.create(report_file_path)
-        print(test_file_uri)
