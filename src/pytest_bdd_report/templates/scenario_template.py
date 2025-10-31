@@ -2,14 +2,14 @@ import re
 from pytest_bdd_report.entities.scenario import Scenario
 from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.templates.template import BaseTemplate
-from typing import List, Dict, Optional, Type
+from typing import override
 from pytest_bdd_report.extensions.screenshot import screenshot_repo
 
 
 class ScenarioTemplate(BaseTemplate):
-    _instance: Optional["ScenarioTemplate"] = None
+    _instance: "ScenarioTemplate | None" = None
 
-    def __new__(cls: Type["ScenarioTemplate"], *args, **kwargs) -> "ScenarioTemplate":
+    def __new__(cls: type["ScenarioTemplate"], *args, **kwargs) -> "ScenarioTemplate":
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
@@ -18,7 +18,8 @@ class ScenarioTemplate(BaseTemplate):
         self.path: str = "scenario.html"
         super().__init__(self.path)
 
-    def render_template(self, data: Scenario, rendered_steps: str = "") -> str:
+    @override
+    def render_template(self, data: Scenario, already_rendered_data: str = "") -> str:
         """
         Render the scenario template.
         """
@@ -27,7 +28,7 @@ class ScenarioTemplate(BaseTemplate):
             name=data.name,
             status=data.status.value,
             duration=data.duration,
-            steps=rendered_steps,
+            steps=already_rendered_data,
             error_message=data.error_message,
             description=data.description,
             tags=self._format_tags(data.tags),
@@ -36,7 +37,7 @@ class ScenarioTemplate(BaseTemplate):
         )
 
     @staticmethod
-    def _format_tags(tags: List[Dict[str, str]]) -> str:
+    def _format_tags(tags: list[dict[str, str]]) -> str:
         """
         Format tags into a comma-separated string.
         """
@@ -54,6 +55,7 @@ class ScenarioTemplate(BaseTemplate):
 
     @staticmethod
     def _embed_screenshot(data: Scenario) -> str | None:
+        # TODO open the possibility of attaching screenshots even for passed tests
         if data.status == Status.FAILED:
             screenshot = screenshot_repo.get(data.feature_name, data.name)
             if screenshot is None:

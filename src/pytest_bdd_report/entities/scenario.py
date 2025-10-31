@@ -1,4 +1,3 @@
-from typing import List
 from dataclasses import dataclass
 from pytest_bdd_report.entities.step import Step
 from pytest_bdd_report.entities.status_enum import Status
@@ -10,8 +9,8 @@ class Scenario:
     name: str
     line: int
     description: str
-    tags: List[str]
-    steps: List[Step]
+    tags: list[dict[str, str]]
+    steps: list[Step]
     duration: float = 0.0
     status: Status = Status.PASSED
     error_message: str = ""
