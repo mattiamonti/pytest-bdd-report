@@ -9,7 +9,6 @@ __pycache__/
 # Robot Framework files
 log.html
 output.xml
-report.html
 __pycache__
 .classpath
 .settings
