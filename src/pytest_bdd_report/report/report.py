@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Protocol
+from typing import Protocol, Self
 from pytest_bdd_report.entities.feature import Feature
 
 
@@ -9,7 +9,7 @@ class IReport(Protocol):
 
 
 class IReportBuilder(Protocol):
-    def set_features(self, features: list[Feature]): ...
+    def set_features(self, features: list[Feature]) -> Self: ...
 
     def build(self) -> IReport:
         """
@@ -32,7 +32,7 @@ class ReportBuilder:
     def __init__(self, title: str):
         self.report: IReport = Report(title, [])
 
-    def set_features(self, features: list[Feature]):
+    def set_features(self, features: list[Feature]) -> Self:
         self.report.features = features
         return self
 
