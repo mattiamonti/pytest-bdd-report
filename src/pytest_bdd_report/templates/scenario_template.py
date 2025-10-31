@@ -2,14 +2,14 @@ import re
 from pytest_bdd_report.entities.scenario import Scenario
 from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.templates.template import BaseTemplate
-from typing import override
+from typing import Self, override
 from pytest_bdd_report.extensions.screenshot import screenshot_repo
 
 
 class ScenarioTemplate(BaseTemplate):
-    _instance: "ScenarioTemplate | None" = None
+    _instance: Self | None = None
 
-    def __new__(cls: type["ScenarioTemplate"], *args, **kwargs) -> "ScenarioTemplate":
+    def __new__(cls: type[Self], *args, **kwargs) -> Self:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance

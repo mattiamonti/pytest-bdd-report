@@ -11,7 +11,7 @@ class Feature:
         name: str,
         line: int,
         description: str,
-        tags: list,
+        tags: list[dict[str, str]],
         uri: str,
         scenarios: list[Scenario],
         duration: float = 0.0,

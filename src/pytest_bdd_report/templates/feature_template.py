@@ -1,28 +1,29 @@
 from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.entities.status_enum import Status
 from pytest_bdd_report.templates.template import BaseTemplate
-from typing import List, Dict, Optional, Type
+from typing import Self, override
 
 
 class FeatureTemplate(BaseTemplate):
-    _instance: Optional["FeatureTemplate"] = None
+    _instance: Self | None = None
 
-    def __new__(cls: Type["FeatureTemplate"], *args, **kwargs) -> "FeatureTemplate":
+    def __new__(cls: type[Self], *args, **kwargs) -> Self:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
 
     def __init__(self) -> None:
-        self.path = "feature.html"
+        self.path: str = "feature.html"
         super().__init__(self.path)
 
-    def render_template(self, data: Feature, rendered_scenarios: str = "") -> str:
+    @override
+    def render_template(self, data: Feature, already_rendered_data: str = "") -> str:
         return self.template.render(
             id=data.id,
             name=data.name,
             status=data.status.value,
             duration=data.duration,
-            scenarios=rendered_scenarios,
+            scenarios=already_rendered_data,
             total=data.total_tests,
             passed=data.passed_tests,
             failed=data.failed_tests,
@@ -45,7 +46,7 @@ class FeatureTemplate(BaseTemplate):
         return failed_scenarios_names
 
     @staticmethod
-    def _format_tags(tags: List[Dict[str, str]]) -> str:
+    def _format_tags(tags: list[dict[str, str]]) -> str:
         """
         Format tags into a comma-separated string.
         """
