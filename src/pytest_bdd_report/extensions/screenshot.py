@@ -20,12 +20,14 @@ class BytesScreenshotSaver:
     def __init__(self, encoder: ImageEncoder) -> None:
         self.encoder: ImageEncoder = encoder
 
-    def save(self, feature_name: str, scenario_name: str, image: Any) -> Screenshot:
+    def save(self, feature_name: str, scenario_name: str, image: bytes) -> Screenshot:
         return Screenshot(feature_name, scenario_name, self.encoder.encode(image), None)
 
 
 class PathScreenshotSaver:
-    def save(self, feature_name: str, scenario_name: str, image: Any) -> Screenshot:
+    def save(
+        self, feature_name: str, scenario_name: str, image: str | Path
+    ) -> Screenshot:
         if not isinstance(image, Path):
             image = Path(image)
 

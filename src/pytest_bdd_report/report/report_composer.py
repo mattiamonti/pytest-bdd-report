@@ -17,8 +17,7 @@ class ReportComposer:
         @return: the report
         """
         features = self._extract_features()
-        self.report_builder.set_features(features)
-        self.report = self.report_builder.build()
+        self.report = self.report_builder.set_features(features).build()
         self._calculate_durations()
         return self.report
 
