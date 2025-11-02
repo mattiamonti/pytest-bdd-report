@@ -1,6 +1,5 @@
 from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.entities.scenario import Scenario
-import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
@@ -42,7 +41,8 @@ def test_add_multiple_scenarios():
     assert len(feature.scenarios) == 2
 
 
-def test_calculate_duration():
+@given(duration_1=st.floats(min_value=0), duration_2=st.floats(min_value=0))
+def test_calculate_duration(duration_1: float, duration_2: float):
     feature = Feature(
         id="",
         name="",
@@ -53,15 +53,29 @@ def test_calculate_duration():
         scenarios=[],
     )
     feature.add_scenario(
-        Scenario(id="", name="", line=0, description="", tags=[], steps=[], duration=1)
+        Scenario(
+            id="",
+            name="",
+            line=0,
+            description="",
+            tags=[],
+            steps=[],
+            duration=duration_1,
+        )
     )
     feature.add_scenario(
         Scenario(
-            id="", name="", line=0, description="", tags=[], steps=[], duration=2.5
+            id="",
+            name="",
+            line=0,
+            description="",
+            tags=[],
+            steps=[],
+            duration=duration_2,
         )
     )
     feature.calculate_duration()
-    assert feature.duration == 3.5
+    assert feature.duration == duration_1 + duration_2
 
 
 def test_calculate_duration_no_scenarios():
