@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any, Protocol
 from pytest_bdd_report.extensions.encoder import Base64Encoder, ImageEncoder
 
 
@@ -11,12 +12,34 @@ class Screenshot:
     path: str | None
 
 
-class ScreenshotRepo:
+class ScreenshotSaverStrategy(Protocol):
+    def save(self, feature_name: str, scenario_name: str, image: Any) -> Screenshot: ...
+
+
+class BytesScreenshotSaver:
     def __init__(self, encoder: ImageEncoder) -> None:
-        self.repo: list[Screenshot] = []
         self.encoder: ImageEncoder = encoder
 
-    def add(self, feature_name: str, scenario_name: str, image: bytes):
+    def save(self, feature_name: str, scenario_name: str, image: Any) -> Screenshot:
+        return Screenshot(feature_name, scenario_name, self.encoder.encode(image), None)
+
+
+class PathScreenshotSaver:
+    def save(self, feature_name: str, scenario_name: str, image: Any) -> Screenshot:
+        if not isinstance(image, Path):
+            image = Path(image)
+
+        if not image.exists():
+            raise FileNotFoundError
+        return Screenshot(feature_name, scenario_name, None, str(image.absolute()))
+
+
+class ScreenshotRepo:
+    def __init__(self) -> None:
+        self.repo: list[Screenshot] = []
+        self._savers: dict[str, ScreenshotSaverStrategy] = {}
+
+    def add(self, feature_name: str, scenario_name: str, image: bytes | str | Path):
         """
         Adds a new screenshot to the repository.
 
@@ -27,30 +50,9 @@ class ScreenshotRepo:
             raise ValueError(
                 f"A screenshot for {feature_name} and {scenario_name} already exists in the repository."
             )
-        image_base64 = self.encoder.encode(image)
-        self.repo.append(Screenshot(feature_name, scenario_name, image_base64, None))
 
-    def add_by_path(self, feature_name: str, scenario_name: str, path: str | Path):
-        """
-        Adds a new screenshot by it's path to the repository.
-
-        Raises:
-            ValueError: If a screenshot for the given feature and scenario already exists in the repository.
-            FileNotFoundError: If a screenshot file don't exists.
-        """
-        if self.exists(feature_name, scenario_name):
-            raise ValueError(
-                f"A screenshot for {feature_name} and {scenario_name} already exists in the repository."
-            )
-        if isinstance(path, str):
-            path = Path(path)
-
-        if not path.exists():
-            raise FileNotFoundError
-
-        self.repo.append(
-            Screenshot(feature_name, scenario_name, None, str(path.absolute()))
-        )
+        saver_strategy = self.get_saver(image.__class__.__name__)
+        self.repo.append(saver_strategy.save(feature_name, scenario_name, image))
 
     def get(self, feature_name: str, scenario_name: str) -> Screenshot | None:
         """
@@ -70,6 +72,21 @@ class ScreenshotRepo:
             for item in self.repo
         )
 
+    def register_saver(self, saver: ScreenshotSaverStrategy, for_type: str) -> None:
+        self._savers[for_type] = saver
+
+    def get_saver(self, for_type: str) -> ScreenshotSaverStrategy:
+        saver = self._savers.get(for_type)
+        if not saver:
+            raise RuntimeWarning(
+                f"No screenshot saver strategy register for the image type {for_type}. Try to register a saver with the .register_saver method of this class."
+            )
+        return saver
+
 
 # Object to be used in the different parts of code
-screenshot_repo = ScreenshotRepo(encoder=Base64Encoder)
+screenshot_repo = ScreenshotRepo()
+screenshot_repo.register_saver(BytesScreenshotSaver(encoder=Base64Encoder), "bytes")
+screenshot_repo.register_saver(PathScreenshotSaver(), "str")
+screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
+screenshot_repo.register_saver(PathScreenshotSaver(), "PosixPath")

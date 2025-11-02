@@ -15,9 +15,6 @@ def screenshot(
         scenario_name (str): The name of the scenario for which the screenshot is being attached.
     """
     try:
-        if isinstance(image, bytes):
-            screenshot_repo.add(feature_name, scenario_name, image)
-        elif image:
-            screenshot_repo.add_by_path(feature_name, scenario_name, image)
-    except ValueError as e:
+        screenshot_repo.add(feature_name, scenario_name, image)
+    except (ValueError, RuntimeWarning) as e:
         print(f"Error while attaching the screenshot: {e}")

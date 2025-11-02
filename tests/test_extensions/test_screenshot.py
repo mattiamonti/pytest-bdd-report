@@ -1,14 +1,23 @@
 from pathlib import Path
 import pytest
-from pytest_bdd_report.extensions.screenshot import ScreenshotRepo
+from pytest_bdd_report.extensions.screenshot import (
+    ScreenshotRepo,
+    BytesScreenshotSaver,
+    PathScreenshotSaver,
+)
 from pytest_bdd_report.extensions.encoder import Base64Encoder
 from hypothesis import given
 from hypothesis import strategies as st
 
 
-@pytest.fixture()
-def screenshot_repo():
-    return ScreenshotRepo(encoder=Base64Encoder)
+@pytest.fixture
+def screenshot_repo() -> ScreenshotRepo:
+    screenshot_repo = ScreenshotRepo()
+    screenshot_repo.register_saver(BytesScreenshotSaver(encoder=Base64Encoder), "bytes")
+    screenshot_repo.register_saver(PathScreenshotSaver(), "str")
+    screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
+    screenshot_repo.register_saver(PathScreenshotSaver(), "PosixPath")
+    return screenshot_repo
 
 
 @given(
@@ -16,8 +25,11 @@ def screenshot_repo():
     scenario_name=st.text(min_size=1),
     image_data=st.binary(min_size=1),
 )
-def test_add_screenshot(feature_name: str, scenario_name: str, image_data: bytes):
-    screenshot_repo = ScreenshotRepo(encoder=Base64Encoder)
+def test_add_screenshot_by_bytes(
+    feature_name: str, scenario_name: str, image_data: bytes
+):
+    screenshot_repo = ScreenshotRepo()
+    screenshot_repo.register_saver(BytesScreenshotSaver(encoder=Base64Encoder), "bytes")
 
     # Add a new screenshot
     screenshot_repo.add(feature_name, scenario_name, image_data)
@@ -43,12 +55,15 @@ def test_add_screenshot(feature_name: str, scenario_name: str, image_data: bytes
     ],
 )
 def test_add_screenshot_by_path(image_path: str | Path):
-    screenshot_repo = ScreenshotRepo(encoder=Base64Encoder)
+    screenshot_repo = ScreenshotRepo()
+    screenshot_repo.register_saver(PathScreenshotSaver(), "str")
+    screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
+    screenshot_repo.register_saver(PathScreenshotSaver(), "PosixPath")
     feature_name = "My feature"
     scenario_name = "My scenario"
 
     # Add a new screenshot
-    screenshot_repo.add_by_path(feature_name, scenario_name, image_path)
+    screenshot_repo.add(feature_name, scenario_name, image_path)
 
     # Check that the screenshot was added to the repository
     assert len(screenshot_repo.repo) == 1
@@ -61,7 +76,11 @@ def test_add_screenshot_by_path(image_path: str | Path):
 
 
 def test_add_screenshot_by_path_and_by_data_should_fail():
-    screenshot_repo = ScreenshotRepo(encoder=Base64Encoder)
+    screenshot_repo = ScreenshotRepo()
+    screenshot_repo.register_saver(BytesScreenshotSaver(encoder=Base64Encoder), "bytes")
+    screenshot_repo.register_saver(PathScreenshotSaver(), "str")
+    screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
+    screenshot_repo.register_saver(PathScreenshotSaver(), "PosixPath")
     feature_name = "My feature"
     scenario_name = "My scenario"
     image_path = "tests/data/screenshot.png"
@@ -70,7 +89,7 @@ def test_add_screenshot_by_path_and_by_data_should_fail():
     # Add a new screenshot
     screenshot_repo.add(feature_name, scenario_name, image_data)
     with pytest.raises(ValueError):
-        screenshot_repo.add_by_path(feature_name, scenario_name, image_path)
+        screenshot_repo.add(feature_name, scenario_name, image_path)
 
     # Check that the screenshot was added to the repository
     assert len(screenshot_repo.repo) == 1
@@ -129,6 +148,27 @@ def test_add_multiple_screenshot(
     assert screenshot_1 is not None
     assert screenshot_2 is not None
     assert screenshot_1.encoded_image != screenshot_2.encoded_image
+
+
+def test_register_screenshot_saver_strategy(screenshot_repo: ScreenshotRepo):
+    assert isinstance(screenshot_repo.get_saver("Path"), PathScreenshotSaver)
+    assert isinstance(screenshot_repo.get_saver("str"), PathScreenshotSaver)
+    assert isinstance(screenshot_repo.get_saver("bytes"), BytesScreenshotSaver)
+
+
+@pytest.mark.parametrize("image", ["tests/data/screenshot.png", b"Sample image"])
+def test_add_screenshot_without_saver_strategy_registered(image: str | bytes):
+    screenshot_repo = ScreenshotRepo()
+    screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
+    feature_name = "My feature"
+    scenario_name = "My scenario"
+
+    # Add a new screenshot
+    with pytest.raises(RuntimeWarning):
+        screenshot_repo.add(feature_name, scenario_name, image)
+
+    # Check that the screenshot was not added to the repository
+    assert len(screenshot_repo.repo) == 0
 
 
 def test_get_nonexistent_screenshot(screenshot_repo: ScreenshotRepo):
