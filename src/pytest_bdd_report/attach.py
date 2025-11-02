@@ -18,6 +18,6 @@ def screenshot(
         if isinstance(image, bytes):
             screenshot_repo.add(feature_name, scenario_name, image)
         elif image:
-            screenshot_repo.add_by_path(feature_name, scenario_name, str(image))
+            screenshot_repo.add_by_path(feature_name, scenario_name, image)
     except ValueError as e:
         print(f"Error while attaching the screenshot: {e}")
