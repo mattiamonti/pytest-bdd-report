@@ -38,7 +38,7 @@ def test_attach_screenshot_file(feature_name: str, scenario_name: str):
     screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
-    assert added_screenshot.path == str(Path(screenshot_path).absolute())
+    assert added_screenshot.encoded_image
 
 
 @pytest.mark.parametrize(
@@ -60,7 +60,7 @@ def test_attach_screenshot_different_file_types_by_str(screenshot_path: str):
     screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
-    assert added_screenshot.path == str(Path(screenshot_path).absolute())
+    assert added_screenshot.encoded_image
 
 
 @pytest.mark.parametrize(
@@ -82,4 +82,4 @@ def test_attach_screenshot_different_file_types_by_path(screenshot_path: Path):
     screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
-    assert added_screenshot.path == str(screenshot_path.absolute())
+    assert added_screenshot.encoded_image

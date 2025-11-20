@@ -14,9 +14,10 @@ from hypothesis import strategies as st
 def screenshot_repo() -> ScreenshotRepo:
     screenshot_repo = ScreenshotRepo()
     screenshot_repo.register_saver(BytesScreenshotSaver(encoder=Base64Encoder), "bytes")
-    screenshot_repo.register_saver(PathScreenshotSaver(), "str")
-    screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
-    screenshot_repo.register_saver(PathScreenshotSaver(), "PosixPath")
+    path_screenshot_saver = PathScreenshotSaver(encoder=Base64Encoder)
+    screenshot_repo.register_saver(path_screenshot_saver, "str")
+    screenshot_repo.register_saver(path_screenshot_saver, "Path")
+    screenshot_repo.register_saver(path_screenshot_saver, "PosixPath")
     return screenshot_repo
 
 
@@ -56,9 +57,10 @@ def test_add_screenshot_by_bytes(
 )
 def test_add_screenshot_by_path(image_path: str | Path):
     screenshot_repo = ScreenshotRepo()
-    screenshot_repo.register_saver(PathScreenshotSaver(), "str")
-    screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
-    screenshot_repo.register_saver(PathScreenshotSaver(), "PosixPath")
+    path_screenshot_saver = PathScreenshotSaver(encoder=Base64Encoder)
+    screenshot_repo.register_saver(path_screenshot_saver, "str")
+    screenshot_repo.register_saver(path_screenshot_saver, "Path")
+    screenshot_repo.register_saver(path_screenshot_saver, "PosixPath")
     feature_name = "My feature"
     scenario_name = "My scenario"
 
@@ -71,16 +73,16 @@ def test_add_screenshot_by_path(image_path: str | Path):
     assert added_screenshot is not None
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
-    assert added_screenshot.encoded_image is None
-    assert added_screenshot.path == str(Path(image_path).absolute())
+    assert added_screenshot.encoded_image
 
 
 def test_add_screenshot_by_path_and_by_data_should_fail():
     screenshot_repo = ScreenshotRepo()
+    path_screenshot_saver = PathScreenshotSaver(encoder=Base64Encoder)
     screenshot_repo.register_saver(BytesScreenshotSaver(encoder=Base64Encoder), "bytes")
-    screenshot_repo.register_saver(PathScreenshotSaver(), "str")
-    screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
-    screenshot_repo.register_saver(PathScreenshotSaver(), "PosixPath")
+    screenshot_repo.register_saver(path_screenshot_saver, "str")
+    screenshot_repo.register_saver(path_screenshot_saver, "Path")
+    screenshot_repo.register_saver(path_screenshot_saver, "PosixPath")
     feature_name = "My feature"
     scenario_name = "My scenario"
     image_path = "tests/data/screenshot.png"
@@ -96,7 +98,6 @@ def test_add_screenshot_by_path_and_by_data_should_fail():
     added_screenshot = screenshot_repo.get(feature_name, scenario_name)
     assert added_screenshot is not None
     assert added_screenshot.encoded_image
-    assert added_screenshot.path is None
 
 
 @pytest.mark.parametrize(
@@ -159,7 +160,7 @@ def test_register_screenshot_saver_strategy(screenshot_repo: ScreenshotRepo):
 @pytest.mark.parametrize("image", ["tests/data/screenshot.png", b"Sample image"])
 def test_add_screenshot_without_saver_strategy_registered(image: str | bytes):
     screenshot_repo = ScreenshotRepo()
-    screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
+    screenshot_repo.register_saver(PathScreenshotSaver(encoder=Base64Encoder), "Path")
     feature_name = "My feature"
     scenario_name = "My scenario"
 

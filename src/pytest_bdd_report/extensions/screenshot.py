@@ -9,7 +9,6 @@ class Screenshot:
     feature_name: str
     scenario_name: str
     encoded_image: str | None
-    path: str | None
 
 
 class ScreenshotSaverStrategy(Protocol):
@@ -21,10 +20,13 @@ class BytesScreenshotSaver:
         self.encoder: ImageEncoder = encoder
 
     def save(self, feature_name: str, scenario_name: str, image: bytes) -> Screenshot:
-        return Screenshot(feature_name, scenario_name, self.encoder.encode(image), None)
+        return Screenshot(feature_name, scenario_name, self.encoder.encode(image))
 
 
 class PathScreenshotSaver:
+    def __init__(self, encoder: ImageEncoder) -> None:
+        self.encoder: ImageEncoder = encoder
+
     def save(
         self, feature_name: str, scenario_name: str, image: str | Path
     ) -> Screenshot:
@@ -33,7 +35,9 @@ class PathScreenshotSaver:
 
         if not image.exists():
             raise FileNotFoundError
-        return Screenshot(feature_name, scenario_name, None, str(image.absolute()))
+        with open(image, "rb") as image_file:
+            image_bytes = image_file.read()
+        return Screenshot(feature_name, scenario_name, self.encoder.encode(image_bytes))
 
 
 class ScreenshotRepo:
@@ -88,7 +92,8 @@ class ScreenshotRepo:
 
 # Object to be used in the different parts of code
 screenshot_repo = ScreenshotRepo()
+path_screenshot_saver = PathScreenshotSaver(encoder=Base64Encoder)
 screenshot_repo.register_saver(BytesScreenshotSaver(encoder=Base64Encoder), "bytes")
-screenshot_repo.register_saver(PathScreenshotSaver(), "str")
-screenshot_repo.register_saver(PathScreenshotSaver(), "Path")
-screenshot_repo.register_saver(PathScreenshotSaver(), "PosixPath")
+screenshot_repo.register_saver(path_screenshot_saver, "str")
+screenshot_repo.register_saver(path_screenshot_saver, "Path")
+screenshot_repo.register_saver(path_screenshot_saver, "PosixPath")
