@@ -38,13 +38,12 @@ def pytest_configure(config):
     Configure the generation of the cucumber-json file
     """
     if _get_flag_option(config, BDD_REPORT_FLAG) != ".html":
-        current_cucumber_path = config.option.cucumber_json_path
-        if not current_cucumber_path or current_cucumber_path == "":
-            config.option.cucumber_json_path = DEFAULT_CUCUMBER_JSON_PATH
+        cucumber_path = config.option.cucumber_json_path
+        if not cucumber_path or cucumber_path == "":
+            cucumber_path = DEFAULT_CUCUMBER_JSON_PATH
+            config.option.cucumber_json_path = cucumber_path
 
-        # FIXME crea il path se non esiste
-        cucumber_json_path = config.option.cucumber_json_path
-        parent_directories = os.path.dirname(cucumber_json_path)
+        parent_directories = os.path.dirname(cucumber_path)
         if parent_directories and not os.path.exists(parent_directories):
             os.makedirs(parent_directories)
 
