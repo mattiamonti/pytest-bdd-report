@@ -5,8 +5,8 @@ import textwrap
 
 
 @pytest.fixture()
-def sample_test(testdir):
-    testdir.makefile(
+def sample_test(testdir: pytest.Testdir) -> pytest.Testdir:
+    _ = testdir.makefile(
         ".feature",
         scenario=textwrap.dedent(
             """\
@@ -20,7 +20,7 @@ def sample_test(testdir):
         ),
     )
 
-    testdir.makepyfile(
+    _ = testdir.makepyfile(
         textwrap.dedent(
             """\
         import pytest
@@ -54,8 +54,8 @@ def sample_test(testdir):
 
 
 @pytest.fixture()
-def sample_test_with_utf_8_characters(testdir):
-    testdir.makefile(
+def sample_test_with_utf_8_characters(testdir: pytest.Testdir) -> pytest.Testdir:
+    _ = testdir.makefile(
         ".feature",
         scenario=textwrap.dedent(
             """\
@@ -67,7 +67,7 @@ def sample_test_with_utf_8_characters(testdir):
         ),
     )
 
-    testdir.makepyfile(
+    _ = testdir.makepyfile(
         textwrap.dedent(
             """\
         import pytest
@@ -87,7 +87,7 @@ def sample_test_with_utf_8_characters(testdir):
     return testdir
 
 
-def test_arguments_in_help(testdir):
+def test_arguments_in_help(testdir: pytest.Testdir):
     res = testdir.runpytest("--help")
     res.stdout.fnmatch_lines(
         [
@@ -96,27 +96,72 @@ def test_arguments_in_help(testdir):
     )
 
 
-def test_create_html_report_file(sample_test):
+def test_create_html_report_file(sample_test: pytest.Testdir):
     sample_test.runpytest("--bdd-report=report.html")
     assert (sample_test.tmpdir / "report.html").exists()
 
 
-def test_create_html_report_file_with_directory(sample_test):
+def test_create_html_report_file_with_directory(sample_test: pytest.Testdir):
     sample_test.runpytest("--bdd-report=./reports/report.html")
     assert (sample_test.tmpdir / "./reports/report.html").exists()
 
 
-def test_create_html_report_file_with_directory_name(sample_test):
+def test_create_html_report_file_with_directory_name(sample_test: pytest.Testdir):
     sample_test.runpytest("--bdd-report=results/report.html")
     assert (sample_test.tmpdir / "results/report.html").exists()
 
 
-def test_create_html_report_file_with_directory_and_subdirectory(sample_test):
+def test_create_html_report_file_with_directory_and_subdirectory(
+    sample_test: pytest.Testdir,
+):
     sample_test.runpytest("--bdd-report=./reports/year/report.html")
     assert (sample_test.tmpdir / "./reports/year/report.html").exists()
 
 
-def test_content_in_report(sample_test):
+def test_create_html_report_with_custom_cucumber_path(sample_test: pytest.Testdir):
+    sample_test.runpytest(
+        "--bdd-report=custom_cucumber_report.html",
+        "--cucumber-json=custom_cucumber_file.json",
+    )
+    assert (sample_test.tmpdir / "custom_cucumber_report.html").exists()
+    assert (sample_test.tmpdir / "custom_cucumber_file.json").exists()
+
+
+def test_create_html_report_with_custom_cucumber_path_with_existing_directory(
+    sample_test: pytest.Testdir,
+):
+    sample_test.mkdir("cucumber_dir")
+    sample_test.runpytest(
+        "--bdd-report=custom_cucumber_report.html",
+        "--cucumber-json=cucumber_dir/custom_cucumber_file.json",
+    )
+    assert (sample_test.tmpdir / "custom_cucumber_report.html").exists()
+    assert (sample_test.tmpdir / "cucumber_dir" / "custom_cucumber_file.json").exists()
+
+
+def test_create_html_report_with_custom_cucumber_path_without_existing_directory(
+    sample_test: pytest.Testdir,
+):
+    sample_test.runpytest(
+        "--bdd-report=custom_cucumber_report.html",
+        "--cucumber-json=cucumber_dir/custom_cucumber_file.json",
+    )
+    assert (sample_test.tmpdir / "custom_cucumber_report.html").exists()
+    assert (sample_test.tmpdir / "cucumber_dir" / "custom_cucumber_file.json").exists()
+
+
+def test_create_html_report_with_custom_cucumber_path_both_without_existing_directory(
+    sample_test: pytest.Testdir,
+):
+    sample_test.runpytest(
+        "--bdd-report=report_dir/custom_cucumber_report.html",
+        "--cucumber-json=cucumber_dir/custom_cucumber_file.json",
+    )
+    assert (sample_test.tmpdir / "report_dir" / "custom_cucumber_report.html").exists()
+    assert (sample_test.tmpdir / "cucumber_dir" / "custom_cucumber_file.json").exists()
+
+
+def test_content_in_report(sample_test: pytest.Testdir):
     sample_test.runpytest("--bdd-report=report.html")
     content = ""
     with open((sample_test.tmpdir / "report.html"), "r") as f:
@@ -124,7 +169,7 @@ def test_content_in_report(sample_test):
     assert content != ""
 
 
-def test_information_in_report(sample_test):
+def test_information_in_report(sample_test: pytest.Testdir):
     sample_test.runpytest("--bdd-report=report.html")
     content = ""
     with open((sample_test.tmpdir / "report.html"), "r") as f:
@@ -137,7 +182,7 @@ def test_information_in_report(sample_test):
     assert " It fails" in content
 
 
-def test_utf_8_information_in_report(sample_test_with_utf_8_characters):
+def test_utf_8_information_in_report(sample_test_with_utf_8_characters: pytest.Testdir):
     sample_test_with_utf_8_characters.runpytest("--bdd-report=report.html")
     content = ""
     with open(
