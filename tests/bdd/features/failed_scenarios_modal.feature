@@ -18,7 +18,7 @@ Feature: Failed scenarios modal behavior
     When I open the failed scenarios modal
     Then the modal should be visible
     When I close the modal
-    Then the modal should be visible
+    Then the modal should not be visible
 
   @visual
   Scenario: Failed scenarios modal should contain all failed scenarios of a feature
