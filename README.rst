@@ -90,8 +90,9 @@ This helper function lets you attach screenshots either from raw bytes (e.g. pag
 The screenshot will automatically appear inside the corresponding Feature → Scenario section of the final report.
 
 Example with Playwright
+=======================
 
-:: python
+.. code-block:: python
 
     from pytest_bdd_report import attach
 
