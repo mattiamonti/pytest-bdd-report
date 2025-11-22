@@ -15,6 +15,7 @@ class ScenarioPOM:
         self._error_message = self._error_message_button.locator(
             "//*[contains(@id, 'message')]"
         )
+        self._screenshot = self._error_message.get_by_role("img")
 
     def get(self) -> Locator:
         return self._scenario
@@ -54,6 +55,12 @@ class ScenarioPOM:
 
     def error_message_should_be_visible(self) -> None:
         expect(self._error_message).not_to_be_hidden()
+
+    def screenshot_should_be_visible(self) -> None:
+        expect(self._screenshot).not_to_be_hidden()
+
+    def screenshot_should_not_be_visible(self) -> None:
+        expect(self._screenshot).to_be_hidden()
 
     def get_duration(self) -> float:
         scenario = self.get()

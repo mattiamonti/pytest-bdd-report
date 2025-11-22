@@ -65,7 +65,7 @@ def add_multiple_passed_scenarios(
             correct_feature = feature
 
     for i in range(count):
-        scenario = BDDScenario(f"Passing {i+1} {get_uuid()}")
+        scenario = BDDScenario(f"Passing {i + 1} {get_uuid()}")
         scenario = _add_step_to_scenario(type, scenario)
         if correct_feature is not None:
             correct_feature.add_scenario(scenario)
@@ -119,6 +119,32 @@ def build_feature(builder):
 def generate_report(builder):
     test_dir = builder.output_dir
     os.system(f"pytest --bdd-report=generated_report.html {test_dir}/")
+
+
+@when("I activate screenshot for failed steps")
+def activate_screenshot(builder):
+    test_dir = Path(builder.output_dir)
+    print(f"\n\nACTIVATING SCREENSHOT at {test_dir}")
+
+    conftest_path = test_dir / "conftest.py"
+
+    hook_code = """
+import pytest
+from pytest_bdd_report import attach
+
+# To attach dummy screenshot during Playright UI tests
+@pytest.hookimpl(hookwrapper=True)
+def pytest_bdd_step_error(
+    request, feature, scenario, step, step_func, step_func_args, exception
+):
+    yield
+    with open("./tests/data/screenshot.png", "rb") as image:
+        image_bytes = image.read()
+    attach.screenshot(image_bytes, feature.name,scenario.name)
+"""
+    test_dir.mkdir(parents=True, exist_ok=True)
+    # scrivi/riscrivi il file
+    conftest_path.write_text(hook_code.strip() + "\n", encoding="utf-8")
 
 
 @when("I open the report")
