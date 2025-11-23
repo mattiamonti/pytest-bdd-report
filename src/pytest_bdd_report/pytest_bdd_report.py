@@ -1,13 +1,14 @@
 import pytest
-from pytest_bdd_report.json_loader import JsonLoader
-from pytest_bdd_report.report_composer import ReportComposer
-from pytest_bdd_report.report import Report, ReportBuilder
-from pytest_bdd_report.report_file_generator import ReportFileGenerator
+from pytest_bdd_report.loader.json_loader import JsonLoader
+from pytest_bdd_report.report.report_composer import ReportComposer
+from pytest_bdd_report.report.report import ReportBuilder
+from pytest_bdd_report.report.report_file import ReportFileBuilder
 from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 import os
 
 BDD_REPORT_FLAG = "--bdd-report"
-CUCUMBER_JSON_PATH = ".cucumber-data.json"
+DEFAULT_CUCUMBER_JSON_PATH = ".cucumber-data.json"
+test_file_uri: list[str] = []
 
 
 # Command-line option setup
@@ -37,10 +38,14 @@ def pytest_configure(config):
     Configure the generation of the cucumber-json file
     """
     if _get_flag_option(config, BDD_REPORT_FLAG) != ".html":
-        config.option.cucumber_json_path = CUCUMBER_JSON_PATH
+        cucumber_path = config.option.cucumber_json_path
+        if not cucumber_path or cucumber_path == "":
+            cucumber_path = DEFAULT_CUCUMBER_JSON_PATH
+            config.option.cucumber_json_path = cucumber_path
 
-
-test_file_uri = []
+        parent_directories = os.path.dirname(cucumber_path)
+        if parent_directories and not os.path.exists(parent_directories):
+            os.makedirs(parent_directories)
 
 
 def pytest_collection_modifyitems(config, items):
@@ -69,13 +74,18 @@ def pytest_sessionfinish(session):
     if report_file_path != ".html":
         report_name = os.path.basename(report_file_path)
         report_generator = ReportComposer(
-            loader=JsonLoader(CUCUMBER_JSON_PATH),
+            loader=JsonLoader(session.config.option.cucumber_json_path),
             report_builder=ReportBuilder(report_name),
         )
         report = report_generator.create_report()
         summary = SummaryGenerator().populate_summary(report)
-        file_generator = ReportFileGenerator()
-        file_generator.create_report_file(
-            report, summary, test_file_uri, report_file_path
+
+        report_file = (
+            ReportFileBuilder()
+            .add_report(report)
+            .add_summary(summary)
+            .add_test_file_uri(test_file_uri)
+            .build()
         )
-        print(test_file_uri)
+
+        report_file.create(report_file_path)

@@ -9,7 +9,6 @@ __pycache__/
 # Robot Framework files
 log.html
 output.xml
-report.html
 __pycache__
 .classpath
 .settings
@@ -39,6 +38,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+*.DS_Store
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

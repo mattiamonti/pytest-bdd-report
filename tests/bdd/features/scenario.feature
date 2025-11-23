@@ -121,3 +121,44 @@ Feature: Check scenarios
     When I collapse all the scenarios
     Then the steps are not visible for the scenario 'Passed 1'
     Then the steps are not visible for the scenario 'Failed 1'
+
+  @visual @smoke @screenshot
+  Scenario: The screenshot should be visible if attached to a failed scenario
+    Given a test builder with a feature named 'Feature 1'
+    And a failed scenario named 'Failed 1' for the feature 'Feature 1'
+    And I build the feature
+    When I activate screenshot for failed steps
+    When I create the report
+    And I open the report
+    When I expand all the scenarios
+    When I toggle the scenario 'Failed 1' error message
+    Then the scenario 'Failed 1' screenshot should be visible
+
+  @visual @screenshot
+  Scenario: All the screenshot should be visible if attached to many failed scenarios
+    Given a test builder with a feature named 'Feature 1'
+    And a failed scenario named 'Failed 1' for the feature 'Feature 1'
+    And a failed scenario named 'Failed 2' for the feature 'Feature 1'
+    And a failed scenario named 'Failed 3' for the feature 'Feature 1'
+    And I build the feature
+    When I activate screenshot for failed steps
+    When I create the report
+    And I open the report
+    When I expand all the scenarios
+    When I toggle the scenario 'Failed 1' error message
+    Then the scenario 'Failed 1' screenshot should be visible
+    When I toggle the scenario 'Failed 2' error message
+    Then the scenario 'Failed 2' screenshot should be visible
+    When I toggle the scenario 'Failed 3' error message
+    Then the scenario 'Failed 3' screenshot should be visible
+
+  @visual @screenshot
+  Scenario: The screenshot should not be visible if not attached
+    Given a test builder with a feature named 'Feature 1'
+    And a failed scenario named 'Failed 1' for the feature 'Feature 1'
+    And I build the feature
+    When I create the report
+    And I open the report
+    When I expand all the scenarios
+    When I toggle the scenario 'Failed 1' error message
+    Then the scenario 'Failed 1' screenshot should not be visible

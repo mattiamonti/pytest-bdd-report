@@ -52,6 +52,18 @@ def toggle_error_message(page: Page, name: str):
     scenario.toggle_error_message()
 
 
+@then(parsers.cfparse("the scenario '{name}' screenshot should be visible"))
+def screenshot_should_be_visible(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.screenshot_should_be_visible()
+
+
+@then(parsers.cfparse("the scenario '{name}' screenshot should not be visible"))
+def screenshot_should_not_be_visible(page: Page, name: str):
+    scenario = ScenarioPOM(page, name)
+    scenario.screenshot_should_not_be_visible()
+
+
 @then(parsers.parse("the scenario '{name}' duration should not be zero"))
 def feature_duration(page: Page, name: str):
     scenario = ScenarioPOM(page, name)

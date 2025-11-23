@@ -1,12 +1,12 @@
 from pathlib import Path
 from abc import ABC, abstractmethod
-from jinja2 import Environment, FileSystemLoader, PackageLoader
+from jinja2 import Environment, FileSystemLoader, Template
 
 
 class BaseTemplate(ABC):
     def __init__(self, path: str) -> None:
-        self.path = path
-        self.template = self._load_template()
+        self.path: str = path
+        self.template: Template = self._load_template()
 
     def _load_template(self):
         """

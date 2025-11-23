@@ -1,9 +1,10 @@
 import pytest
 
-from pytest_bdd_report.components.feature import Feature
-from pytest_bdd_report.components.scenario import Scenario
-from pytest_bdd_report.components.step import Step
-from pytest_bdd_report.extractor import (
+from pytest_bdd_report.entities.feature import Feature
+from pytest_bdd_report.entities.scenario import Scenario
+from pytest_bdd_report.entities.step import Step
+from pytest_bdd_report.entities.status_enum import Status
+from pytest_bdd_report.extractor.extractor import (
     StepExtractor,
     ScenarioExtractor,
     FeatureExtractor,
@@ -52,7 +53,7 @@ def mock_scenario(mock_data):
 
 def test_steps_extraction(mock_scenario):
     steps = StepExtractor().extract_from(mock_scenario["steps"])
-    assert steps == [Step("Given", "I have a calculator", 3, "passed", 23040)]
+    assert steps == [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)]
 
 
 def test_scenario_extraction(mock_data):
@@ -64,7 +65,7 @@ def test_scenario_extraction(mock_data):
             2,
             "",
             [],
-            [Step("Given", "I have a calculator", 3, "passed", 23040)],
+            [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
         )
     ]
 
@@ -85,7 +86,8 @@ def test_feature_extraction(mock_data):
                 2,
                 "",
                 [],
-                [Step("Given", "I have a calculator", 3, "passed", 23040)],
+                [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice",
             )
         ],
     )
@@ -94,7 +96,7 @@ def test_feature_extraction(mock_data):
     expected.set_failed_tests(0)
     expected.set_skipped_test(0)
 
-    assert features[0] == expected
+    assert features[0] == expected, f"{features[0].uri=} EXPECTED {expected.uri=}"
 
 
 @pytest.fixture
@@ -208,7 +210,7 @@ def test_scenario_extraction_with_more(mock_data_with_more_features):
             2,
             "",
             [],
-            [Step("Given", "I have a calculator", 3, "passed", 23040)],
+            [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
         ),
         Scenario(
             "test_sum_2",
@@ -216,7 +218,7 @@ def test_scenario_extraction_with_more(mock_data_with_more_features):
             2,
             "",
             [],
-            [Step("Given", "I have a calculator", 3, "passed", 23040)],
+            [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
         ),
     ]
 
@@ -238,7 +240,8 @@ def test_feature_extraction_with_more(mock_data_with_more_features):
                 2,
                 "",
                 [],
-                [Step("Given", "I have a calculator", 3, "passed", 23040)],
+                [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice",
             ),
             Scenario(
                 "test_sum_2",
@@ -246,7 +249,8 @@ def test_feature_extraction_with_more(mock_data_with_more_features):
                 2,
                 "",
                 [],
-                [Step("Given", "I have a calculator", 3, "passed", 23040)],
+                [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice",
             ),
         ],
     )
@@ -269,7 +273,8 @@ def test_feature_extraction_with_more(mock_data_with_more_features):
                 2,
                 "",
                 [],
-                [Step("Given", "I have a calculator", 3, "passed", 23040)],
+                [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice 2",
             ),
             Scenario(
                 "test_sum_2",
@@ -277,7 +282,8 @@ def test_feature_extraction_with_more(mock_data_with_more_features):
                 2,
                 "",
                 [],
-                [Step("Given", "I have a calculator", 3, "passed", 23040)],
+                [Step("Given", "I have a calculator", 3, Status.PASSED, 23040)],
+                feature_name="Calcolatrice 2",
             ),
         ],
     )

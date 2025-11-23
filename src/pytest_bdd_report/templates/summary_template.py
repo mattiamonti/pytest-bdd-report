@@ -1,13 +1,15 @@
-from pytest_bdd_report.summary.summary import Summary
+from typing import override
+from pytest_bdd_report.summary.summary import ISummary
 from pytest_bdd_report.templates.template import BaseTemplate
 
 
 class SummaryTemplate(BaseTemplate):
     def __init__(self) -> None:
-        self.path = "summary.html"
+        self.path: str = "summary.html"
         super().__init__(self.path)
 
-    def render_template(self, data: Summary, **kwargs) -> str:
+    @override
+    def render_template(self, data: ISummary, already_rendered_data: str = "") -> str:
         fail_rate = round(data.tests_failed / data.total_tests * 100, 0)
         return self.template.render(
             total=data.total_tests,

@@ -1,3 +1,4 @@
+@modal
 Feature: Failed scenarios modal behavior
 
   @visual
