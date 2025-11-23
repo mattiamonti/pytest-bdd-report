@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import codecs
+import os
+
 from setuptools import setup
 
 
@@ -13,7 +14,7 @@ def read(fname):
 
 setup(
     name="pytest-bdd-report",
-    version="0.3.0",
+    version="1.2.0",
     author="Mattia Monti",
     author_email="mattiamonti2001@gmail.com",
     maintainer="Mattia Monti",
