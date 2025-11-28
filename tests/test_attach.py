@@ -1,4 +1,4 @@
-from pathlib import Path
+from pathlib import Path, PosixPath, PurePosixPath, PureWindowsPath, WindowsPath
 
 import pytest
 from hypothesis import given
@@ -71,9 +71,37 @@ def test_attach_screenshot_different_file_types_by_str(screenshot_path: str):
         Path("tests/data/screenshot.png"),
         Path("tests/data/screenshot.jpeg"),
         Path("tests/data/screenshot.jpg"),
+        PosixPath("tests/data/screenshot.png"),
+        PosixPath("tests/data/screenshot.jpeg"),
+        PosixPath("tests/data/screenshot.jpg"),
+        PurePosixPath("tests/data/screenshot.png"),
+        PurePosixPath("tests/data/screenshot.jpeg"),
+        PurePosixPath("tests/data/screenshot.jpg"),
     ],
 )
 def test_attach_screenshot_different_file_types_by_path(screenshot_path: Path):
+    feature_name = "My feature"
+    scenario_name = "My scenario"
+    attach.screenshot(screenshot_path, feature_name, scenario_name)
+
+    assert len(screenshot_repo.repo) == 1
+    added_screenshot = screenshot_repo.get(feature_name, scenario_name)
+    assert added_screenshot is not None
+    screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
+    assert added_screenshot.feature_name == feature_name
+    assert added_screenshot.scenario_name == scenario_name
+    assert added_screenshot.encoded_image
+
+
+@pytest.mark.parametrize(
+    "screenshot_path",
+    [
+        PureWindowsPath(r"tests\data\screenshot.png"),
+        PureWindowsPath(r"tests\data\screenshot.jpg"),
+        PureWindowsPath(r"tests\data\screenshot.jpeg"),
+    ],
+)
+def test_attach_screenshot_file_windows_path(screenshot_path: Path):
     feature_name = "My feature"
     scenario_name = "My scenario"
     attach.screenshot(screenshot_path, feature_name, scenario_name)
