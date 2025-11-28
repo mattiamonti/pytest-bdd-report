@@ -1,6 +1,8 @@
 from dataclasses import dataclass
+from importlib.resources import Package
 from pathlib import Path
 from typing import Any, Protocol
+
 from pytest_bdd_report.extensions.encoder import Base64Encoder, ImageEncoder
 
 
@@ -32,6 +34,21 @@ class PathScreenshotSaver:
     ) -> Screenshot:
         if not isinstance(image, Path):
             image = Path(image)
+
+        if not image.exists():
+            raise FileNotFoundError
+        with open(image, "rb") as image_file:
+            image_bytes = image_file.read()
+        return Screenshot(feature_name, scenario_name, self.encoder.encode(image_bytes))
+
+
+class StrPathScreenshotSaver:
+    def __init__(self, encoder: ImageEncoder) -> None:
+        self.encoder: ImageEncoder = encoder
+
+    def save(self, feature_name: str, scenario_name: str, image: str) -> Screenshot:
+        image = Path(image).as_posix()
+        image = Path(image)
 
         if not image.exists():
             raise FileNotFoundError
@@ -93,7 +110,11 @@ class ScreenshotRepo:
 # Object to be used in the different parts of code
 screenshot_repo = ScreenshotRepo()
 path_screenshot_saver = PathScreenshotSaver(encoder=Base64Encoder)
+str_path_screenshot_saver = StrPathScreenshotSaver(encoder=Base64Encoder)
 screenshot_repo.register_saver(BytesScreenshotSaver(encoder=Base64Encoder), "bytes")
-screenshot_repo.register_saver(path_screenshot_saver, "str")
+screenshot_repo.register_saver(str_path_screenshot_saver, "str")
 screenshot_repo.register_saver(path_screenshot_saver, "Path")
 screenshot_repo.register_saver(path_screenshot_saver, "PosixPath")
+screenshot_repo.register_saver(path_screenshot_saver, "PurePosixPath")
+screenshot_repo.register_saver(path_screenshot_saver, "PureWindowsPath")
+screenshot_repo.register_saver(path_screenshot_saver, "WindowsPath")
