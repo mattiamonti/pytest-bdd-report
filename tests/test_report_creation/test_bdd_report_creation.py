@@ -1,6 +1,9 @@
 import pytest
 
 from tests.test_report_creation.fixtures import (
+    empty_test,
+    fixture_error_test,
+    no_bdd_test,
     sample_test,
     sample_test_with_utf_8_characters,
 )
@@ -13,6 +16,27 @@ def test_arguments_in_help(testdir: pytest.Testdir):
             "*bdd-report*",
         ]
     )
+
+
+def test_create_report_without_bdd_tests(empty_test: pytest.Testdir):
+    """Reproduce the issue #41"""
+    res = empty_test.runpytest("--bdd-report=empty")
+    assert "ZeroDivisionError" not in res.stderr.str()
+    assert (empty_test.tmpdir / "empty.html").exists()
+
+
+def test_create_report_with_fixture_error(fixture_error_test: pytest.Testdir):
+    """Reproduce the issue #41"""
+    res = fixture_error_test.runpytest("--bdd-report=empty")
+    assert "ZeroDivisionError" not in res.stderr.str()
+    assert (fixture_error_test.tmpdir / "empty.html").exists()
+
+
+def test_create_report_with_no_bdd_tests(no_bdd_test: pytest.Testdir):
+    """Reproduce the issue #41"""
+    res = no_bdd_test.runpytest("--bdd-report=empty")
+    assert "ZeroDivisionError" not in res.stderr.str()
+    assert (no_bdd_test.tmpdir / "empty.html").exists()
 
 
 @pytest.mark.parametrize(

@@ -84,3 +84,102 @@ def sample_test_with_utf_8_characters(testdir: pytest.Testdir) -> pytest.Testdir
         )
     )
     return testdir
+
+
+@pytest.fixture()
+def empty_test(testdir: pytest.Testdir) -> pytest.Testdir:
+    _ = testdir.makefile(
+        ".feature",
+        scenario=textwrap.dedent(
+            """\
+            """
+        ),
+    )
+
+    _ = testdir.makepyfile(
+        textwrap.dedent(
+            """\
+        import pytest
+        from pytest_bdd import given, when, then, scenario
+
+        @scenario("scenario.feature", "Test scenario")
+        def test_scenario():
+            pass
+
+        @given("I have a scenario")
+        def _():
+            pass
+
+        @when("I start the test")
+        def _():
+            pass
+
+        @when("I know it will fails")
+        def _():
+            pass
+
+        @then('It fails')
+        def _():
+            assert False
+
+        """
+        )
+    )
+
+    return testdir
+
+
+@pytest.fixture()
+def fixture_error_test(testdir: pytest.Testdir) -> pytest.Testdir:
+    _ = testdir.makefile(
+        ".feature",
+        scenario=textwrap.dedent(
+            """\
+            """
+        ),
+    )
+
+    _ = testdir.makepyfile(
+        textwrap.dedent(
+            """\
+            import pytest
+
+
+            @pytest.fixture(autouse=True)
+            def broken_fixture():
+                raise Exception(f"Exception here!")
+
+            def test_smth():
+                assert True
+        """
+        )
+    )
+
+    return testdir
+
+
+@pytest.fixture()
+def no_bdd_test(testdir: pytest.Testdir) -> pytest.Testdir:
+    _ = testdir.makefile(
+        ".feature",
+        scenario=textwrap.dedent(
+            """\
+            """
+        ),
+    )
+
+    _ = testdir.makepyfile(
+        textwrap.dedent(
+            """\
+            import pytest
+
+            def unit_test_foo():
+                assert True
+
+            def unit_test_bar():
+                assert False
+        """
+        )
+    )
+
+    return testdir
