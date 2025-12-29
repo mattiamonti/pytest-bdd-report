@@ -14,7 +14,7 @@ def read(fname):
 
 setup(
     name="pytest-bdd-report",
-    version="1.2.0",
+    version="1.2.2",
     author="Mattia Monti",
     author_email="mattiamonti2001@gmail.com",
     maintainer="Mattia Monti",
