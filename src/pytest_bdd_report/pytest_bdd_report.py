@@ -1,10 +1,13 @@
+import cProfile
+import os
+
 import pytest
+
 from pytest_bdd_report.loader.json_loader import JsonLoader
-from pytest_bdd_report.report.report_composer import ReportComposer
 from pytest_bdd_report.report.report import ReportBuilder
+from pytest_bdd_report.report.report_composer import ReportComposer
 from pytest_bdd_report.report.report_file import ReportFileBuilder
 from pytest_bdd_report.summary.summary_generator import SummaryGenerator
-import os
 
 BDD_REPORT_FLAG = "--bdd-report"
 DEFAULT_CUCUMBER_JSON_PATH = ".cucumber-data.json"
@@ -72,6 +75,10 @@ def pytest_sessionfinish(session):
     """
     report_file_path = _get_flag_option(session.config, BDD_REPORT_FLAG)
     if report_file_path != ".html":
+        # === Profiling code
+        pr = cProfile.Profile()
+        pr.enable()
+        # === Profiling code
         report_name = os.path.basename(report_file_path)
         report_generator = ReportComposer(
             loader=JsonLoader(session.config.option.cucumber_json_path),
@@ -89,3 +96,8 @@ def pytest_sessionfinish(session):
         )
 
         report_file.create(report_file_path)
+        # === Profiling code
+        pr.disable()
+        pr.dump_stats("profiling_report_1.prof")
+        # Visualize the result using the command: tuna profiling_report_1.prof
+        # === Profiling code
