@@ -1,5 +1,7 @@
 from pathlib import Path
+
 from pytest_bdd_report.extensions.screenshot import screenshot_repo
+from pytest_bdd_report.extensions.step_information import step_information_repo
 
 
 def screenshot(
@@ -18,3 +20,21 @@ def screenshot(
         screenshot_repo.add(feature_name, scenario_name, image)
     except (ValueError, RuntimeWarning) as e:
         print(f"Error while attaching the screenshot: {e}")
+
+
+def text_to_step(text: str, step_keyword: str, step_name: str) -> None:
+    try:
+        step_information_repo.add(step_keyword, step_name, text)
+    except (ValueError, RuntimeWarning) as e:
+        print(
+            f"Error while attaching the text to the step {step_keyword} {step_name}: {e}"
+        )
+
+
+def json_to_step(data: dict, step_keyword: str, step_name: str) -> None:
+    try:
+        step_information_repo.add(step_keyword, step_name, data)
+    except (ValueError, RuntimeWarning) as e:
+        print(
+            f"Error while attaching the text to the step {step_keyword} {step_name}: {e}"
+        )

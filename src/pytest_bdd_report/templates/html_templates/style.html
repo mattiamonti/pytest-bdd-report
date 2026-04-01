@@ -44,7 +44,7 @@
 
     /* === Base === */
     body {
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
         padding: 2rem 4rem;
         background: #f5f6f7;
         color: var(--primary-text-color);
@@ -153,10 +153,21 @@
     }
 
     .step-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .step-information {
         display: flex;
         justify-content: space-between;
         align-self: stretch;
         margin-left: 1.5rem;
+    }
+
+    .step-details {
+        margin-left: 3rem;
+        margin-top: 0.5rem;
     }
 
     /* === Status Color Blocks === */
@@ -199,7 +210,10 @@
     }
 
     /* === Feature Table === */
-    table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort)::after {
+    table.sortable
+        th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(
+            .sorttable_nosort
+        )::after {
         content: " \25B4\25BE";
     }
 
@@ -336,41 +350,41 @@
         display: none;
     }
 
-    .chip-input:checked+.chip .icon-on {
+    .chip-input:checked + .chip .icon-on {
         display: inline-block;
     }
 
-    .chip-input:not(:checked)+.chip .icon-off {
+    .chip-input:not(:checked) + .chip .icon-off {
         display: inline-block;
     }
 
-    .chip-input:checked+.chip.passed {
+    .chip-input:checked + .chip.passed {
         background-color: var(--passed-bg);
         border-color: var(--passed-fg);
         color: var(--passed-fg);
     }
 
-    .chip-input:checked+.chip.failed {
+    .chip-input:checked + .chip.failed {
         background-color: var(--failed-bg);
         border-color: var(--failed-fg);
         color: var(--failed-fg);
     }
 
-    .chip-input:checked+.chip.skipped {
+    .chip-input:checked + .chip.skipped {
         background-color: var(--skipped-bg);
         border-color: var(--skipped-fg);
         color: var(--skipped-fg);
     }
 
-    .chip-input:checked+.chip.passed .chip-icon {
+    .chip-input:checked + .chip.passed .chip-icon {
         color: var(--passed-fg);
     }
 
-    .chip-input:checked+.chip.failed .chip-icon {
+    .chip-input:checked + .chip.failed .chip-icon {
         color: var(--failed-fg);
     }
 
-    .chip-input:checked+.chip.skipped .chip-icon {
+    .chip-input:checked + .chip.skipped .chip-icon {
         color: var(--skipped-fg);
     }
 
@@ -474,7 +488,10 @@
         opacity: 0;
         white-space: nowrap;
         overflow: hidden;
-        transition: max-width 0.4s ease, opacity 0.5s ease, padding 0.3s ease;
+        transition:
+            max-width 0.4s ease,
+            opacity 0.5s ease,
+            padding 0.3s ease;
     }
 
     .return-to-top-button:hover .return-to-top-text {

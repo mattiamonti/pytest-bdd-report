@@ -1,17 +1,38 @@
 <div class="step-container">
-    <div class="flex-center" data-testid="step-{{status}}">
-        {% import './components/icon.html' as icon %}
-        {% if status == "passed" %}
-        {{icon.pass()}}
-        {% elif status == "failed" %}
-        {{icon.fail()}}
-        {% else %}
-        {{icon.skip()}}
-        {% endif %}
-        <p class="no-margin" style="display: inline;">
-            <span class="keyword" style="font-weight: 500;">{{keyword}}</span>: {{name}}
-        </p>
+    <div class="step-information">
+        <div class="flex-center" data-testid="step-{{status}}">
+            {% import './components/icon.html' as icon %} {% if status ==
+            "passed" %} {{icon.pass()}} {% elif status == "failed" %}
+            {{icon.fail()}} {% else %} {{icon.skip()}} {% endif %}
+            <p class="no-margin" style="display: inline">
+                <span class="keyword" style="font-weight: 500">{{keyword}}</span
+                >: {{name}}
+            </p>
+        </div>
+        {% import './components/duration.html' as execution %}
+        {{execution.step(duration)}}
     </div>
-    {% import './components/duration.html' as execution %}
-    {{execution.step(duration)}}
+    {% if text_information or json_information %}
+    <details class="step-details">
+        <summary style="cursor: pointer; font-size: small">
+            <span class="primary-text" style="color: inherit"
+                >Attached information...</span
+            >
+        </summary>
+        <div id="information-step-{{name}}">
+            {% if text_information %}
+            <p style="white-space: pre-wrap; font-size: small">
+                {{text_information}}
+            </p>
+            {%endif%} {% if json_information %}
+            <p
+                style="white-space: pre-wrap; font-size: small"
+                class="monospace"
+            >
+                {{json_information}}
+            </p>
+            {%endif%}
+        </div>
+    </details>
+    {%endif%}
 </div>
