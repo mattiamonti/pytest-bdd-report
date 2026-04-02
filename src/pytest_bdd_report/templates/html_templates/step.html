@@ -19,14 +19,18 @@
                 >Attached information...</span
             >
         </summary>
-        <div id="information-step-{{name}}">
-            {% if text_information %}
-            <p style="font-size: small">{{text_information}}</p>
-            {%endif%} {% if json_information %}
+        <div
+            id="information-step-{{name}}"
+            style="display: flex; flex-direction: column; gap: 1rem"
+        >
+            {% if text_information %} {% for text in text_information %}
+            <p style="font-size: small">{{text}}</p>
+            {%endfor%} {%endif%} {% if json_information %} {%for text in
+            json_information%}
             <pre style="font-size: small; margin: 0; margin-top: 0.5rem">
-{{json_information}}</pre
+{{text}}</pre
             >
-            {%endif%}
+            {%endfor%}{%endif%}
         </div>
     </details>
     {%endif%}

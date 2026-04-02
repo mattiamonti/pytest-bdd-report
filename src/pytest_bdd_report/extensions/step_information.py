@@ -6,8 +6,8 @@ from dataclasses import dataclass
 class StepInformation:
     step_keyword: str
     step_name: str
-    text: str | None
-    json: str | None
+    text: list[str]
+    json: list[str]
 
 
 class StepInformationRepo:
@@ -21,16 +21,14 @@ class StepInformationRepo:
         Raises:
             ValueError: If the steps has already information attached.
         """
+        step_information = StepInformation(step_keyword, step_name, [], [])
         if self.exists(step_keyword, step_name):
-            raise ValueError(
-                f"The step '{step_keyword} {step_name}' has already information attached."
-            )
-        step_information = StepInformation(step_keyword, step_name, None, None)
+            step_information = self.get(step_keyword, step_name)
         # TODO refactor della logica usando un saver strategy?
         if isinstance(information, str):
-            step_information.text = information
+            step_information.text.append(information)
         if isinstance(information, dict):
-            step_information.json = json.dumps(information, indent=2).strip()
+            step_information.json.append(json.dumps(information, indent=2).strip())
 
         self.repo.append(step_information)
 

@@ -32,8 +32,10 @@ class StepTemplate(BaseTemplate):
         )
 
     @staticmethod
-    def _embed_text_information(data: Step) -> tuple[str | None, str | None]:
+    def _embed_text_information(
+        data: Step,
+    ) -> tuple[list[str], list[str]]:
         step_information = step_information_repo.get(data.keyword, data.name)
         if step_information is None:
-            return None, None
+            return [], []
         return step_information.text, step_information.json

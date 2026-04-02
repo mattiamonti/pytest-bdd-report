@@ -14,7 +14,12 @@ def setup_report_with_failed_scenario(
     report_url = generate_custom_bdd_report(report_structure)
     open_report_file_with_retry(page, report_url)
     attach.json_to_step(
-        {"prova": "json content"},
+        {"prova": "json content", "list testing": [{"one": "one", "two": "two"}]},
+        "Given",
+        "the report is open with a failed scenario",
+    )
+    attach.json_to_step(
+        {"response": "json content"},
         "Given",
         "the report is open with a failed scenario",
     )
