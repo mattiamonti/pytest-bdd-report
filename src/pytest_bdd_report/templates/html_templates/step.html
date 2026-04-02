@@ -21,16 +21,11 @@
         </summary>
         <div id="information-step-{{name}}">
             {% if text_information %}
-            <p style="white-space: pre-wrap; font-size: small">
-                {{text_information}}
-            </p>
+            <p style="font-size: small">{{text_information}}</p>
             {%endif%} {% if json_information %}
-            <p
-                style="white-space: pre-wrap; font-size: small"
-                class="monospace"
+            <pre style="font-size: small; margin: 0; margin-top: 0.5rem">
+{{json_information}}</pre
             >
-                {{json_information}}
-            </p>
             {%endif%}
         </div>
     </details>

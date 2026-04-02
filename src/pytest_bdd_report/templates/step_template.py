@@ -2,7 +2,6 @@ from typing import Self, override
 
 from pytest_bdd_report.entities.step import Step
 from pytest_bdd_report.extensions.step_information import (
-    StepInformation,
     step_information_repo,
 )
 from pytest_bdd_report.templates.template import BaseTemplate
@@ -33,7 +32,7 @@ class StepTemplate(BaseTemplate):
         )
 
     @staticmethod
-    def _embed_text_information(data: Step) -> tuple[str | None, dict | None]:
+    def _embed_text_information(data: Step) -> tuple[str | None, str | None]:
         step_information = step_information_repo.get(data.keyword, data.name)
         if step_information is None:
             return None, None

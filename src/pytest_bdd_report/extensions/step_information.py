@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 
 
@@ -6,7 +7,7 @@ class StepInformation:
     step_keyword: str
     step_name: str
     text: str | None
-    json: dict | None
+    json: str | None
 
 
 class StepInformationRepo:
@@ -29,7 +30,7 @@ class StepInformationRepo:
         if isinstance(information, str):
             step_information.text = information
         if isinstance(information, dict):
-            step_information.json = information
+            step_information.json = json.dumps(information, indent=2).strip()
 
         self.repo.append(step_information)
 
