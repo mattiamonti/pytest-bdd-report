@@ -17,17 +17,20 @@ class StepInformationRepo:
     def add(self, step_keyword: str, step_name: str, information: str | dict) -> None:
         """
         Adds a new step information to the repository.
-
-        Raises:
-            ValueError: If the steps has already information attached.
         """
         step_information = StepInformation(step_keyword, step_name, [], [])
         if self.exists(step_keyword, step_name):
             step_information = self.get(step_keyword, step_name)
-        # TODO refactor della logica usando un saver strategy?
+            if not step_information:
+                return
+            self.repo.remove(step_information)
         if isinstance(information, str):
+            if not information:
+                return
             step_information.text.append(information)
         if isinstance(information, dict):
+            if not information:
+                return
             step_information.json.append(json.dumps(information, indent=2).strip())
 
         self.repo.append(step_information)
