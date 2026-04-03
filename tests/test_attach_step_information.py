@@ -184,3 +184,14 @@ def test_attach_multiple_text_and_json_to_step(
     for json_info in json_informations:
         formatted_json_info = json.dumps(json_info, indent=2).strip()
         assert formatted_json_info in step_info.json
+
+
+def test_add_unregistered_data_to_step_information_repo():
+    step_keyword = "Given"
+    step_name = "Step name"
+    unregistered_list_info = ["first", "second"]
+
+    with pytest.raises(RuntimeWarning):
+        step_information_repo.add(step_keyword, step_name, unregistered_list_info)
+
+    assert len(step_information_repo.repo) == 0
