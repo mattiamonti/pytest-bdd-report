@@ -37,11 +37,9 @@ pytest-bdd-report
 
 
 
-The `pytest-bdd-report` plugin is a useful extension for the `pytest-bdd`_ library that allows you to generate
-useful and informative reports for BDD (Behavior-Driven Development) tests developed using the pytest-bdd framework.
-This plugin facilitates the generation of clear and effective HTML reports, providing a comprehensible view of BDD test executions within the project.
+The `pytest-bdd-report` plugin is an extension for the `pytest-bdd`_ library that generates clear, interactive HTML reports for BDD (Behavior-Driven Development) tests. It provides a comprehensive view of test executions, making it easy for developers, testers, and stakeholders to understand test results.
 
-For more, check out the `Documentation`_
+For detailed guides and examples, check out the `Documentation`_.
 
 ----
 
@@ -51,9 +49,10 @@ This `pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`
 Features
 --------
 
-* **Detailed BDD Reports**: The pytest-bdd-report plugin enables the generation of detailed reports for BDD tests executed using pytest-bdd. These reports clearly show the executed steps, tested scenarios, and obtained results.
-* **HTML Format**: The generated reports are presented in an intuitive and interactive HTML format. This allows developers, testers, and other team members to easily view the status of BDD tests.
-* **Easy Installation**: Installing the plugin is simple and fast. You can install it using the command `pip install pytest-bdd-report`.
+* **Detailed BDD Reports**: Generate comprehensive reports showing executed steps, scenarios, and results.
+* **Interactive HTML Format**: View test results in an intuitive, easy-to-navigate HTML report.
+* **Rich Attachments**: Enrich reports with screenshots, text notes, and JSON data attached to specific steps or scenarios.
+* **Quick Setup**: Install and start generating reports in minutes.
 
 
 Requirements
@@ -67,33 +66,36 @@ Requirements
 Installation
 ------------
 
-1. Ensure that you have `pytest`_ and `pytest-bdd`_ installed in your development environment.
-2. Open a terminal window.
-3. Execute the following command to install the `pytest-bdd-report` plugin via `pip`_ from `PyPI`_
+Install the plugin via pip:
 
 ::
 
     $ pip install pytest-bdd-report
 
+Make sure you have `pytest`_ and `pytest-bdd`_ installed in your environment.
+
 
 Usage
 -----
 
-Once installed, you can generate BDD reports in an HTML file using the following command:
+Generate an HTML report by running:
 
 ::
 
     $ pytest --bdd-report="report.html"
 
-Attachments
------------
+This command creates a detailed report file at the specified path.
 
-You can enrich your HTML reports by attaching screenshots, text, and JSON data to specific steps or scenarios. The plugin provides three helper functions in the ``pytest_bdd_report.attach`` module.
 
-Attach Screenshots
-==================
+Enriching Reports with Attachments
+----------------------------------
 
-Use ``attach.screenshot()`` to add screenshots to a specific scenario in the report. This function accepts either raw bytes (e.g., from Playwright's ``page.screenshot()``) or a file path to an image.
+The plugin provides three helper functions in the ``pytest_bdd_report.attach`` module to enrich your reports with additional context and evidence.
+
+1. Attach Screenshots
+=====================
+
+Add screenshots to scenarios using ``attach.screenshot()``. Accepts raw bytes (e.g., from Playwright) or file paths.
 
 .. code-block:: python
 
@@ -117,18 +119,18 @@ Use ``attach.screenshot()`` to add screenshots to a specific scenario in the rep
      - Description
    * - ``image``
      - ``bytes | str | Path``
-     - Screenshot content. Can be raw bytes or a file path to the image.
+     - Screenshot content as raw bytes or file path.
    * - ``feature_name``
      - ``str``
-     - The name of the feature to which the screenshot belongs.
+     - Name of the feature containing the scenario.
    * - ``scenario_name``
      - ``str``
-     - The name of the scenario to which the screenshot belongs.
+     - Name of the scenario to attach the screenshot to.
 
-Attach Text to Steps
-====================
+2. Attach Text to Steps
+=======================
 
-Use ``attach.text_to_step()`` to add textual information to a specific step. You can call this method multiple times on the same step to attach multiple pieces of text.
+Add textual notes to specific steps using ``attach.text_to_step()``. Call it multiple times on the same step to attach multiple notes.
 
 .. code-block:: python
 
@@ -137,7 +139,6 @@ Use ``attach.text_to_step()`` to add textual information to a specific step. You
 
     @given("I am on the login page")
     def setup_login():
-        # Step implementation...
         attach.text_to_step(
             "User navigated to /login",
             step_keyword="Given",
@@ -155,18 +156,18 @@ Use ``attach.text_to_step()`` to add textual information to a specific step. You
      - Description
    * - ``text``
      - ``str``
-     - The text content to attach to the step.
+     - The text content to attach.
    * - ``step_keyword``
      - ``str``
-     - The BDD keyword of the step (e.g., "Given", "When", "And", "Then").
+     - BDD keyword (e.g., "Given", "When", "And", "Then").
    * - ``step_name``
      - ``str``
-     - The name/description of the step.
+     - The step name/description.
 
-Attach JSON to Steps
-====================
+3. Attach JSON to Steps
+=======================
 
-Use ``attach.json_to_step()`` to attach structured JSON data to a specific step. This is useful for attaching API responses, configuration data, or test fixtures. Like text, you can attach multiple JSON objects to the same step.
+Attach structured data (e.g., API responses, test fixtures) to steps using ``attach.json_to_step()``. Multiple JSON objects can be attached to the same step.
 
 .. code-block:: python
 
@@ -193,18 +194,18 @@ Use ``attach.json_to_step()`` to attach structured JSON data to a specific step.
      - Description
    * - ``data``
      - ``dict``
-     - The JSON/dict data to attach to the step.
+     - The JSON/dict data to attach.
    * - ``step_keyword``
      - ``str``
-     - The BDD keyword of the step (e.g., "Given", "When", "And", "Then").
+     - BDD keyword (e.g., "Given", "When", "And", "Then").
    * - ``step_name``
      - ``str``
-     - The name/description of the step.
+     - The step name/description.
 
-Complete Example with Playwright
-================================
+Example: Automatic Screenshots Attachments on Playwright Failure
+==========================================
 
-Here's a complete example showing how to attach screenshots on test failure using pytest-bdd hooks:
+Use pytest-bdd hooks to automatically capture screenshots when a step fails:
 
 .. code-block:: python
 
@@ -227,14 +228,12 @@ Here's a complete example showing how to attach screenshots on test failure usin
                 attach.screenshot(screenshot_path, feature.name, scenario.name)
 
 
+Running Tests
+-------------
 
-Run tests
----------
+To run the plugin's own tests:
 
-To run tests:
-
-1. Create a virtual environment
-2. Install the required packages:
+1. Create a virtual environment and install dependencies:
 
 ::
 
@@ -242,26 +241,28 @@ To run tests:
     $ playwright install
 
 
-3. Install the plugin locally:
+2. Install the plugin in editable mode:
 
 ::
 
     $ pip install -e .
 
 
-4. Run the unit tests:
+3. Run unit tests:
 
 ::
 
     $ python -m pytest --ignore=tests/bdd/
 
-5. Run the BDD UI tests with pytest-bdd:
+
+4. Run BDD UI tests:
 
 ::
 
     $ python -m pytest tests/bdd
 
-6. Want a report for the Playwright BDD tests? use the --bdd-report flag!
+
+5. Generate a report for the BDD tests:
 
 ::
 
@@ -270,12 +271,14 @@ To run tests:
 
 Contributing
 ------------
-Contributions are very welcome. Tests can be run with `pytest`_ as shown.
+
+Contributions are welcome! Please run tests before submitting a pull request using the commands shown above.
+
 
 License
 -------
 
-Distributed under the terms of the `MIT`_ license, "pytest-bdd-report" is free and open source software
+Distributed under the terms of the `MIT`_ license. "pytest-bdd-report" is free and open source software.
 
 
 Issues
