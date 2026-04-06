@@ -207,3 +207,39 @@ def test_creation_with_step_attachments(
         content = f.read()
         assert "Test text attachment" in content
     assert report_file.exists()
+
+
+@given(
+    step_keyword_1=st.sampled_from(["Given", "When", "And", "Then"]),
+    step_name_1=st.text(min_size=1),
+    text_1=st.text(min_size=1),
+    step_keyword_2=st.sampled_from(["Given", "When", "And", "Then"]),
+    step_name_2=st.text(min_size=1),
+    text_2=st.text(min_size=1),
+)
+def test_isolation(
+    step_keyword_1: str,
+    step_name_1: str,
+    text_1: str,
+    step_keyword_2: str,
+    step_name_2: str,
+    text_2: str,
+):
+    step_information_repo.repo.clear()
+    if step_name_1 == step_name_2:
+        return
+
+    attach.text_to_step(text_1, step_keyword_1, step_name_1)
+    attach.text_to_step(text_2, step_keyword_2, step_name_2)
+    assert len(step_information_repo.repo) == 2
+    step_info_1 = step_information_repo.get(step_keyword_1, step_name_1)
+    step_info_2 = step_information_repo.get(step_keyword_2, step_name_2)
+    assert step_info_1 is not None
+    assert step_info_2 is not None
+    step_information_repo.repo.clear()
+    assert step_info_1.step_keyword == step_keyword_1
+    assert step_info_1.step_name == step_name_1
+    assert text_1 in step_info_1.text
+    assert step_info_2.step_keyword == step_keyword_2
+    assert step_info_2.step_name == step_name_2
+    assert text_2 in step_info_2.text

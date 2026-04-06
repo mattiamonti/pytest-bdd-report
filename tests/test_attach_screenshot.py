@@ -145,3 +145,40 @@ def test_attach_duplicated_screenshot(
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
     assert added_screenshot.encoded_image
+
+
+@given(
+    feature_name_1=st.text(min_size=1),
+    scenario_name_1=st.text(min_size=1),
+    image_data_1=st.binary(min_size=1),
+    feature_name_2=st.text(min_size=1),
+    scenario_name_2=st.text(min_size=1),
+    image_data_2=st.binary(min_size=1),
+)
+def test_screenshot_isolation(
+    feature_name_1: str,
+    scenario_name_1: str,
+    image_data_1: bytes,
+    feature_name_2: str,
+    scenario_name_2: str,
+    image_data_2: bytes,
+):
+    screenshot_repo.repo.clear()
+    if (feature_name_1, scenario_name_1) == (feature_name_2, scenario_name_2):
+        return
+
+    attach.screenshot(image_data_1, feature_name_1, scenario_name_1)
+    attach.screenshot(image_data_2, feature_name_2, scenario_name_2)
+
+    assert len(screenshot_repo.repo) == 2
+    screenshot_1 = screenshot_repo.get(feature_name_1, scenario_name_1)
+    screenshot_2 = screenshot_repo.get(feature_name_2, scenario_name_2)
+    assert screenshot_1 is not None
+    assert screenshot_2 is not None
+    screenshot_repo.repo.clear()
+    assert screenshot_1.feature_name == feature_name_1
+    assert screenshot_1.scenario_name == scenario_name_1
+    assert screenshot_1.encoded_image
+    assert screenshot_2.feature_name == feature_name_2
+    assert screenshot_2.scenario_name == scenario_name_2
+    assert screenshot_2.encoded_image
