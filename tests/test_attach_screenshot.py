@@ -1,4 +1,4 @@
-from pathlib import Path, PosixPath, PurePosixPath, PureWindowsPath, WindowsPath
+from pathlib import Path, PosixPath, PurePosixPath, PureWindowsPath
 
 import pytest
 from hypothesis import given
@@ -19,7 +19,7 @@ def test_attach_screenshot(feature_name: str, scenario_name: str, image_data: by
     assert len(screenshot_repo.repo) == 1
     added_screenshot = screenshot_repo.get(feature_name, scenario_name)
     assert added_screenshot is not None
-    screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
+    screenshot_repo.repo.clear()  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
     assert added_screenshot.encoded_image
@@ -37,7 +37,7 @@ def test_attach_screenshot_file(feature_name: str, scenario_name: str):
     assert len(screenshot_repo.repo) == 1
     added_screenshot = screenshot_repo.get(feature_name, scenario_name)
     assert added_screenshot is not None
-    screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
+    screenshot_repo.repo.clear()  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
     assert added_screenshot.encoded_image
@@ -59,7 +59,7 @@ def test_attach_screenshot_different_file_types_by_str(screenshot_path: str):
     assert len(screenshot_repo.repo) == 1
     added_screenshot = screenshot_repo.get(feature_name, scenario_name)
     assert added_screenshot is not None
-    screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
+    screenshot_repo.repo.clear()  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
     assert added_screenshot.encoded_image
@@ -87,7 +87,7 @@ def test_attach_screenshot_different_file_types_by_path(screenshot_path: Path):
     assert len(screenshot_repo.repo) == 1
     added_screenshot = screenshot_repo.get(feature_name, scenario_name)
     assert added_screenshot is not None
-    screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
+    screenshot_repo.repo.clear()  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
     assert added_screenshot.encoded_image
@@ -109,7 +109,7 @@ def test_attach_screenshot_file_windows_path(screenshot_path: Path):
     assert len(screenshot_repo.repo) == 1
     added_screenshot = screenshot_repo.get(feature_name, scenario_name)
     assert added_screenshot is not None
-    screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
+    screenshot_repo.repo.clear()  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
     assert added_screenshot.encoded_image
@@ -141,7 +141,7 @@ def test_attach_duplicated_screenshot(
     assert len(screenshot_repo.repo) == 1
     added_screenshot = screenshot_repo.get(feature_name, scenario_name)
     assert added_screenshot is not None
-    screenshot_repo.repo.remove(added_screenshot)  # Clean the repository after the test
+    screenshot_repo.repo.clear()  # Clean the repository after the test
     assert added_screenshot.feature_name == feature_name
     assert added_screenshot.scenario_name == scenario_name
     assert added_screenshot.encoded_image

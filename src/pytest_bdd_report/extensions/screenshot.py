@@ -59,7 +59,7 @@ class StrPathScreenshotSaver:
 
 class ScreenshotRepo:
     def __init__(self) -> None:
-        self.repo: list[Screenshot] = []
+        self.repo: dict[tuple[str, str], Screenshot] = {}
         self._savers: dict[str, ScreenshotSaverStrategy] = {}
 
     def add(self, feature_name: str, scenario_name: str, image: bytes | str | Path):
@@ -75,25 +75,18 @@ class ScreenshotRepo:
             )
 
         saver_strategy = self.get_saver(image.__class__.__name__)
-        self.repo.append(saver_strategy.save(feature_name, scenario_name, image))
+        self.repo[(feature_name, scenario_name)] = saver_strategy.save(
+            feature_name, scenario_name, image
+        )
 
     def get(self, feature_name: str, scenario_name: str) -> Screenshot | None:
         """
         Returns the saved screenshot if present.
         """
-        for item in self.repo:
-            if (
-                item.feature_name == feature_name
-                and item.scenario_name == scenario_name
-            ):
-                return item
-        return None
+        return self.repo.get((feature_name, scenario_name))
 
     def exists(self, feature_name: str, scenario_name: str) -> bool:
-        return any(
-            item.feature_name == feature_name and item.scenario_name == scenario_name
-            for item in self.repo
-        )
+        return (feature_name, scenario_name) in self.repo.keys()
 
     def register_saver(self, saver: ScreenshotSaverStrategy, for_type: str) -> None:
         self._savers[for_type] = saver

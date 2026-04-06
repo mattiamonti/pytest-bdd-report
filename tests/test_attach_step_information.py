@@ -10,7 +10,7 @@ from tests.test_report_creation.fixtures import sample_test_with_step_attachment
 
 
 @given(
-    step_keyword=st.permutations(["Given", "When", "And", "Then"]),
+    step_keyword=st.sampled_from(["Given", "When", "And", "Then"]),
     step_name=st.text(min_size=1),
     text_information=st.text(min_size=1),
 )
@@ -20,7 +20,7 @@ def test_attach_text_to_step(step_keyword: str, step_name: str, text_information
     assert len(step_information_repo.repo) == 1
     step_info = step_information_repo.get(step_keyword, step_name)
     assert step_info is not None
-    step_information_repo.repo.remove(step_info)  # Clean the repository after the test
+    step_information_repo.repo.clear()
     assert step_info.step_keyword == step_keyword
     assert step_info.step_name == step_name
     assert step_info.text != []
@@ -29,7 +29,7 @@ def test_attach_text_to_step(step_keyword: str, step_name: str, text_information
 
 
 @given(
-    step_keyword=st.permutations(["Given", "When", "And", "Then"]),
+    step_keyword=st.sampled_from(["Given", "When", "And", "Then"]),
     step_name=st.text(min_size=1),
     text_informations=st.lists(elements=st.text(min_size=1), min_size=1),
 )
@@ -42,7 +42,7 @@ def test_attach_more_text_to_step(
     assert len(step_information_repo.repo) == 1
     step_info = step_information_repo.get(step_keyword, step_name)
     assert step_info is not None
-    step_information_repo.repo.remove(step_info)  # Clean the repository after the test
+    step_information_repo.repo.clear()
     assert step_info.step_keyword == step_keyword
     assert step_info.step_name == step_name
     assert step_info.text != []
@@ -52,7 +52,7 @@ def test_attach_more_text_to_step(
 
 
 @given(
-    step_keyword=st.permutations(["Given", "When", "And", "Then"]),
+    step_keyword=st.sampled_from(["Given", "When", "And", "Then"]),
     step_name=st.text(min_size=1),
     json_information=st.dictionaries(
         keys=st.text(min_size=1),
@@ -68,7 +68,7 @@ def test_attach_json_to_step(step_keyword: str, step_name: str, json_information
     assert len(step_information_repo.repo) == 1
     step_info = step_information_repo.get(step_keyword, step_name)
     assert step_info is not None
-    step_information_repo.repo.remove(step_info)  # Clean the repository after the test
+    step_information_repo.repo.clear()
     assert step_info.step_keyword == step_keyword
     assert step_info.step_name == step_name
     assert step_info.json != []
@@ -77,7 +77,7 @@ def test_attach_json_to_step(step_keyword: str, step_name: str, json_information
 
 
 @given(
-    step_keyword=st.permutations(["Given", "When", "And", "Then"]),
+    step_keyword=st.sampled_from(["Given", "When", "And", "Then"]),
     step_name=st.text(min_size=1),
     json_informations=st.lists(
         elements=st.dictionaries(
@@ -97,7 +97,7 @@ def test_attach_more_json_to_step(
     assert len(step_information_repo.repo) == 1
     step_info = step_information_repo.get(step_keyword, step_name)
     assert step_info is not None
-    step_information_repo.repo.remove(step_info)  # Clean the repository after the test
+    step_information_repo.repo.clear()
     assert step_info.step_keyword == step_keyword
     assert step_info.step_name == step_name
     assert step_info.json != []
@@ -140,7 +140,7 @@ def test_attach_text_and_json_to_step():
     assert len(step_information_repo.repo) == 1
     step_info = step_information_repo.get(step_keyword, step_name)
     assert step_info is not None
-    step_information_repo.repo.remove(step_info)  # Clean the repository after the test
+    step_information_repo.repo.clear()
     assert step_info.step_keyword == step_keyword
     assert step_info.step_name == step_name
     assert step_info.json != []
@@ -175,7 +175,7 @@ def test_attach_multiple_text_and_json_to_step(
     assert len(step_information_repo.repo) == 1
     step_info = step_information_repo.get(step_keyword, step_name)
     assert step_info is not None
-    step_information_repo.repo.remove(step_info)  # Clean the repository after the test
+    step_information_repo.repo.clear()
     assert step_info.step_keyword == step_keyword
     assert step_info.step_name == step_name
     assert len(step_info.text) == len(text_informations)

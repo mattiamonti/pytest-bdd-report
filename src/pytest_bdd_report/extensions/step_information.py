@@ -29,39 +29,33 @@ class JsonStepInformationSaver:
 
 class StepInformationRepo:
     def __init__(self) -> None:
-        self.repo: list[StepInformation] = []
+        self.repo: dict[tuple[str, str], StepInformation] = {}
         self._savers: dict[str, StepInformationSaverStrategy] = {}
 
     def add(self, step_keyword: str, step_name: str, information: str | dict) -> None:
         """
         Adds a new step information to the repository.
         """
-        step_information = StepInformation(step_keyword, step_name, [], [])
-        if self.exists(step_keyword, step_name):
-            step_information = self.get(step_keyword, step_name)
-            if not step_information:
-                return
-            self.repo.remove(step_information)
-
         if not information:
             return
+
+        step_information = self.get(step_keyword, step_name)
+        if not step_information:
+            step_information = StepInformation(step_keyword, step_name, [], [])
+
         saver_strategy = self.get_saver(information.__class__.__name__)
-        self.repo.append(saver_strategy.save(step_information, information))
+        self.repo[(step_keyword, step_name)] = saver_strategy.save(
+            step_information, information
+        )
 
     def get(self, step_keyword: str, step_name: str) -> StepInformation | None:
         """
         Returns the saved step information if attached.
         """
-        for item in self.repo:
-            if item.step_keyword == step_keyword and item.step_name == step_name:
-                return item
-        return None
+        return self.repo.get((step_keyword, step_name))
 
     def exists(self, step_keyword: str, step_name: str) -> bool:
-        return any(
-            item.step_keyword == step_keyword and item.step_name == step_name
-            for item in self.repo
-        )
+        return (step_keyword, step_name) in self.repo.keys()
 
     def register_saver(
         self, saver: StepInformationSaverStrategy, for_type: str
