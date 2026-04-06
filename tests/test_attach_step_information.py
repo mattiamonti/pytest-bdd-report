@@ -6,6 +6,7 @@ from hypothesis import strategies as st
 
 from pytest_bdd_report import attach
 from pytest_bdd_report.extensions.step_information import step_information_repo
+from tests.test_report_creation.fixtures import sample_test_with_step_attachments
 
 
 @given(
@@ -195,3 +196,14 @@ def test_add_unregistered_data_to_step_information_repo():
         step_information_repo.add(step_keyword, step_name, unregistered_list_info)
 
     assert len(step_information_repo.repo) == 0
+
+
+def test_creation_with_step_attachments(
+    sample_test_with_step_attachments: pytest.Testdir,
+):
+    sample_test_with_step_attachments.runpytest("--bdd-report=with_attachments")
+    report_file = sample_test_with_step_attachments.tmpdir / "with_attachments.html"
+    with open(report_file, "r") as f:
+        content = f.read()
+        assert "Test text attachment" in content
+    assert report_file.exists()

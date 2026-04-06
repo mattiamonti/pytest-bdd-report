@@ -183,3 +183,55 @@ def no_bdd_test(testdir: pytest.Testdir) -> pytest.Testdir:
     )
 
     return testdir
+
+
+@pytest.fixture()
+def sample_test_with_step_attachments(testdir: pytest.Testdir) -> pytest.Testdir:
+    _ = testdir.makefile(
+        ".feature",
+        scenario=textwrap.dedent(
+            """\
+            Feature: Testing
+                Scenario: Test scenario
+                    Given I have a scenario
+                    When I start the test
+                    And I know it will fails
+                    Then It fails
+            """
+        ),
+    )
+
+    _ = testdir.makepyfile(
+        textwrap.dedent(
+            """\
+        import pytest
+        from pytest_bdd import given, when, then, scenario
+        from pytest_bdd_report import attach
+
+        @scenario("scenario.feature", "Test scenario")
+        def test_scenario():
+            pass
+
+        @given("I have a scenario")
+        def _():
+            attach.text_to_step("Test text attachment", "Given", "I have a scenario")
+            pass
+
+        @when("I start the test")
+        def _():
+            attach.json_to_step({"test":"json attachment"}, "When", "I start the test")
+            pass
+
+        @when("I know it will fails")
+        def _():
+            pass
+
+        @then('It fails')
+        def _():
+            assert False
+
+        """
+        )
+    )
+
+    return testdir
