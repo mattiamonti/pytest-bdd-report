@@ -91,8 +91,13 @@ def test_attach_json_to_step(step_keyword: str, step_name: str, json_information
 def test_attach_more_json_to_step(
     step_keyword: str, step_name: str, json_informations: list[dict]
 ):
+    added_json_informations = []
     for json_info in json_informations:
-        attach.json_to_step(json_info, step_keyword, step_name)
+        if (
+            json_info not in added_json_informations
+        ):  # Prevent duplicated json informations
+            added_json_informations.append(json_info)
+            attach.json_to_step(json_info, step_keyword, step_name)
 
     assert len(step_information_repo.repo) == 1
     step_info = step_information_repo.get(step_keyword, step_name)
@@ -101,8 +106,8 @@ def test_attach_more_json_to_step(
     assert step_info.step_keyword == step_keyword
     assert step_info.step_name == step_name
     assert step_info.json != []
-    assert len(step_info.json) == len(json_informations)
-    for json_info in json_informations:
+    assert len(step_info.json) == len(added_json_informations)
+    for json_info in added_json_informations:
         formatted_json_info = json.dumps(json_info, indent=2).strip()
         assert formatted_json_info in step_info.json
 
@@ -169,8 +174,13 @@ def test_attach_multiple_text_and_json_to_step(
     for text_info in text_informations:
         attach.text_to_step(text_info, step_keyword, step_name)
 
+    added_json_informations = []
     for json_info in json_informations:
-        attach.json_to_step(json_info, step_keyword, step_name)
+        if (
+            json_info not in added_json_informations
+        ):  # Prevent duplicated json informations
+            added_json_informations.append(json_info)
+            attach.json_to_step(json_info, step_keyword, step_name)
 
     assert len(step_information_repo.repo) == 1
     step_info = step_information_repo.get(step_keyword, step_name)
@@ -181,8 +191,8 @@ def test_attach_multiple_text_and_json_to_step(
     assert len(step_info.text) == len(text_informations)
     for text_info in text_informations:
         assert text_info in step_info.text
-    assert len(step_info.json) == len(json_informations)
-    for json_info in json_informations:
+    assert len(step_info.json) == len(added_json_informations)
+    for json_info in added_json_informations:
         formatted_json_info = json.dumps(json_info, indent=2).strip()
         assert formatted_json_info in step_info.json
 
