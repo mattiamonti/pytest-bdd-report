@@ -5,7 +5,17 @@ from pytest_bdd_report.templates.template import BaseTemplate
 
 
 class ReportTemplate(BaseTemplate):
+    _instance: Self | None = None
+
+    def __new__(cls: type[Self], *args, **kwargs) -> Self:
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
     def __init__(self) -> None:
+        # Guard against re-initialization when singleton is reused
+        if getattr(self, "_initialized", False):
+            return
         self.rendered_summary: str = ""
         self.rendered_features: str = ""
         self.rendered_feature_statistics: str = ""
@@ -13,6 +23,7 @@ class ReportTemplate(BaseTemplate):
         self.path: str = "report.html"
         self.file_path: str = ""
         super().__init__(self.path)
+        self._initialized = True
 
     @override
     def render_template(self, data: str, already_rendered_data: str = "") -> str:

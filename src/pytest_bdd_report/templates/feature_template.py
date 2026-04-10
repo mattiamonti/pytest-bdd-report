@@ -13,8 +13,12 @@ class FeatureTemplate(BaseTemplate):
         return cls._instance
 
     def __init__(self) -> None:
+        # Guard against re-initialization when singleton is reused
+        if getattr(self, "_initialized", False):
+            return
         self.path: str = "feature.html"
         super().__init__(self.path)
+        self._initialized = True
 
     @override
     def render_template(self, data: Feature, already_rendered_data: str = "") -> str:

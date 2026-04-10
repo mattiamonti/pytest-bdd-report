@@ -1,12 +1,23 @@
-from typing import override
+from typing import override, Self
 from pytest_bdd_report.entities.feature import Feature
 from pytest_bdd_report.templates.template import BaseTemplate
 
 
 class FeatureStatisticsTemplate(BaseTemplate):
+    _instance: Self | None = None
+
+    def __new__(cls: type[Self], *args, **kwargs) -> Self:
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
     def __init__(self) -> None:
+        # Guard against re-initialization when singleton is reused
+        if getattr(self, "_initialized", False):
+            return
         self.path: str = "feature_statistics.html"
         super().__init__(self.path)
+        self._initialized = True
 
     @override
     def render_template(self, data: Feature, already_rendered_data: str = "") -> str:
