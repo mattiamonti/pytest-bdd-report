@@ -40,16 +40,13 @@ class StepInformationRepo:
             return
 
         step_information = self.get(step_keyword, step_name)
-        if step_information and (
-            information in step_information.text or information in step_information.json
-        ):
-            return
         if not step_information:
             step_information = StepInformation(step_keyword, step_name, [], [])
 
         saver_strategy = self.get_saver(information.__class__.__name__)
-        self.repo[(step_keyword, step_name)] = saver_strategy.save(
-            step_information, information
+        step_information = saver_strategy.save(step_information, information)
+        self.repo[(step_keyword, step_name)] = self._filter_unique_informations(
+            step_information
         )
 
     def get(self, step_keyword: str, step_name: str) -> StepInformation | None:
@@ -73,6 +70,13 @@ class StepInformationRepo:
                 f"No information saver strategy register for the image type {for_type}. Try to register a saver with the .register_saver method of this class."
             )
         return saver
+
+    def _filter_unique_informations(
+        self, step_information: StepInformation
+    ) -> StepInformation:
+        step_information.text = list(set(step_information.text))
+        step_information.json = list(set(step_information.json))
+        return step_information
 
 
 step_information_repo = StepInformationRepo()

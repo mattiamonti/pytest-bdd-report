@@ -250,7 +250,7 @@ def test_isolation(
     step_name=st.text(min_size=1),
     text_information=st.text(min_size=1),
 )
-def test_attach_same_information(
+def test_attach_same_text_information(
     step_keyword: str, step_name: str, text_information: str
 ):
     attach.text_to_step(text_information, step_keyword, step_name)
@@ -266,3 +266,32 @@ def test_attach_same_information(
     assert len(step_info.text) == 1
     assert step_info.text[0] == text_information
     assert step_info.json == []
+
+
+@given(
+    step_keyword=st.sampled_from(["Given", "When", "And", "Then"]),
+    step_name=st.text(min_size=1),
+    json_information=st.dictionaries(
+        keys=st.text(min_size=1),
+        values=st.text(min_size=1),
+        min_size=1,
+    ),
+)
+def test_attach_same_json_information(
+    step_keyword: str, step_name: str, json_information: dict
+):
+    formatted_json_info = json.dumps(json_information, indent=2).strip()
+
+    attach.json_to_step(json_information, step_keyword, step_name)
+    attach.json_to_step(json_information, step_keyword, step_name)
+
+    assert len(step_information_repo.repo) == 1
+    step_info = step_information_repo.get(step_keyword, step_name)
+    assert step_info is not None
+    step_information_repo.repo.clear()
+    assert step_info.step_keyword == step_keyword
+    assert step_info.step_name == step_name
+    assert step_info.json != []
+    assert len(step_info.json) == 1
+    assert step_info.json[0] == formatted_json_info
+    assert step_info.text == []
