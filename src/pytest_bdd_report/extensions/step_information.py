@@ -40,6 +40,10 @@ class StepInformationRepo:
             return
 
         step_information = self.get(step_keyword, step_name)
+        if step_information and (
+            information in step_information.text or information in step_information.json
+        ):
+            return
         if not step_information:
             step_information = StepInformation(step_keyword, step_name, [], [])
 
