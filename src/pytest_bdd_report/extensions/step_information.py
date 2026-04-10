@@ -76,6 +76,8 @@ class StepInformationRepo:
     ) -> StepInformation:
         step_information.text = list(set(step_information.text))
         step_information.json = list(set(step_information.json))
+        step_information.text.reverse()
+        step_information.json.reverse()
         return step_information
 
 
