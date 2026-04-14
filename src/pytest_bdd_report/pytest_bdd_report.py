@@ -2,6 +2,7 @@ import os
 
 import pytest
 
+from pytest_bdd_report.extractor.file_list import FileListRepo
 from pytest_bdd_report.loader.json_loader import JsonLoader
 from pytest_bdd_report.report.report import ReportBuilder
 from pytest_bdd_report.report.report_composer import ReportComposer
@@ -10,7 +11,7 @@ from pytest_bdd_report.summary.summary_generator import SummaryGenerator
 
 BDD_REPORT_FLAG = "--bdd-report"
 DEFAULT_CUCUMBER_JSON_PATH = ".cucumber-data.json"
-test_file_uri: list[str] = []
+test_file_uri = FileListRepo()
 
 
 # Command-line option setup
@@ -54,8 +55,7 @@ def pytest_collection_modifyitems(config, items):
     if _get_flag_option(config, BDD_REPORT_FLAG) != ".html":
         for item in items:
             uri = item.nodeid.split("::")[0]
-            if uri not in test_file_uri:
-                test_file_uri.append(uri)
+            test_file_uri.add(uri)
 
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
@@ -86,7 +86,7 @@ def pytest_sessionfinish(session):
             ReportFileBuilder()
             .add_report(report)
             .add_summary(summary)
-            .add_test_file_uri(test_file_uri)
+            .add_test_file_uri(test_file_uri.get())
             .build()
         )
 
